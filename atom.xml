@@ -5,9 +5,9 @@
   <subtitle>哈库呐玛塔塔</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="sousic.online/"/>
+  <link href="https://github.com/suzhilong/suzhilong.github.io.git/"/>
   <updated>2020-03-05T08:25:28.222Z</updated>
-  <id>sousic.online/</id>
+  <id>https://github.com/suzhilong/suzhilong.github.io.git/</id>
   
   <author>
     <name>Su Zhilong</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Nginx搭建基于Hexo的Blog</title>
-    <link href="sousic.online/2019/08/02/blogBuild/"/>
-    <id>sousic.online/2019/08/02/blogBuild/</id>
+    <link href="https://github.com/suzhilong/suzhilong.github.io.git/2019/08/02/blogBuild/"/>
+    <id>https://github.com/suzhilong/suzhilong.github.io.git/2019/08/02/blogBuild/</id>
     <published>2019-08-02T07:37:22.000Z</published>
     <updated>2020-03-05T08:25:28.222Z</updated>
     
@@ -34,19 +34,19 @@
     
     </summary>
     
-      <category term="web前端" scheme="sousic.online/categories/web%E5%89%8D%E7%AB%AF/"/>
+      <category term="web前端" scheme="https://github.com/suzhilong/suzhilong.github.io.git/categories/web%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="Hexo" scheme="sousic.online/tags/Hexo/"/>
+      <category term="Hexo" scheme="https://github.com/suzhilong/suzhilong.github.io.git/tags/Hexo/"/>
     
-      <category term="Nginx" scheme="sousic.online/tags/Nginx/"/>
+      <category term="Nginx" scheme="https://github.com/suzhilong/suzhilong.github.io.git/tags/Nginx/"/>
     
   </entry>
   
   <entry>
     <title>imss</title>
-    <link href="sousic.online/2019/08/02/imss/"/>
-    <id>sousic.online/2019/08/02/imss/</id>
+    <link href="https://github.com/suzhilong/suzhilong.github.io.git/2019/08/02/imss/"/>
+    <id>https://github.com/suzhilong/suzhilong.github.io.git/2019/08/02/imss/</id>
     <published>2019-08-02T05:12:04.000Z</published>
     <updated>2020-03-05T08:04:15.449Z</updated>
     
@@ -61,7 +61,7 @@
     
     </summary>
     
-      <category term="杂" scheme="sousic.online/categories/%E6%9D%82/"/>
+      <category term="杂" scheme="https://github.com/suzhilong/suzhilong.github.io.git/categories/%E6%9D%82/"/>
     
     
   </entry>

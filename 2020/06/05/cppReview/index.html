@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.3.0',
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    search: {
+      root: '/',
+      path: 'search.xml'
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="cpp知识点面向对象的三个基本特征面向对象的三个基本特征是：封装、继承、多态。封装可以隐藏实现细节，使得代码模块化；继承可以扩展已存在的代码模块（类）。它们的目的都是代码重用；而多态则是为了实现另一个目的——接口重用。 封装是指利用抽象数据类型将数据和基于数据的操作封装在一起，使其构成一个不可分割的独立实体，数据被保护在抽象数据类型的内部，尽可能地隐藏内部的细节，只保留一些对外接口使之与外部发生联">
+<meta name="keywords" content="cpp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cpp review">
+<meta property="og:url" content="https://github.com/suzhilong/suzhilong.github.io.git/2020/06/05/cppReview/index.html">
+<meta property="og:site_name" content="SOUSIC">
+<meta property="og:description" content="cpp知识点面向对象的三个基本特征面向对象的三个基本特征是：封装、继承、多态。封装可以隐藏实现细节，使得代码模块化；继承可以扩展已存在的代码模块（类）。它们的目的都是代码重用；而多态则是为了实现另一个目的——接口重用。 封装是指利用抽象数据类型将数据和基于数据的操作封装在一起，使其构成一个不可分割的独立实体，数据被保护在抽象数据类型的内部，尽可能地隐藏内部的细节，只保留一些对外接口使之与外部发生联">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-06-05T07:55:11.312Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="cpp review">
+<meta name="twitter:description" content="cpp知识点面向对象的三个基本特征面向对象的三个基本特征是：封装、继承、多态。封装可以隐藏实现细节，使得代码模块化；继承可以扩展已存在的代码模块（类）。它们的目的都是代码重用；而多态则是为了实现另一个目的——接口重用。 封装是指利用抽象数据类型将数据和基于数据的操作封装在一起，使其构成一个不可分割的独立实体，数据被保护在抽象数据类型的内部，尽可能地隐藏内部的细节，只保留一些对外接口使之与外部发生联">
+  <link rel="alternate" href="/atom.xml" title="SOUSIC" type="application/atom+xml">
+  <link rel="canonical" href="https://github.com/suzhilong/suzhilong.github.io.git/2020/06/05/cppReview/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>cpp review | SOUSIC</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SOUSIC</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">哈库呐玛塔塔</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于我</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-search">
+          <a href="javascript:;" class="popup-trigger">
+          
+            <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+    
+
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+    </div>
+</nav>
+
+</div>
+    </header>
+
+    
+
+  <a href="https://github.com/suzhilong" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/suzhilong/suzhilong.github.io.git/2020/06/05/cppReview/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Su Zhilong">
+      <meta itemprop="description" content="I will always be with you">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SOUSIC">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">cpp review
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          <!--添加置顶标志-->
+          
+            <i class="fa fa-thumb-tack"></i>
+            <font color=808080>置顶</font>
+            <span class="post-meta-divider">|</span>
+          
+          <!--添加置顶标志-->
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-06-05 16:00:00 / 修改时间：15:55:11" itemprop="dateCreated datePublished" datetime="2020-06-05T16:00:00+08:00">2020-06-05</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon"
+              >
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          <br>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">8.1k</span>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">7 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="cpp知识点"><a href="#cpp知识点" class="headerlink" title="cpp知识点"></a>cpp知识点</h1><h2 id="面向对象的三个基本特征"><a href="#面向对象的三个基本特征" class="headerlink" title="面向对象的三个基本特征"></a>面向对象的三个基本特征</h2><p>面向对象的三个基本特征是：<strong>封装</strong>、<strong>继承</strong>、<strong>多态</strong>。<br><strong>封装</strong>可以隐藏实现细节，使得代码模块化；<strong>继承</strong>可以扩展已存在的代码模块（类）。它们的目的都是<strong>代码重用</strong>；而<strong>多态</strong>则是为了实现另一个目的——<strong>接口重用</strong>。</p>
+<h4 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h4><p>是指利用抽象数据类型将数据和基于数据的操作封装在一起，使其构成一个不可分割的独立实体，数据被保护在抽象数据类型的内部，尽可能地隐藏内部的细节，只保留一些对外接口使之与外部发生联系。</p>
+<p>封装把一个对象的属性私有化，同时提供一些可以被外界访问的属性的方法，如果不想被外界方法，我们大可不必提供方法给外界访问。但是如果一个类没有提供给外界访问的方法，那么这个类也没有什么意义了。</p>
+<p>不同的类成员访问修饰符权限：<br>|访问修饰符|同一个类|同包|不同包，子类|不同包，非子类|<br>|-|-|-|-|-|<br>|private|√||||<br>|protected|√|√|√||<br>|public|√|√|√|√|<br>|默认|√|√|||</p>
+<p>使用继承时需要注意：<br>1、子类拥有父类非private的属性和方法。<br>2、子类可以拥有自己属性和方法，即子类可以对父类进行扩展。<br>3、子类可以用自己的方式实现父类的方法。</p>
+<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><p>继承是使用已存在的类的定义作为基础建立新类的技术，新类的定义可以增加新的数据或新的功能，也可以用父类的功能，但不能选择性地继承父类。通过使用继承我们能够非常方便地复用以前的代码，能够大大的提高开发的效率。</p>
+<h4 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h4><p>指程序中定义的引用变量所指向的具体类型和通过该引用变量发出的方法调用在编程时并不确定，而是在程序运行期间才确定，即一个引用变量倒底会指向哪个类的实例对象，该引用变量发出的方法调用到底是哪个类中实现的方法，必须在由程序运行期间才能决定。因为在程序运行时才确定具体的类，这样，不用修改源程序代码，就可以让引用变量绑定到各种不同的类实现上，从而导致该引用调用的具体方法随之改变，即不修改程序代码就可以改变程序运行时所绑定的具体代码，让程序可以选择多个运行状态，这就是多态性。</p>
+<p>多态性允许你将父对象设置成为和一个或更多的他的子对象相等的技术，赋值之后，父对象就可以根据当前赋值给它的子对象的特性以不同的方式运作。简单的说，就是一句话：允许将子类类型的指针赋值给父类类型的指针。</p>
+<p>实现多态的两种方法：</p>
+<ul>
+<li>重写（覆盖）</li>
+<li>重载</li>
+</ul>
+<p>其实，重载的概念并不属于“面向对象编程”，重载的实现是：编译器根据函数不同的参数表，对同名函数的名称做修饰，然后这些同名函数就成了不同的函数（至少对于编译器来说是这样的）。如，有两个同名函数：function func(p:integer):integer;和function func(p:string):integer;。那么编译器做过修饰后的函数名称可能是这样的：int_func、str_func。对于这两个函数的调用，在编译器间就已经确定了，是静态的（记住：是静态）。也就是说，它们的地址在编译期就绑定了（早绑定），因此，重载和多态无关！真正和多态相关的是“覆盖”。当子类重新定义了父类的虚函数后，父类指针根据赋给它的不同的子类指针，动态（记住：是动态！）的调用属于子类的该函数，这样的函数调用在编译期间是无法确定的（调用的子类的虚函数的地址无法给出）。因此，这样的函数地址是在运行期绑定的（晚邦定）。结论就是：重载只是一种语言特性，与多态无关，与面向对象也无关。</p>
+<h4 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h4><p><a href="https://blog.csdn.net/ma1kong/article/details/4457044" target="_blank" rel="noopener">面向对象的三大特性</a></p>
+<h2 id="函数重载（overload）、重写（override，也叫覆盖）和隐藏（也叫重定义）"><a href="#函数重载（overload）、重写（override，也叫覆盖）和隐藏（也叫重定义）" class="headerlink" title="函数重载（overload）、重写（override，也叫覆盖）和隐藏（也叫重定义）"></a>函数重载（overload）、重写（override，也叫覆盖）和隐藏（也叫重定义）</h2><h4 id="重载（override）"><a href="#重载（override）" class="headerlink" title="重载（override）"></a>重载（override）</h4><p>当函数具有相同的名称，但是参数列表不相同的情形（包括参数的个数不同或参数的类型不同），这样的同名而不同参数的函数之间，互相被称之为重载函数。<br>(函数名相同，参数列表不同，overload只是在类的内部存在)<br>特征：</p>
+<ol>
+<li>具有相同的作用域（即同一个类定义中）；</li>
+<li>函数名字相同；</li>
+<li>函数参数 <strong>类型不同</strong> 或者 <strong>个数不同</strong> 或者 <strong>顺序不同</strong>；</li>
+<li>virtual 关键字可有可无；</li>
+<li>返回类型也可以不同。  </li>
+</ol>
+<p><em>ps:函数的访问权限、返回类型、抛出的异常不可以作为函数重载的条件</em></p>
+<p>函数重载实例判断：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">以下的集中写法，分别表示了哪些是重载的，哪些不是重载的。</span><br><span class="line">(1) void func1( int arg1);</span><br><span class="line">(2) void func1( double arg1);</span><br><span class="line">(3) void func1( int arg1, int arg2);</span><br><span class="line">(4) bool func1(int arg1, double arg2)</span><br><span class="line">(5) int func1(int arg1);</span><br><span class="line"></span><br><span class="line">在上述的5个函数中，函数名称都是func1，完全相同；但是：</span><br><span class="line">(2)与(1)的参数个数相同，参数类型不同，构成重载；</span><br><span class="line">(3)与(1)和(2)的参数个数不同，构成重载；</span><br><span class="line">(4)与(1)和(2)的参数个数不同，与(3)的参数个数相同，但是第二个参数类型不同，构成重载；</span><br><span class="line">(5)与(1)的参数个数和参数类型均相同，仅返回值的类型不相同，不构成重载；但是(5)与(2),(3)和(4)除返回值不同外，均有参数类型或参数个数不同的情况，因此构成重载关系。</span><br></pre></td></tr></table></figure>
+
+<h4 id="重写（覆盖，override）"><a href="#重写（覆盖，override）" class="headerlink" title="重写（覆盖，override）"></a>重写（覆盖，override）</h4><p>重写（覆盖）是指派生类重新实现（或者改写）基类的成员函数，在继承关系之间。C++利用虚函数实现多态。其特征是：</p>
+<ol>
+<li>不同的<strong>作用域</strong>（分别位于派生类和基类中）；</li>
+<li>完全相同的<strong>函数名</strong>，<strong>参数列表</strong> 和 <strong>返回类型</strong>；</li>
+<li>基类函数必须是虚函数。即<strong>必须有virtual</strong>关键字，不能是static；</li>
+<li>重写函数的<strong>访问修饰符</strong>可以不同。尽管父类的virtual方法是private的，派生类中重写改写为public、protected也是可以的；</li>
+</ol>
+<p>重写（override）代码示例：B中fun1重写了A中的fun1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class A&#123;</span><br><span class="line">public:</span><br><span class="line">    virtual void fun1(int, int)&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class B : class A&#123;</span><br><span class="line">public:</span><br><span class="line">    void fun1(int, int)&#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="隐藏（重定义）"><a href="#隐藏（重定义）" class="headerlink" title="隐藏（重定义）"></a>隐藏（重定义）</h4><p>子类重新定义父类有相同名称的非虚函数(参数列表可以不同)。</p>
+<ol>
+<li>不在同一个<strong>作用域</strong>（分别位于派生类与基类） ；</li>
+<li>函数<strong>名字相同</strong>，<strong>返回值可以不同</strong>；</li>
+<li>函数名相同但<strong>参数不同</strong>。如果派生类的函数和基类的函数同名，但是参数不同，不论有无 virtual 关键字，基类的函数将被隐藏（注意别与重载以及覆盖混淆）；</li>
+<li>函数名相同且<strong>参数相同</strong>，但是基类函数没有 virtual关键字。此时，基类的函数被隐藏（否则就是重写了）。</li>
+</ol>
+<h4 id="示例程序"><a href="#示例程序" class="headerlink" title="示例程序:"></a>示例程序:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Base</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    void A(int x)&#123; cout &lt;&lt; &quot;Base::A(int)&quot; &lt;&lt; endl; &#125;</span><br><span class="line">    void A(float x)&#123; cout &lt;&lt; &quot;Base::A(float)&quot; &lt;&lt; endl; &#125;</span><br><span class="line">    virtual void B(void)&#123; cout &lt;&lt; &quot;Base::B(void)&quot; &lt;&lt; endl;&#125;</span><br><span class="line">    virtual void C(float x)&#123; cout &lt;&lt; &quot;Base::C(float)&quot; &lt;&lt; endl; &#125;</span><br><span class="line">    virtual void D(float x)&#123; cout &lt;&lt; &quot;Base::D(float)&quot; &lt;&lt; endl; &#125;</span><br><span class="line">    void E(float x)&#123; cout &lt;&lt; &quot;Base::E(float) &quot; &lt;&lt; endl; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class Derived : public Base</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    virtual void B(void)&#123; cout &lt;&lt; &quot;Derived::B(void)&quot; &lt;&lt; endl;&#125;</span><br><span class="line">    virtual void C(float x)&#123; cout &lt;&lt; &quot;Derived::C(float)&quot; &lt;&lt; x &lt;&lt; endl; &#125;</span><br><span class="line">    virtual void D(int x)&#123; cout &lt;&lt; &quot;Derived::D(int)&quot; &lt;&lt; endl; &#125;</span><br><span class="line">    void E(float x)&#123; cout &lt;&lt; &quot;Derived::E(float)&quot; &lt;&lt; endl; &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>重载：函数Base::A(int)与Base::A(float)相互重载</li>
+<li>重写：函数Derived::B(void)重写了Base::B(void)，函数Derived::C(float)重写了Base::C(float)</li>
+<li>隐藏：函数Derived:: D(int)隐藏了Base:: D(float)，函数Derived::E(float)隐藏了Base::E(float)</li>
+</ul>
+<h4 id="ref-1"><a href="#ref-1" class="headerlink" title="ref"></a>ref</h4><ul>
+<li><a href="https://blog.csdn.net/qq_26437925/article/details/54933326" target="_blank" rel="noopener">C++ 类成员函数的重载(overload)，重写/覆盖(override)，隐藏</a></li>
+<li><a href="https://www.cnblogs.com/-Mr-y/p/8352074.html#_lab2_1_1" target="_blank" rel="noopener">函数重载(overload)和函数重写(override)</a></li>
+<li><a href="https://www.cnblogs.com/luxiaoxun/archive/2012/08/09/2630751.html" target="_blank" rel="noopener">C++的重载（overload）与重写（override）</a></li>
+</ul>
+<h2 id="c-资源管理机制"><a href="#c-资源管理机制" class="headerlink" title="c++资源管理机制"></a>c++资源管理机制</h2><h4 id="内存的分类"><a href="#内存的分类" class="headerlink" title="内存的分类"></a>内存的分类</h4><ol>
+<li><strong>堆（heap）</strong>：指的是动态分配内存的区域。这里的内存，被分配之后需要手工释放，否则，就会造成内存泄漏。如果程序员没有释放掉，那么在程序结束后，操作系统会自动回收。<br>与之相关的一个概念是<strong>自由存储区(free store)</strong>，特指使用 new 和 delete 来分配和释放内存的区域。一般来说，这是<strong>堆的一个子集</strong>。<br>new 和 delete 操作的区域是 free store<br>malloc 和 free 操作的区域是 heap</li>
+</ol>
+<p><em>ps: new 和 delete 通常底层使用 malloc 和 free 来实现，所以 free store 也属于 heap</em></p>
+<ol start="2">
+<li><strong>栈（stack）</strong>：函数调用过程中产生的本地变量和调用数据的区域。<br>在执行函数时，函数内局部变量的存储单元都可以在栈上创建，函数执行结束时这些存储单元自动被释放。栈内存分配运算内置于处理器的指令集中，效率很高，但是分配的内存容量有限。</li>
+</ol>
+<p><em>凡生命周期超出当前函数的，一般需要用堆（或者使用对象移动传递）。反之，生命周期在当前函数内的，就该用栈。</em></p>
+<ol start="3">
+<li><p><strong>全局/静态存储区（static）</strong>：全局变量和静态变量被分配到同一块内存中。它们是在程序编译、链接时完全确定下来的，具有固定的存储位置（暂不考虑某些系统的地址扰乱机制）。堆和栈上的变量则都是动态的，地址无法确定。</p>
+</li>
+<li><p><strong>常量存储区</strong>：这是一块比较特殊的存储区，他们里面存放的是常量，不允许修改。</p>
+</li>
+</ol>
+<h4 id="栈展开（stack-unwinding）"><a href="#栈展开（stack-unwinding）" class="headerlink" title="栈展开（stack unwinding）"></a>栈展开（stack unwinding）</h4><p>指的是：如果在一个函数内部抛出异常，而此异常并未在该函数内部被捕捉，就将导致该函数的运行在抛出异常处结束，所有已经分配在栈上的局部变量都要被释放。<br><a href="https://www.dazhuanlan.com/2019/09/29/5d8fb29e775ec/" target="_blank" rel="noopener">示例</a></p>
+<p>最常见的栈展开就是正常的函数调用，任何一个函数返回都存在栈展开。C++引入异常机制后，当程序抛出异常，在异常向上传递的过程中，其函数调用栈也会展开。</p>
+<p><a href="https://time.geekbang.org/column/article/169225" target="_blank" rel="noopener">栈展开演示：</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">class Obj &#123;</span><br><span class="line">public:</span><br><span class="line">  Obj() &#123; puts(&quot;Obj()&quot;); &#125;</span><br><span class="line">  ~Obj() &#123; puts(&quot;~Obj()&quot;); &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void foo(int n)</span><br><span class="line">&#123;</span><br><span class="line">  Obj obj;</span><br><span class="line">  if (n == 42)</span><br><span class="line">    throw &quot;life, the universe and everything&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">  try &#123;</span><br><span class="line">    foo(41);</span><br><span class="line">    foo(42);</span><br><span class="line">  &#125;</span><br><span class="line">  catch (const char* s) &#123;</span><br><span class="line">    puts(s);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码执行结果：不管是否发生了异常，obj 的析构函数都会得到执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Obj()</span><br><span class="line">~Obj()</span><br><span class="line">Obj()</span><br><span class="line">~Obj()</span><br><span class="line">life, the universe and everything</span><br></pre></td></tr></table></figure>
+
+<h4 id="RAII-Resource-Acquisition-Is-Initialization"><a href="#RAII-Resource-Acquisition-Is-Initialization" class="headerlink" title="RAII(Resource Acquisition Is Initialization)"></a>RAII(Resource Acquisition Is Initialization)</h4><p>是 C++ 所特有的资源管理方式。RAII 依托栈和析构函数，来对所有的资源（包括堆内存在内）进行管理。</p>
+<p>其原理是在对象析构函数中释放该对象获取的资源，利用栈展开过程栈上对象的析构函数将被自动调用的保证，从而正确地释放先前获取的资源。</p>
+<p>RAII只有在栈展开正常执行的前提下才能正常工作。函数调用和正常的C++异常处理流程(异常处于try-catch块)都存在栈展开。</p>
+<h4 id="申请后系统的响应"><a href="#申请后系统的响应" class="headerlink" title="申请后系统的响应"></a>申请后系统的响应</h4><p>栈：只要栈的剩余空间大于所申请空间，系统将为程序提供内存，否则将报异常提示栈溢出。<br>堆：首先应该知道操作系统有一个记录空闲内存地址的链表，当系统收到程序的申请时，会遍历该链表，寻找第一个空间大于所申请空间的堆结点，然后将该结点从空闲结点链表中删除，并将该结点的空间分配给程序，另外，对于大多数系统，会在这块内存空间中的首地址处记录本次分配的大小，这样，代码中的delete语句才能正确的释放本内存空间。另外，由于找到的堆结点的大小不一定正好等于申请的大小，系统会自动的将多余的那部分重新放入空闲链表中。</p>
+<h4 id="malloc-free-和-new-delete-区别如下："><a href="#malloc-free-和-new-delete-区别如下：" class="headerlink" title="malloc/free 和 new/delete 区别如下："></a>malloc/free 和 new/delete 区别如下：</h4><ol>
+<li>malloc/free是标准库函数，new/delete是操作符（运算符）</li>
+<li>malloc/free只分配内存，new/delete还负责构造/析构对象</li>
+<li>malloc/free分配失败会返回NULL，new/delete分配失败会返回bad_alloc</li>
+<li>new/delete分配可以自动计算需要的字节数，malloc/free需要人为指定<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//main.cpp</span><br><span class="line">int a = 0; //全局初始化区</span><br><span class="line">char *p1; //全局未初始化区</span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">int b; //栈</span><br><span class="line">char s[] = &quot;abc&quot;; //栈</span><br><span class="line">char *p2; //栈</span><br><span class="line">char *p3 = &quot;123456&quot;; //123456\0在常量区，p3在栈上。</span><br><span class="line">static int c =0； //全局（静态）初始化区</span><br><span class="line">p1 = (char *)malloc(10);</span><br><span class="line">p2 = (char *)malloc(20); //分配得来得10和20字节的区域就在堆区。</span><br><span class="line">strcpy(p1, &quot;123456&quot;); //123456\0放在常量区，编译器可能会将它与p3所指的&quot;123456&quot;优化成一个地方</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h4><p>内存泄漏的原因：</p>
+<ol>
+<li>异常或分支导致delete未得到执行</li>
+<li>分配和释放不在一个函数里导致的遗漏delete</li>
+</ol>
+<h4 id="ref-2"><a href="#ref-2" class="headerlink" title="ref"></a>ref</h4><ul>
+<li><a href="https://time.geekbang.org/column/article/169225" target="_blank" rel="noopener">极客时间《现代C++实战30讲》：01 | 堆、栈、RAII：C++里该如何管理资源？</a></li>
+<li><a href="https://zh.wikipedia.org/zh-cn/RAII" target="_blank" rel="noopener">RAII(wiki)</a></li>
+<li><a href="https://www.cnblogs.com/qg-whz/p/5060894.html" target="_blank" rel="noopener">C++ 自由存储区是否等价于堆？</a></li>
+<li><a href="https://www.zhihu.com/question/281940376" target="_blank" rel="noopener">为什么c++中要分为heap（堆）和stack（栈）</a>  </li>
+<li><a href="https://zhuanlan.zhihu.com/p/82298443" target="_blank" rel="noopener">C/C++内存分配</a></li>
+<li><a href="https://chenqx.github.io/2014/09/25/Cpp-Memory-Management/" target="_blank" rel="noopener">C/C++内存管理详解</a></li>
+</ul>
+<h2 id="指针和引用的区别"><a href="#指针和引用的区别" class="headerlink" title="指针和引用的区别"></a>指针和引用的区别</h2><ol>
+<li><strong>引用</strong>只是变量的一个别名，<strong>指针</strong>是变量的地址。</li>
+<li><strong>指针</strong>可以指向空值，但是在任何情况下都不能使用指向空值的<strong>引用</strong>。引用在声明时必须初始化。</li>
+<li>指针与引用的另一个重要的不同是：<strong>指针</strong>可以被重新赋值以指向另一个不同的对象，但是<strong>引用</strong>则总是指向在初始化时被指定的对象，以后不能改变。  </li>
+</ol>
+<p>在以下情况下你应该使用指针：</p>
+<ul>
+<li>你考虑到存在不指向任何对象的可能(在 这种情况下，你能够设置指针为空)</li>
+<li>你需要能够在不同的时刻指向不同的对象(在这种情况下，你能改变指针的指向)。</li>
+</ul>
+<p>如果总是指向一个对象并且一旦指向一个对象后就不会改变指向，那么你应该使用引用。</p>
+<p><em>ps: 函数传参时，可以使用引用。<br>&emsp;&emsp;引用也可以作为函数的返回值。但是要注意<code>不要返回局部变量引用</code>。</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//返回局部变量引用</span><br><span class="line">int&amp; test01() &#123;</span><br><span class="line">	int a = 10; //局部变量</span><br><span class="line">	return a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//返回静态变量引用</span><br><span class="line">int&amp; test02() &#123;</span><br><span class="line">	static int a = 20;</span><br><span class="line">	return a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="ref-3"><a href="#ref-3" class="headerlink" title="ref"></a>ref</h4><ul>
+<li>《more effective C++》 Item M1:指针与引用的区别  <ul>
+<li><a href="https://blog.csdn.net/weikangc/article/details/49762929" target="_blank" rel="noopener">C++中指针和引用的区别</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h2><p>智能指针本质上是一个<strong>类</strong>，它将基本类型指针封装为类对象指针（这个类肯定是个模板，以适应不同基本类型的需求），并在析构函数里编写delete语句删除指针指向的内存空间。智能指针的出现实际上就是为了可以方便的控制对象的生命期，是 RAII 资源管理功能的自然展现。</p>
+<p>STL一共给我们提供了四种智能指针：</p>
+<ul>
+<li>auto_ptr<br>C++98提供的解决方案，C+11已将将其摒弃。原因是避免潜在的内存崩溃问题：<strong>将一个auto_ptr赋值给另一个auto_ptr时，程序将试图删除同一个对象两次</strong>。</li>
+<li>unique_ptr<br>当程序试图将一个 unique_ptr 赋值给另一个时，如果源 unique_ptr 是个临时右值，编译器允许这么做；如果源 unique_ptr 将存在一段时间，编译器将禁止这么做。</li>
+<li>shared_ptr<br>采用<strong>引用计数</strong>的策略</li>
+<li>weak_ptr<br>对于引用计数法实现的计数，总是避免不了循环引用（或环形引用）的问题，shared_ptr也不例外。为了解决类似这样的问题，C++11引入了weak_ptr，来打破这种循环引用。<br>weak_ptr是为了配合shared_ptr而引入的一种智能指针，它指向一个由shared_ptr管理的对象而不影响所指对象的生命周期，也就是将一个shared_ptr赋值给weak_ptr不会改变shared_ptr的引用计数。不论是否有weak_ptr指向，一旦最后一个指向对象的shared_ptr被销毁，对象就会被释放。</li>
+</ul>
+<p><em>ps：将一个智能指针赋值给另一个智能指针时有多种方法：<br>1）定义陚值运算符，使之执行深复制。这样两个指针将指向不同的对象，其中的一个对象是另一个对象的副本，缺点是浪费空间，所以智能指针都未采用此方案。<br>2）建立所有权（ownership）概念。对于特定的对象，只能有一个智能指针可拥有，这样只有拥有对象的智能指针的构造函数会删除该对象。然后让赋值操作转让所有权。这就是用于auto_ptr和uniqiie_ptr 的策略，但unique_ptr的策略更严格。<br>3）创建智能更高的指针，跟踪引用特定对象的智能指针数。这称为引用计数。例如，赋值时，计数将加1，而指针过期时，计数将减1,。当减为0时才调用delete。这是shared_ptr采用的策略。</em></p>
+<h4 id="ref-4"><a href="#ref-4" class="headerlink" title="ref"></a>ref</h4><ul>
+<li><a href="https://time.geekbang.org/column/article/169263" target="_blank" rel="noopener">极客时间《现代C++实战30讲》：02 | 自己动手，实现C++的智能指针</a></li>
+<li><a href="https://www.cnblogs.com/lanxuezaipiao/p/4132096.html" target="_blank" rel="noopener">C++智能指针简单剖析</a></li>
+</ul>
+<h2 id="多重继承的问题"><a href="#多重继承的问题" class="headerlink" title="多重继承的问题"></a>多重继承的问题</h2><h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2>
+    </div>
+      
+
+
+    
+    
+    
+
+<!--版权-->
+    <div>
+          
+            
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2020/06/05/cppReview/">cpp review</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Su Zhilong 的个人博客">Su Zhilong</a></p>
+  <p><span>发布时间:</span>2020年06月05日 - 16:06</p>
+  <p><span>最后更新:</span>2020年06月05日 - 15:06</p>
+  <p><span>原始链接:</span><a href="/2020/06/05/cppReview/" title="cpp review">https://github.com/suzhilong/suzhilong.github.io.git/2020/06/05/cppReview/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/suzhilong/suzhilong.github.io.git/2020/06/05/cppReview/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+    });
+    });  
+</script>
+
+          
+    </div>
+<!--版权-->
+    
+      <div>
+        <div id="reward-container">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="Su Zhilong 微信支付">
+        <p>微信支付</p>
+      </div>
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="Su Zhilong 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+      </div>
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/cpp/" rel="tag"># cpp</a>
+          
+        </div>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2020/06/01/LeetcodeDaily/" rel="next" title="Coding Daily">
+                <i class="fa fa-chevron-left"></i> Coding Daily
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.gif"
+      alt="Su Zhilong">
+  <p class="site-author-name" itemprop="name">Su Zhilong</p>
+  <div class="site-description motion-element" itemprop="description">I will always be with you</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/suzhilong" title="GitHub &rarr; https://github.com/suzhilong"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://me.csdn.net/weixin_42411548" title="CSDN &rarr; https://me.csdn.net/weixin_42411548" rel="noopener" target="_blank"><i class="fa fa-fw fa-CSDN"></i>CSDN</a>
+      </span>
+    
+  </div>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cpp知识点"><span class="nav-number">1.</span> <span class="nav-text">cpp知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象的三个基本特征"><span class="nav-number">1.1.</span> <span class="nav-text">面向对象的三个基本特征</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#封装"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多态"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">多态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ref"><span class="nav-number">1.1.0.4.</span> <span class="nav-text">ref</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数重载（overload）、重写（override，也叫覆盖）和隐藏（也叫重定义）"><span class="nav-number">1.2.</span> <span class="nav-text">函数重载（overload）、重写（override，也叫覆盖）和隐藏（也叫重定义）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#重载（override）"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">重载（override）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重写（覆盖，override）"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">重写（覆盖，override）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#隐藏（重定义）"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">隐藏（重定义）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例程序"><span class="nav-number">1.2.0.4.</span> <span class="nav-text">示例程序:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ref-1"><span class="nav-number">1.2.0.5.</span> <span class="nav-text">ref</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c-资源管理机制"><span class="nav-number">1.3.</span> <span class="nav-text">c++资源管理机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#内存的分类"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">内存的分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#栈展开（stack-unwinding）"><span class="nav-number">1.3.0.2.</span> <span class="nav-text">栈展开（stack unwinding）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RAII-Resource-Acquisition-Is-Initialization"><span class="nav-number">1.3.0.3.</span> <span class="nav-text">RAII(Resource Acquisition Is Initialization)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#申请后系统的响应"><span class="nav-number">1.3.0.4.</span> <span class="nav-text">申请后系统的响应</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#malloc-free-和-new-delete-区别如下："><span class="nav-number">1.3.0.5.</span> <span class="nav-text">malloc/free 和 new/delete 区别如下：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内存泄漏"><span class="nav-number">1.3.0.6.</span> <span class="nav-text">内存泄漏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ref-2"><span class="nav-number">1.3.0.7.</span> <span class="nav-text">ref</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指针和引用的区别"><span class="nav-number">1.4.</span> <span class="nav-text">指针和引用的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ref-3"><span class="nav-number">1.4.0.1.</span> <span class="nav-text">ref</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#智能指针"><span class="nav-number">1.5.</span> <span class="nav-text">智能指针</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ref-4"><span class="nav-number">1.5.0.1.</span> <span class="nav-text">ref</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多重继承的问题"><span class="nav-number">1.6.</span> <span class="nav-text">多重继承的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#容器"><span class="nav-number">1.7.</span> <span class="nav-text">容器</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Su Zhilong</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">125k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:54</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.3.0</div>
+-->
+
+<!-- 新增访客统计代码 -->
+
+<div class="busuanzi-count">
+    <script async="" src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      访问人数： <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 人
+    </span>
+    <div class="powered-by"></div>
+    <span class="site-uv">
+      <i class="fa fa-eye"></i>
+      访问次数： <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 次
+    </span>
+    <!-- 博客字数统计 -->
+    <span class="site-pv">
+      <i class="fa fa-pencil"></i>
+      博客全站共： <span class="post-count">35k</span> 字
+    </span>
+</div>
+<!-- 新增访客统计代码 END-->
+
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("08/02/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Run for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+setInterval("createtime()",250);
+</script>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  <script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+  
+  <script src="/js/schemes/muse.js?v=7.3.0"></script>
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.3.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

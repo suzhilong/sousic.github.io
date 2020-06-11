@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="SOUSIC">
 <meta property="og:description" content="6月1日 1431. 拥有最多糖果的孩子（简单）给你一个数组 candies 和一个整数 extraCandies ，其中 candies[i] 代表第 i 个孩子拥有的糖果数目。对每一个孩子，检查是否存在一种方案，将额外的 extraCandies 个糖果分配给孩子们之后，此孩子有 最多 的糖果。注意，允许有多个孩子同时拥有 最多 的糖果数目。示例： 123输入：candies = [4,2,1">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-10T02:15:38.619Z">
+<meta property="og:updated_time" content="2020-06-11T05:05:29.947Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode每日一题 - 2020年六月">
 <meta name="twitter:description" content="6月1日 1431. 拥有最多糖果的孩子（简单）给你一个数组 candies 和一个整数 extraCandies ，其中 candies[i] 代表第 i 个孩子拥有的糖果数目。对每一个孩子，检查是否存在一种方案，将额外的 extraCandies 个糖果分配给孩子们之后，此孩子有 最多 的糖果。注意，允许有多个孩子同时拥有 最多 的糖果数目。示例： 123输入：candies = [4,2,1">
@@ -313,7 +313,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-06-10 10:15:38" itemprop="dateModified" datetime="2020-06-10T10:15:38+08:00">2020-06-10</time>
+                <time title="修改时间：2020-06-11 13:05:29" itemprop="dateModified" datetime="2020-06-11T13:05:29+08:00">2020-06-11</time>
               </span>
             
           
@@ -350,7 +350,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">23k</span>
+              <span title="本文字数">25k</span>
             </span>
           
             <span class="post-meta-item">
@@ -360,7 +360,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">21 分钟</span>
+              <span title="阅读时长">22 分钟</span>
             </span>
           
 
@@ -536,7 +536,31 @@
 
 </li>
 </ol>
-<h1 id="6月11日"><a href="#6月11日" class="headerlink" title="6月11日"></a>6月11日</h1>
+<h1 id="6月11日-739-每日温度（中等）"><a href="#6月11日-739-每日温度（中等）" class="headerlink" title="6月11日 739. 每日温度（中等）"></a>6月11日 <a href="https://leetcode-cn.com/problems/daily-temperatures/" target="_blank" rel="noopener">739. 每日温度（中等）</a></h1><p>根据每日 <code>气温</code> 列表，请重新生成一个列表，对应位置的输出是需要再等待多久温度才会升高超过该日的天数。如果之后都不会升高，请在该位置用 <code>0</code> 来代替。</p>
+<p>例如，给定一个列表 <code>temperatures = [73, 74, 75, 71, 69, 72, 76, 73]</code>，你的输出应该是 <code>[1, 1, 4, 2, 1, 1, 0, 0]</code>。</p>
+<p>提示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">气温 列表长度的范围是 [1, 30000]。每个气温的值的均为华氏度，都是在 [30, 100] 范围内的整数。</span><br></pre></td></tr></table></figure>
+
+<p>题解：</p>
+<ol>
+<li>纯暴力法（超时）。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; dailyTemperatures(vector&lt;int&gt;&amp; T) &#123;</span><br><span class="line">    vector&lt;int&gt; res(T.size(),0);</span><br><span class="line">    for(int i=0;i&lt;T.size();i++)&#123;</span><br><span class="line">        for(int j=i+1;j&lt;T.size();j++)&#123;</span><br><span class="line">            if(T[j]&gt;T[i])&#123;</span><br><span class="line">                res[i] = j-i;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>时间复杂度O(n^2)。空间复杂度(1)。</p>
+<ol start="2">
+<li>温度数组加暴力。由于温度范围在<code>[30, 100]</code>之内，因此可以维护一个数组<code>tempFirstPos</code>记录每个温度第一次出现的下标。数组<code>tempFirstPos</code>中的元素初始化为<code>n</code>，因为数组的最大索引为<code>n-1</code>。在<strong>反向</strong>遍历温度列表的过程中更新 tempFirstPos 的值。  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; dailyTemperatures(vector&lt;int&gt;&amp; T) &#123;</span><br><span class="line">    int n = T.size();</span><br><span class="line">    vector&lt;int&gt; res(n), tempFirstPos(101, n);</span><br><span class="line">    for (int i = n - 1; i &gt;= 0; i--) &#123;</span><br><span class="line">        int warmerIndex = n;//最大值为数组长度</span><br><span class="line">        for (int t = T[i] + 1; t &lt;= 100; t++) &#123;</span><br><span class="line">            warmerIndex = min(warmerIndex, tempFirstPos[t]);</span><br><span class="line">        &#125;</span><br><span class="line">        if (warmerIndex != n) &#123;</span><br><span class="line">            res[i] = warmerIndex - i;</span><br><span class="line">        &#125;</span><br><span class="line">        tempFirstPos[T[i]] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>时间复杂度O(n*m)，n是数组长度，m是温度的范围。空间复杂度O(n)。</p>
+<ol start="3">
+<li>单调栈。维护一个单调递减的栈，栈中元素为温度值的索引。当前温度比栈顶索引温度低时，直接进栈；当前温度比栈顶索引温度高时，两个索引之间的差就是栈顶索引值所求结果。<br><a href="https://leetcode-cn.com/problems/daily-temperatures/solution/leetcode-tu-jie-739mei-ri-wen-du-by-misterbooo/" target="_blank" rel="noopener">视频讲解</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; dailyTemperatures(vector&lt;int&gt;&amp; T) &#123;</span><br><span class="line">    int n = T.size();</span><br><span class="line">    vector&lt;int&gt; res(n,0);</span><br><span class="line">    stack&lt;int&gt; s;</span><br><span class="line">    for (int i = 0; i &lt; n; ++i) &#123;</span><br><span class="line">        while (!s.empty() &amp;&amp; T[i] &gt; T[s.top()]) &#123;</span><br><span class="line">            int previousIndex = s.top();</span><br><span class="line">            res[previousIndex] = i - previousIndex;</span><br><span class="line">            s.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        s.push(i);</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>时间复杂度O(n)。空间复杂度O(n)。</p>
+
     </div>
       
 
@@ -558,7 +582,7 @@
   <p><span>本文标题:</span><a href="/2020/06/01/LeetcodeDaily/">Leetcode每日一题 - 2020年六月</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Su Zhilong 的个人博客">Su Zhilong</a></p>
   <p><span>发布时间:</span>2020年06月01日 - 16:06</p>
-  <p><span>最后更新:</span>2020年06月10日 - 10:06</p>
+  <p><span>最后更新:</span>2020年06月11日 - 13:06</p>
   <p><span>原始链接:</span><a href="/2020/06/01/LeetcodeDaily/" title="Leetcode每日一题 - 2020年六月">https://github.com/suzhilong/suzhilong.github.io.git/2020/06/01/LeetcodeDaily/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/suzhilong/suzhilong.github.io.git/2020/06/01/LeetcodeDaily/"  aria-label="复制成功！"></i></span>
   </p>
@@ -789,7 +813,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#6月1日-1431-拥有最多糖果的孩子（简单）"><span class="nav-number">1.</span> <span class="nav-text">6月1日 1431. 拥有最多糖果的孩子（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月2日-剑指Offer面试题64-求1-2-…-n"><span class="nav-number">2.</span> <span class="nav-text">6月2日 剑指Offer面试题64. 求1+2+…+n</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月3日-837-新21点（中等）"><span class="nav-number">3.</span> <span class="nav-text">6月3日 837. 新21点（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月4日-238-除自身以外数组的乘积（中等）"><span class="nav-number">4.</span> <span class="nav-text">6月4日 238. 除自身以外数组的乘积（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月5日-剑指Offer面试题29-顺时针打印矩阵（简单）"><span class="nav-number">5.</span> <span class="nav-text">6月5日 剑指Offer面试题29. 顺时针打印矩阵（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月6日-128-最长连续序列（困难）"><span class="nav-number">6.</span> <span class="nav-text">6月6日 128. 最长连续序列（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月7日-126-单词接龙-II（困难）"><span class="nav-number">7.</span> <span class="nav-text">6月7日 126. 单词接龙 II（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月8日-990-等式方程的可满足性（中等）"><span class="nav-number">8.</span> <span class="nav-text">6月8日 990. 等式方程的可满足性（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月9日-剑指Offer面试题46-把数字翻译成字符串（中等）"><span class="nav-number">9.</span> <span class="nav-text">6月9日 剑指Offer面试题46. 把数字翻译成字符串（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月10日-回文数（简单）"><span class="nav-number">10.</span> <span class="nav-text">6月10日 回文数（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月11日"><span class="nav-number">11.</span> <span class="nav-text">6月11日</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#6月1日-1431-拥有最多糖果的孩子（简单）"><span class="nav-number">1.</span> <span class="nav-text">6月1日 1431. 拥有最多糖果的孩子（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月2日-剑指Offer面试题64-求1-2-…-n"><span class="nav-number">2.</span> <span class="nav-text">6月2日 剑指Offer面试题64. 求1+2+…+n</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月3日-837-新21点（中等）"><span class="nav-number">3.</span> <span class="nav-text">6月3日 837. 新21点（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月4日-238-除自身以外数组的乘积（中等）"><span class="nav-number">4.</span> <span class="nav-text">6月4日 238. 除自身以外数组的乘积（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月5日-剑指Offer面试题29-顺时针打印矩阵（简单）"><span class="nav-number">5.</span> <span class="nav-text">6月5日 剑指Offer面试题29. 顺时针打印矩阵（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月6日-128-最长连续序列（困难）"><span class="nav-number">6.</span> <span class="nav-text">6月6日 128. 最长连续序列（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月7日-126-单词接龙-II（困难）"><span class="nav-number">7.</span> <span class="nav-text">6月7日 126. 单词接龙 II（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月8日-990-等式方程的可满足性（中等）"><span class="nav-number">8.</span> <span class="nav-text">6月8日 990. 等式方程的可满足性（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月9日-剑指Offer面试题46-把数字翻译成字符串（中等）"><span class="nav-number">9.</span> <span class="nav-text">6月9日 剑指Offer面试题46. 把数字翻译成字符串（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月10日-回文数（简单）"><span class="nav-number">10.</span> <span class="nav-text">6月10日 回文数（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月11日-739-每日温度（中等）"><span class="nav-number">11.</span> <span class="nav-text">6月11日 739. 每日温度（中等）</span></a></li></ol></div>
             
 
           </div>
@@ -816,12 +840,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">158k</span>
+    <span title="站点总字数">160k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:24</span>
+    <span title="站点阅读时长">2:25</span>
 </div>
 
 <!--
@@ -846,7 +870,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">46.7k</span> 字
+      博客全站共： <span class="post-count">47.3k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->

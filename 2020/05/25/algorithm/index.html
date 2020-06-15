@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="SOUSIC">
 <meta property="og:description" content="一、算法基础&amp;emsp;&amp;emsp;春节后疫情一直没开学，赋闲在家刷了一个多月的算法，总结了一下，形成了下面的文章。包含了数据结构类例题和算法类例题，大部分是Leecode中的典型题目，也有实习笔试中的真题和剑指Offer中的题目。题解使用C++，代码均由本人在参考题解之后所写。全部都在本地编译运行通过。（目前大概70多题，还有数据结构类例题未完善）相关github   1.1 常用数据结构1.1">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-14T04:15:20.557Z">
+<meta property="og:updated_time" content="2020-06-15T06:47:41.326Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SOUSIC的algorithm总结">
 <meta name="twitter:description" content="一、算法基础&amp;emsp;&amp;emsp;春节后疫情一直没开学，赋闲在家刷了一个多月的算法，总结了一下，形成了下面的文章。包含了数据结构类例题和算法类例题，大部分是Leecode中的典型题目，也有实习笔试中的真题和剑指Offer中的题目。题解使用C++，代码均由本人在参考题解之后所写。全部都在本地编译运行通过。（目前大概70多题，还有数据结构类例题未完善）相关github   1.1 常用数据结构1.1">
@@ -313,7 +313,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-06-14 12:15:20" itemprop="dateModified" datetime="2020-06-14T12:15:20+08:00">2020-06-14</time>
+                <time title="修改时间：2020-06-15 14:47:41" itemprop="dateModified" datetime="2020-06-15T14:47:41+08:00">2020-06-15</time>
               </span>
             
           
@@ -423,10 +423,10 @@
 <li>set允许插入和删除，不允许修改</li>
 <li>set按照内部比较对象（类型比较）所指示的特定严格弱排序准则进行排序</li>
 <li>set在底层用二叉搜索树（红黑树）实现</li>
-<li>set中查找、插入、删除元素的复杂度为log2n，unordered_set为O(1)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;set&gt;</span><br><span class="line">#include &lt;unordered_set&gt;</span><br><span class="line"></span><br><span class="line">unordered_set&lt;int&gt; us;</span><br><span class="line">us.insert(2);//插入</span><br><span class="line">unordered_set&lt;int&gt; us1(us);//us1=us</span><br><span class="line">unordered_set&lt;int&gt; us2(us1.begin(),us1.end());</span><br><span class="line"></span><br><span class="line">us.erase(6); //删除键值为6的元素</span><br><span class="line">set&lt;int&gt;::iterator it;  </span><br><span class="line">it = us.find(6); //查找键值为6的元素</span><br><span class="line">int n = us.count(6);//也能判断一个数是否在集合中。n=0不在，n=在</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>set中查找、插入、删除元素的复杂度为log2n，unordered_set为O(1)</li>
 </ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;set&gt;</span><br><span class="line">#include &lt;unordered_set&gt;</span><br><span class="line"></span><br><span class="line">unordered_set&lt;int&gt; us;</span><br><span class="line">us.insert(2);//插入</span><br><span class="line">unordered_set&lt;int&gt; us1(us);//us1=us</span><br><span class="line">unordered_set&lt;int&gt; us2(us1.begin(),us1.end());</span><br><span class="line"></span><br><span class="line">us.erase(6); //删除键值为6的元素</span><br><span class="line">set&lt;int&gt;::iterator it;  </span><br><span class="line">it = us.find(6); //查找键值为6的元素</span><br><span class="line">int n = us.count(6);//也能判断一个数是否在集合中。n=0不在，n=在</span><br></pre></td></tr></table></figure>
+
 <h3 id="string"><a href="#string" class="headerlink" title="string"></a><code>string</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;string&gt;</span><br><span class="line"></span><br><span class="line">string s;</span><br><span class="line">s.find()//在s当中查找第一个出现</span><br><span class="line">s.rfind()//在s当中查找最后一个出现</span><br><span class="line">int is = stoi(val) //把string val转换成int。stoi()会做范围检查，默认范围是在int的范围内的，如果超出范围的话则会runtime error</span><br><span class="line">int is = atoi(val.c_str()) //atoi()不会做范围检查，如果超出范围的话，超出上界，则输出上界，超出下界，则输出下界</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line"></span><br><span class="line">//s1 s2需要c风格字符串char</span><br><span class="line">//如果是string，需要s1.c_str()</span><br><span class="line">strcmp(s1,s2) //相等返回0；s1-s2大于0，则返回1，小于0则返回-1</span><br><span class="line">strncmp(s1,s2,n) //比较前n个</span><br><span class="line">strcpy(s1,s2) //s2复制到s1,注意s2不要比s1长</span><br></pre></td></tr></table></figure>
 
 <p>(印象笔记里的图片)</p>
@@ -902,7 +902,7 @@
   <p><span>本文标题:</span><a href="/2020/05/25/algorithm/">SOUSIC的algorithm总结</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Su Zhilong 的个人博客">Su Zhilong</a></p>
   <p><span>发布时间:</span>2020年05月25日 - 16:05</p>
-  <p><span>最后更新:</span>2020年06月14日 - 12:06</p>
+  <p><span>最后更新:</span>2020年06月15日 - 14:06</p>
   <p><span>原始链接:</span><a href="/2020/05/25/algorithm/" title="SOUSIC的algorithm总结">https://github.com/suzhilong/suzhilong.github.io.git/2020/05/25/algorithm/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/suzhilong/suzhilong.github.io.git/2020/05/25/algorithm/"  aria-label="复制成功！"></i></span>
   </p>

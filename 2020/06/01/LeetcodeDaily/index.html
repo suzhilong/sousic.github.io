@@ -66,7 +66,7 @@
 <meta property="og:description" content="6月1日 1431. 拥有最多糖果的孩子（简单）给你一个数组 candies 和一个整数 extraCandies ，其中 candies[i] 代表第 i 个孩子拥有的糖果数目。对每一个孩子，检查是否存在一种方案，将额外的 extraCandies 个糖果分配给孩子们之后，此孩子有 最多 的糖果。注意，允许有多个孩子同时拥有 最多 的糖果数目。示例： 123输入：candies = [4,2,1">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2020/06/16/DwJHZvu7SbTaBkC.png">
-<meta property="og:updated_time" content="2020-06-17T04:43:15.290Z">
+<meta property="og:updated_time" content="2020-06-18T03:12:20.933Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode每日一题 - 2020年六月">
 <meta name="twitter:description" content="6月1日 1431. 拥有最多糖果的孩子（简单）给你一个数组 candies 和一个整数 extraCandies ，其中 candies[i] 代表第 i 个孩子拥有的糖果数目。对每一个孩子，检查是否存在一种方案，将额外的 extraCandies 个糖果分配给孩子们之后，此孩子有 最多 的糖果。注意，允许有多个孩子同时拥有 最多 的糖果数目。示例： 123输入：candies = [4,2,1">
@@ -315,7 +315,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-06-17 12:43:15" itemprop="dateModified" datetime="2020-06-17T12:43:15+08:00">2020-06-17</time>
+                <time title="修改时间：2020-06-18 11:12:20" itemprop="dateModified" datetime="2020-06-18T11:12:20+08:00">2020-06-18</time>
               </span>
             
           
@@ -352,7 +352,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">42k</span>
+              <span title="本文字数">43k</span>
             </span>
           
             <span class="post-meta-item">
@@ -362,7 +362,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">38 分钟</span>
+              <span title="阅读时长">39 分钟</span>
             </span>
           
 
@@ -719,7 +719,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">string longestCommonPrefix(vector&lt;string&gt;&amp; strs) &#123;</span><br><span class="line">    string res = &quot;&quot;;</span><br><span class="line">    bool stop = false;</span><br><span class="line">    for(int i = 0; !stop; i++)&#123;</span><br><span class="line">        char cur = strs[0][i];</span><br><span class="line">        for(string s:strs)&#123;</span><br><span class="line">            if(s.size()==i+1)//有一个str已经到最后一位了</span><br><span class="line">                stop = true;</span><br><span class="line">            if(s[i]==cur)&#123;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">                return res;</span><br><span class="line">        &#125;</span><br><span class="line">        res += cur;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>时间复杂度：O(m*n)，m 是 strs 中最短字符串的长度，n是字符串列表的长度。<br>空间复杂度：O(1)</p>
-<h1 id="6月16日-297-二叉树的序列化与反序列化"><a href="#6月16日-297-二叉树的序列化与反序列化" class="headerlink" title="6月16日 297. 二叉树的序列化与反序列化"></a>6月16日 <a href="https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/" target="_blank" rel="noopener">297. 二叉树的序列化与反序列化</a></h1><p>序列化是将一个数据结构或者对象转换为连续的比特位的操作，进而可以将转换后的数据存储在一个文件或者内存中，同时也可以通过网络传输到另一个计算机环境，采取相反方式重构得到原数据。<br>请设计一个算法来实现二叉树的序列化与反序列化。这里不限定你的序列 / 反序列化算法执行逻辑，你只需要保证一个二叉树可以被序列化为一个字符串并且将这个字符串反序列化为原始的树结构。</p>
+<h1 id="6月16日-297-二叉树的序列化与反序列化（困难）"><a href="#6月16日-297-二叉树的序列化与反序列化（困难）" class="headerlink" title="6月16日 297. 二叉树的序列化与反序列化（困难）"></a>6月16日 <a href="https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/" target="_blank" rel="noopener">297. 二叉树的序列化与反序列化（困难）</a></h1><p>序列化是将一个数据结构或者对象转换为连续的比特位的操作，进而可以将转换后的数据存储在一个文件或者内存中，同时也可以通过网络传输到另一个计算机环境，采取相反方式重构得到原数据。<br>请设计一个算法来实现二叉树的序列化与反序列化。这里不限定你的序列 / 反序列化算法执行逻辑，你只需要保证一个二叉树可以被序列化为一个字符串并且将这个字符串反序列化为原始的树结构。</p>
 <p>示例:<br><img src="https://i.loli.net/2020/06/16/DwJHZvu7SbTaBkC.png" alt="示例"></p>
 <p><strong>提示</strong>: 这与 LeetCode 目前使用的方式一致，详情请参阅 LeetCode 序列化二叉树的格式。你并非必须采取这种方式，你也可以采用其他的方法解决这个问题。</p>
 <p><strong>说明</strong>: 不要使用类的成员 / 全局 / 静态变量来存储状态，你的序列化和反序列化算法应该是无状态的。</p>
@@ -733,7 +733,7 @@
 <li><p><strong>先序遍历</strong>，即<strong>DFS</strong>。使用栈来系列化，也可以使用递归。</p>
 </li>
 </ol>
-<h1 id="6月17日-1014-最佳观光组合"><a href="#6月17日-1014-最佳观光组合" class="headerlink" title="6月17日 1014. 最佳观光组合"></a>6月17日 <a href="https://leetcode-cn.com/problems/best-sightseeing-pair/" target="_blank" rel="noopener">1014. 最佳观光组合</a></h1><p>给定正整数数组 A，A[i] 表示第 i 个观光景点的评分，并且两个景点 i 和 j 之间的距离为 j - i。<br>一对景点（i &lt; j）组成的观光组合的得分为（A[i] + A[j] + i - j）：景点的评分之和减去它们两者之间的距离。<br>返回一对观光景点能取得的最高分。</p>
+<h1 id="6月17日-1014-最佳观光组合（中等）"><a href="#6月17日-1014-最佳观光组合（中等）" class="headerlink" title="6月17日 1014. 最佳观光组合（中等）"></a>6月17日 <a href="https://leetcode-cn.com/problems/best-sightseeing-pair/" target="_blank" rel="noopener">1014. 最佳观光组合（中等）</a></h1><p>给定正整数数组 A，A[i] 表示第 i 个观光景点的评分，并且两个景点 i 和 j 之间的距离为 j - i。<br>一对景点（i &lt; j）组成的观光组合的得分为（A[i] + A[j] + i - j）：景点的评分之和减去它们两者之间的距离。<br>返回一对观光景点能取得的最高分。</p>
 <p>示例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：[8,1,5,2,6]</span><br><span class="line">输出：11</span><br><span class="line">解释：i = 0, j = 2, A[i] + A[j] + i - j = 8 + 5 + 0 - 2 = 11</span><br></pre></td></tr></table></figure>
 
@@ -750,6 +750,34 @@
 </li>
 </ol>
 <p>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
+<h1 id="6月18日-1028-从先序遍历还原二叉树（困难）"><a href="#6月18日-1028-从先序遍历还原二叉树（困难）" class="headerlink" title="6月18日 1028. 从先序遍历还原二叉树（困难）"></a>6月18日 <a href="https://leetcode-cn.com/problems/recover-a-tree-from-preorder-traversal/" target="_blank" rel="noopener">1028. 从先序遍历还原二叉树（困难）</a></h1><p>我们从二叉树的根节点 root 开始进行深度优先搜索。<br>在遍历中的每个节点处，我们输出 D 条短划线（其中 D 是该节点的深度），然后输出该节点的值。（如果节点的深度为 D，则其直接子节点的深度为 D + 1。根节点的深度为 0）。<br>如果节点只有一个子节点，那么保证该子节点为左子节点。<br>给出遍历输出 S，还原树并返回其根节点 root。</p>
+<p>示例1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：&quot;1-2--3--4-5--6--7&quot;</span><br><span class="line">输出：[1,2,5,3,4,6,7]</span><br></pre></td></tr></table></figure>
+
+<p>示例2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：&quot;1-2--3---4-5--6---7&quot;</span><br><span class="line">输出：[1,2,5,3,null,6,null,4,null,7]</span><br></pre></td></tr></table></figure>
+
+<p>示例 3：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：&quot;1-401--349---90--88&quot;</span><br><span class="line">输出：[1,401,null,349,88,90]</span><br></pre></td></tr></table></figure>
+
+<p>题解：<br>当前节点为T，上一个节点为S，只有两种情况：</p>
+<ul>
+<li>T 是 S 的左子节点；</li>
+<li>T 是根节点到 S 这一条路径上（不包括 S，因为题目中规定了如果节点只有一个子节点，那么保证该子节点为左子节点）某一个节点的右子节点。</li>
+</ul>
+<p>所以，我们用一个栈保存<strong>根节点</strong>到当前节点的<strong>上一个节点</strong>的路径：</p>
+<ol>
+<li><strong>当前节点</strong>的深度刚好比<strong>栈的高度</strong>大1：<strong>当前节点</strong>正好是<strong>栈顶节点</strong>的<strong>左子节点</strong>；<em>ps. 深度是从0开始，所以当深度的值和栈高度相等时，就是深度刚好比栈的高度大1</em></li>
+<li><strong>当前节点</strong>的深度小于等于<strong>栈的高度</strong>：<ul>
+<li><strong>当前节点</strong>的深度刚和<strong>栈的高度</strong>相等：<strong>当前节点</strong>是<strong>栈顶节点右兄弟节点</strong>即<strong>栈顶节点父节点的右子节点</strong>；</li>
+<li><strong>当前节点</strong>的深度小于<strong>栈的高度</strong>：<strong>当前节点</strong>是<strong>根节点</strong>到<strong>栈顶节点</strong>路径上某一个节点的<strong>右子节点</strong>。一直弹出栈顶节点直到满足情况<code>1</code>。</li>
+<li><em>ps. <strong>当前节点</strong>的深度刚和<strong>栈的高度</strong>相等 即 <code>level=path.size()-1</code>，也是需要弹出栈顶节点一次</em><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">TreeNode* recoverFromPreorder(string S) &#123;</span><br><span class="line">    stack&lt;TreeNode *&gt; path;</span><br><span class="line">    int pos = 0;</span><br><span class="line">    while(pos&lt;S.size())&#123;</span><br><span class="line">        int level = 0;</span><br><span class="line">        while(S[pos]==&apos;-&apos;)&#123;</span><br><span class="line">            level++;</span><br><span class="line">            pos++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        int value = 0;</span><br><span class="line">        while (pos &lt; S.size() &amp;&amp; isdigit(S[pos]))&#123;//取当前节点的值</span><br><span class="line">            value = value * 10 + (S[pos] - &apos;0&apos;);</span><br><span class="line">            pos++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        TreeNode *node = new TreeNode(value);</span><br><span class="line">        if(level==path.size())&#123;//第1种情况</span><br><span class="line">            if(!path.empty())</span><br><span class="line">                path.top()-&gt;left = node;</span><br><span class="line">        &#125;else&#123;//第2种情况</span><br><span class="line">            while(level!=path.size())</span><br><span class="line">                path.pop();</span><br><span class="line">            path.top()-&gt;right = node;</span><br><span class="line">        &#125;</span><br><span class="line">        path.push(node);</span><br><span class="line">    &#125;</span><br><span class="line">    while(path.size()&gt;1)</span><br><span class="line">        path.pop();</span><br><span class="line">    return path.top();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ol>
+<p>时间复杂度：O(n)。n为S的长度<br>空间复杂度：O(h)。h为树的高度</p>
 
     </div>
       
@@ -772,7 +800,7 @@
   <p><span>本文标题:</span><a href="/2020/06/01/LeetcodeDaily/">Leetcode每日一题 - 2020年六月</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Su Zhilong 的个人博客">Su Zhilong</a></p>
   <p><span>发布时间:</span>2020年06月01日 - 16:06</p>
-  <p><span>最后更新:</span>2020年06月17日 - 12:06</p>
+  <p><span>最后更新:</span>2020年06月18日 - 11:06</p>
   <p><span>原始链接:</span><a href="/2020/06/01/LeetcodeDaily/" title="Leetcode每日一题 - 2020年六月">https://github.com/suzhilong/suzhilong.github.io.git/2020/06/01/LeetcodeDaily/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/suzhilong/suzhilong.github.io.git/2020/06/01/LeetcodeDaily/"  aria-label="复制成功！"></i></span>
   </p>
@@ -1003,7 +1031,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#6月1日-1431-拥有最多糖果的孩子（简单）"><span class="nav-number">1.</span> <span class="nav-text">6月1日 1431. 拥有最多糖果的孩子（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月2日-剑指Offer面试题64-求1-2-…-n"><span class="nav-number">2.</span> <span class="nav-text">6月2日 剑指Offer面试题64. 求1+2+…+n</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月3日-837-新21点（中等）"><span class="nav-number">3.</span> <span class="nav-text">6月3日 837. 新21点（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月4日-238-除自身以外数组的乘积（中等）"><span class="nav-number">4.</span> <span class="nav-text">6月4日 238. 除自身以外数组的乘积（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月5日-剑指Offer面试题29-顺时针打印矩阵（简单）"><span class="nav-number">5.</span> <span class="nav-text">6月5日 剑指Offer面试题29. 顺时针打印矩阵（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月6日-128-最长连续序列（困难）"><span class="nav-number">6.</span> <span class="nav-text">6月6日 128. 最长连续序列（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月7日-126-单词接龙-II（困难）"><span class="nav-number">7.</span> <span class="nav-text">6月7日 126. 单词接龙 II（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月8日-990-等式方程的可满足性（中等）"><span class="nav-number">8.</span> <span class="nav-text">6月8日 990. 等式方程的可满足性（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月9日-剑指Offer面试题46-把数字翻译成字符串（中等）"><span class="nav-number">9.</span> <span class="nav-text">6月9日 剑指Offer面试题46. 把数字翻译成字符串（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月10日-回文数（简单）"><span class="nav-number">10.</span> <span class="nav-text">6月10日 回文数（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月11日-739-每日温度（中等）"><span class="nav-number">11.</span> <span class="nav-text">6月11日 739. 每日温度（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月12日-15-三数之和"><span class="nav-number">12.</span> <span class="nav-text">6月12日 15. 三数之和</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月13日-70-爬楼梯（简单）"><span class="nav-number">13.</span> <span class="nav-text">6月13日 70. 爬楼梯（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第28场双周赛-6-13"><span class="nav-number">14.</span> <span class="nav-text">第28场双周赛 6.13</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5420-商品折扣后的最终价格（简单）"><span class="nav-number">14.1.</span> <span class="nav-text">5420. 商品折扣后的最终价格（简单）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5423-找两个和为目标值且不重叠的子数组（中等）"><span class="nav-number">14.2.</span> <span class="nav-text">5423. 找两个和为目标值且不重叠的子数组（中等）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5421-安排邮筒（困难）"><span class="nav-number">14.3.</span> <span class="nav-text">5421. 安排邮筒（困难）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第193场周赛-6-14"><span class="nav-number">15.</span> <span class="nav-text">第193场周赛 6.14</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5436-一维数组的动态和（简单）"><span class="nav-number">15.1.</span> <span class="nav-text">5436. 一维数组的动态和（简单）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5437-不同整数的最少数目（Medium）"><span class="nav-number">15.2.</span> <span class="nav-text">5437. 不同整数的最少数目（Medium）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5438-制作-m-束花所需的最少天数（Medium）"><span class="nav-number">15.3.</span> <span class="nav-text">5438. 制作 m 束花所需的最少天数（Medium）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5188-树节点的第-K-个祖先（困难）"><span class="nav-number">15.4.</span> <span class="nav-text">5188. 树节点的第 K 个祖先（困难）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月14日-1300-转变数组后最接近目标值的数组和（中等）"><span class="nav-number">16.</span> <span class="nav-text">6月14日 1300. 转变数组后最接近目标值的数组和（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月15日-14-最长公共前缀（简单）"><span class="nav-number">17.</span> <span class="nav-text">6月15日 14. 最长公共前缀（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月16日-297-二叉树的序列化与反序列化"><span class="nav-number">18.</span> <span class="nav-text">6月16日 297. 二叉树的序列化与反序列化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月17日-1014-最佳观光组合"><span class="nav-number">19.</span> <span class="nav-text">6月17日 1014. 最佳观光组合</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#6月1日-1431-拥有最多糖果的孩子（简单）"><span class="nav-number">1.</span> <span class="nav-text">6月1日 1431. 拥有最多糖果的孩子（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月2日-剑指Offer面试题64-求1-2-…-n"><span class="nav-number">2.</span> <span class="nav-text">6月2日 剑指Offer面试题64. 求1+2+…+n</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月3日-837-新21点（中等）"><span class="nav-number">3.</span> <span class="nav-text">6月3日 837. 新21点（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月4日-238-除自身以外数组的乘积（中等）"><span class="nav-number">4.</span> <span class="nav-text">6月4日 238. 除自身以外数组的乘积（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月5日-剑指Offer面试题29-顺时针打印矩阵（简单）"><span class="nav-number">5.</span> <span class="nav-text">6月5日 剑指Offer面试题29. 顺时针打印矩阵（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月6日-128-最长连续序列（困难）"><span class="nav-number">6.</span> <span class="nav-text">6月6日 128. 最长连续序列（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月7日-126-单词接龙-II（困难）"><span class="nav-number">7.</span> <span class="nav-text">6月7日 126. 单词接龙 II（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月8日-990-等式方程的可满足性（中等）"><span class="nav-number">8.</span> <span class="nav-text">6月8日 990. 等式方程的可满足性（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月9日-剑指Offer面试题46-把数字翻译成字符串（中等）"><span class="nav-number">9.</span> <span class="nav-text">6月9日 剑指Offer面试题46. 把数字翻译成字符串（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月10日-回文数（简单）"><span class="nav-number">10.</span> <span class="nav-text">6月10日 回文数（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月11日-739-每日温度（中等）"><span class="nav-number">11.</span> <span class="nav-text">6月11日 739. 每日温度（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月12日-15-三数之和"><span class="nav-number">12.</span> <span class="nav-text">6月12日 15. 三数之和</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月13日-70-爬楼梯（简单）"><span class="nav-number">13.</span> <span class="nav-text">6月13日 70. 爬楼梯（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第28场双周赛-6-13"><span class="nav-number">14.</span> <span class="nav-text">第28场双周赛 6.13</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5420-商品折扣后的最终价格（简单）"><span class="nav-number">14.1.</span> <span class="nav-text">5420. 商品折扣后的最终价格（简单）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5423-找两个和为目标值且不重叠的子数组（中等）"><span class="nav-number">14.2.</span> <span class="nav-text">5423. 找两个和为目标值且不重叠的子数组（中等）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5421-安排邮筒（困难）"><span class="nav-number">14.3.</span> <span class="nav-text">5421. 安排邮筒（困难）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第193场周赛-6-14"><span class="nav-number">15.</span> <span class="nav-text">第193场周赛 6.14</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5436-一维数组的动态和（简单）"><span class="nav-number">15.1.</span> <span class="nav-text">5436. 一维数组的动态和（简单）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5437-不同整数的最少数目（Medium）"><span class="nav-number">15.2.</span> <span class="nav-text">5437. 不同整数的最少数目（Medium）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5438-制作-m-束花所需的最少天数（Medium）"><span class="nav-number">15.3.</span> <span class="nav-text">5438. 制作 m 束花所需的最少天数（Medium）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5188-树节点的第-K-个祖先（困难）"><span class="nav-number">15.4.</span> <span class="nav-text">5188. 树节点的第 K 个祖先（困难）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月14日-1300-转变数组后最接近目标值的数组和（中等）"><span class="nav-number">16.</span> <span class="nav-text">6月14日 1300. 转变数组后最接近目标值的数组和（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月15日-14-最长公共前缀（简单）"><span class="nav-number">17.</span> <span class="nav-text">6月15日 14. 最长公共前缀（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月16日-297-二叉树的序列化与反序列化（困难）"><span class="nav-number">18.</span> <span class="nav-text">6月16日 297. 二叉树的序列化与反序列化（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月17日-1014-最佳观光组合（中等）"><span class="nav-number">19.</span> <span class="nav-text">6月17日 1014. 最佳观光组合（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月18日-1028-从先序遍历还原二叉树（困难）"><span class="nav-number">20.</span> <span class="nav-text">6月18日 1028. 从先序遍历还原二叉树（困难）</span></a></li></ol></div>
             
 
           </div>
@@ -1030,12 +1058,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">184k</span>
+    <span title="站点总字数">188k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:48</span>
+    <span title="站点阅读时长">2:51</span>
 </div>
 
 <!--
@@ -1060,7 +1088,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">57.3k</span> 字
+      博客全站共： <span class="post-count">58.9k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->

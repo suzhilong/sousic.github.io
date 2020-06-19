@@ -66,7 +66,7 @@
 <meta property="og:description" content="6月1日 1431. 拥有最多糖果的孩子（简单）给你一个数组 candies 和一个整数 extraCandies ，其中 candies[i] 代表第 i 个孩子拥有的糖果数目。对每一个孩子，检查是否存在一种方案，将额外的 extraCandies 个糖果分配给孩子们之后，此孩子有 最多 的糖果。注意，允许有多个孩子同时拥有 最多 的糖果数目。示例： 123输入：candies = [4,2,1">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2020/06/16/DwJHZvu7SbTaBkC.png">
-<meta property="og:updated_time" content="2020-06-18T03:12:20.933Z">
+<meta property="og:updated_time" content="2020-06-19T02:52:54.202Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode每日一题 - 2020年六月">
 <meta name="twitter:description" content="6月1日 1431. 拥有最多糖果的孩子（简单）给你一个数组 candies 和一个整数 extraCandies ，其中 candies[i] 代表第 i 个孩子拥有的糖果数目。对每一个孩子，检查是否存在一种方案，将额外的 extraCandies 个糖果分配给孩子们之后，此孩子有 最多 的糖果。注意，允许有多个孩子同时拥有 最多 的糖果数目。示例： 123输入：candies = [4,2,1">
@@ -315,7 +315,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-06-18 11:12:20" itemprop="dateModified" datetime="2020-06-18T11:12:20+08:00">2020-06-18</time>
+                <time title="修改时间：2020-06-19 10:52:54" itemprop="dateModified" datetime="2020-06-19T10:52:54+08:00">2020-06-19</time>
               </span>
             
           
@@ -352,7 +352,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">43k</span>
+              <span title="本文字数">44k</span>
             </span>
           
             <span class="post-meta-item">
@@ -362,7 +362,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">39 分钟</span>
+              <span title="阅读时长">40 分钟</span>
             </span>
           
 
@@ -778,6 +778,18 @@
 </li>
 </ol>
 <p>时间复杂度：O(n)。n为S的长度<br>空间复杂度：O(h)。h为树的高度</p>
+<p>6月19日 <a href="https://leetcode-cn.com/problems/valid-palindrome/" target="_blank" rel="noopener">125. 验证回文串（简单）</a><br>给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。</p>
+<p><strong>说明</strong>：本题中，我们将空字符串定义为有效的回文串。</p>
+<p>示例 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;A man, a plan, a canal: Panama&quot;</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+
+<p>示例 2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;race a car&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
+
+<p>题解：<br>用一前一后双指针依次往中间遍历，直到指针碰见。可以在开始时用<code>transform()</code>先把字符串全部转换为小写字母，也可以在比较时使用<code>toupper()/tolower()</code>转单个字母。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">bool isPalindrome(string s) &#123;</span><br><span class="line">    // transform(s.begin(), s.end(), s.begin(), ::tolower);</span><br><span class="line">    if (s.size() == 0)</span><br><span class="line">        return true;</span><br><span class="line">    int idxL = 0, idxR = s.size() - 1;</span><br><span class="line">    while(idxL&lt;idxR)&#123;</span><br><span class="line">        while(!isalnum(s[idxL]) &amp;&amp; idxL&lt;idxR)</span><br><span class="line">            idxL++; </span><br><span class="line">        while(!isalnum(s[idxR]) &amp;&amp; idxL&lt;idxR)</span><br><span class="line">            idxR--;</span><br><span class="line">        if(tolower(s[idxL]) != tolower(s[idxR]))</span><br><span class="line">            return false;</span><br><span class="line">        else&#123;</span><br><span class="line">            idxL++;</span><br><span class="line">            idxR--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度：O(n)。n为字符串s的长度<br>空间复杂度：O(1)</p>
 
     </div>
       
@@ -800,7 +812,7 @@
   <p><span>本文标题:</span><a href="/2020/06/01/LeetcodeDaily/">Leetcode每日一题 - 2020年六月</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Su Zhilong 的个人博客">Su Zhilong</a></p>
   <p><span>发布时间:</span>2020年06月01日 - 16:06</p>
-  <p><span>最后更新:</span>2020年06月18日 - 11:06</p>
+  <p><span>最后更新:</span>2020年06月19日 - 10:06</p>
   <p><span>原始链接:</span><a href="/2020/06/01/LeetcodeDaily/" title="Leetcode每日一题 - 2020年六月">https://github.com/suzhilong/suzhilong.github.io.git/2020/06/01/LeetcodeDaily/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/suzhilong/suzhilong.github.io.git/2020/06/01/LeetcodeDaily/"  aria-label="复制成功！"></i></span>
   </p>
@@ -1058,12 +1070,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">188k</span>
+    <span title="站点总字数">189k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:51</span>
+    <span title="站点阅读时长">2:52</span>
 </div>
 
 <!--
@@ -1088,7 +1100,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">58.9k</span> 字
+      博客全站共： <span class="post-count">59.2k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->

@@ -66,7 +66,7 @@
 <meta property="og:description" content="6月1日 1431. 拥有最多糖果的孩子（简单）给你一个数组 candies 和一个整数 extraCandies ，其中 candies[i] 代表第 i 个孩子拥有的糖果数目。对每一个孩子，检查是否存在一种方案，将额外的 extraCandies 个糖果分配给孩子们之后，此孩子有 最多 的糖果。注意，允许有多个孩子同时拥有 最多 的糖果数目。示例： 123输入：candies = [4,2,1">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2020/06/16/DwJHZvu7SbTaBkC.png">
-<meta property="og:updated_time" content="2020-06-19T02:52:54.202Z">
+<meta property="og:updated_time" content="2020-06-20T12:50:28.359Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode每日一题 - 2020年六月">
 <meta name="twitter:description" content="6月1日 1431. 拥有最多糖果的孩子（简单）给你一个数组 candies 和一个整数 extraCandies ，其中 candies[i] 代表第 i 个孩子拥有的糖果数目。对每一个孩子，检查是否存在一种方案，将额外的 extraCandies 个糖果分配给孩子们之后，此孩子有 最多 的糖果。注意，允许有多个孩子同时拥有 最多 的糖果数目。示例： 123输入：candies = [4,2,1">
@@ -315,7 +315,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-06-19 10:52:54" itemprop="dateModified" datetime="2020-06-19T10:52:54+08:00">2020-06-19</time>
+                <time title="修改时间：2020-06-20 20:50:28" itemprop="dateModified" datetime="2020-06-20T20:50:28+08:00">2020-06-20</time>
               </span>
             
           
@@ -352,7 +352,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">44k</span>
+              <span title="本文字数">47k</span>
             </span>
           
             <span class="post-meta-item">
@@ -362,7 +362,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">40 分钟</span>
+              <span title="阅读时长">43 分钟</span>
             </span>
           
 
@@ -778,7 +778,7 @@
 </li>
 </ol>
 <p>时间复杂度：O(n)。n为S的长度<br>空间复杂度：O(h)。h为树的高度</p>
-<p>6月19日 <a href="https://leetcode-cn.com/problems/valid-palindrome/" target="_blank" rel="noopener">125. 验证回文串（简单）</a><br>给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。</p>
+<h1 id="6月19日-125-验证回文串（简单）"><a href="#6月19日-125-验证回文串（简单）" class="headerlink" title="6月19日 125. 验证回文串（简单）"></a>6月19日 <a href="https://leetcode-cn.com/problems/valid-palindrome/" target="_blank" rel="noopener">125. 验证回文串（简单）</a></h1><p>给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。</p>
 <p><strong>说明</strong>：本题中，我们将空字符串定义为有效的回文串。</p>
 <p>示例 1:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;A man, a plan, a canal: Panama&quot;</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
@@ -790,7 +790,57 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">bool isPalindrome(string s) &#123;</span><br><span class="line">    // transform(s.begin(), s.end(), s.begin(), ::tolower);</span><br><span class="line">    if (s.size() == 0)</span><br><span class="line">        return true;</span><br><span class="line">    int idxL = 0, idxR = s.size() - 1;</span><br><span class="line">    while(idxL&lt;idxR)&#123;</span><br><span class="line">        while(!isalnum(s[idxL]) &amp;&amp; idxL&lt;idxR)</span><br><span class="line">            idxL++; </span><br><span class="line">        while(!isalnum(s[idxR]) &amp;&amp; idxL&lt;idxR)</span><br><span class="line">            idxR--;</span><br><span class="line">        if(tolower(s[idxL]) != tolower(s[idxR]))</span><br><span class="line">            return false;</span><br><span class="line">        else&#123;</span><br><span class="line">            idxL++;</span><br><span class="line">            idxR--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>时间复杂度：O(n)。n为字符串s的长度<br>空间复杂度：O(1)</p>
+<h1 id="6月20日-10-正则表达式匹配（困难）"><a href="#6月20日-10-正则表达式匹配（困难）" class="headerlink" title="6月20日 10. 正则表达式匹配（困难）"></a>6月20日 <a href="https://leetcode-cn.com/problems/regular-expression-matching/" target="_blank" rel="noopener">10. 正则表达式匹配（困难）</a></h1><p>给你一个字符串 s 和一个字符规律 p，请你来实现一个支持 ‘.’ 和 ‘*’ 的正则表达式匹配。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&apos;.&apos; 匹配任意单个字符</span><br><span class="line">&apos;*&apos; 匹配零个或多个前面的那一个元素</span><br><span class="line">所谓匹配，是要涵盖 整个 字符串 s的，而不是部分字符串。</span><br></pre></td></tr></table></figure>
 
+<p>说明:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s 可能为空，且只包含从 a-z 的小写字母。</span><br><span class="line">p 可能为空，且只包含从 a-z 的小写字母，以及字符 . 和 *。</span><br></pre></td></tr></table></figure>
+
+<p>示例 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">s = &quot;aa&quot;</span><br><span class="line">p = &quot;a&quot;</span><br><span class="line">输出: false</span><br><span class="line">解释: &quot;a&quot; 无法匹配 &quot;aa&quot; 整个字符串。</span><br></pre></td></tr></table></figure>
+
+<p>示例 2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">s = &quot;aa&quot;</span><br><span class="line">p = &quot;a*&quot;</span><br><span class="line">输出: true</span><br><span class="line">解释: 因为 &apos;*&apos; 代表可以匹配零个或多个前面的那一个元素, 在这里前面的元素就是 &apos;a&apos;。因此，字符串 &quot;aa&quot; 可被视为 &apos;a&apos; 重复了一次。</span><br></pre></td></tr></table></figure>
+
+<p>示例 3:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">s = &quot;ab&quot;</span><br><span class="line">p = &quot;.*&quot;</span><br><span class="line">输出: true</span><br><span class="line">解释: &quot;.*&quot; 表示可匹配零个或多个（&apos;*&apos;）任意字符（&apos;.&apos;）。</span><br></pre></td></tr></table></figure>
+
+<p>示例 4:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">s = &quot;aab&quot;</span><br><span class="line">p = &quot;c*a*b&quot;</span><br><span class="line">输出: true</span><br><span class="line">解释: 因为 &apos;*&apos; 表示零个或多个，这里 &apos;c&apos; 为 0 个, &apos;a&apos; 被重复一次。因此可以匹配字符串 &quot;aab&quot;。</span><br></pre></td></tr></table></figure>
+
+<p>示例 5:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">s = &quot;mississippi&quot;</span><br><span class="line">p = &quot;mis*is*p*.&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
+
+<p>题解：  </p>
+<ol>
+<li><p>递归（超时）。需要用到有限状态机的思想。</p>
+<ul>
+<li>当p索引的下一个字符是’*’时：<ul>
+<li>当前字符匹配：当作没有’*‘ || 转移状态，看s的下一位 ||’*‘匹配0个</li>
+<li>当前字符不匹配：’*‘匹配0个，p索引向后移动两位</li>
+</ul>
+</li>
+<li>当p索引的下一个字符不是’*‘时。如果当前字符匹配，则都向后移动一位。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">bool matchCore(string s, string p, int idxS, int idxP)&#123;</span><br><span class="line">    if(idxS==s.size() &amp;&amp; idxP==p.size())</span><br><span class="line">        return true;</span><br><span class="line">    if(idxS&lt;s.size() &amp;&amp; idxP==p.size())</span><br><span class="line">        return false;</span><br><span class="line">    </span><br><span class="line">    if(p[idxP+1]==&apos;*&apos;)&#123;//p索引的下一个字符是&apos;*&apos;</span><br><span class="line">        if(p[idxP]==s[idxS] || (p[idxP]==&apos;.&apos; &amp;&amp; idxS&lt;s.size())) //当前字符匹配</span><br><span class="line">            return matchCore(s, p, idxS + 1, idxP + 2)//当作没有*</span><br><span class="line">                || matchCore(s, p, idxS + 1, idxP) //</span><br><span class="line">                || matchCore(s, p, idxS, idxP + 2);//*匹配0个</span><br><span class="line">        else //当前字符不匹配</span><br><span class="line">            return matchCore(s, p, idxS, idxP + 2);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(s[idxS]==p[idxP] || (p[idxP]==&apos;.&apos; &amp;&amp; idxS&lt;s.size())) //p索引的下一个字符不是&apos;*&apos;</span><br><span class="line">        return matchCore(s, p, idxS + 1, idxP + 1);</span><br><span class="line"></span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool isMatch(string s, string p)</span><br><span class="line">&#123;</span><br><span class="line">    return matchCore(s, p, 0, 0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>dp。用 <code>dp[i][j]</code> 表示 <code>s</code> 的前 <code>i</code> 个字符与 <code>p</code> 中的前 <code>j</code> 个字符是否能够匹配。</p>
+<ul>
+<li>p[j]不是’*‘<ul>
+<li><code>dp[i][j] = dp[i-1][j-1]</code> (s[i] == p[j] 含p[j]==’.’的情况)</li>
+<li>false (s[i] != p[j])</li>
+</ul>
+</li>
+<li>p[j]是’*‘<ul>
+<li><code>dp[i][j] = dp[i-1][j](匹配s的该位字符) || dp[i][j-2](字母+星号不匹配任何字符)</code> (s[i] == p[j-1] s[i] == p[j] 含p[j-1]==’.’的情况)</li>
+<li><code>dp[i][j] = dp[i][j-2]</code> (s[i]!=p[j-1])</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><em>ps. 需要特别注意字符串的索引是从0开始的，和dp的索引相差1</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">bool isMatch(string s, string p)</span><br><span class="line">&#123;</span><br><span class="line">    int m = s.size(), n = p.size();</span><br><span class="line">    vector&lt;vector&lt;bool&gt; &gt; dp(m+1,vector&lt;bool&gt;(n+1));</span><br><span class="line"></span><br><span class="line">    //初始化很重要！！！</span><br><span class="line">    dp[0][0] = true;</span><br><span class="line">    for (int i = 2; i &lt;= n; i++) &#123;</span><br><span class="line">        if (p[i-1] == &apos;*&apos; &amp;&amp; dp[0][i - 2])&#123;</span><br><span class="line">            // p[0]不可能是&apos;\*&apos;，因为&apos;\*&apos;必须依附前面的字符。</span><br><span class="line">            // p = &quot;a*c*b*a&quot;这种情况，dp[0][2/4/6]都为true</span><br><span class="line">            dp[0][i] = true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    for (int i = 1; i &lt;= m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for (int j = 1; j &lt;= n; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(p[j-1]!=&apos;*&apos;)&#123;</span><br><span class="line">                if(s[i-1]==p[j-1] || p[j-1]==&apos;.&apos;)</span><br><span class="line">                    dp[i][j] = dp[i - 1][j - 1];</span><br><span class="line">                else</span><br><span class="line">                    dp[i][j] = false;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                if(s[i-1]==p[j-2] || p[j-2]==&apos;.&apos;)&#123;</span><br><span class="line">                    dp[i][j] = (dp[i - 1][j] || dp[i][j - 2]);</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                &#123;</span><br><span class="line">                    dp[i][j] = dp[i][j - 2];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dp[m][n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
       
 
@@ -812,7 +862,7 @@
   <p><span>本文标题:</span><a href="/2020/06/01/LeetcodeDaily/">Leetcode每日一题 - 2020年六月</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Su Zhilong 的个人博客">Su Zhilong</a></p>
   <p><span>发布时间:</span>2020年06月01日 - 16:06</p>
-  <p><span>最后更新:</span>2020年06月19日 - 10:06</p>
+  <p><span>最后更新:</span>2020年06月20日 - 20:06</p>
   <p><span>原始链接:</span><a href="/2020/06/01/LeetcodeDaily/" title="Leetcode每日一题 - 2020年六月">https://github.com/suzhilong/suzhilong.github.io.git/2020/06/01/LeetcodeDaily/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/suzhilong/suzhilong.github.io.git/2020/06/01/LeetcodeDaily/"  aria-label="复制成功！"></i></span>
   </p>
@@ -937,7 +987,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1043,7 +1093,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#6月1日-1431-拥有最多糖果的孩子（简单）"><span class="nav-number">1.</span> <span class="nav-text">6月1日 1431. 拥有最多糖果的孩子（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月2日-剑指Offer面试题64-求1-2-…-n"><span class="nav-number">2.</span> <span class="nav-text">6月2日 剑指Offer面试题64. 求1+2+…+n</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月3日-837-新21点（中等）"><span class="nav-number">3.</span> <span class="nav-text">6月3日 837. 新21点（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月4日-238-除自身以外数组的乘积（中等）"><span class="nav-number">4.</span> <span class="nav-text">6月4日 238. 除自身以外数组的乘积（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月5日-剑指Offer面试题29-顺时针打印矩阵（简单）"><span class="nav-number">5.</span> <span class="nav-text">6月5日 剑指Offer面试题29. 顺时针打印矩阵（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月6日-128-最长连续序列（困难）"><span class="nav-number">6.</span> <span class="nav-text">6月6日 128. 最长连续序列（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月7日-126-单词接龙-II（困难）"><span class="nav-number">7.</span> <span class="nav-text">6月7日 126. 单词接龙 II（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月8日-990-等式方程的可满足性（中等）"><span class="nav-number">8.</span> <span class="nav-text">6月8日 990. 等式方程的可满足性（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月9日-剑指Offer面试题46-把数字翻译成字符串（中等）"><span class="nav-number">9.</span> <span class="nav-text">6月9日 剑指Offer面试题46. 把数字翻译成字符串（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月10日-回文数（简单）"><span class="nav-number">10.</span> <span class="nav-text">6月10日 回文数（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月11日-739-每日温度（中等）"><span class="nav-number">11.</span> <span class="nav-text">6月11日 739. 每日温度（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月12日-15-三数之和"><span class="nav-number">12.</span> <span class="nav-text">6月12日 15. 三数之和</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月13日-70-爬楼梯（简单）"><span class="nav-number">13.</span> <span class="nav-text">6月13日 70. 爬楼梯（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第28场双周赛-6-13"><span class="nav-number">14.</span> <span class="nav-text">第28场双周赛 6.13</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5420-商品折扣后的最终价格（简单）"><span class="nav-number">14.1.</span> <span class="nav-text">5420. 商品折扣后的最终价格（简单）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5423-找两个和为目标值且不重叠的子数组（中等）"><span class="nav-number">14.2.</span> <span class="nav-text">5423. 找两个和为目标值且不重叠的子数组（中等）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5421-安排邮筒（困难）"><span class="nav-number">14.3.</span> <span class="nav-text">5421. 安排邮筒（困难）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第193场周赛-6-14"><span class="nav-number">15.</span> <span class="nav-text">第193场周赛 6.14</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5436-一维数组的动态和（简单）"><span class="nav-number">15.1.</span> <span class="nav-text">5436. 一维数组的动态和（简单）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5437-不同整数的最少数目（Medium）"><span class="nav-number">15.2.</span> <span class="nav-text">5437. 不同整数的最少数目（Medium）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5438-制作-m-束花所需的最少天数（Medium）"><span class="nav-number">15.3.</span> <span class="nav-text">5438. 制作 m 束花所需的最少天数（Medium）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5188-树节点的第-K-个祖先（困难）"><span class="nav-number">15.4.</span> <span class="nav-text">5188. 树节点的第 K 个祖先（困难）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月14日-1300-转变数组后最接近目标值的数组和（中等）"><span class="nav-number">16.</span> <span class="nav-text">6月14日 1300. 转变数组后最接近目标值的数组和（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月15日-14-最长公共前缀（简单）"><span class="nav-number">17.</span> <span class="nav-text">6月15日 14. 最长公共前缀（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月16日-297-二叉树的序列化与反序列化（困难）"><span class="nav-number">18.</span> <span class="nav-text">6月16日 297. 二叉树的序列化与反序列化（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月17日-1014-最佳观光组合（中等）"><span class="nav-number">19.</span> <span class="nav-text">6月17日 1014. 最佳观光组合（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月18日-1028-从先序遍历还原二叉树（困难）"><span class="nav-number">20.</span> <span class="nav-text">6月18日 1028. 从先序遍历还原二叉树（困难）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#6月1日-1431-拥有最多糖果的孩子（简单）"><span class="nav-number">1.</span> <span class="nav-text">6月1日 1431. 拥有最多糖果的孩子（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月2日-剑指Offer面试题64-求1-2-…-n"><span class="nav-number">2.</span> <span class="nav-text">6月2日 剑指Offer面试题64. 求1+2+…+n</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月3日-837-新21点（中等）"><span class="nav-number">3.</span> <span class="nav-text">6月3日 837. 新21点（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月4日-238-除自身以外数组的乘积（中等）"><span class="nav-number">4.</span> <span class="nav-text">6月4日 238. 除自身以外数组的乘积（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月5日-剑指Offer面试题29-顺时针打印矩阵（简单）"><span class="nav-number">5.</span> <span class="nav-text">6月5日 剑指Offer面试题29. 顺时针打印矩阵（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月6日-128-最长连续序列（困难）"><span class="nav-number">6.</span> <span class="nav-text">6月6日 128. 最长连续序列（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月7日-126-单词接龙-II（困难）"><span class="nav-number">7.</span> <span class="nav-text">6月7日 126. 单词接龙 II（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月8日-990-等式方程的可满足性（中等）"><span class="nav-number">8.</span> <span class="nav-text">6月8日 990. 等式方程的可满足性（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月9日-剑指Offer面试题46-把数字翻译成字符串（中等）"><span class="nav-number">9.</span> <span class="nav-text">6月9日 剑指Offer面试题46. 把数字翻译成字符串（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月10日-回文数（简单）"><span class="nav-number">10.</span> <span class="nav-text">6月10日 回文数（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月11日-739-每日温度（中等）"><span class="nav-number">11.</span> <span class="nav-text">6月11日 739. 每日温度（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月12日-15-三数之和"><span class="nav-number">12.</span> <span class="nav-text">6月12日 15. 三数之和</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月13日-70-爬楼梯（简单）"><span class="nav-number">13.</span> <span class="nav-text">6月13日 70. 爬楼梯（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第28场双周赛-6-13"><span class="nav-number">14.</span> <span class="nav-text">第28场双周赛 6.13</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5420-商品折扣后的最终价格（简单）"><span class="nav-number">14.1.</span> <span class="nav-text">5420. 商品折扣后的最终价格（简单）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5423-找两个和为目标值且不重叠的子数组（中等）"><span class="nav-number">14.2.</span> <span class="nav-text">5423. 找两个和为目标值且不重叠的子数组（中等）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5421-安排邮筒（困难）"><span class="nav-number">14.3.</span> <span class="nav-text">5421. 安排邮筒（困难）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第193场周赛-6-14"><span class="nav-number">15.</span> <span class="nav-text">第193场周赛 6.14</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5436-一维数组的动态和（简单）"><span class="nav-number">15.1.</span> <span class="nav-text">5436. 一维数组的动态和（简单）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5437-不同整数的最少数目（Medium）"><span class="nav-number">15.2.</span> <span class="nav-text">5437. 不同整数的最少数目（Medium）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5438-制作-m-束花所需的最少天数（Medium）"><span class="nav-number">15.3.</span> <span class="nav-text">5438. 制作 m 束花所需的最少天数（Medium）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5188-树节点的第-K-个祖先（困难）"><span class="nav-number">15.4.</span> <span class="nav-text">5188. 树节点的第 K 个祖先（困难）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月14日-1300-转变数组后最接近目标值的数组和（中等）"><span class="nav-number">16.</span> <span class="nav-text">6月14日 1300. 转变数组后最接近目标值的数组和（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月15日-14-最长公共前缀（简单）"><span class="nav-number">17.</span> <span class="nav-text">6月15日 14. 最长公共前缀（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月16日-297-二叉树的序列化与反序列化（困难）"><span class="nav-number">18.</span> <span class="nav-text">6月16日 297. 二叉树的序列化与反序列化（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月17日-1014-最佳观光组合（中等）"><span class="nav-number">19.</span> <span class="nav-text">6月17日 1014. 最佳观光组合（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月18日-1028-从先序遍历还原二叉树（困难）"><span class="nav-number">20.</span> <span class="nav-text">6月18日 1028. 从先序遍历还原二叉树（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月19日-125-验证回文串（简单）"><span class="nav-number">21.</span> <span class="nav-text">6月19日 125. 验证回文串（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6月20日-10-正则表达式匹配（困难）"><span class="nav-number">22.</span> <span class="nav-text">6月20日 10. 正则表达式匹配（困难）</span></a></li></ol></div>
             
 
           </div>
@@ -1070,12 +1120,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">189k</span>
+    <span title="站点总字数">194k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:52</span>
+    <span title="站点阅读时长">2:56</span>
 </div>
 
 <!--
@@ -1100,7 +1150,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">59.2k</span> 字
+      博客全站共： <span class="post-count">61.5k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->

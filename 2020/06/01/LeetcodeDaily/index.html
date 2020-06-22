@@ -66,7 +66,7 @@
 <meta property="og:description" content="6月1日 1431. 拥有最多糖果的孩子（简单）给你一个数组 candies 和一个整数 extraCandies ，其中 candies[i] 代表第 i 个孩子拥有的糖果数目。对每一个孩子，检查是否存在一种方案，将额外的 extraCandies 个糖果分配给孩子们之后，此孩子有 最多 的糖果。注意，允许有多个孩子同时拥有 最多 的糖果数目。示例： 123输入：candies = [4,2,1">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2020/06/16/DwJHZvu7SbTaBkC.png">
-<meta property="og:updated_time" content="2020-06-21T11:59:07.224Z">
+<meta property="og:updated_time" content="2020-06-22T05:56:41.678Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode每日一题 - 2020年六月">
 <meta name="twitter:description" content="6月1日 1431. 拥有最多糖果的孩子（简单）给你一个数组 candies 和一个整数 extraCandies ，其中 candies[i] 代表第 i 个孩子拥有的糖果数目。对每一个孩子，检查是否存在一种方案，将额外的 extraCandies 个糖果分配给孩子们之后，此孩子有 最多 的糖果。注意，允许有多个孩子同时拥有 最多 的糖果数目。示例： 123输入：candies = [4,2,1">
@@ -315,7 +315,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-06-21 19:59:07" itemprop="dateModified" datetime="2020-06-21T19:59:07+08:00">2020-06-21</time>
+                <time title="修改时间：2020-06-22 13:56:41" itemprop="dateModified" datetime="2020-06-22T13:56:41+08:00">2020-06-22</time>
               </span>
             
           
@@ -352,7 +352,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">53k</span>
+              <span title="本文字数">56k</span>
             </span>
           
             <span class="post-meta-item">
@@ -362,7 +362,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">48 分钟</span>
+              <span title="阅读时长">51 分钟</span>
             </span>
           
 
@@ -914,6 +914,22 @@
 <p>简单来说，就是在碰到水满之后，把最前面没下雨的一天用来抽该湖上次下的雨。（当然，抽水的日期要在下雨日期之后）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; avoidFlood(vector&lt;int&gt;&amp; rains) &#123;</span><br><span class="line">    set&lt;int&gt; s;</span><br><span class="line">    vector&lt;int&gt; res(rains.size(), 1);</span><br><span class="line">    unordered_map&lt;int, int&gt; lastRainDay;//key是第i天下雨的湖号码，val是i</span><br><span class="line">    for (int i = 0; i &lt; rains.size(); i++) &#123;</span><br><span class="line">        int lakeNum = rains[i];//第i天下雨的湖号</span><br><span class="line">        //第i天没下雨</span><br><span class="line">        if (lakeNum == 0) &#123;</span><br><span class="line">            s.insert(i);</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        //第i天下雨了</span><br><span class="line">        res[i] = -1;</span><br><span class="line">        if (lastRainDay.find(lakeNum) == lastRainDay.end()) &#123;//湖里没水</span><br><span class="line">            lastRainDay[lakeNum] = i;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        //湖里有水</span><br><span class="line">        auto lastDay = lastRainDay[lakeNum];</span><br><span class="line">        auto it = s.upper_bound(lastDay);</span><br><span class="line">        if (it == s.end()) &#123;</span><br><span class="line">            return vector&lt;int&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        res[*it] = lakeNum;</span><br><span class="line">        lastRainDay[lakeNum] = i;</span><br><span class="line">        s.erase(it);</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>6月22日 <a href="https://leetcode-cn.com/problems/pattern-matching-lcci/" target="_blank" rel="noopener">面试题 16.18. 模式匹配（中等）</a><br>你有两个字符串，即pattern和value。 pattern字符串由字母”a”和”b”组成，用于描述字符串中的模式。例如，字符串”catcatgocatgo”匹配模式”aabab”（其中”cat”是”a”，”go”是”b”），该字符串也匹配像”a”、”ab”和”b”这样的模式。但需注意”a”和”b”不能同时表示相同的字符串。编写一个方法判断value字符串是否匹配pattern字符串。</p>
+<p>示例 1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入： pattern = &quot;abba&quot;, value = &quot;dogcatcatdog&quot;</span><br><span class="line">输出： true</span><br></pre></td></tr></table></figure>
+
+<p>示例 2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入： pattern = &quot;abba&quot;, value = &quot;dogcatcatfish&quot;</span><br><span class="line">输出： false</span><br></pre></td></tr></table></figure>
+
+<p>示例 3：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入： pattern = &quot;aaaa&quot;, value = &quot;dogcatcatdog&quot;</span><br><span class="line">输出： false</span><br></pre></td></tr></table></figure>
+
+<p>示例 4：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入： pattern = &quot;abba&quot;, value = &quot;dogdogdogdog&quot;</span><br><span class="line">输出： true</span><br><span class="line">解释： &quot;a&quot;=&quot;dogdog&quot;,b=&quot;&quot;，反之也符合规则</span><br></pre></td></tr></table></figure>
+
+<p>题解：<br>枚举模式a和b的长度<code>lA</code> 和 <code>lB</code>，在看该长度下的substr是否满足条件。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">bool patternMatching(string pattern, string value) &#123;</span><br><span class="line">    if(pattern==&quot;&quot; &amp;&amp; value!=&quot;&quot;)</span><br><span class="line">        return false;</span><br><span class="line">    if (pattern.size() == 1 || (pattern==&quot;&quot; &amp;&amp; value==&quot;&quot;))</span><br><span class="line">        return true;</span><br><span class="line"></span><br><span class="line">    int cntA = 0, cntB = 0;</span><br><span class="line">    for(char c:pattern)&#123;//统计pattern里种类的数量</span><br><span class="line">        if(c==&apos;a&apos;)</span><br><span class="line">            cntA++;</span><br><span class="line">        if(c==&apos;b&apos;)</span><br><span class="line">            cntB++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(cntA==0 || cntB==0)&#123;//只有1个模式</span><br><span class="line">        if(value.size()%pattern.size()!=0)</span><br><span class="line">            return false;</span><br><span class="line">        int n = pattern.size();</span><br><span class="line">        int nSub = value.size() / pattern.size();</span><br><span class="line">        for (int i = 1; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            int idx = i * nSub;</span><br><span class="line">            for (int j = 0; j &lt; nSub;j++)&#123;</span><br><span class="line">                if(value[j]!=value[idx+j])</span><br><span class="line">                    return false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123; //2个模式</span><br><span class="line">        if(value.size()==0)</span><br><span class="line">            return false;</span><br><span class="line">        if(cntA==1 || cntB==1)</span><br><span class="line">            return true;</span><br><span class="line">        //枚举每个模式的字符串长度</span><br><span class="line">        for (int lA = 0; lA &lt;= value.size() / cntA; lA++)</span><br><span class="line">        &#123;</span><br><span class="line">            for (int lB = 0; lB &lt;= value.size() / cntB;lB++)&#123;</span><br><span class="line">                if(lA*cntA + lB*cntB != value.size())</span><br><span class="line">                    continue;</span><br><span class="line">                </span><br><span class="line">                map&lt;char, string&gt; pMap;</span><br><span class="line">                int idxA = 0, idxB = 0;</span><br><span class="line">                int a = 0, b = 0;</span><br><span class="line">                while (pattern[a++] != &apos;a&apos;)</span><br><span class="line">                &#123;</span><br><span class="line">                    idxA += lB;</span><br><span class="line">                &#125;</span><br><span class="line">                while(pattern[b++]!=&apos;b&apos;)</span><br><span class="line">                    idxB += lA;</span><br><span class="line">                </span><br><span class="line">                pMap[&apos;a&apos;] = value.substr(idxA, lA);</span><br><span class="line">                pMap[&apos;b&apos;] = value.substr(idxB, lB);</span><br><span class="line">                </span><br><span class="line">                //按模式的长度lA和lB验证是否匹配</span><br><span class="line">                int pos = 0;</span><br><span class="line">                for (int i = 0; i &lt; pattern.size(); i++)</span><br><span class="line">                &#123;</span><br><span class="line">                    char cur = pattern[i];</span><br><span class="line">                    int l = cur == &apos;a&apos; ? lA : lB;</span><br><span class="line">                    if (pMap[cur] == value.substr(pos,l))&#123;</span><br><span class="line">                        pos += l;</span><br><span class="line">                        continue;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                if(pos==value.size())</span><br><span class="line">                    return true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
     </div>
       
@@ -936,7 +952,7 @@
   <p><span>本文标题:</span><a href="/2020/06/01/LeetcodeDaily/">Leetcode每日一题 - 2020年六月</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Su Zhilong 的个人博客">Su Zhilong</a></p>
   <p><span>发布时间:</span>2020年06月01日 - 16:06</p>
-  <p><span>最后更新:</span>2020年06月21日 - 19:06</p>
+  <p><span>最后更新:</span>2020年06月22日 - 13:06</p>
   <p><span>原始链接:</span><a href="/2020/06/01/LeetcodeDaily/" title="Leetcode每日一题 - 2020年六月">https://github.com/suzhilong/suzhilong.github.io.git/2020/06/01/LeetcodeDaily/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/suzhilong/suzhilong.github.io.git/2020/06/01/LeetcodeDaily/"  aria-label="复制成功！"></i></span>
   </p>
@@ -1194,12 +1210,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">208k</span>
+    <span title="站点总字数">211k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:09</span>
+    <span title="站点阅读时长">3:12</span>
 </div>
 
 <!--
@@ -1224,7 +1240,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">68.5k</span> 字
+      博客全站共： <span class="post-count">69.1k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->

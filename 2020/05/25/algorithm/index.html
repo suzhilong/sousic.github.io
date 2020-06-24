@@ -71,7 +71,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/06/19/DtlTnEAUK7qQRFc.jpg">
 <meta property="og:image" content="https://i.loli.net/2020/06/15/iLAdQTJq3j19CH5.png">
 <meta property="og:image" content="https://i.loli.net/2020/06/15/lqItjZGhRkmMwPf.png">
-<meta property="og:updated_time" content="2020-06-21T10:53:40.370Z">
+<meta property="og:updated_time" content="2020-06-24T03:28:10.075Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SOUSIC的algorithm总结">
 <meta name="twitter:description" content="一、算法基础&amp;emsp;&amp;emsp;春节后疫情一直没开学，赋闲在家刷了一个多月的算法，总结了一下，形成了下面的文章。包含了数据结构类例题和算法类例题，大部分是Leecode中的典型题目，也有实习笔试中的真题和剑指Offer中的题目。题解使用C++，代码均由本人在参考题解之后所写。全部都在本地编译运行通过。（目前大概70多题，还有数据结构类例题未完善）相关github   1.1 常用数据结构1.1">
@@ -320,7 +320,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-06-21 18:53:40" itemprop="dateModified" datetime="2020-06-21T18:53:40+08:00">2020-06-21</time>
+                <time title="修改时间：2020-06-24 11:28:10" itemprop="dateModified" datetime="2020-06-24T11:28:10+08:00">2020-06-24</time>
               </span>
             
           
@@ -453,7 +453,8 @@
 
 </li>
 </ol>
-<h3 id="algorithm"><a href="#algorithm" class="headerlink" title="algorithm"></a>algorithm</h3><h4 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;algorithm&gt;</span><br><span class="line"></span><br><span class="line">//nums必须是线性容器</span><br><span class="line">//降序排序</span><br><span class="line">sort(nums.begin(),nums.end(),greater&lt;int&gt;());</span><br><span class="line">//升序（默认是升序）</span><br><span class="line">sort(nums.begin(),nums.end(),less&lt;int&gt;());</span><br><span class="line">sort(nums.begin(),nums.end());</span><br><span class="line"></span><br><span class="line">//自定义排序函数</span><br><span class="line">vector&lt;vecotr&lt;int&gt; &gt; nums2d;</span><br><span class="line">bool cmp(const vector&lt;int&gt; &amp;a, const vector&lt;int&gt; &amp;b)&#123;</span><br><span class="line">    //注意！这个函数要在类外面定义</span><br><span class="line">    return a[1] &gt; b[1];//按第二维降序</span><br><span class="line">&#125;</span><br><span class="line">sort(nums2d.begin(),nums2d.end(),cmp);</span><br><span class="line"></span><br><span class="line">//稳定排序</span><br><span class="line">stable_sort(nums.begin(),nums.end(),greater&lt;int&gt;());</span><br><span class="line">stable_sort(nums.begin(),nums.end(),less&lt;int&gt;());</span><br></pre></td></tr></table></figure>
+<h3 id="algorithm"><a href="#algorithm" class="headerlink" title="algorithm"></a>algorithm</h3><h4 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h4><p><code>sort</code>并非只是普通的<strong>快速排序</strong>，除了对普通的快速排序进行优化，它还结合了<strong>插入排序</strong>和<strong>堆排序</strong>。根据不同的数量级别以及不同情况，能自动选用合适的排序方法。当数据量较大时采用快速排序，分段递归。一旦分段后的数据量小于某个阀值，为避免递归调用带来过大的额外负荷，便会改用插入排序。而如果递归层次过深，有出现最坏情况的倾向，还会改用堆排序。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;algorithm&gt;</span><br><span class="line"></span><br><span class="line">//nums必须是线性容器</span><br><span class="line">//降序排序</span><br><span class="line">sort(nums.begin(),nums.end(),greater&lt;int&gt;());</span><br><span class="line">//升序（默认是升序）</span><br><span class="line">sort(nums.begin(),nums.end(),less&lt;int&gt;());</span><br><span class="line">sort(nums.begin(),nums.end());</span><br><span class="line"></span><br><span class="line">//自定义排序函数</span><br><span class="line">vector&lt;vecotr&lt;int&gt; &gt; nums2d;</span><br><span class="line">bool cmp(const vector&lt;int&gt; &amp;a, const vector&lt;int&gt; &amp;b)&#123;</span><br><span class="line">    //注意！这个函数要在类外面定义</span><br><span class="line">    return a[1] &gt; b[1];//按第二维降序</span><br><span class="line">&#125;</span><br><span class="line">sort(nums2d.begin(),nums2d.end(),cmp);</span><br><span class="line"></span><br><span class="line">//稳定排序</span><br><span class="line">stable_sort(nums.begin(),nums.end(),greater&lt;int&gt;());</span><br><span class="line">stable_sort(nums.begin(),nums.end(),less&lt;int&gt;());</span><br></pre></td></tr></table></figure>
 
 <p>sort算法有个限制，利用sort算法只能对<strong>序列容器</strong>进行排序，就是线性的，如<strong>vector，list，deque</strong>。map也是一个集合容器，但它里面存储的元素是pair，不是线性存储的（前面提过，像红黑树），所以利用sort不能直接和map结合进行排序。</p>
 <p>如果想对map进行排序，可以把map放到vector中。</p>
@@ -967,7 +968,7 @@
   <p><span>本文标题:</span><a href="/2020/05/25/algorithm/">SOUSIC的algorithm总结</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Su Zhilong 的个人博客">Su Zhilong</a></p>
   <p><span>发布时间:</span>2020年05月25日 - 16:05</p>
-  <p><span>最后更新:</span>2020年06月21日 - 18:06</p>
+  <p><span>最后更新:</span>2020年06月24日 - 11:06</p>
   <p><span>原始链接:</span><a href="/2020/05/25/algorithm/" title="SOUSIC的algorithm总结">https://github.com/suzhilong/suzhilong.github.io.git/2020/05/25/algorithm/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/suzhilong/suzhilong.github.io.git/2020/05/25/algorithm/"  aria-label="复制成功！"></i></span>
   </p>
@@ -1225,12 +1226,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">216k</span>
+    <span title="站点总字数">219k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:17</span>
+    <span title="站点阅读时长">3:20</span>
 </div>
 
 <!--
@@ -1255,7 +1256,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">71.2k</span> 字
+      博客全站共： <span class="post-count">72.7k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->

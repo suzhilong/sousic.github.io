@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="SOUSIC">
 <meta property="og:description" content="7月1日 718. 最长重复子数组（中等）给两个整数数组 A 和 B ，返回两个数组中公共的、长度最长的子数组的长度。 示例： 123456输入：A: [1,2,3,2,1]B: [3,2,1,4,7]输出：3解释：长度最长的公共子数组是 [3, 2, 1] 。  题解：    滑动窗口。主串从第一个开始，滑动匹配串直到与主串的当前元素相等，再看后面一共有几个元素相等。分别以 A 为主串和 B 为">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-07-04T06:54:43.232Z">
+<meta property="og:updated_time" content="2020-07-05T10:19:04.563Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode每日一题 - 2020年七月">
 <meta name="twitter:description" content="7月1日 718. 最长重复子数组（中等）给两个整数数组 A 和 B ，返回两个数组中公共的、长度最长的子数组的长度。 示例： 123456输入：A: [1,2,3,2,1]B: [3,2,1,4,7]输出：3解释：长度最长的公共子数组是 [3, 2, 1] 。  题解：    滑动窗口。主串从第一个开始，滑动匹配串直到与主串的当前元素相等，再看后面一共有几个元素相等。分别以 A 为主串和 B 为">
@@ -313,7 +313,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-07-04 14:54:43" itemprop="dateModified" datetime="2020-07-04T14:54:43+08:00">2020-07-04</time>
+                <time title="修改时间：2020-07-05 18:19:04" itemprop="dateModified" datetime="2020-07-05T18:19:04+08:00">2020-07-05</time>
               </span>
             
           
@@ -350,7 +350,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">5k</span>
+              <span title="本文字数">7.8k</span>
             </span>
           
             <span class="post-meta-item">
@@ -360,7 +360,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">5 分钟</span>
+              <span title="阅读时长">7 分钟</span>
             </span>
           
 
@@ -441,6 +441,57 @@
 </li>
 </ol>
 <p>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
+<ol start="2">
+<li>dp。<ul>
+<li>s[i]=‘)’ 且 s[i−1]=‘(’，也就是字符串形如 “……()”“……()”，我们可以推出：<br><code>dp[i]=dp[i-2]+2</code>  </li>
+<li>s[i]=‘)’ 且 s[i−1]=‘)’，也就是字符串形如 “……))”“……))”，我们可以推出：<br>如果s[i−dp[i−1]−1]=‘(’，那么:<br><code>dp[i]=dp[i−1]+dp[i−dp[i−1]−2]+2</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">（代码略）</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ol>
+<h1 id="7月5日-44-通配符匹配（困难）"><a href="#7月5日-44-通配符匹配（困难）" class="headerlink" title="7月5日 44. 通配符匹配（困难）"></a>7月5日 <a href="https://leetcode-cn.com/problems/wildcard-matching/" target="_blank" rel="noopener">44. 通配符匹配（困难）</a></h1><p>给定一个字符串 (s) 和一个字符模式 (p) ，实现一个支持 ‘?’ 和 ‘*’ 的通配符匹配。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&apos;?&apos; 可以匹配任何单个字符。</span><br><span class="line">&apos;*&apos; 可以匹配任意字符串（包括空字符串）。</span><br></pre></td></tr></table></figure>
+
+<p>两个字符串完全匹配才算匹配成功。</p>
+<p>说明:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s 可能为空，且只包含从 a-z 的小写字母。</span><br><span class="line">p 可能为空，且只包含从 a-z 的小写字母，以及字符 ? 和 *。</span><br></pre></td></tr></table></figure>
+
+<p>示例 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">s = &quot;aa&quot;</span><br><span class="line">p = &quot;a&quot;</span><br><span class="line">输出: false</span><br><span class="line">解释: &quot;a&quot; 无法匹配 &quot;aa&quot; 整个字符串。</span><br></pre></td></tr></table></figure>
+
+<p>示例 2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">s = &quot;aa&quot;</span><br><span class="line">p = &quot;*&quot;</span><br><span class="line">输出: true</span><br><span class="line">解释: &apos;*&apos; 可以匹配任意字符串。</span><br></pre></td></tr></table></figure>
+
+<p>示例 3:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">s = &quot;cb&quot;</span><br><span class="line">p = &quot;?a&quot;</span><br><span class="line">输出: false</span><br><span class="line">解释: &apos;?&apos; 可以匹配 &apos;c&apos;, 但第二个 &apos;a&apos; 无法匹配 &apos;b&apos;。</span><br></pre></td></tr></table></figure>
+
+<p>示例 4:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">s = &quot;adceb&quot;</span><br><span class="line">p = &quot;*a*b&quot;</span><br><span class="line">输出: true</span><br><span class="line">解释: 第一个 &apos;*&apos; 可以匹配空字符串, 第二个 &apos;*&apos; 可以匹配字符串 &quot;dce&quot;.</span><br></pre></td></tr></table></figure>
+
+<p>示例 5:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">s = &quot;acdcb&quot;</span><br><span class="line">p = &quot;a*c?b&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
+
+<p>题解：  </p>
+<ol>
+<li>递归。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">bool matchCore(string s, string p, int idxS, int idxP)&#123;</span><br><span class="line">    if(idxS == s.size() &amp;&amp; idxP == p.size())</span><br><span class="line">        return true;</span><br><span class="line">    if(idxS &gt;= s.size())&#123;</span><br><span class="line">        if(p[idxP] != &apos;*&apos;)</span><br><span class="line">            return false;</span><br><span class="line">        else</span><br><span class="line">            return matchCore(s, p, idxS, idxP + 1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(p[idxP]==&apos;*&apos;)&#123;</span><br><span class="line">        if(idxP==p.size()-1)</span><br><span class="line">            return true;</span><br><span class="line">        while(p[idxP]==&apos;*&apos;)//匹配连续的&apos;*&apos;</span><br><span class="line">            idxP++;</span><br><span class="line">        return matchCore(s, p, idxS + 1, idxP - 1) || matchCore(s, p, idxS, idxP);</span><br><span class="line">    &#125;</span><br><span class="line">    if(p[idxP]==&apos;?&apos; || s[idxS]==p[idxP])</span><br><span class="line">        return matchCore(s, p, idxS + 1, idxP + 1);</span><br><span class="line">    else</span><br><span class="line">        return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool isMatch(string s, string p) &#123;</span><br><span class="line">    return matchCore(s, p, 0, 0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>时间复杂度：O(2^k)。k是‘*’串的个数。超时，941 / 1809 个通过测试用例。<br>空间复杂度：O(2^k)，递归调用需要用到栈</p>
+<ol start="2">
+<li>dp。<code>dp[i][j]</code>表示字符串<code>s</code>的前<code>i</code>个字符<code>p</code>的前<code>j</code>个字符是否能匹配。  <ul>
+<li>注意：<code>s</code>和<code>p</code>下标是从 0 开始的。</li>
+<li>当<code>s[i-1]==p[j-1]</code>或<code>p[j-1]==&#39;?&#39;</code>时：<code>dp[i][j] = dp[i - 1][j - 1]</code>。</li>
+<li>当<code>p[j-1]==&#39;*&#39;</code>时：如果使用<code>&#39;*&#39;</code>，则<code>dp[i][j] = dp[i-1][j]</code>；如果不使用<code>&#39;*&#39;</code>，则<code>dp[i][j] = dp[i][j-1]</code>。</li>
+<li>初始状态：<code>dp[0][0] = true</code>；<code>dp[i][0] = false</code>；如果直到<code>p[i]</code>前面都是<code>*&quot;</code>，<code>dp[0][0～i] = true</code>。  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">bool isMatch(string s, string p) &#123;</span><br><span class="line">    int m = s.size(), n = p.size();</span><br><span class="line">    vector&lt;vector&lt;bool&gt; &gt; dp(m + 1, vector&lt;bool&gt;(n + 1, false));</span><br><span class="line"></span><br><span class="line">    dp[0][0] = true;</span><br><span class="line">    for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        if (p[i - 1] == &apos;*&apos;)</span><br><span class="line">            dp[0][i] = true;</span><br><span class="line">        else</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for (int i = 1; i &lt;= m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for (int j = 1; j &lt;= n;j++)&#123;</span><br><span class="line">            if(p[j-1]==&apos;?&apos; || p[j-1]==s[i-1])</span><br><span class="line">                dp[i][j] = dp[i - 1][j - 1];</span><br><span class="line">            else if(p[j-1]==&apos;*&apos;)</span><br><span class="line">                dp[i][j] = dp[i][j - 1] || dp[i - 1][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dp[m][n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ol>
+<p>时间复杂度：O(mn)<br>空间复杂度：O(mn)</p>
+<p><strong>ps. 以后碰到这种题，直接用dp，递归基本都是时间复杂度比较高的。</strong></p>
 
     </div>
       
@@ -473,7 +524,7 @@
   <p><span>本文标题:</span><a href="/2020/07/01/LeetcodeDaily_July/">Leetcode每日一题 - 2020年七月</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Su Zhilong 的个人博客">Su Zhilong</a></p>
   <p><span>发布时间:</span>2020年07月01日 - 20:07</p>
-  <p><span>最后更新:</span>2020年07月04日 - 14:07</p>
+  <p><span>最后更新:</span>2020年07月05日 - 18:07</p>
   <p><span>原始链接:</span><a href="/2020/07/01/LeetcodeDaily_July/" title="Leetcode每日一题 - 2020年七月">https://github.com/suzhilong/suzhilong.github.io.git/2020/07/01/LeetcodeDaily_July/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/suzhilong/suzhilong.github.io.git/2020/07/01/LeetcodeDaily_July/"  aria-label="复制成功！"></i></span>
   </p>
@@ -700,7 +751,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#7月1日-718-最长重复子数组（中等）"><span class="nav-number">1.</span> <span class="nav-text">7月1日 718. 最长重复子数组（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月2日-378-有序矩阵中第K小的元素"><span class="nav-number">2.</span> <span class="nav-text">7月2日 378. 有序矩阵中第K小的元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月3日-108-将有序数组转换为二叉搜索树"><span class="nav-number">3.</span> <span class="nav-text">7月3日 108. 将有序数组转换为二叉搜索树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月4日-32-最长有效括号"><span class="nav-number">4.</span> <span class="nav-text">7月4日 32. 最长有效括号</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#7月1日-718-最长重复子数组（中等）"><span class="nav-number">1.</span> <span class="nav-text">7月1日 718. 最长重复子数组（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月2日-378-有序矩阵中第K小的元素"><span class="nav-number">2.</span> <span class="nav-text">7月2日 378. 有序矩阵中第K小的元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月3日-108-将有序数组转换为二叉搜索树"><span class="nav-number">3.</span> <span class="nav-text">7月3日 108. 将有序数组转换为二叉搜索树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月4日-32-最长有效括号"><span class="nav-number">4.</span> <span class="nav-text">7月4日 32. 最长有效括号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月5日-44-通配符匹配（困难）"><span class="nav-number">5.</span> <span class="nav-text">7月5日 44. 通配符匹配（困难）</span></a></li></ol></div>
             
 
           </div>
@@ -727,12 +778,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">238k</span>
+    <span title="站点总字数">241k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:37</span>
+    <span title="站点阅读时长">3:39</span>
 </div>
 
 <!--
@@ -757,7 +808,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">78.2k</span> 字
+      博客全站共： <span class="post-count">79k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->

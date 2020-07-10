@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="SOUSIC">
 <meta property="og:description" content="7月1日 718. 最长重复子数组（中等）给两个整数数组 A 和 B ，返回两个数组中公共的、长度最长的子数组的长度。 示例： 123456输入：A: [1,2,3,2,1]B: [3,2,1,4,7]输出：3解释：长度最长的公共子数组是 [3, 2, 1] 。  题解：    滑动窗口。主串从第一个开始，滑动匹配串直到与主串的当前元素相等，再看后面一共有几个元素相等。分别以 A 为主串和 B 为">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-07-09T13:05:48.622Z">
+<meta property="og:updated_time" content="2020-07-10T01:05:13.724Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode每日一题 - 2020年七月">
 <meta name="twitter:description" content="7月1日 718. 最长重复子数组（中等）给两个整数数组 A 和 B ，返回两个数组中公共的、长度最长的子数组的长度。 示例： 123456输入：A: [1,2,3,2,1]B: [3,2,1,4,7]输出：3解释：长度最长的公共子数组是 [3, 2, 1] 。  题解：    滑动窗口。主串从第一个开始，滑动匹配串直到与主串的当前元素相等，再看后面一共有几个元素相等。分别以 A 为主串和 B 为">
@@ -313,7 +313,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-07-09 21:05:48" itemprop="dateModified" datetime="2020-07-09T21:05:48+08:00">2020-07-09</time>
+                <time title="修改时间：2020-07-10 09:05:13" itemprop="dateModified" datetime="2020-07-10T09:05:13+08:00">2020-07-10</time>
               </span>
             
           
@@ -350,7 +350,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">12k</span>
+              <span title="本文字数">14k</span>
             </span>
           
             <span class="post-meta-item">
@@ -360,7 +360,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">11 分钟</span>
+              <span title="阅读时长">12 分钟</span>
             </span>
           
 
@@ -551,6 +551,28 @@
 </li>
 </ul>
 <p>时间复杂度：O(n*k)。n 为字符串 s 的长度，k为字典的长度。<br>空间复杂度：O(n)</p>
+<h1 id="7月10日-309-最佳买卖股票时机含冷冻期（中等）"><a href="#7月10日-309-最佳买卖股票时机含冷冻期（中等）" class="headerlink" title="7月10日 309. 最佳买卖股票时机含冷冻期（中等）"></a>7月10日 <a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/solution/zui-jia-mai-mai-gu-piao-shi-ji-han-leng-dong-qi-4/" target="_blank" rel="noopener">309. 最佳买卖股票时机含冷冻期（中等）</a></h1><p>给定一个整数数组，其中第 i 个元素代表了第 i 天的股票价格 。​<br>设计一个算法计算出最大利润。在满足以下约束条件下，你可以尽可能地完成更多的交易（多次买卖一支股票）:</p>
+<p>你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。<br>卖出股票后，你无法在第二天买入股票 (即冷冻期为 1 天)。</p>
+<p>示例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,2,3,0,2]</span><br><span class="line">输出: 3 </span><br><span class="line">解释: 对应的交易状态为: [买入, 卖出, 冷冻期, 买入, 卖出]</span><br></pre></td></tr></table></figure>
+
+<p>题解：<br>dp。<br><code>dp[i]</code> 表示第 <code>i</code> 天结束之后的<strong>累计最大收益</strong>。<br>一共有三个状态：A观望，B持股，C冷却</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">状态转移图：A-(观望)-&gt;A,</span><br><span class="line">        A-(买入｜-price)-&gt;B,</span><br><span class="line">        B-(观望)-&gt;B,</span><br><span class="line">        B-(卖出|+price)-&gt;C,</span><br><span class="line">        C-(冷却)-&gt;A</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>持有：用<code>dp[i][0]</code>表示</li>
+<li>冷却：用<code>dp[i][1]</code>表示</li>
+<li>观望：用<code>dp[i][2]</code>表示</li>
+</ul>
+<p>根据状态转移图可以写出<code>dp[i][j]</code>的状态转移方程：  </p>
+<ul>
+<li>dp[i][0] = max(dp[i - 1][2] - prices[i], dp[i - 1][0]);  </li>
+<li>dp[i][1] = dp[i - 1][0] + prices[i];  </li>
+<li>dp[i][2] = max(dp[i - 1][1], dp[i - 1][2]);<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int maxProfit(vector&lt;int&gt;&amp; prices) &#123;</span><br><span class="line">    if(prices.empty())</span><br><span class="line">        return 0;</span><br><span class="line">    vector&lt;vector&lt;int&gt; &gt; dp(prices.size(), vector&lt;int&gt;(3));</span><br><span class="line">    dp[0][0] = -prices[0];</span><br><span class="line">    for (int i = 1; i &lt; prices.size();i++)&#123;</span><br><span class="line">        dp[i][0] = max(dp[i - 1][2] - prices[i], dp[i - 1][0]);</span><br><span class="line">        dp[i][1] = dp[i - 1][0] + prices[i];</span><br><span class="line">        dp[i][2] = max(dp[i - 1][1], dp[i - 1][2]);</span><br><span class="line">    &#125;</span><br><span class="line">    return max(dp[prices.size() - 1][1], dp[prices.size() - 1][2]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
 
     </div>
       
@@ -583,7 +605,7 @@
   <p><span>本文标题:</span><a href="/2020/07/01/LeetcodeDaily_July/">Leetcode每日一题 - 2020年七月</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Su Zhilong 的个人博客">Su Zhilong</a></p>
   <p><span>发布时间:</span>2020年07月01日 - 20:07</p>
-  <p><span>最后更新:</span>2020年07月09日 - 21:07</p>
+  <p><span>最后更新:</span>2020年07月10日 - 09:07</p>
   <p><span>原始链接:</span><a href="/2020/07/01/LeetcodeDaily_July/" title="Leetcode每日一题 - 2020年七月">https://github.com/suzhilong/suzhilong.github.io.git/2020/07/01/LeetcodeDaily_July/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/suzhilong/suzhilong.github.io.git/2020/07/01/LeetcodeDaily_July/"  aria-label="复制成功！"></i></span>
   </p>
@@ -708,7 +730,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -816,7 +838,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#7月1日-718-最长重复子数组（中等）"><span class="nav-number">1.</span> <span class="nav-text">7月1日 718. 最长重复子数组（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月2日-378-有序矩阵中第K小的元素"><span class="nav-number">2.</span> <span class="nav-text">7月2日 378. 有序矩阵中第K小的元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月3日-108-将有序数组转换为二叉搜索树"><span class="nav-number">3.</span> <span class="nav-text">7月3日 108. 将有序数组转换为二叉搜索树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月4日-32-最长有效括号"><span class="nav-number">4.</span> <span class="nav-text">7月4日 32. 最长有效括号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月5日-44-通配符匹配（困难）"><span class="nav-number">5.</span> <span class="nav-text">7月5日 44. 通配符匹配（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月6日-63-不同路径-II（中等）"><span class="nav-number">6.</span> <span class="nav-text">7月6日 63. 不同路径 II（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月7日-112-路径总和（简单）-https-leetcode-cn-com-problems-path-sum"><span class="nav-number">7.</span> <span class="nav-text">7月7日 [112. 路径总和（简单）]https://leetcode-cn.com/problems/path-sum/)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月8日-程序员面试金典-面试题-16-11-跳水板（简单）"><span class="nav-number">8.</span> <span class="nav-text">7月8日 程序员面试金典 面试题 16.11. 跳水板（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月9日-程序员面试金典-面试题-17-13-恢复空格"><span class="nav-number">9.</span> <span class="nav-text">7月9日 程序员面试金典 面试题 17.13. 恢复空格</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#7月1日-718-最长重复子数组（中等）"><span class="nav-number">1.</span> <span class="nav-text">7月1日 718. 最长重复子数组（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月2日-378-有序矩阵中第K小的元素"><span class="nav-number">2.</span> <span class="nav-text">7月2日 378. 有序矩阵中第K小的元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月3日-108-将有序数组转换为二叉搜索树"><span class="nav-number">3.</span> <span class="nav-text">7月3日 108. 将有序数组转换为二叉搜索树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月4日-32-最长有效括号"><span class="nav-number">4.</span> <span class="nav-text">7月4日 32. 最长有效括号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月5日-44-通配符匹配（困难）"><span class="nav-number">5.</span> <span class="nav-text">7月5日 44. 通配符匹配（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月6日-63-不同路径-II（中等）"><span class="nav-number">6.</span> <span class="nav-text">7月6日 63. 不同路径 II（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月7日-112-路径总和（简单）-https-leetcode-cn-com-problems-path-sum"><span class="nav-number">7.</span> <span class="nav-text">7月7日 [112. 路径总和（简单）]https://leetcode-cn.com/problems/path-sum/)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月8日-程序员面试金典-面试题-16-11-跳水板（简单）"><span class="nav-number">8.</span> <span class="nav-text">7月8日 程序员面试金典 面试题 16.11. 跳水板（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月9日-程序员面试金典-面试题-17-13-恢复空格"><span class="nav-number">9.</span> <span class="nav-text">7月9日 程序员面试金典 面试题 17.13. 恢复空格</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月10日-309-最佳买卖股票时机含冷冻期（中等）"><span class="nav-number">10.</span> <span class="nav-text">7月10日 309. 最佳买卖股票时机含冷冻期（中等）</span></a></li></ol></div>
             
 
           </div>
@@ -843,12 +865,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">263k</span>
+    <span title="站点总字数">264k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:59</span>
+    <span title="站点阅读时长">4:01</span>
 </div>
 
 <!--

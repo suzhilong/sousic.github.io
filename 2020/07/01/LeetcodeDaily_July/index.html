@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="SOUSIC">
 <meta property="og:description" content="7月1日 718. 最长重复子数组（中等）给两个整数数组 A 和 B ，返回两个数组中公共的、长度最长的子数组的长度。 示例： 123456输入：A: [1,2,3,2,1]B: [3,2,1,4,7]输出：3解释：长度最长的公共子数组是 [3, 2, 1] 。  题解：    滑动窗口。主串从第一个开始，滑动匹配串直到与主串的当前元素相等，再看后面一共有几个元素相等。分别以 A 为主串和 B 为">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-07-11T08:00:15.490Z">
+<meta property="og:updated_time" content="2020-07-11T12:21:35.196Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode每日一题 - 2020年七月">
 <meta name="twitter:description" content="7月1日 718. 最长重复子数组（中等）给两个整数数组 A 和 B ，返回两个数组中公共的、长度最长的子数组的长度。 示例： 123456输入：A: [1,2,3,2,1]B: [3,2,1,4,7]输出：3解释：长度最长的公共子数组是 [3, 2, 1] 。  题解：    滑动窗口。主串从第一个开始，滑动匹配串直到与主串的当前元素相等，再看后面一共有几个元素相等。分别以 A 为主串和 B 为">
@@ -313,7 +313,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-07-11 16:00:15" itemprop="dateModified" datetime="2020-07-11T16:00:15+08:00">2020-07-11</time>
+                <time title="修改时间：2020-07-11 20:21:35" itemprop="dateModified" datetime="2020-07-11T20:21:35+08:00">2020-07-11</time>
               </span>
             
           
@@ -350,7 +350,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">15k</span>
+              <span title="本文字数">16k</span>
             </span>
           
             <span class="post-meta-item">
@@ -360,7 +360,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">14 分钟</span>
+              <span title="阅读时长">15 分钟</span>
             </span>
           
 
@@ -588,6 +588,17 @@
 </li>
 </ol>
 <p>时间复杂度：O(nlogn)。每次插入二分查找需要O(logn)的复杂度。<br>空间复杂度：O(n)</p>
+<h1 id="真题"><a href="#真题" class="headerlink" title="真题"></a>真题</h1><p>给定两个长度为n，值不重复的数列 A &amp; B ，将 A 这个数列进行入栈出栈操作，请问能否得到 B。</p>
+<p>示例1：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">A = [0,1,2,3,4]</span><br><span class="line">B = [2,1,0,4,3]</span><br><span class="line"></span><br><span class="line">输出： Y</span><br></pre></td></tr></table></figure>
+
+<p>示例2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">A = [0]</span><br><span class="line">B = [1]</span><br><span class="line"></span><br><span class="line">输出： N</span><br></pre></td></tr></table></figure>
+
+<p>题解：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">bool canGetB(vector&lt;int&gt; A, vector&lt;int&gt; B)&#123;</span><br><span class="line">    stack&lt;int&gt; st;</span><br><span class="line">    int idxA = 0, idxB = 0;</span><br><span class="line">    for (; idxB &lt; B.size(); idxB++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(idxA&lt;A.size() &amp;&amp; !st.empty() &amp;&amp; st.top()==B[idxB])&#123;</span><br><span class="line">            st.pop();</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        while (idxA&lt;A.size() &amp;&amp; A[idxA]!=B[idxB])</span><br><span class="line">        &#123;</span><br><span class="line">            st.push(A[idxA]);</span><br><span class="line">            idxA++;</span><br><span class="line">        &#125;</span><br><span class="line">        if(idxA&lt;A.size())&#123;</span><br><span class="line">            idxA++;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">    while(!st.empty() &amp;&amp; idxB&lt;B.size())&#123;</span><br><span class="line">        if(B[idxB]==st.top())&#123;</span><br><span class="line">            idxB++;</span><br><span class="line">            st.pop();</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(idxA &lt; A.size() || idxB &lt; B.size())</span><br><span class="line">        return false;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
 
     </div>
       
@@ -620,7 +631,7 @@
   <p><span>本文标题:</span><a href="/2020/07/01/LeetcodeDaily_July/">Leetcode每日一题 - 2020年七月</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Su Zhilong 的个人博客">Su Zhilong</a></p>
   <p><span>发布时间:</span>2020年07月01日 - 20:07</p>
-  <p><span>最后更新:</span>2020年07月11日 - 16:07</p>
+  <p><span>最后更新:</span>2020年07月11日 - 20:07</p>
   <p><span>原始链接:</span><a href="/2020/07/01/LeetcodeDaily_July/" title="Leetcode每日一题 - 2020年七月">https://github.com/suzhilong/suzhilong.github.io.git/2020/07/01/LeetcodeDaily_July/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/suzhilong/suzhilong.github.io.git/2020/07/01/LeetcodeDaily_July/"  aria-label="复制成功！"></i></span>
   </p>
@@ -745,7 +756,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -853,7 +864,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#7月1日-718-最长重复子数组（中等）"><span class="nav-number">1.</span> <span class="nav-text">7月1日 718. 最长重复子数组（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月2日-378-有序矩阵中第K小的元素"><span class="nav-number">2.</span> <span class="nav-text">7月2日 378. 有序矩阵中第K小的元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月3日-108-将有序数组转换为二叉搜索树"><span class="nav-number">3.</span> <span class="nav-text">7月3日 108. 将有序数组转换为二叉搜索树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月4日-32-最长有效括号"><span class="nav-number">4.</span> <span class="nav-text">7月4日 32. 最长有效括号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月5日-44-通配符匹配（困难）"><span class="nav-number">5.</span> <span class="nav-text">7月5日 44. 通配符匹配（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月6日-63-不同路径-II（中等）"><span class="nav-number">6.</span> <span class="nav-text">7月6日 63. 不同路径 II（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月7日-112-路径总和（简单）-https-leetcode-cn-com-problems-path-sum"><span class="nav-number">7.</span> <span class="nav-text">7月7日 [112. 路径总和（简单）]https://leetcode-cn.com/problems/path-sum/)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月8日-程序员面试金典-面试题-16-11-跳水板（简单）"><span class="nav-number">8.</span> <span class="nav-text">7月8日 程序员面试金典 面试题 16.11. 跳水板（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月9日-程序员面试金典-面试题-17-13-恢复空格"><span class="nav-number">9.</span> <span class="nav-text">7月9日 程序员面试金典 面试题 17.13. 恢复空格</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月10日-309-最佳买卖股票时机含冷冻期（中等）"><span class="nav-number">10.</span> <span class="nav-text">7月10日 309. 最佳买卖股票时机含冷冻期（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月11日-315-计算右侧小于当前元素的个数（困难）"><span class="nav-number">11.</span> <span class="nav-text">7月11日 315. 计算右侧小于当前元素的个数（困难）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#7月1日-718-最长重复子数组（中等）"><span class="nav-number">1.</span> <span class="nav-text">7月1日 718. 最长重复子数组（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月2日-378-有序矩阵中第K小的元素"><span class="nav-number">2.</span> <span class="nav-text">7月2日 378. 有序矩阵中第K小的元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月3日-108-将有序数组转换为二叉搜索树"><span class="nav-number">3.</span> <span class="nav-text">7月3日 108. 将有序数组转换为二叉搜索树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月4日-32-最长有效括号"><span class="nav-number">4.</span> <span class="nav-text">7月4日 32. 最长有效括号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月5日-44-通配符匹配（困难）"><span class="nav-number">5.</span> <span class="nav-text">7月5日 44. 通配符匹配（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月6日-63-不同路径-II（中等）"><span class="nav-number">6.</span> <span class="nav-text">7月6日 63. 不同路径 II（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月7日-112-路径总和（简单）-https-leetcode-cn-com-problems-path-sum"><span class="nav-number">7.</span> <span class="nav-text">7月7日 [112. 路径总和（简单）]https://leetcode-cn.com/problems/path-sum/)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月8日-程序员面试金典-面试题-16-11-跳水板（简单）"><span class="nav-number">8.</span> <span class="nav-text">7月8日 程序员面试金典 面试题 16.11. 跳水板（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月9日-程序员面试金典-面试题-17-13-恢复空格"><span class="nav-number">9.</span> <span class="nav-text">7月9日 程序员面试金典 面试题 17.13. 恢复空格</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月10日-309-最佳买卖股票时机含冷冻期（中等）"><span class="nav-number">10.</span> <span class="nav-text">7月10日 309. 最佳买卖股票时机含冷冻期（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7月11日-315-计算右侧小于当前元素的个数（困难）"><span class="nav-number">11.</span> <span class="nav-text">7月11日 315. 计算右侧小于当前元素的个数（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#真题"><span class="nav-number">12.</span> <span class="nav-text">真题</span></a></li></ol></div>
             
 
           </div>
@@ -880,12 +891,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">265k</span>
+    <span title="站点总字数">267k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:01</span>
+    <span title="站点阅读时长">4:03</span>
 </div>
 
 <!--
@@ -910,7 +921,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">83.9k</span> 字
+      博客全站共： <span class="post-count">84.4k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->

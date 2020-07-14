@@ -67,7 +67,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2020/06/19/eLGVs6wMJf9BOyr.png">
 <meta property="og:image" content="https://i.loli.net/2020/07/12/GXVphrYafON5jFw.png">
-<meta property="og:updated_time" content="2020-07-12T06:31:06.021Z">
+<meta property="og:updated_time" content="2020-07-13T12:18:00.973Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SOUSIC的algorithm总结">
 <meta name="twitter:description" content="一、算法基础&amp;emsp;&amp;emsp;春节后疫情一直没开学，赋闲在家刷了一个多月的算法，总结了一下，形成了下面的文章。包含了数据结构类例题和算法类例题，大部分是Leecode中的典型题目，也有实习笔试中的真题和剑指Offer中的题目。题解使用C++，代码均由本人在参考题解之后所写。全部都在本地编译运行通过。（目前大概70多题，还有数据结构类例题未完善）相关github   1.1 常用数据结构1.1">
@@ -316,7 +316,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-07-12 14:31:06" itemprop="dateModified" datetime="2020-07-12T14:31:06+08:00">2020-07-12</time>
+                <time title="修改时间：2020-07-13 20:18:00" itemprop="dateModified" datetime="2020-07-13T20:18:00+08:00">2020-07-13</time>
               </span>
             
           
@@ -382,7 +382,7 @@
 <h3 id="1-1-3-二叉树"><a href="#1-1-3-二叉树" class="headerlink" title="1.1.3 二叉树"></a>1.1.3 二叉树</h3><p>是树型结构的一种特殊形式。二叉树中，刷题中用到的基本都是<code>二叉搜索树/二叉查找树</code>，即左子树中的结点都比父结点小，右子树中的结点都比父结点大。<br>按照访问结点顺序的不同，可以将二叉树的<code>遍历</code>分为 <code>前序遍历</code>、<code>中序遍历</code>、<code>后序遍历</code>。</p>
 <h3 id="1-1-4-图"><a href="#1-1-4-图" class="headerlink" title="1.1.4 图"></a>1.1.4 图</h3><p>图是由<code>顶点</code>和<code>边</code>构成的数据结构，一般来说，顶点表示的是数据，边表示数据之间的联系。图可以简单的分为<code>有向图</code>和<code>无向图</code>。<br>可以用<code>二维数组</code>来存储一个图。</p>
 <h2 id="1-2-时间复杂度、空间复杂度"><a href="#1-2-时间复杂度、空间复杂度" class="headerlink" title="1.2 时间复杂度、空间复杂度"></a>1.2 时间复杂度、空间复杂度</h2><p>算法中基本操作重复执行的次数是问题规模n的某个函数f(n)，把算法的执行时间记为T(n)=O(f(n))，他们的增长率相同，称做算法的渐进时间复杂度，简称<code>时间复杂度</code>。<br>相似的，<code>空间复杂度</code>S(n)=O(f(n))用来度量算法所需的存储空间。</p>
-<h2 id="1-3-排序（Sorting）、查找-搜索（Search）"><a href="#1-3-排序（Sorting）、查找-搜索（Search）" class="headerlink" title="1.3 排序（Sorting）、查找/搜索（Search）"></a>1.3 排序（Sorting）、查找/搜索（Search）</h2><h3 id="1-3-1-排序"><a href="#1-3-1-排序" class="headerlink" title="1.3.1 排序"></a>1.3.1 排序</h3><p>常用的八大排序：<br><img src="https://i.loli.net/2020/06/19/eLGVs6wMJf9BOyr.png" alt="排序复杂度"></p>
+<h2 id="1-3-排序（Sorting）、查找-搜索（Search）"><a href="#1-3-排序（Sorting）、查找-搜索（Search）" class="headerlink" title="1.3 排序（Sorting）、查找/搜索（Search）"></a>1.3 排序（Sorting）、查找/搜索（Search）</h2><h3 id="1-3-1-排序"><a href="#1-3-1-排序" class="headerlink" title="1.3.1 排序"></a>1.3.1 排序</h3><p>常用的八大排序：  </p>
 <ul>
 <li>插入排序</li>
 <li>希尔排序</li>
@@ -393,6 +393,7 @@
 <li>归并排序</li>
 <li>基数排序</li>
 </ul>
+<p><img src="https://i.loli.net/2020/06/19/eLGVs6wMJf9BOyr.png" alt="排序复杂度"></p>
 <h3 id="1-3-2-查找-搜索"><a href="#1-3-2-查找-搜索" class="headerlink" title="1.3.2 查找/搜索"></a>1.3.2 查找/搜索</h3><p><code>顺序查找</code>：一般情况下步长为1。根据不同的要求，会设置不同的步长。时间复杂度为O(n)。<br><code>二分查找（Binary Search，又叫折半查找）</code>：每次都与一个中点 <code>mid = (low+hight)/2</code> 相比较，时间复杂度为O(logn)。<br><code>二叉搜索/查找树</code>：见1.1.3。<code>中序遍历</code>二叉搜索树可以<code>有序</code>的输出关键字。<br><code>树的遍历</code>：前序遍历（根、左、右）、中序遍历（左、根、右）、后序遍历（左、右、根）。<br><code>广度优先搜索（BFS）</code>：类似于树的层序遍历，先访问最近一层所有的结点，再访问下一层的。<br><code>深度优先（DFS）</code>：类似于树的先序遍历，直到没有下一个结点才返回父结点。</p>
 <h2 id="1-4-递归"><a href="#1-4-递归" class="headerlink" title="1.4 递归"></a>1.4 递归</h2><p>简单来说，递归的基本思想就是自己调用自己，这样就把问题变成了更小的子问题。<br>需要注意的是，递归函数中需要设置一个<code>终止条件</code>，以保证子问题最小时不再往下递归。</p>
 <h2 id="1-5-分治"><a href="#1-5-分治" class="headerlink" title="1.5 分治"></a>1.5 分治</h2><p>分治策略中，需要递归的求解一个问题，在每层递归中会用到三个步骤[算法导论]：</p>
@@ -703,6 +704,17 @@
 </li>
 </ol>
 <h2 id="3-5-排序（Sorting）"><a href="#3-5-排序（Sorting）" class="headerlink" title="3.5 排序（Sorting）"></a>3.5 排序（Sorting）</h2><p><a href="https://github.com/suzhilong/CS/blob/master/sort.py">python实现的八大排序</a>  </p>
+<p>cpp实现八大排序：</p>
+<ul>
+<li><a href="https://github.com/suzhilong/Algorithm/blob/master/sort/cpp/insertSort.cpp">插入排序</a></li>
+<li><a href="https://github.com/suzhilong/Algorithm/blob/master/sort/cpp/shellSort.cpp">希尔排序</a></li>
+<li><a href="https://github.com/suzhilong/Algorithm/blob/master/sort/cpp/selectionSort.cpp">选择排序</a></li>
+<li><a href="https://github.com/suzhilong/Algorithm/blob/master/sort/cpp/bubbleSort.cpp">冒泡排序</a></li>
+<li><a href="https://github.com/suzhilong/Algorithm/blob/master/sort/cpp/quickSort.cpp">快速排序</a></li>
+<li><a href="https://github.com/suzhilong/Algorithm/blob/master/sort/cpp/heapSort.cpp">堆排序</a></li>
+<li><a href="https://github.com/suzhilong/Algorithm/blob/master/sort/cpp/mergeSort.cpp">归并排序</a></li>
+<li><a href="https://github.com/suzhilong/Algorithm/blob/master/sort/cpp/radixSort.cpp">基数排序</a></li>
+</ul>
 <h3 id="3-5-1-Partition函数"><a href="#3-5-1-Partition函数" class="headerlink" title="3.5.1 Partition函数"></a>3.5.1 Partition函数</h3><p>Partition函数可以用在快排中，也可以用来实现在长度为n的数组中查找第k大的数字。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">int Partition(vector&lt;int&gt; &amp;arr, int start, int end)&#123;</span><br><span class="line">    if(arr.size()&lt;2 || start&lt;0 || end&gt;arr.size())</span><br><span class="line">        return -1;</span><br><span class="line"></span><br><span class="line">    int pivot = arr[start];  //除了选择第一个，也可以随机选择一个元素作为pivot</span><br><span class="line">    while (start&lt;end)</span><br><span class="line">    &#123;</span><br><span class="line">        while(start&lt;end &amp;&amp; arr[end]&gt;=pivot)</span><br><span class="line">            end--;</span><br><span class="line">        arr[start] = arr[end];</span><br><span class="line">        while (start &lt; end &amp;&amp; arr[start] &lt;= pivot)</span><br><span class="line">            start++;</span><br><span class="line">        arr[end] = arr[start];</span><br><span class="line">    &#125;</span><br><span class="line">    arr[start] = pivot;</span><br><span class="line">    return start;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -935,7 +947,7 @@
   <p><span>本文标题:</span><a href="/2020/05/25/algorithm/">SOUSIC的algorithm总结</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Su Zhilong 的个人博客">Su Zhilong</a></p>
   <p><span>发布时间:</span>2020年05月25日 - 16:05</p>
-  <p><span>最后更新:</span>2020年07月12日 - 14:07</p>
+  <p><span>最后更新:</span>2020年07月13日 - 20:07</p>
   <p><span>原始链接:</span><a href="/2020/05/25/algorithm/" title="SOUSIC的algorithm总结">https://github.com/suzhilong/suzhilong.github.io.git/2020/05/25/algorithm/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/suzhilong/suzhilong.github.io.git/2020/05/25/algorithm/"  aria-label="复制成功！"></i></span>
   </p>
@@ -1195,12 +1207,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">272k</span>
+    <span title="站点总字数">273k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:07</span>
+    <span title="站点阅读时长">4:08</span>
 </div>
 
 <!--
@@ -1225,7 +1237,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">85.9k</span> 字
+      博客全站共： <span class="post-count">86.2k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->

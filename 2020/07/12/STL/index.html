@@ -57,23 +57,23 @@
   };
 </script>
 
-  <meta name="description" content="常用STL库的使用方法vector：数组123456789101112131415161718192021222324252627#include &amp;lt;vector&amp;gt;  vector&amp;lt;int&amp;gt; a(10);//初始化10个默认为0的数  vector&amp;lt;int&amp;gt; a(10,1);//初始化10个默认为1的数  vector&amp;lt;int&amp;gt; a;  //初始化二">
+  <meta name="description" content="常用STL库的使用方法vector：数组12345678910111213141516171819202122232425262728293031323334#include &amp;lt;vector&amp;gt;  vector&amp;lt;int&amp;gt; a(10);//初始化10个默认为0的数  vector&amp;lt;int&amp;gt; a(10,1);//初始化10个默认为1的数  vector&amp;lt;int&amp;">
 <meta name="keywords" content="cpp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="STL常用方法">
 <meta property="og:url" content="https://github.com/suzhilong/suzhilong.github.io.git/2020/07/12/STL/index.html">
 <meta property="og:site_name" content="SOUSIC">
-<meta property="og:description" content="常用STL库的使用方法vector：数组123456789101112131415161718192021222324252627#include &amp;lt;vector&amp;gt;  vector&amp;lt;int&amp;gt; a(10);//初始化10个默认为0的数  vector&amp;lt;int&amp;gt; a(10,1);//初始化10个默认为1的数  vector&amp;lt;int&amp;gt; a;  //初始化二">
+<meta property="og:description" content="常用STL库的使用方法vector：数组12345678910111213141516171819202122232425262728293031323334#include &amp;lt;vector&amp;gt;  vector&amp;lt;int&amp;gt; a(10);//初始化10个默认为0的数  vector&amp;lt;int&amp;gt; a(10,1);//初始化10个默认为1的数  vector&amp;lt;int&amp;">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2020/06/15/2eMDTN3HXOPt9oK.png">
 <meta property="og:image" content="https://i.loli.net/2020/06/15/gkiTrRs2O5WL9qU.png">
 <meta property="og:image" content="https://i.loli.net/2020/06/19/DtlTnEAUK7qQRFc.jpg">
 <meta property="og:image" content="https://i.loli.net/2020/06/15/iLAdQTJq3j19CH5.png">
 <meta property="og:image" content="https://i.loli.net/2020/06/15/lqItjZGhRkmMwPf.png">
-<meta property="og:updated_time" content="2020-07-12T06:32:37.622Z">
+<meta property="og:updated_time" content="2020-07-26T04:23:09.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="STL常用方法">
-<meta name="twitter:description" content="常用STL库的使用方法vector：数组123456789101112131415161718192021222324252627#include &amp;lt;vector&amp;gt;  vector&amp;lt;int&amp;gt; a(10);//初始化10个默认为0的数  vector&amp;lt;int&amp;gt; a(10,1);//初始化10个默认为1的数  vector&amp;lt;int&amp;gt; a;  //初始化二">
+<meta name="twitter:description" content="常用STL库的使用方法vector：数组12345678910111213141516171819202122232425262728293031323334#include &amp;lt;vector&amp;gt;  vector&amp;lt;int&amp;gt; a(10);//初始化10个默认为0的数  vector&amp;lt;int&amp;gt; a(10,1);//初始化10个默认为1的数  vector&amp;lt;int&amp;">
 <meta name="twitter:image" content="https://i.loli.net/2020/06/15/2eMDTN3HXOPt9oK.png">
   <link rel="alternate" href="/atom.xml" title="SOUSIC" type="application/atom+xml">
   <link rel="canonical" href="https://github.com/suzhilong/suzhilong.github.io.git/2020/07/12/STL/">
@@ -306,11 +306,21 @@
                 
               
 
-              <time title="创建时间：2020-07-12 14:30:00 / 修改时间：14:32:37" itemprop="dateCreated datePublished" datetime="2020-07-12T14:30:00+08:00">2020-07-12</time>
+              <time title="创建时间：2020-07-12 14:30:00" itemprop="dateCreated datePublished" datetime="2020-07-12T14:30:00+08:00">2020-07-12</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-07-26 12:23:09" itemprop="dateModified" datetime="2020-07-26T12:23:09+08:00">2020-07-26</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -346,7 +356,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">6.5k</span>
+              <span title="本文字数">6.8k</span>
             </span>
           
             <span class="post-meta-item">
@@ -369,7 +379,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="常用STL库的使用方法"><a href="#常用STL库的使用方法" class="headerlink" title="常用STL库的使用方法"></a>常用STL库的使用方法</h1><h2 id="vector：数组"><a href="#vector：数组" class="headerlink" title="vector：数组"></a>vector：数组</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;vector&gt;  </span><br><span class="line"></span><br><span class="line">vector&lt;int&gt; a(10);//初始化10个默认为0的数  </span><br><span class="line">vector&lt;int&gt; a(10,1);//初始化10个默认为1的数  </span><br><span class="line">vector&lt;int&gt; a;  </span><br><span class="line"></span><br><span class="line">//初始化二维数组  </span><br><span class="line">vector&lt;vector&lt;int&gt; &gt; 2dVec(m ,vector&lt;int&gt;(n)); //m*n的二维vector，注意两个 &quot;&gt; &quot;之间要有空格</span><br><span class="line">2dVec.push_back(&#123;1, 2, 3&#125;);//可以这样加vector  </span><br><span class="line">vector&lt;vector&lt;int&gt; &gt; 2dVec(m ,vector&lt;int&gt;(n,0)); //m*n的二维vector，所有元素初始化为0  </span><br><span class="line">a.push_back()  </span><br><span class="line">a[0]  </span><br><span class="line">a.front() //首元素  </span><br><span class="line">a.back() //尾元素  </span><br><span class="line">a.size()  </span><br><span class="line">a.pop_back()//删除不输出  </span><br><span class="line">it = a.begin()+1  </span><br><span class="line">a.erase(it)  </span><br><span class="line">it2 = a.begin()+3  </span><br><span class="line">a.erase(it,it2)//删除[it1,it2)  </span><br><span class="line">a.clear()  </span><br><span class="line">a.empty()  </span><br><span class="line">a.insert(it,-1)  </span><br><span class="line"></span><br><span class="line">vector&lt;int&gt;::iterator itDele;</span><br><span class="line">it = find(a.begin(), a.end(), 3);//查找3</span><br><span class="line">if(it!=a.end())//如果找到了</span><br></pre></td></tr></table></figure>
+        <h1 id="常用STL库的使用方法"><a href="#常用STL库的使用方法" class="headerlink" title="常用STL库的使用方法"></a>常用STL库的使用方法</h1><h2 id="vector：数组"><a href="#vector：数组" class="headerlink" title="vector：数组"></a>vector：数组</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;vector&gt;  </span><br><span class="line"></span><br><span class="line">vector&lt;int&gt; a(10);//初始化10个默认为0的数  </span><br><span class="line">vector&lt;int&gt; a(10,1);//初始化10个默认为1的数  </span><br><span class="line">vector&lt;int&gt; a;  </span><br><span class="line"></span><br><span class="line">//初始化二维数组  </span><br><span class="line">vector&lt;vector&lt;int&gt; &gt; 2dVec(m ,vector&lt;int&gt;(n)); //m*n的二维vector，注意两个 &quot;&gt; &quot;之间要有空格</span><br><span class="line">2dVec.push_back(&#123;1, 2, 3&#125;);//可以这样加vector  </span><br><span class="line">vector&lt;vector&lt;int&gt; &gt; 2dVec(m ,vector&lt;int&gt;(n,0)); //m*n的二维vector，所有元素初始化为0  </span><br><span class="line">a.push_back()  </span><br><span class="line">a[0]  </span><br><span class="line">a.front() //首元素  </span><br><span class="line">a.back() //尾元素  </span><br><span class="line">a.size()  </span><br><span class="line">a.pop_back()//删除不输出  </span><br><span class="line">it = a.begin()+1  </span><br><span class="line">a.erase(it)  </span><br><span class="line">it2 = a.begin()+3  </span><br><span class="line">a.erase(it,it2)//删除[it1,it2)  </span><br><span class="line">a.clear()  </span><br><span class="line">a.empty()  </span><br><span class="line">a.insert(it,-1)  </span><br><span class="line"></span><br><span class="line">vector&lt;int&gt;::iterator itDele;</span><br><span class="line">it = find(a.begin(), a.end(), 3);//查找3</span><br><span class="line">if(it!=a.end())//如果找到了</span><br><span class="line"></span><br><span class="line">//pair  make_pair</span><br><span class="line">vector&lt;pair&lt;int ,int&gt;&gt; vp;</span><br><span class="line">vp.push_back(&#123;1, 0&#125;);</span><br><span class="line">vp.push_back(make_pair(0, 1));</span><br><span class="line">vector&lt;pair&lt;int, int&gt; &gt; vp2 = &#123;&#123;1, 0&#125;, &#123;0, 1&#125;, &#123;-1, 0&#125;, &#123;0, -1&#125;&#125;;</span><br><span class="line">vp2.push_back(make_pair&lt;int, int&gt;(5, 6));</span><br></pre></td></tr></table></figure>
 
 <h2 id="list：数组"><a href="#list：数组" class="headerlink" title="list：数组"></a>list：数组</h2><p>Lists将元素按顺序储存在链表中. 与向量(vectors)相比, 它允许快速的插入和删除，但是随机访问却比较慢。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;list&gt;</span><br><span class="line">pop_back() 删除最后一个元素 </span><br><span class="line">pop_front() 删除第一个元素 </span><br><span class="line">push_back() 在list的末尾添加一个元素 </span><br><span class="line">push_front() 在list的头部添加一个元素 </span><br><span class="line">back() 返回最后一个元素 </span><br><span class="line">front() 返回第一个元素 </span><br><span class="line">begin() 返回指向第一个元素的迭代器 </span><br><span class="line">end() 返回末尾的迭代器 </span><br><span class="line">size() 返回list中的元素个数 </span><br><span class="line">clear() 删除所有元素 </span><br><span class="line">empty() 如果list是空的则返回true</span><br><span class="line">a.sort() 给list排序</span><br><span class="line">erase() 删除一个元素 </span><br><span class="line">assign() 给list赋值 </span><br><span class="line">get_allocator() 返回list的配置器 </span><br><span class="line">insert() 插入一个元素到list中 </span><br><span class="line">max_size() 返回list能容纳的最大元素数量 </span><br><span class="line">merge() 合并两个list </span><br><span class="line">rbegin() 返回指向第一个元素的逆向迭代器 </span><br><span class="line">remove() 从list删除元素 </span><br><span class="line">remove_if() 按指定条件删除元素 </span><br><span class="line">rend() 指向list末尾的逆向迭代器 </span><br><span class="line">resize() 改变list的大小 </span><br><span class="line">reverse() 把list的元素倒转 </span><br><span class="line">splice() 合并两个list </span><br><span class="line">swap() 交换两个list </span><br><span class="line">unique() 删除list中重复的元素</span><br></pre></td></tr></table></figure>
@@ -482,7 +492,7 @@
   <p><span>本文标题:</span><a href="/2020/07/12/STL/">STL常用方法</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Su Zhilong 的个人博客">Su Zhilong</a></p>
   <p><span>发布时间:</span>2020年07月12日 - 14:07</p>
-  <p><span>最后更新:</span>2020年07月12日 - 14:07</p>
+  <p><span>最后更新:</span>2020年07月26日 - 12:07</p>
   <p><span>原始链接:</span><a href="/2020/07/12/STL/" title="STL常用方法">https://github.com/suzhilong/suzhilong.github.io.git/2020/07/12/STL/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/suzhilong/suzhilong.github.io.git/2020/07/12/STL/"  aria-label="复制成功！"></i></span>
   </p>
@@ -738,12 +748,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">271k</span>
+    <span title="站点总字数">274k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:07</span>
+    <span title="站点阅读时长">4:10</span>
 </div>
 
 <!--
@@ -768,7 +778,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">88.9k</span> 字
+      博客全站共： <span class="post-count">89.7k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->

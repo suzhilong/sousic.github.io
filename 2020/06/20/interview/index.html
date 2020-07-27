@@ -65,10 +65,12 @@
 <meta property="og:site_name" content="SOUSIC">
 <meta property="og:description" content="C++C++源文件到可执行文件的过程对于C/C++编写的程序，从源代码到可执行文件，一般经过下面四个步骤：  预处理，产生.ii文件 对所有的“#define”进行宏展开； 处理所有的条件编译指令，比如“#if”,“#ifdef”，“#elif”，“#else”,“#endif” 处理“#include”指令，这个过程是递归的，也就是说被包含的文件可能还包含其他文件 删除所有的注释“//”和“/*">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-07-17T09:11:30.313Z">
+<meta property="og:image" content="https://i.loli.net/2020/07/26/qWaBZCesYmz5GQT.jpg">
+<meta property="og:updated_time" content="2020-07-27T03:01:56.334Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试常见题">
 <meta name="twitter:description" content="C++C++源文件到可执行文件的过程对于C/C++编写的程序，从源代码到可执行文件，一般经过下面四个步骤：  预处理，产生.ii文件 对所有的“#define”进行宏展开； 处理所有的条件编译指令，比如“#if”,“#ifdef”，“#elif”，“#else”,“#endif” 处理“#include”指令，这个过程是递归的，也就是说被包含的文件可能还包含其他文件 删除所有的注释“//”和“/*">
+<meta name="twitter:image" content="https://i.loli.net/2020/07/26/qWaBZCesYmz5GQT.jpg">
   <link rel="alternate" href="/atom.xml" title="SOUSIC" type="application/atom+xml">
   <link rel="canonical" href="https://github.com/suzhilong/suzhilong.github.io.git/2020/06/20/interview/">
 
@@ -313,7 +315,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-07-17 17:11:30" itemprop="dateModified" datetime="2020-07-17T17:11:30+08:00">2020-07-17</time>
+                <time title="修改时间：2020-07-27 11:01:56" itemprop="dateModified" datetime="2020-07-27T11:01:56+08:00">2020-07-27</time>
               </span>
             
           
@@ -350,7 +352,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">13k</span>
+              <span title="本文字数">15k</span>
             </span>
           
             <span class="post-meta-item">
@@ -360,7 +362,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">12 分钟</span>
+              <span title="阅读时长">14 分钟</span>
             </span>
           
 
@@ -438,12 +440,18 @@
 </ol>
 <p>ref. <a href="https://www.cnblogs.com/feng-sc/p/5710724.html" target="_blank" rel="noopener">C++11常用特性的使用经验总结</a></p>
 <h2 id="变量的声明和定义有什么区别"><a href="#变量的声明和定义有什么区别" class="headerlink" title="变量的声明和定义有什么区别"></a>变量的声明和定义有什么区别</h2><p>为变量分配地址和存储空间的称为定义，不分配地址的称为声明。一个变量可以在多个地方声明，但是只在一个地方定义。加入 <code>extern</code> 修饰的是变量的声明，说明此变量将在文件以外或在文件后面部分定义。说明：很多时候一个变量，只是声明不分配内存空间，直到具体使用时才初始化，分配内存空间，如外部变量。</p>
+<h2 id="局部变量，静态局部变量，全局变量，静态全局变量在内存中的存放区别"><a href="#局部变量，静态局部变量，全局变量，静态全局变量在内存中的存放区别" class="headerlink" title="局部变量，静态局部变量，全局变量，静态全局变量在内存中的存放区别"></a>局部变量，静态局部变量，全局变量，静态全局变量在内存中的存放区别</h2><p>全局初始化的变量：.data:<br>全局未初始化变量：.bss<br>全局只读：.rdata</p>
+<p>ref</p>
+<ul>
+<li><a href="https://www.cnblogs.com/bakari/archive/2012/08/05/2623637.html" target="_blank" rel="noopener">博客</a></li>
+</ul>
 <h2 id="malloc实现原理"><a href="#malloc实现原理" class="headerlink" title="malloc实现原理"></a>malloc实现原理</h2><ol>
 <li>malloc 函数的实质是它有一个将可用的内存块连接为一个长长的列表的所谓空闲链表。</li>
 <li>调用 malloc（）函数时，它沿着连接表寻找一个大到足以满足用户请求所需要的内存块。 然后，将该内存块一分为二（一块的大小与用户申请的大小相等，另一块的大小就是剩下来的字节）。 接下来，将分配给用户的那块内存存储区域传给用户，并将剩下的那块（如果有的话）返回到连接表上。</li>
 <li>调用 free 函数时，它将用户释放的内存块连接到空闲链表上。</li>
 <li>到最后，空闲链会被切成很多的小内存片段，如果这时用户申请一个大的内存片段， 那么空闲链表上可能没有可以满足用户要求的片段了。于是，malloc（）函数请求延时，并开始在空闲链表上检查各内存片段，对它们进行内存整理，将相邻的小空闲块合并成较大的内存块。</li>
 </ol>
+<p>malloc会出现的问题：初始化的问题。没有初始化的内存中内容是随机的，所以如果直接使用的话，就可能造成程序运行结果不正确。</p>
 <p>ref. <a href="https://blog.csdn.net/mmshixing/article/details/51679571" target="_blank" rel="noopener">linux-malloc底层实现原理</a></p>
 <h2 id="野指针"><a href="#野指针" class="headerlink" title="野指针"></a>野指针</h2><p><a href="https://suzhilong.github.io/2020/06/05/cppReview/" target="_blank" rel="noopener">博客</a></p>
 <h2 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h2><h3 id="构造函数与析构函数的特点"><a href="#构造函数与析构函数的特点" class="headerlink" title="构造函数与析构函数的特点"></a>构造函数与析构函数的特点</h3><ul>
@@ -618,6 +626,17 @@
 <li>越界问题：链表不存在越界问题，数组有越界问题。</li>
 </ul>
 <p><em>说明：在选择数组或链表数据结构时，一定要根据实际需要进行选择。数组便于查询，链表便于插入删除。数组节省空间但是长度固定，链表虽然变长但是占了更多的存储空间。</em></p>
+<h2 id="hash冲突怎么办"><a href="#hash冲突怎么办" class="headerlink" title="hash冲突怎么办"></a>hash冲突怎么办</h2><ol>
+<li>开放地址法<ul>
+<li>线性探测</li>
+<li>二次探测：左右左右…</li>
+<li>伪随机数</li>
+</ul>
+</li>
+<li>再哈希法</li>
+<li>链地址法</li>
+<li>建立公共溢出区</li>
+</ol>
 <h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="数据库范式"><a href="#数据库范式" class="headerlink" title="数据库范式"></a>数据库范式</h2><ul>
 <li><a href="https://blog.csdn.net/Wenco1/article/details/88077279?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.nonecase" target="_blank" rel="noopener">详解第一范式、第二范式、第三范式、BCNF范式</a></li>
 <li><a href="https://blog.csdn.net/wyh7280/article/details/83350722?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-5.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-5.nonecase" target="_blank" rel="noopener">范式通俗理解：1NF、2NF、3NF和BNCF</a></li>
@@ -625,7 +644,10 @@
 <h2 id="关系型数据库和非关系型数据库"><a href="#关系型数据库和非关系型数据库" class="headerlink" title="关系型数据库和非关系型数据库"></a>关系型数据库和非关系型数据库</h2><ul>
 <li><a href="https://blog.csdn.net/oChangWen/article/details/53423301" target="_blank" rel="noopener">关系型数据库和非关系型数据库区别、oracle与mysql的区别</a></li>
 </ul>
-<h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><h2 id="简述TCP三次握手与四次挥手"><a href="#简述TCP三次握手与四次挥手" class="headerlink" title="简述TCP三次握手与四次挥手"></a>简述TCP三次握手与四次挥手</h2><p><a href="https://suzhilong.github.io/2020/06/10/network/" target="_blank" rel="noopener">博客</a></p>
+<h2 id="主键索引和唯一索引区别"><a href="#主键索引和唯一索引区别" class="headerlink" title="主键索引和唯一索引区别"></a>主键索引和唯一索引区别</h2><p>唯一索引的值可以为null吗<br>主键索引的值可以为null吗<br>一个表有几个主键<br>一个表可以有多个唯一索引吗</p>
+<h2 id="sql语句"><a href="#sql语句" class="headerlink" title="sql语句"></a>sql语句</h2><h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><h2 id="OSI七层模型"><a href="#OSI七层模型" class="headerlink" title="OSI七层模型"></a>OSI七层模型</h2><p><a href="https://suzhilong.github.io/2020/06/10/network/" target="_blank" rel="noopener">博客</a></p>
+<h2 id="网络协议有那些"><a href="#网络协议有那些" class="headerlink" title="网络协议有那些"></a>网络协议有那些</h2><p><a href="https://suzhilong.github.io/2020/06/10/network/" target="_blank" rel="noopener">博客</a></p>
+<h2 id="简述TCP三次握手与四次挥手"><a href="#简述TCP三次握手与四次挥手" class="headerlink" title="简述TCP三次握手与四次挥手"></a>简述TCP三次握手与四次挥手</h2><p><a href="https://suzhilong.github.io/2020/06/10/network/" target="_blank" rel="noopener">博客</a></p>
 <h2 id="为什么TCP连接的时候是3次，不是2次"><a href="#为什么TCP连接的时候是3次，不是2次" class="headerlink" title="为什么TCP连接的时候是3次，不是2次"></a>为什么TCP连接的时候是3次，不是2次</h2><p>因为需要考虑连接时丢包的问题，如果只握手2次，第二次握手时如果服务端发给客户端的确认报文段丢失，此时服务端已经准备好了收发数(可以理解服务端已经连接成功)据，而客户端一直没收到服务端的确认报文，所以客户端就不知道服务端是否已经准备好了(可以理解为客户端未连接成功)，这种情况下客户端不会给服务端发数据，也会忽略服务端发过来的数据。</p>
 <p>如果是三次握手，即便发生丢包也不会有问题，比如如果第三次握手客户端发的确认ack报文丢失，服务端在一段时间内没有收到确认ack报文的话就会重新进行第二次握手，也就是服务端会重发SYN报文段，客户端收到重发的报文段后会再次给服务端发送确认ack报文。</p>
 <h2 id="如果已经建立了连接，但是客户端突然出现故障了怎么办？"><a href="#如果已经建立了连接，但是客户端突然出现故障了怎么办？" class="headerlink" title="如果已经建立了连接，但是客户端突然出现故障了怎么办？"></a>如果已经建立了连接，但是客户端突然出现故障了怎么办？</h2><p>TCP设有一个保活计时器，客户端如果出现故障，服务器不能一直等下去，白白浪费资源。服务器每收到一次客户端的请求后都会重新复位这个计时器，时间通常是设置为2小时，若两小时还没有收到客户端的任何数据，服务器就会发送一个探测报文段，以后每隔75秒钟发送一次。若一连发送10个探测报文仍然没反应，服务器就认为客户端出了故障，接着就关闭连接。</p>
@@ -659,15 +681,55 @@
 <li>http的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。</li>
 </ol>
 <h3 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h3><ul>
-<li>[搜索结果<br>网络搜索结果</li>
+<li><a href="https://juejin.im/entry/58d7635e5c497d0057fae036" target="_blank" rel="noopener">详细解析HTTP 与HTTPS 的区别</a></li>
 </ul>
-<p>详细解析HTTP 与HTTPS 的区别-](<a href="https://juejin.im/entry/58d7635e5c497d0057fae036" target="_blank" rel="noopener">https://juejin.im/entry/58d7635e5c497d0057fae036</a>)</p>
-<h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h2 id="进程和线程的差别"><a href="#进程和线程的差别" class="headerlink" title="进程和线程的差别"></a>进程和线程的差别</h2><p>线程是指进程内的一个执行单元，也是进程内的可调度实体。线程与进程的区别：</p>
+<h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h2 id="内核态（管态）和用户态（目态）"><a href="#内核态（管态）和用户态（目态）" class="headerlink" title="内核态（管态）和用户态（目态）"></a>内核态（管态）和用户态（目态）</h2><p>用户态（User Mode）：处于用户态执行时，进程所能访问的内存空间和对象受到限制，其所处于占有的处理器是可被抢占的。<br>内核态（Kernel Mode）：处于内核态执行时，则能访问所有的内存空间和对象，且所占有的处理器是不允许被抢占的。</p>
+<p>三种会导致用户态到内核态切换的情况：</p>
+<ol>
+<li>系统调用</li>
+<li>异常</li>
+<li>外围设备的中断</li>
+</ol>
+<p><a href="https://www.cnblogs.com/gizing/p/10925286.html" target="_blank" rel="noopener">博客</a></p>
+<h2 id="什么的系统调用"><a href="#什么的系统调用" class="headerlink" title="什么的系统调用"></a>什么的系统调用</h2><p><strong>用户态</strong>调用操作系统提供的<strong>内核态</strong>级别的子功能。</p>
+<p>系统调用按功能大致可分为如下几类：</p>
+<ul>
+<li>设备管理。完成设备的请求或释放，以及设备启动等功能。</li>
+<li>文件管理。完成文件的读、写、创建及删除等功能。</li>
+<li>进程控制。完成进程的创建、撤销、阻塞及唤醒等功能。</li>
+<li>进程通信。完成进程之间的消息传递或信号传递等功能。</li>
+<li>内存管理。完成内存的分配、回收以及获取作业占用内存区大小及地址等功能。</li>
+</ul>
+<h2 id="进程和线程的差别"><a href="#进程和线程的差别" class="headerlink" title="进程和线程的差别"></a>进程和线程的差别</h2><p>线程是指进程内的一个执行单元，也是进程内的可调度实体。线程与进程的区别：</p>
 <ul>
 <li>调度：线程作为调度和分配的基本单位，进程作为拥有资源的基本单位；</li>
 <li>并发性：不仅进程之间可以并发执行，同一个进程的多个线程也可以并发执行；</li>
 <li>拥有资源：进程是拥有资源的一个独立单元，线程不拥有系统资源但可以访问隶属于进程的资源；</li>
 <li>系统开销：在创建或撤销进程时，由于系统都要为之分配和回收资源，导致系统的开销明显大于创建或撤销线程时的开销。</li>
+</ul>
+<h2 id="进程有哪几种状态-他们的转换方式"><a href="#进程有哪几种状态-他们的转换方式" class="headerlink" title="进程有哪几种状态?他们的转换方式"></a>进程有哪几种状态?他们的转换方式</h2><p>创建状态(new) ：进程正在被创建，尚未到就绪状态。<br>就绪状态(ready) ：进程已处于准备运行状态，即进程获得了除了处理器之外的一切所需资源，一旦得到处理器资源(处理器分配的时间片)即可运行。<br>运行状态(running) ：进程正在处理器上上运行(单核 CPU 下任意时刻只有一个进程处于运行状态)。<br>阻塞状态(waiting) ：又称为等待状态，进程正在等待某一事件而暂停运行如等待某资源为可用或等待 IO 操作完成。即使处理器空闲，该进程也不能运行。<br>结束状态(terminated) ：进程正在从系统中消失。可能是进程正常结束或其他原因中断退出运行。</p>
+<p><img src="https://i.loli.net/2020/07/26/qWaBZCesYmz5GQT.jpg" alt="系统状态转换图"></p>
+<h2 id="进程间的通信方式"><a href="#进程间的通信方式" class="headerlink" title="进程间的通信方式"></a>进程间的通信方式</h2><ol>
+<li>管道/匿名管道(Pipes)：速度慢，容量有限，只用于具有亲缘关系的父子进程间或者兄弟进程之间的通信。</li>
+<li>命名管道(Names Pipes/FIFO)：任何进程间都能通讯，但速度慢，严格遵循先进先出(first in first out)。</li>
+<li>消息队列(Message Queuing)：消息队列是消息的链表，具有特定的格式，存放在内存中并由消息队列标识符标识。容量受到系统限制，且要注意第一次读的时候，要考虑上一次没有读完数据的问题。</li>
+<li>信号量(Semaphores)：信号量是一个计数器，用于多进程对共享数据的访问，信号量的意图在于进程间同步。不能传递复杂消息，只能用来同步。</li>
+<li>共享内存(Shared memory)：能够很容易控制容量，速度快，但需要依靠某种同步操作，如互斥锁和信号量等。比如一个进程在写的时候，另一个进程要注意读写的问题，相当于线程中的线程安全，当然，共享内存区同样可以用作线程间通讯，不过没这个必要，线程间本来就已经共享了同一进程内的一块内存。</li>
+<li>套接字(Sockets)：此方法主要用于在客户端和服务器之间通过网络进行通信，也可以用于同一主机上的socket通信。</li>
+<li>信号(Signal) ：信号是一种比较复杂的通信方式，用于通知接收进程某个事件已经发生。</li>
+</ol>
+<h2 id="线程间的同步的方式"><a href="#线程间的同步的方式" class="headerlink" title="线程间的同步的方式"></a>线程间的同步的方式</h2><ol>
+<li>互斥量(Mutex)：采用互斥对象机制，只有拥有互斥对象的线程才有访问公共资源的权限。因为互斥对象只有一个，所以可以保证公共资源不会被多个线程同时访问。比如 Java 中的 synchronized 关键词和各种 Lock 都是这种机制。</li>
+<li>信号量(Semphares)：它允许同一时刻多个线程访问同一资源，但是需要控制同一时刻访问此资源的最大线程数量</li>
+<li>事件(Event)：Wait/Notify：通过通知操作的方式来保持多线程同步，还可以方便的实现多线程优先级的比较操</li>
+</ol>
+<p><a href="https://www.cnblogs.com/zgq0/p/8780893.html" target="_blank" rel="noopener">博客</a></p>
+<h2 id="进程的调度算法"><a href="#进程的调度算法" class="headerlink" title="进程的调度算法"></a>进程的调度算法</h2><ul>
+<li>先到先服务(FCFS)调度算法 : 从就绪队列中选择一个最先进入该队列的进程为之分配资源，使它立即执行并一直执行到完成或发生某事件而被阻塞放弃占用 CPU 时再重新调度。</li>
+<li>短作业优先(SJF)的调度算法 : 从就绪队列中选出一个估计运行时间最短的进程为之分配资源，使它立即执行并一直执行到完成或发生某事件而被阻塞放弃占用 CPU 时再重新调度。</li>
+<li>时间片轮转调度算法 : 时间片轮转调度是一种最古老，最简单，最公平且使用最广的算法，又称 RR(Round robin)调度。每个进程被分配一个时间段，称作它的时间片，即该进程允许运行的时间。</li>
+<li>多级反馈队列调度算法 ：前面介绍的几种进程调度的算法都有一定的局限性。如短进程优先的调度算法，仅照顾了短进程而忽略了长进程 。多级反馈队列调度算法既能使高优先级的作业得到响应又能使短作业（进程）迅速完成。，因而它是目前被公认的一种较好的进程调度算法，UNIX 操作系统采取的便是这种调度算法。</li>
+<li>优先级调度 ： 为每个流程分配优先级，首先执行具有最高优先级的进程，依此类推。具有相同优先级的进程以 FCFS 方式执行。可以根据内存要求，时间要求或任何其他资源要求来确定优先级。</li>
 </ul>
 <h2 id="为什么要使用线程？与进程相比有哪些好处"><a href="#为什么要使用线程？与进程相比有哪些好处" class="headerlink" title="为什么要使用线程？与进程相比有哪些好处"></a>为什么要使用线程？与进程相比有哪些好处</h2><ol>
 <li>资源<br>和进程相比，它是一种非常”节俭”的多任务操作方式。在linux系统下，启动一个新的进程必须分配给它独立的地址空间，建立众多的数据表来维护它的代码段、堆栈段和数据段，这是一种”昂贵”的多任务工作方式。</li>
@@ -708,7 +770,7 @@
 <li>加载内核<br>内核的加载，内核加载后，接开始操作系统初始化，根据进程的优先级启动进程。</li>
 </ul>
 <p>ref. <a href="https://blog.csdn.net/u013830021/article/details/72840669" target="_blank" rel="noopener">ubuntu启动过程</a></p>
-<h1 id="ref-1"><a href="#ref-1" class="headerlink" title="ref"></a>ref</h1><ul>
+<h2 id="什么是内存碎片，怎么解决"><a href="#什么是内存碎片，怎么解决" class="headerlink" title="什么是内存碎片，怎么解决"></a>什么是内存碎片，怎么解决</h2><h1 id="ref-1"><a href="#ref-1" class="headerlink" title="ref"></a>ref</h1><ul>
 <li><a href="https://blog.csdn.net/BostonRayAlen/article/details/93041395?utm_medium=distribute.wap_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.wap_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase" target="_blank" rel="noopener">C/C++ 最常见50道面试题</a></li>
 <li><a href="https://blog.csdn.net/hsq1596753614/article/details/80249605?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase" target="_blank" rel="noopener">C/C++ 经典面试题（一）之常考概念</a></li>
 <li><a href="https://blog.csdn.net/ljh0302/article/details/81098764?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase" target="_blank" rel="noopener">常见C++笔试面试题整理</a></li>
@@ -759,7 +821,7 @@
   <p><span>本文标题:</span><a href="/2020/06/20/interview/">面试常见题</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Su Zhilong 的个人博客">Su Zhilong</a></p>
   <p><span>发布时间:</span>2020年06月20日 - 00:06</p>
-  <p><span>最后更新:</span>2020年07月17日 - 17:07</p>
+  <p><span>最后更新:</span>2020年07月27日 - 11:07</p>
   <p><span>原始链接:</span><a href="/2020/06/20/interview/" title="面试常见题">https://github.com/suzhilong/suzhilong.github.io.git/2020/06/20/interview/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/suzhilong/suzhilong.github.io.git/2020/06/20/interview/"  aria-label="复制成功！"></i></span>
   </p>
@@ -992,7 +1054,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C"><span class="nav-number">1.</span> <span class="nav-text">C++</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-源文件到可执行文件的过程"><span class="nav-number">1.1.</span> <span class="nav-text">C++源文件到可执行文件的过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Clang-LLVM-lldb-GCC-gdb"><span class="nav-number">1.2.</span> <span class="nav-text">Clang/LLVM/lldb/GCC/gdb</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#include-的顺序以及尖叫括号和双引号的区别"><span class="nav-number">1.3.</span> <span class="nav-text">#include 的顺序以及尖叫括号和双引号的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-内存机制"><span class="nav-number">1.4.</span> <span class="nav-text">C++内存机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#new、delete、malloc、free关系"><span class="nav-number">1.5.</span> <span class="nav-text">new、delete、malloc、free关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-与-delete-区别"><span class="nav-number">1.6.</span> <span class="nav-text">delete 与 delete[] 区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结构体struct和共同体union（联合）的区别"><span class="nav-number">1.7.</span> <span class="nav-text">结构体struct和共同体union（联合）的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结构体为什么要内存对齐呢？"><span class="nav-number">1.8.</span> <span class="nav-text">结构体为什么要内存对齐呢？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#x-amp-x-1"><span class="nav-number">1.9.</span> <span class="nav-text">x &amp; (x-1)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栈内存与文字常量区"><span class="nav-number">1.10.</span> <span class="nav-text">栈内存与文字常量区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#main-函数执行以前，还会执行什么代码？"><span class="nav-number">1.11.</span> <span class="nav-text">main 函数执行以前，还会执行什么代码？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-11新特性"><span class="nav-number">1.12.</span> <span class="nav-text">C++11新特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量的声明和定义有什么区别"><span class="nav-number">1.13.</span> <span class="nav-text">变量的声明和定义有什么区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#malloc实现原理"><span class="nav-number">1.14.</span> <span class="nav-text">malloc实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#野指针"><span class="nav-number">1.15.</span> <span class="nav-text">野指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数和析构函数"><span class="nav-number">1.16.</span> <span class="nav-text">构造函数和析构函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数与析构函数的特点"><span class="nav-number">1.16.1.</span> <span class="nav-text">构造函数与析构函数的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拷贝构造函数和赋值运算符的认识"><span class="nav-number">1.16.2.</span> <span class="nav-text">拷贝构造函数和赋值运算符的认识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数和析构函数可以是虚函数吗？"><span class="nav-number">1.16.3.</span> <span class="nav-text">构造函数和析构函数可以是虚函数吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数和析构函数，可以调用其他的虚函数吗？"><span class="nav-number">1.16.4.</span> <span class="nav-text">构造函数和析构函数，可以调用其他的虚函数吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子类和父类中，构造函数和析构函数的调用顺序是什么？"><span class="nav-number">1.16.5.</span> <span class="nav-text">子类和父类中，构造函数和析构函数的调用顺序是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚析构函数有什么作用？"><span class="nav-number">1.16.6.</span> <span class="nav-text">虚析构函数有什么作用？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拷贝构造函数在什么情况下会自动被调用"><span class="nav-number">1.16.7.</span> <span class="nav-text">拷贝构造函数在什么情况下会自动被调用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数参数传递中值传递、地址传递、引用传递有什么区别？"><span class="nav-number">1.17.</span> <span class="nav-text">函数参数传递中值传递、地址传递、引用传递有什么区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#const-char-const-p是什么意思？"><span class="nav-number">1.18.</span> <span class="nav-text">const char* const p是什么意思？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚函数有什么作用？"><span class="nav-number">1.19.</span> <span class="nav-text">虚函数有什么作用？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内联函数和宏定义的区别"><span class="nav-number">1.20.</span> <span class="nav-text">内联函数和宏定义的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简述C-异常处理方式"><span class="nav-number">1.21.</span> <span class="nav-text">简述C++异常处理方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-中哪些运算符不可以重载？"><span class="nav-number">1.22.</span> <span class="nav-text">C++中哪些运算符不可以重载？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数模板与函数重载的异同？"><span class="nav-number">1.23.</span> <span class="nav-text">函数模板与函数重载的异同？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-中的空类，默认会产生哪些类成员函数"><span class="nav-number">1.24.</span> <span class="nav-text">C++中的空类，默认会产生哪些类成员函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#map和unordered-map的区别"><span class="nav-number">1.25.</span> <span class="nav-text">map和unordered_map的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义MAX和MIN宏"><span class="nav-number">1.26.</span> <span class="nav-text">定义MAX和MIN宏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-中常用的设计模式"><span class="nav-number">1.27.</span> <span class="nav-text">C++中常用的设计模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对编程规范的理解或认识"><span class="nav-number">1.28.</span> <span class="nav-text">对编程规范的理解或认识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#short-i-0-i-i-1L；这两句有错吗"><span class="nav-number">1.29.</span> <span class="nav-text">short i = 0; i = i + 1L；这两句有错吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#amp-amp-和-amp-、-和-有什么区别"><span class="nav-number">1.30.</span> <span class="nav-text">&amp;&amp;和&amp;、||和|有什么区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#typedef-和-define-有什么区别"><span class="nav-number">1.31.</span> <span class="nav-text">typedef 和 define 有什么区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#针常量与常量指针区别"><span class="nav-number">1.32.</span> <span class="nav-text">针常量与常量指针区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组名和指针的区别"><span class="nav-number">1.33.</span> <span class="nav-text">数组名和指针的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常引用有什么作用"><span class="nav-number">1.34.</span> <span class="nav-text">常引用有什么作用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据结构"><span class="nav-number">2.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#链表和数组的区别在哪里？"><span class="nav-number">2.1.</span> <span class="nav-text">链表和数组的区别在哪里？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库"><span class="nav-number">3.</span> <span class="nav-text">数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库范式"><span class="nav-number">3.1.</span> <span class="nav-text">数据库范式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关系型数据库和非关系型数据库"><span class="nav-number">3.2.</span> <span class="nav-text">关系型数据库和非关系型数据库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络"><span class="nav-number">4.</span> <span class="nav-text">网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简述TCP三次握手与四次挥手"><span class="nav-number">4.1.</span> <span class="nav-text">简述TCP三次握手与四次挥手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么TCP连接的时候是3次，不是2次"><span class="nav-number">4.2.</span> <span class="nav-text">为什么TCP连接的时候是3次，不是2次</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如果已经建立了连接，但是客户端突然出现故障了怎么办？"><span class="nav-number">4.3.</span> <span class="nav-text">如果已经建立了连接，但是客户端突然出现故障了怎么办？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么连接的时候是三次握手，关闭的时候却是四次握手？"><span class="nav-number">4.4.</span> <span class="nav-text">为什么连接的时候是三次握手，关闭的时候却是四次握手？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么客户端发出第四次挥手的确认报文后要等2MSL的时间才能释放TCP连接？"><span class="nav-number">4.5.</span> <span class="nav-text">为什么客户端发出第四次挥手的确认报文后要等2MSL的时间才能释放TCP连接？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP和UDP的对比"><span class="nav-number">4.6.</span> <span class="nav-text">TCP和UDP的对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使UPD可靠的方法"><span class="nav-number">4.7.</span> <span class="nav-text">使UPD可靠的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简述Socket通信基本步骤"><span class="nav-number">4.8.</span> <span class="nav-text">简述Socket通信基本步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP与HTTPS的区别"><span class="nav-number">4.9.</span> <span class="nav-text">HTTP与HTTPS的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ref"><span class="nav-number">4.9.1.</span> <span class="nav-text">ref</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作系统"><span class="nav-number">5.</span> <span class="nav-text">操作系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#进程和线程的差别"><span class="nav-number">5.1.</span> <span class="nav-text">进程和线程的差别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要使用线程？与进程相比有哪些好处"><span class="nav-number">5.2.</span> <span class="nav-text">为什么要使用线程？与进程相比有哪些好处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是可重入和不可重入函数？"><span class="nav-number">5.3.</span> <span class="nav-text">什么是可重入和不可重入函数？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ubuntu开机的时候系统做了什么"><span class="nav-number">5.4.</span> <span class="nav-text">ubuntu开机的时候系统做了什么</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ref-1"><span class="nav-number">6.</span> <span class="nav-text">ref</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C"><span class="nav-number">1.</span> <span class="nav-text">C++</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-源文件到可执行文件的过程"><span class="nav-number">1.1.</span> <span class="nav-text">C++源文件到可执行文件的过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Clang-LLVM-lldb-GCC-gdb"><span class="nav-number">1.2.</span> <span class="nav-text">Clang/LLVM/lldb/GCC/gdb</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#include-的顺序以及尖叫括号和双引号的区别"><span class="nav-number">1.3.</span> <span class="nav-text">#include 的顺序以及尖叫括号和双引号的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-内存机制"><span class="nav-number">1.4.</span> <span class="nav-text">C++内存机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#new、delete、malloc、free关系"><span class="nav-number">1.5.</span> <span class="nav-text">new、delete、malloc、free关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-与-delete-区别"><span class="nav-number">1.6.</span> <span class="nav-text">delete 与 delete[] 区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结构体struct和共同体union（联合）的区别"><span class="nav-number">1.7.</span> <span class="nav-text">结构体struct和共同体union（联合）的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结构体为什么要内存对齐呢？"><span class="nav-number">1.8.</span> <span class="nav-text">结构体为什么要内存对齐呢？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#x-amp-x-1"><span class="nav-number">1.9.</span> <span class="nav-text">x &amp; (x-1)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栈内存与文字常量区"><span class="nav-number">1.10.</span> <span class="nav-text">栈内存与文字常量区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#main-函数执行以前，还会执行什么代码？"><span class="nav-number">1.11.</span> <span class="nav-text">main 函数执行以前，还会执行什么代码？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-11新特性"><span class="nav-number">1.12.</span> <span class="nav-text">C++11新特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量的声明和定义有什么区别"><span class="nav-number">1.13.</span> <span class="nav-text">变量的声明和定义有什么区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#局部变量，静态局部变量，全局变量，静态全局变量在内存中的存放区别"><span class="nav-number">1.14.</span> <span class="nav-text">局部变量，静态局部变量，全局变量，静态全局变量在内存中的存放区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#malloc实现原理"><span class="nav-number">1.15.</span> <span class="nav-text">malloc实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#野指针"><span class="nav-number">1.16.</span> <span class="nav-text">野指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数和析构函数"><span class="nav-number">1.17.</span> <span class="nav-text">构造函数和析构函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数与析构函数的特点"><span class="nav-number">1.17.1.</span> <span class="nav-text">构造函数与析构函数的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拷贝构造函数和赋值运算符的认识"><span class="nav-number">1.17.2.</span> <span class="nav-text">拷贝构造函数和赋值运算符的认识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数和析构函数可以是虚函数吗？"><span class="nav-number">1.17.3.</span> <span class="nav-text">构造函数和析构函数可以是虚函数吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数和析构函数，可以调用其他的虚函数吗？"><span class="nav-number">1.17.4.</span> <span class="nav-text">构造函数和析构函数，可以调用其他的虚函数吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子类和父类中，构造函数和析构函数的调用顺序是什么？"><span class="nav-number">1.17.5.</span> <span class="nav-text">子类和父类中，构造函数和析构函数的调用顺序是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚析构函数有什么作用？"><span class="nav-number">1.17.6.</span> <span class="nav-text">虚析构函数有什么作用？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拷贝构造函数在什么情况下会自动被调用"><span class="nav-number">1.17.7.</span> <span class="nav-text">拷贝构造函数在什么情况下会自动被调用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数参数传递中值传递、地址传递、引用传递有什么区别？"><span class="nav-number">1.18.</span> <span class="nav-text">函数参数传递中值传递、地址传递、引用传递有什么区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#const-char-const-p是什么意思？"><span class="nav-number">1.19.</span> <span class="nav-text">const char* const p是什么意思？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚函数有什么作用？"><span class="nav-number">1.20.</span> <span class="nav-text">虚函数有什么作用？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内联函数和宏定义的区别"><span class="nav-number">1.21.</span> <span class="nav-text">内联函数和宏定义的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简述C-异常处理方式"><span class="nav-number">1.22.</span> <span class="nav-text">简述C++异常处理方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-中哪些运算符不可以重载？"><span class="nav-number">1.23.</span> <span class="nav-text">C++中哪些运算符不可以重载？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数模板与函数重载的异同？"><span class="nav-number">1.24.</span> <span class="nav-text">函数模板与函数重载的异同？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-中的空类，默认会产生哪些类成员函数"><span class="nav-number">1.25.</span> <span class="nav-text">C++中的空类，默认会产生哪些类成员函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#map和unordered-map的区别"><span class="nav-number">1.26.</span> <span class="nav-text">map和unordered_map的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义MAX和MIN宏"><span class="nav-number">1.27.</span> <span class="nav-text">定义MAX和MIN宏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-中常用的设计模式"><span class="nav-number">1.28.</span> <span class="nav-text">C++中常用的设计模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对编程规范的理解或认识"><span class="nav-number">1.29.</span> <span class="nav-text">对编程规范的理解或认识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#short-i-0-i-i-1L；这两句有错吗"><span class="nav-number">1.30.</span> <span class="nav-text">short i = 0; i = i + 1L；这两句有错吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#amp-amp-和-amp-、-和-有什么区别"><span class="nav-number">1.31.</span> <span class="nav-text">&amp;&amp;和&amp;、||和|有什么区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#typedef-和-define-有什么区别"><span class="nav-number">1.32.</span> <span class="nav-text">typedef 和 define 有什么区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#针常量与常量指针区别"><span class="nav-number">1.33.</span> <span class="nav-text">针常量与常量指针区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组名和指针的区别"><span class="nav-number">1.34.</span> <span class="nav-text">数组名和指针的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常引用有什么作用"><span class="nav-number">1.35.</span> <span class="nav-text">常引用有什么作用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据结构"><span class="nav-number">2.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#链表和数组的区别在哪里？"><span class="nav-number">2.1.</span> <span class="nav-text">链表和数组的区别在哪里？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hash冲突怎么办"><span class="nav-number">2.2.</span> <span class="nav-text">hash冲突怎么办</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库"><span class="nav-number">3.</span> <span class="nav-text">数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库范式"><span class="nav-number">3.1.</span> <span class="nav-text">数据库范式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关系型数据库和非关系型数据库"><span class="nav-number">3.2.</span> <span class="nav-text">关系型数据库和非关系型数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主键索引和唯一索引区别"><span class="nav-number">3.3.</span> <span class="nav-text">主键索引和唯一索引区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sql语句"><span class="nav-number">3.4.</span> <span class="nav-text">sql语句</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络"><span class="nav-number">4.</span> <span class="nav-text">网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OSI七层模型"><span class="nav-number">4.1.</span> <span class="nav-text">OSI七层模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络协议有那些"><span class="nav-number">4.2.</span> <span class="nav-text">网络协议有那些</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简述TCP三次握手与四次挥手"><span class="nav-number">4.3.</span> <span class="nav-text">简述TCP三次握手与四次挥手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么TCP连接的时候是3次，不是2次"><span class="nav-number">4.4.</span> <span class="nav-text">为什么TCP连接的时候是3次，不是2次</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如果已经建立了连接，但是客户端突然出现故障了怎么办？"><span class="nav-number">4.5.</span> <span class="nav-text">如果已经建立了连接，但是客户端突然出现故障了怎么办？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么连接的时候是三次握手，关闭的时候却是四次握手？"><span class="nav-number">4.6.</span> <span class="nav-text">为什么连接的时候是三次握手，关闭的时候却是四次握手？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么客户端发出第四次挥手的确认报文后要等2MSL的时间才能释放TCP连接？"><span class="nav-number">4.7.</span> <span class="nav-text">为什么客户端发出第四次挥手的确认报文后要等2MSL的时间才能释放TCP连接？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP和UDP的对比"><span class="nav-number">4.8.</span> <span class="nav-text">TCP和UDP的对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使UPD可靠的方法"><span class="nav-number">4.9.</span> <span class="nav-text">使UPD可靠的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简述Socket通信基本步骤"><span class="nav-number">4.10.</span> <span class="nav-text">简述Socket通信基本步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP与HTTPS的区别"><span class="nav-number">4.11.</span> <span class="nav-text">HTTP与HTTPS的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ref"><span class="nav-number">4.11.1.</span> <span class="nav-text">ref</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作系统"><span class="nav-number">5.</span> <span class="nav-text">操作系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内核态（管态）和用户态（目态）"><span class="nav-number">5.1.</span> <span class="nav-text">内核态（管态）和用户态（目态）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么的系统调用"><span class="nav-number">5.2.</span> <span class="nav-text">什么的系统调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程和线程的差别"><span class="nav-number">5.3.</span> <span class="nav-text">进程和线程的差别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程有哪几种状态-他们的转换方式"><span class="nav-number">5.4.</span> <span class="nav-text">进程有哪几种状态?他们的转换方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程间的通信方式"><span class="nav-number">5.5.</span> <span class="nav-text">进程间的通信方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程间的同步的方式"><span class="nav-number">5.6.</span> <span class="nav-text">线程间的同步的方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程的调度算法"><span class="nav-number">5.7.</span> <span class="nav-text">进程的调度算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要使用线程？与进程相比有哪些好处"><span class="nav-number">5.8.</span> <span class="nav-text">为什么要使用线程？与进程相比有哪些好处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是可重入和不可重入函数？"><span class="nav-number">5.9.</span> <span class="nav-text">什么是可重入和不可重入函数？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ubuntu开机的时候系统做了什么"><span class="nav-number">5.10.</span> <span class="nav-text">ubuntu开机的时候系统做了什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是内存碎片，怎么解决"><span class="nav-number">5.11.</span> <span class="nav-text">什么是内存碎片，怎么解决</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ref-1"><span class="nav-number">6.</span> <span class="nav-text">ref</span></a></li></ol></div>
             
 
           </div>
@@ -1019,12 +1081,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">274k</span>
+    <span title="站点总字数">278k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:10</span>
+    <span title="站点阅读时长">4:12</span>
 </div>
 
 <!--
@@ -1049,7 +1111,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">89.7k</span> 字
+      博客全站共： <span class="post-count">91.8k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->

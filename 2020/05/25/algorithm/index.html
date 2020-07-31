@@ -68,7 +68,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/06/19/eLGVs6wMJf9BOyr.png">
 <meta property="og:image" content="https://i.loli.net/2020/07/12/GXVphrYafON5jFw.png">
 <meta property="og:image" content="https://i.loli.net/2020/07/29/N1O2xGlCm54yuQI.png">
-<meta property="og:updated_time" content="2020-07-31T02:46:10.814Z">
+<meta property="og:updated_time" content="2020-07-31T03:24:29.330Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SOUSIC的algorithm总结">
 <meta name="twitter:description" content="一、算法基础&amp;emsp;&amp;emsp;春节后疫情一直没开学，赋闲在家刷了一个多月的算法，总结了一下，形成了下面的文章。包含了数据结构类例题和算法类例题，大部分是Leecode中的典型题目，也有实习笔试中的真题和剑指Offer中的题目。题解使用C++，代码均由本人在参考题解之后所写。全部都在本地编译运行通过。（目前大概70多题，还有数据结构类例题未完善）相关github   1.1 常用数据结构1.1">
@@ -317,7 +317,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-07-31 10:46:10" itemprop="dateModified" datetime="2020-07-31T10:46:10+08:00">2020-07-31</time>
+                <time title="修改时间：2020-07-31 11:24:29" itemprop="dateModified" datetime="2020-07-31T11:24:29+08:00">2020-07-31</time>
               </span>
             
           
@@ -354,7 +354,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">114k</span>
+              <span title="本文字数">115k</span>
             </span>
           
             <span class="post-meta-item">
@@ -364,7 +364,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">1:44</span>
+              <span title="阅读时长">1:45</span>
             </span>
           
 
@@ -573,6 +573,31 @@
 <p><em>ps. new一个节点指向头节点，就可以解决<code>m=1</code>的情况</em></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">ListNode* reverseBetween(ListNode* head, int m, int n) &#123;</span><br><span class="line">    ListNode *preHead = new ListNode(0);</span><br><span class="line">    preHead-&gt;next = head;</span><br><span class="line"></span><br><span class="line">    ListNode *A = preHead;</span><br><span class="line">    ListNode *B = head;</span><br><span class="line"></span><br><span class="line">    int step = 0;</span><br><span class="line">    while (step &lt; m - 1) &#123;</span><br><span class="line">        A = A-&gt;next; B = B-&gt;next;</span><br><span class="line">        step++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for (int i = 0; i &lt; n - m; i++) &#123;</span><br><span class="line">        ListNode *removed = B-&gt;next;</span><br><span class="line">        B-&gt;next = B-&gt;next-&gt;next;</span><br><span class="line"></span><br><span class="line">        removed-&gt;next = A-&gt;next;</span><br><span class="line">        A-&gt;next = removed;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return preHead-&gt;next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
+<ol start="4">
+<li>[142. 环形链表 II（中等）(<a href="https://leetcode-cn.com/problems/linked-list-cycle-ii/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/linked-list-cycle-ii/</a>)<br>给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。</li>
+</ol>
+<p>为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。</p>
+<p><strong>说明</strong>：不允许修改给定的链表。</p>
+<p>示例 1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：head = [3,2,0,-4], pos = 1</span><br><span class="line">输出：tail connects to node index 1</span><br><span class="line">解释：链表中有一个环，其尾部连接到第二个节点。</span><br></pre></td></tr></table></figure>
+
+<p>题解：  </p>
+<ol>
+<li>哈希表。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ListNode *detectCycle(ListNode *head) &#123;</span><br><span class="line">    unordered_map&lt;ListNode*,int&gt; nodeMap;</span><br><span class="line">    ListNode *cur = head;</span><br><span class="line">    while(cur)&#123;</span><br><span class="line">        if(++nodeMap[cur]&gt;1)</span><br><span class="line">            return cur;</span><br><span class="line">        cur = cur-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    return nullptr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
+<ol start="2">
+<li>快慢指针。<br>快指针一次走2步，慢指针一次走一步。</li>
+</ol>
+<ul>
+<li>快指针走到nullptr，说明无环</li>
+<li>快指针慢指针第一次相遇节点记为<code>mark</code>，这时把慢指针移到头节点，快指针不变。他们都继续移动，都是一次走一步。当两个指针再次相遇时，就是头节点。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">ListNode *detectCycle(ListNode *head) &#123;</span><br><span class="line">    if(head == nullptr || head-&gt;next == nullptr)</span><br><span class="line">        return nullptr;</span><br><span class="line">    ListNode *fast = head, *slow = head;</span><br><span class="line">    do&#123;</span><br><span class="line">        if(fast == nullptr || fast-&gt;next == nullptr)</span><br><span class="line">            return nullptr;</span><br><span class="line">        fast = fast-&gt;next-&gt;next;</span><br><span class="line">        slow = slow-&gt;next;</span><br><span class="line">    &#125;while(fast!=slow);</span><br><span class="line"></span><br><span class="line">    slow = head;</span><br><span class="line">    while(fast!=slow)&#123;</span><br><span class="line">        fast = fast-&gt;next;</span><br><span class="line">        slow = slow-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    return fast;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
 <p>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
 <h2 id="2-4-图"><a href="#2-4-图" class="headerlink" title="2.4 图"></a>2.4 图</h2><ol>
 <li><a href="https://leetcode-cn.com/contest/weekly-contest-197/problems/path-with-maximum-probability/" target="_blank" rel="noopener">5211. 概率最大的路径（中等）</a><br>给你一个由 n 个节点（下标从 0 开始）组成的无向加权图，该图由一个描述边的列表组成，其中 edges[i] = [a, b] 表示连接节点 a 和 b 的一条无向边，且该边遍历成功的概率为 succProb[i] 。</li>
@@ -1087,7 +1112,7 @@
   <p><span>本文标题:</span><a href="/2020/05/25/algorithm/">SOUSIC的algorithm总结</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Su Zhilong 的个人博客">Su Zhilong</a></p>
   <p><span>发布时间:</span>2020年05月25日 - 16:05</p>
-  <p><span>最后更新:</span>2020年07月31日 - 10:07</p>
+  <p><span>最后更新:</span>2020年07月31日 - 11:07</p>
   <p><span>原始链接:</span><a href="/2020/05/25/algorithm/" title="SOUSIC的algorithm总结">https://github.com/suzhilong/suzhilong.github.io.git/2020/05/25/algorithm/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/suzhilong/suzhilong.github.io.git/2020/05/25/algorithm/"  aria-label="复制成功！"></i></span>
   </p>
@@ -1347,12 +1372,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">299k</span>
+    <span title="站点总字数">300k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:32</span>
+    <span title="站点阅读时长">4:33</span>
 </div>
 
 <!--
@@ -1377,7 +1402,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">99.6k</span> 字
+      博客全站共： <span class="post-count">100k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->

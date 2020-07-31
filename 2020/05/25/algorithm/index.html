@@ -68,7 +68,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/06/19/eLGVs6wMJf9BOyr.png">
 <meta property="og:image" content="https://i.loli.net/2020/07/12/GXVphrYafON5jFw.png">
 <meta property="og:image" content="https://i.loli.net/2020/07/29/N1O2xGlCm54yuQI.png">
-<meta property="og:updated_time" content="2020-07-29T11:53:24.295Z">
+<meta property="og:updated_time" content="2020-07-31T02:46:10.814Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SOUSIC的algorithm总结">
 <meta name="twitter:description" content="一、算法基础&amp;emsp;&amp;emsp;春节后疫情一直没开学，赋闲在家刷了一个多月的算法，总结了一下，形成了下面的文章。包含了数据结构类例题和算法类例题，大部分是Leecode中的典型题目，也有实习笔试中的真题和剑指Offer中的题目。题解使用C++，代码均由本人在参考题解之后所写。全部都在本地编译运行通过。（目前大概70多题，还有数据结构类例题未完善）相关github   1.1 常用数据结构1.1">
@@ -317,7 +317,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-07-29 19:53:24" itemprop="dateModified" datetime="2020-07-29T19:53:24+08:00">2020-07-29</time>
+                <time title="修改时间：2020-07-31 10:46:10" itemprop="dateModified" datetime="2020-07-31T10:46:10+08:00">2020-07-31</time>
               </span>
             
           
@@ -354,7 +354,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">112k</span>
+              <span title="本文字数">114k</span>
             </span>
           
             <span class="post-meta-item">
@@ -364,7 +364,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">1:42</span>
+              <span title="阅读时长">1:44</span>
             </span>
           
 
@@ -534,6 +534,46 @@
 
 <p>时间复杂度：O(n)<br>空间复杂度：O(n)  </p>
 <p><em>ps. 在不允许用额外空间的情况下，可以用两重循环。时间O(n^2) ，空间o(1)。</em></p>
+<ol start="2">
+<li><a href="https://leetcode-cn.com/problems/reverse-linked-list/" target="_blank" rel="noopener">206. 反转链表（简单）</a><br>反转一个单链表。</li>
+</ol>
+<p>示例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL</span><br><span class="line">输出: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL</span><br></pre></td></tr></table></figure>
+
+<p>题解：  </p>
+<ol>
+<li>遍历反转。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ListNode* reverseList(ListNode* head) &#123;</span><br><span class="line">    if(head==nullptr || head-&gt;next==nullptr)</span><br><span class="line">        return head;</span><br><span class="line">    ListNode *pre = nullptr;</span><br><span class="line">    ListNode *cur = head;</span><br><span class="line">    while(cur!=nullptr)&#123;</span><br><span class="line">        ListNode *tmp = cur-&gt;next;</span><br><span class="line">        cur-&gt;next = pre;</span><br><span class="line">        pre = cur;</span><br><span class="line">        cur = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    return pre;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>时间复杂度：O(n)<br>空间复杂度：O(1) </p>
+<ol start="2">
+<li>递归。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ListNode* reverseList(ListNode* head) &#123;</span><br><span class="line">    if(head==nullptr || head-&gt;next==nullptr)</span><br><span class="line">        return head;</span><br><span class="line">    ListNode *cur = reverseList(head-&gt;next);</span><br><span class="line">    head-&gt;next-&gt;next = head;</span><br><span class="line">    head-&gt;next = nullptr;</span><br><span class="line">    return cur;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
+<ol start="3">
+<li><a href="https://leetcode-cn.com/problems/reverse-linked-list-ii/" target="_blank" rel="noopener">92. 反转链表 II（中等）</a><br>反转从位置 m 到 n 的链表。请使用一趟扫描完成反转。</li>
+</ol>
+<p><strong>说明</strong>:1 ≤ m ≤ n ≤ 链表长度。</p>
+<p>示例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, m = 2, n = 4</span><br><span class="line">输出: 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;NULL</span><br></pre></td></tr></table></figure>
+
+<p>题解：  </p>
+<ol>
+<li>遍历交换。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">if(m==1)&#123;</span><br><span class="line">    ListNode *lastRevers = head;</span><br><span class="line">    ListNode *pre = lastRevers;</span><br><span class="line">    ListNode *cur = pre-&gt;next;</span><br><span class="line">    for(int i=m;i&lt;n;i++)&#123;</span><br><span class="line">        ListNode *tmp = cur-&gt;next;</span><br><span class="line">        cur-&gt;next = pre;</span><br><span class="line">        pre = cur;</span><br><span class="line">        cur = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    lastRevers-&gt;next = cur;</span><br><span class="line">    return pre;</span><br><span class="line">&#125;</span><br><span class="line">else&#123;</span><br><span class="line">    ListNode *before = head;</span><br><span class="line">    for(int i=1;i&lt;m-1;i++)</span><br><span class="line">        before = before-&gt;next;</span><br><span class="line">    ListNode *lastRevers = before-&gt;next;</span><br><span class="line">    ListNode *pre = lastRevers;</span><br><span class="line">    ListNode *cur = pre-&gt;next;</span><br><span class="line">    for(int i=m;i&lt;n;i++)&#123;</span><br><span class="line">        ListNode *tmp = cur-&gt;next;</span><br><span class="line">        cur-&gt;next = pre;</span><br><span class="line">        pre = cur;</span><br><span class="line">        cur = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    before-&gt;next = pre;</span><br><span class="line">    lastRevers-&gt;next = cur;</span><br><span class="line">    return head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
+<ol start="2">
+<li>头插法。双指针，一个指针 A 指向要反转的前一个节点<code>m-1</code>，一个指针 B 指向要反转的第一个节点<code>m</code>。B在往后移动时，不停的把B后面的一个节点移到A后面，一直到<code>n-1</code>结束。这时已经反转了要求的链表。  </li>
+</ol>
+<p><em>ps. new一个节点指向头节点，就可以解决<code>m=1</code>的情况</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">ListNode* reverseBetween(ListNode* head, int m, int n) &#123;</span><br><span class="line">    ListNode *preHead = new ListNode(0);</span><br><span class="line">    preHead-&gt;next = head;</span><br><span class="line"></span><br><span class="line">    ListNode *A = preHead;</span><br><span class="line">    ListNode *B = head;</span><br><span class="line"></span><br><span class="line">    int step = 0;</span><br><span class="line">    while (step &lt; m - 1) &#123;</span><br><span class="line">        A = A-&gt;next; B = B-&gt;next;</span><br><span class="line">        step++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for (int i = 0; i &lt; n - m; i++) &#123;</span><br><span class="line">        ListNode *removed = B-&gt;next;</span><br><span class="line">        B-&gt;next = B-&gt;next-&gt;next;</span><br><span class="line"></span><br><span class="line">        removed-&gt;next = A-&gt;next;</span><br><span class="line">        A-&gt;next = removed;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return preHead-&gt;next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
 <h2 id="2-4-图"><a href="#2-4-图" class="headerlink" title="2.4 图"></a>2.4 图</h2><ol>
 <li><a href="https://leetcode-cn.com/contest/weekly-contest-197/problems/path-with-maximum-probability/" target="_blank" rel="noopener">5211. 概率最大的路径（中等）</a><br>给你一个由 n 个节点（下标从 0 开始）组成的无向加权图，该图由一个描述边的列表组成，其中 edges[i] = [a, b] 表示连接节点 a 和 b 的一条无向边，且该边遍历成功的概率为 succProb[i] 。</li>
 </ol>
@@ -1047,7 +1087,7 @@
   <p><span>本文标题:</span><a href="/2020/05/25/algorithm/">SOUSIC的algorithm总结</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Su Zhilong 的个人博客">Su Zhilong</a></p>
   <p><span>发布时间:</span>2020年05月25日 - 16:05</p>
-  <p><span>最后更新:</span>2020年07月29日 - 19:07</p>
+  <p><span>最后更新:</span>2020年07月31日 - 10:07</p>
   <p><span>原始链接:</span><a href="/2020/05/25/algorithm/" title="SOUSIC的algorithm总结">https://github.com/suzhilong/suzhilong.github.io.git/2020/05/25/algorithm/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/suzhilong/suzhilong.github.io.git/2020/05/25/algorithm/"  aria-label="复制成功！"></i></span>
   </p>
@@ -1307,12 +1347,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">296k</span>
+    <span title="站点总字数">299k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:29</span>
+    <span title="站点阅读时长">4:32</span>
 </div>
 
 <!--
@@ -1337,7 +1377,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">98.9k</span> 字
+      博客全站共： <span class="post-count">99.6k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->

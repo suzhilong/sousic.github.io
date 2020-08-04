@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="SOUSIC">
 <meta property="og:description" content="8月3日 415. 字符串相加（简单）给定两个字符串形式的非负整数 num1 和num2 ，计算它们的和。 注意： 1234num1 和num2 的长度都小于 5100.num1 和num2 都只包含数字 0-9.num1 和num2 都不包含任何前导零。你不能使用任何內建 BigInteger 库， 也不能直接将输入的字符串转换为整数形式。  题解：两个数字位数不同时，在指针当前下标处于负数的时">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-08-03T01:32:35.202Z">
+<meta property="og:updated_time" content="2020-08-04T13:35:22.430Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode每日一题 - 2020年八月">
 <meta name="twitter:description" content="8月3日 415. 字符串相加（简单）给定两个字符串形式的非负整数 num1 和num2 ，计算它们的和。 注意： 1234num1 和num2 的长度都小于 5100.num1 和num2 都只包含数字 0-9.num1 和num2 都不包含任何前导零。你不能使用任何內建 BigInteger 库， 也不能直接将输入的字符串转换为整数形式。  题解：两个数字位数不同时，在指针当前下标处于负数的时">
@@ -313,7 +313,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-08-03 09:32:35" itemprop="dateModified" datetime="2020-08-03T09:32:35+08:00">2020-08-03</time>
+                <time title="修改时间：2020-08-04 21:35:22" itemprop="dateModified" datetime="2020-08-04T21:35:22+08:00">2020-08-04</time>
               </span>
             
           
@@ -350,7 +350,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">815</span>
+              <span title="本文字数">3.3k</span>
             </span>
           
             <span class="post-meta-item">
@@ -360,7 +360,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">1 分钟</span>
+              <span title="阅读时长">3 分钟</span>
             </span>
           
 
@@ -381,6 +381,35 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">string addStrings(string num1, string num2)&#123;</span><br><span class="line">    int i = num1.length() - 1, j = num2.length() - 1, add = 0;</span><br><span class="line">    string res = &quot;&quot;;</span><br><span class="line">    while (i &gt;= 0 || j &gt;= 0 || carry != 0) &#123;</span><br><span class="line">        int x = i &gt;= 0 ? num1[i] - &apos;0&apos; : 0;</span><br><span class="line">        int y = j &gt;= 0 ? num2[j] - &apos;0&apos; : 0;</span><br><span class="line">        int result = x + y + carry;</span><br><span class="line">        res.push_back(&apos;0&apos; + result % 10);</span><br><span class="line">        carry = result / 10;</span><br><span class="line">        i -= 1;</span><br><span class="line">        j -= 1;</span><br><span class="line">    &#125;</span><br><span class="line">    // 计算完以后的答案需要翻转过来</span><br><span class="line">    reverse(res.begin(), res.end());</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>时间复杂度：O(max{n1,n2})<br>空间复杂度：O(1)</p>
+<h1 id="8月4日-207-课程表（中等）"><a href="#8月4日-207-课程表（中等）" class="headerlink" title="8月4日 207. 课程表（中等）"></a>8月4日 <a href="https://leetcode-cn.com/problems/course-schedule/" target="_blank" rel="noopener">207. 课程表（中等）</a></h1><p>你这个学期必须选修 numCourse 门课程，记为 0 到 numCourse-1 。</p>
+<p>在选修某些课程之前需要一些先修课程。 例如，想要学习课程 0 ，你需要先完成课程 1 ，我们用一个匹配来表示他们：[0,1]</p>
+<p>给定课程总量以及它们的先决条件，请你判断是否可能完成所有课程的学习？</p>
+<p>示例 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: 2, [[1,0]] </span><br><span class="line">输出: true</span><br><span class="line">解释: 总共有 2 门课程。学习课程 1 之前，你需要完成课程 0。所以这是可能的。</span><br></pre></td></tr></table></figure>
+
+<p>示例 2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: 2, [[1,0],[0,1]]</span><br><span class="line">输出: false</span><br><span class="line">解释: 总共有 2 门课程。学习课程 1 之前，你需要先完成​课程 0；并且学习课程 0 之前，你还应先完成课程 1。这是不可能的。</span><br></pre></td></tr></table></figure>
+
+<p>提示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入的先决条件是由 边缘列表 表示的图形，而不是 邻接矩阵 。详情请参见图的表示法。</span><br><span class="line">你可以假定输入的先决条件中没有重复的边。</span><br><span class="line">1 &lt;= numCourses &lt;= 10^5</span><br></pre></td></tr></table></figure>
+
+<p>题解：  </p>
+<ol>
+<li>有向图的dfs遍历。<br><code>visited[i]</code>表示第i和节点的状态，0表示没有被访问过，1表示正在被访问，2表示访问结束的节点。<code>circle</code>表示有向图有环。使用dfs遍历有向图：</li>
+</ol>
+<ul>
+<li>当正在访问的节点（visited[i]=1）又被访问时，说明有向图存在环，返回false。</li>
+<li>全部节点访问完毕，返回true<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">void dfs(int u, vector&lt;vector&lt;int&gt; &gt; &amp;graph, vector&lt;int&gt; &amp;visited)&#123;</span><br><span class="line">    visited[u] = 1;//正在访问该节点</span><br><span class="line">    for(int v:graph[u])&#123;</span><br><span class="line">        if(visited[v]==0)&#123;</span><br><span class="line">            dfs(v, graph, visited);</span><br><span class="line">            if(circle)</span><br><span class="line">                return;</span><br><span class="line">        &#125;else if(visited[v]==1)&#123;</span><br><span class="line">            circle = true;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    visited[u] = 2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool canFinish(int numCourses, vector&lt;vector&lt;int&gt; &gt;&amp; prerequisites) &#123;</span><br><span class="line">    if(prerequisites.empty())</span><br><span class="line">        return true;</span><br><span class="line">    vector&lt;vector&lt;int&gt; &gt; graph(numCourses);</span><br><span class="line">    for (auto course : prerequisites)</span><br><span class="line">    &#123;//build graph</span><br><span class="line">        graph[course[1]].push_back(course[0]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    vector&lt;int&gt; visited(numCourses);</span><br><span class="line">    for (int i = 0; i &lt; numCourses &amp;&amp; !circle; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(!visited[i])</span><br><span class="line">            dfs(i, graph, visited);</span><br><span class="line">    &#125;</span><br><span class="line">    return !circle;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>时间复杂度：O(m+n)。m是有向图的边，n是有向图的节点。<br>空间复杂度：O(m+n)</p>
+<ol start="2">
+<li>bfs入度为0的点<br>拓扑排序中，起点都是入度为0的点。把所有入度为0的节点放入队列，依次访问队列中的节点。访问的时候把所有从该节点出去的边都删掉，即该节点出发连接的边的入度都减1。再把入度减到0的点加入队列。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">bool canFinish(int numCourses, vector&lt;vector&lt;int&gt; &gt;&amp; prerequisites) &#123;</span><br><span class="line">    if(prerequisites.empty())</span><br><span class="line">        return true;</span><br><span class="line">    vector&lt;vector&lt;int&gt; &gt; graph(numCourses);</span><br><span class="line">    vector&lt;int&gt; inDegree(numCourses, 0);</span><br><span class="line">    for (auto course : prerequisites)</span><br><span class="line">    &#123;//build graph</span><br><span class="line">        graph[course[1]].push_back(course[0]);</span><br><span class="line">        inDegree[course[0]]++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    queue&lt;int&gt; que;</span><br><span class="line">    for (int i = 0; i &lt; numCourses;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(inDegree[i]==0)</span><br><span class="line">            que.push(i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int visited = 0;</span><br><span class="line">    while (!que.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        visited++;</span><br><span class="line">        int u = que.front();</span><br><span class="line">        que.pop();</span><br><span class="line">        for(int v:graph[u])&#123;</span><br><span class="line">            inDegree[v]--;</span><br><span class="line">            if(inDegree[v]==0)</span><br><span class="line">                que.push(v);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return visited == numCourses;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>时间复杂度：O(m+n)。m是有向图的边，n是有向图的节点。<br>空间复杂度：O(m+n)</p>
 
     </div>
       
@@ -413,7 +442,7 @@
   <p><span>本文标题:</span><a href="/2020/08/01/LeetcodeDaily_July/">Leetcode每日一题 - 2020年八月</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Su Zhilong 的个人博客">Su Zhilong</a></p>
   <p><span>发布时间:</span>2020年08月01日 - 20:08</p>
-  <p><span>最后更新:</span>2020年08月03日 - 09:08</p>
+  <p><span>最后更新:</span>2020年08月04日 - 21:08</p>
   <p><span>原始链接:</span><a href="/2020/08/01/LeetcodeDaily_July/" title="Leetcode每日一题 - 2020年八月">https://github.com/suzhilong/suzhilong.github.io.git/2020/08/01/LeetcodeDaily_July/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/suzhilong/suzhilong.github.io.git/2020/08/01/LeetcodeDaily_July/"  aria-label="复制成功！"></i></span>
   </p>
@@ -642,7 +671,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#8月3日-415-字符串相加（简单）"><span class="nav-number">1.</span> <span class="nav-text">8月3日 415. 字符串相加（简单）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#8月3日-415-字符串相加（简单）"><span class="nav-number">1.</span> <span class="nav-text">8月3日 415. 字符串相加（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8月4日-207-课程表（中等）"><span class="nav-number">2.</span> <span class="nav-text">8月4日 207. 课程表（中等）</span></a></li></ol></div>
             
 
           </div>
@@ -669,12 +698,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">266k</span>
+    <span title="站点总字数">273k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:01</span>
+    <span title="站点阅读时长">4:09</span>
 </div>
 
 <!--
@@ -699,7 +728,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">92k</span> 字
+      博客全站共： <span class="post-count">94.6k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->

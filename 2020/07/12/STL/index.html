@@ -70,7 +70,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/06/19/DtlTnEAUK7qQRFc.jpg">
 <meta property="og:image" content="https://i.loli.net/2020/06/15/iLAdQTJq3j19CH5.png">
 <meta property="og:image" content="https://i.loli.net/2020/06/15/lqItjZGhRkmMwPf.png">
-<meta property="og:updated_time" content="2020-08-05T10:46:01.716Z">
+<meta property="og:updated_time" content="2020-08-06T02:10:59.697Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="STL常用方法">
 <meta name="twitter:description" content="常用STL库的使用方法vector：数组12345678910111213141516171819202122232425262728293031323334#include &amp;lt;vector&amp;gt;  vector&amp;lt;int&amp;gt; a(10);//初始化10个默认为0的数  vector&amp;lt;int&amp;gt; a(10,1);//初始化10个默认为1的数  vector&amp;lt;int&amp;">
@@ -319,7 +319,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-08-05 18:46:01" itemprop="dateModified" datetime="2020-08-05T18:46:01+08:00">2020-08-05</time>
+                <time title="修改时间：2020-08-06 10:10:59" itemprop="dateModified" datetime="2020-08-06T10:10:59+08:00">2020-08-06</time>
               </span>
             
           
@@ -356,7 +356,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">8k</span>
+              <span title="本文字数">8.3k</span>
             </span>
           
             <span class="post-meta-item">
@@ -366,7 +366,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">7 分钟</span>
+              <span title="阅读时长">8 分钟</span>
             </span>
           
 
@@ -439,6 +439,14 @@
 <p>如果想对map进行排序，可以把map放到vector中。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 将map中的内容转存到vector中</span><br><span class="line">vector&lt;pair&lt;string, int&gt; &gt; vec(map.begin(), map.end());</span><br><span class="line"></span><br><span class="line">bool cmp(const pair&lt;string, int&gt;&amp; a, const pair&lt;string, int&gt;&amp; b) &#123;</span><br><span class="line">        return a.second &lt; b.second;</span><br><span class="line">&#125;</span><br><span class="line">//对线性的vector进行排序</span><br><span class="line">sort(vec.begin(), vec.end(), cmp);</span><br></pre></td></tr></table></figure>
 
+<p>注意：</p>
+<ol>
+<li>支持随机存取迭代器（连续存储空间）的<code>vector</code>，<code>deque</code> （双向存取的vector）可以使用sort；</li>
+<li>支持随机存取迭代器（链式非连续存储空间）的<code>list</code>（双向链表）和<code>slist</code>（单向链表forward_list），不能使用STL的sort，但是类中有自定义的sort()成员函数；</li>
+<li>关系型容器中基于红黑树的<code>set</code>，<code>multiset</code>，<code>map</code>，<code>multimap</code>，本身就有自动排序的功能，不需要sort函数。如果有特殊排序需求的话，可以放入vector中；</li>
+<li><code>stack</code>，<code>queue</code>没有迭代器，入口出口固定，不能进行排序；</li>
+<li>基于哈希表的<code>unordered_map</code>等都是为排序的，也不需要排序。</li>
+</ol>
 <h3 id="count"><a href="#count" class="headerlink" title="count"></a>count</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;algorithm&gt;</span><br><span class="line"></span><br><span class="line">vector&lt;int&gt; nums = &#123;100,100,100,101&#125;;</span><br><span class="line">int num = count(nums.begin(),nums.end(),100);//统计100出现的次数</span><br></pre></td></tr></table></figure>
 
 <h3 id="lower-bound、upper-bound、binary-search"><a href="#lower-bound、upper-bound、binary-search" class="headerlink" title="lower_bound、upper_bound、binary_search"></a>lower_bound、upper_bound、binary_search</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;algorithm&gt;</span><br><span class="line"></span><br><span class="line">lower_bound(起始地址，结束地址，要查找的数值) //返回的是数值 第一个 出现的位置。</span><br><span class="line">upper_bound(起始地址，结束地址，要查找的数值) //返回的是数值 最后一个 出现的位置。</span><br><span class="line">binary_search(起始地址，结束地址，要查找的数值)  //返回的是是否存在这么一个数，是一个bool值。</span><br></pre></td></tr></table></figure>
@@ -497,7 +505,7 @@
   <p><span>本文标题:</span><a href="/2020/07/12/STL/">STL常用方法</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Su Zhilong 的个人博客">Su Zhilong</a></p>
   <p><span>发布时间:</span>2020年07月12日 - 14:07</p>
-  <p><span>最后更新:</span>2020年08月05日 - 18:08</p>
+  <p><span>最后更新:</span>2020年08月06日 - 10:08</p>
   <p><span>原始链接:</span><a href="/2020/07/12/STL/" title="STL常用方法">https://github.com/suzhilong/suzhilong.github.io.git/2020/07/12/STL/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/suzhilong/suzhilong.github.io.git/2020/07/12/STL/"  aria-label="复制成功！"></i></span>
   </p>
@@ -787,7 +795,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">95.1k</span> 字
+      博客全站共： <span class="post-count">95.4k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->

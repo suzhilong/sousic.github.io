@@ -66,7 +66,7 @@
 <meta property="og:description" content="面向对象的三个基本特征面向对象的三个基本特征是：封装、继承、多态。封装可以隐藏实现细节，使得代码模块化；继承可以扩展已存在的代码模块（类）。它们的目的都是代码重用；而多态则是为了实现另一个目的——接口重用。 封装是指利用抽象数据类型将数据和基于数据的操作封装在一起，使其构成一个不可分割的独立实体，数据被保护在抽象数据类型的内部，尽可能地隐藏内部的细节，只保留一些对外接口使之与外部发生联系。 封装把">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2020/08/05/2eGU6kMy8Xp5v4Y.png">
-<meta property="og:updated_time" content="2020-08-05T02:44:20.486Z">
+<meta property="og:updated_time" content="2020-08-06T10:58:25.291Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ Review">
 <meta name="twitter:description" content="面向对象的三个基本特征面向对象的三个基本特征是：封装、继承、多态。封装可以隐藏实现细节，使得代码模块化；继承可以扩展已存在的代码模块（类）。它们的目的都是代码重用；而多态则是为了实现另一个目的——接口重用。 封装是指利用抽象数据类型将数据和基于数据的操作封装在一起，使其构成一个不可分割的独立实体，数据被保护在抽象数据类型的内部，尽可能地隐藏内部的细节，只保留一些对外接口使之与外部发生联系。 封装把">
@@ -315,7 +315,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-08-05 10:44:20" itemprop="dateModified" datetime="2020-08-05T10:44:20+08:00">2020-08-05</time>
+                <time title="修改时间：2020-08-06 18:58:25" itemprop="dateModified" datetime="2020-08-06T18:58:25+08:00">2020-08-06</time>
               </span>
             
           
@@ -424,6 +424,9 @@
 <li>struct 默认权限为公共</li>
 <li>class 默认权限为私有</li>
 </ul>
+<p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class listNode&#123;//链表类</span><br><span class="line">public:</span><br><span class="line">    int val;</span><br><span class="line">    listNode *next;</span><br><span class="line">    listNode(int a) : val(a), next(nullptr)&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">struct biTree&#123;二叉树结构</span><br><span class="line">    int val;</span><br><span class="line">    biTree *lc;</span><br><span class="line">    biTree *rc;</span><br><span class="line">    biTree(int x) : val(x), lc(nullptr), rc(nullptr)&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //链表</span><br><span class="line">	listNode *ln = new listNode(1);</span><br><span class="line">    listNode *cur = ln;</span><br><span class="line">    cur-&gt;next = new listNode(2);</span><br><span class="line">    cur = cur-&gt;next;</span><br><span class="line">    cur-&gt;next = new listNode(3);</span><br><span class="line"></span><br><span class="line">	//二叉树</span><br><span class="line">    biTree parent(1);</span><br><span class="line">	biTree *root = new biTree(1);//也可以只有</span><br><span class="line">    biTree lc(2);</span><br><span class="line">    biTree rc(3);</span><br><span class="line">    parent.lc = &amp;lc;</span><br><span class="line">    parent.rc = &amp;rc;</span><br><span class="line"></span><br><span class="line">    biTree *root = &amp;parent;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h3><p>构造函数和析构函数解决了<strong>对象的初始化和清理</strong>这两个非常重要的安全问题，这两个函数将会被编译器自动调用，完成对象初始化和清理工作。</p>
 <p>对象的初始化和清理工作是编译器强制要我们做的事情，因此如果我们不提供构造和析构，编译器会提供构造函数和析构函数的空实现。</p>
 <ul>
@@ -1044,7 +1047,7 @@
   <p><span>本文标题:</span><a href="/2020/06/05/cppReview/">C++ Review</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Su Zhilong 的个人博客">Su Zhilong</a></p>
   <p><span>发布时间:</span>2020年06月05日 - 16:06</p>
-  <p><span>最后更新:</span>2020年08月05日 - 10:08</p>
+  <p><span>最后更新:</span>2020年08月06日 - 18:08</p>
   <p><span>原始链接:</span><a href="/2020/06/05/cppReview/" title="C++ Review">https://github.com/suzhilong/suzhilong.github.io.git/2020/06/05/cppReview/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/suzhilong/suzhilong.github.io.git/2020/06/05/cppReview/"  aria-label="复制成功！"></i></span>
   </p>
@@ -1304,12 +1307,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">276k</span>
+    <span title="站点总字数">277k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:11</span>
+    <span title="站点阅读时长">4:12</span>
 </div>
 
 <!--
@@ -1334,7 +1337,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">95.8k</span> 字
+      博客全站共： <span class="post-count">96.1k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->

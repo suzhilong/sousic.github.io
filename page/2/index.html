@@ -336,128 +336,20 @@
 
       
           
-            <h1 id="计算机网络概念"><a href="#计算机网络概念" class="headerlink" title="计算机网络概念"></a>计算机网络概念</h1><h2 id="网络协议"><a href="#网络协议" class="headerlink" title="网络协议"></a>网络协议</h2><p>在计算机网络要做到有条不紊地交换数据，就必须遵守一些事先约定好的规则，比如交换数据的格式、是否需要发送一个应答信息。这些规则被称为网络协议。</p>
-<h2 id="计算机网络体系结构"><a href="#计算机网络体系结构" class="headerlink" title="计算机网络体系结构"></a>计算机网络体系结构</h2><p>计算机网络体系结构是指计算机网络层次结构模型，它是各层的协议以及层次之间的端口的集合。在计算机网络中实现通信必须依靠网络通信协议，目前广泛采用的是国际标准化组织（ISO）1997年提出的开放系统互联（Open System Interconnection，OSI）参考模型，习惯上称为ISO/OSI参考模型。</p>
-<h2 id="不同的网络体系结构"><a href="#不同的网络体系结构" class="headerlink" title="不同的网络体系结构"></a>不同的网络体系结构</h2><h3 id="OSI七层协议体系结构"><a href="#OSI七层协议体系结构" class="headerlink" title="OSI七层协议体系结构"></a>OSI七层协议体系结构</h3><p>OSI 的七层协议体系结构的概念清楚，理论也较完整，但它既复杂又不实用。</p>
-<p>OSI七层协议模型主要包括是：</p>
-<ul>
-<li>应用层（Application）</li>
-<li>表示层（Presentation）</li>
-<li>会话层（Session）</li>
-<li>运输层（Transport）</li>
-<li>网络层（Network）</li>
-<li>数据链路层（Data Link）</li>
-<li>物理层（Physical）</li>
-</ul>
-<h3 id="TCP-IP四层体系结构"><a href="#TCP-IP四层体系结构" class="headerlink" title="TCP/IP四层体系结构"></a>TCP/IP四层体系结构</h3><p>TCP/IP 是一个四层体系结构，主要包括：</p>
-<ul>
-<li>应用层</li>
-<li>运输层</li>
-<li>网际层（用网际层这个名字是强调这一层是为了解决不同网络的互连问题）</li>
-<li>网络接口层</li>
-</ul>
-<p>不过从实质上讲，TCP/IP 只有最上面的三层，因为最下面的网络接口层并没有什么具体内容，因此在学习计算机网络的原理时往往采用折中的办法，即综合 OSI 和 TCP/IP 的优点，采用一种只有五层协议的体系结构。</p>
-<h3 id="五层协议的体系结构"><a href="#五层协议的体系结构" class="headerlink" title="五层协议的体系结构"></a>五层协议的体系结构</h3><p>五层协议的体系结构主要包括：</p>
-<ul>
-<li>应用层</li>
-<li>运输层</li>
-<li>网络层</li>
-<li>数据链路层</li>
-<li>物理层</li>
-</ul>
-<p><img src="https://i.loli.net/2020/06/09/wvthjWo3nSCx2NP.png" alt="不同体系结构对比"></p>
-<p><em>ps. 五层协议的体系结构只是为了介绍网络原理而设计的，实际应用还是 TCP/IP 四层体系结构。</em></p>
-<h2 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h2><p><img src="https://i.loli.net/2020/06/09/Heb6Y83xwKsiodr.png" alt="TCP/IP四层协议表示方法举例"></p>
-<h2 id="具有五层协议的体系结构"><a href="#具有五层协议的体系结构" class="headerlink" title="具有五层协议的体系结构"></a>具有五层协议的体系结构</h2><h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><p>应用层（application-layer）的任务是通过<strong>应用进程间</strong>的交互来完成特定网络应用。应用层协议定义的是应用进程（进程：主机中正在运行的程序）间的通信和交互的规则。</p>
-<h3 id="运输层"><a href="#运输层" class="headerlink" title="运输层"></a>运输层</h3><p>运输层（transport layer）的主要任务就是负责向<strong>两台主机进程之间</strong>的通信提供<strong>通用的数据传输</strong>服务。应用进程利用该服务传送应用层报文。</p>
-<p>运输层主要使用一下两种协议</p>
-<ul>
-<li>TCP-传输控制协议：提供面向连接的，可靠的数据传输服务</li>
-<li>UDP-用户数据协议：提供无连接的，尽最大努力的数据传输服务（不保证数据传输的可靠性）</li>
-</ul>
-<h4 id="TCP和UDP对比"><a href="#TCP和UDP对比" class="headerlink" title="TCP和UDP对比"></a>TCP和UDP对比</h4><table>
-<thead>
-<tr>
-<th align="center"></th>
-<th align="center">UPD</th>
-<th align="center">TCP</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">是否连接</td>
-<td align="center">无连接</td>
-<td align="center">面向连接（3次握手）</td>
-</tr>
-<tr>
-<td align="center">是否可靠</td>
-<td align="center">尽最大努力交付，不保证可靠。不使用流量控制和拥塞控制</td>
-<td align="center">使用流量控制和拥塞控制。可靠服务：无差错、不丢失、不重复、按序到达</td>
-</tr>
-<tr>
-<td align="center">传输方式</td>
-<td align="center">面向报文</td>
-<td align="center">面向字节流</td>
-</tr>
-<tr>
-<td align="center">连接对象个数</td>
-<td align="center">一对一，多对多，多对一，一对多</td>
-<td align="center">一对一</td>
-</tr>
-<tr>
-<td align="center">首部开销</td>
-<td align="center">8字节</td>
-<td align="center">首部最小20字节，最大60字节</td>
-</tr>
-</tbody></table>
-<h4 id="使UPD可靠的方法"><a href="#使UPD可靠的方法" class="headerlink" title="使UPD可靠的方法"></a>使UPD可靠的方法</h4><ul>
-<li>超时重传（定时器）</li>
-<li>有序接受 （添加包序号）</li>
-<li>应答确认 （Seq/Ack应答机制）</li>
-<li>滑动窗口流量控制等机制 （滑动窗口协议）</li>
-</ul>
-<p>已有协议：</p>
-<ul>
-<li>可靠用户数据报协议（RUDP）：RUDP使用类似于TCP的重发机制和拥塞控制算法</li>
-<li>实时协议（RTP）：有效负载识别，序列编号，时间戳和投递监听</li>
-<li>基于UDP的数据传输协议（UDT）：序列号、滑动窗口</li>
-</ul>
-<h4 id="每一个应用层（TCP-IP参考模型的最高层）协议一般都会使用到两个传输层协议之一"><a href="#每一个应用层（TCP-IP参考模型的最高层）协议一般都会使用到两个传输层协议之一" class="headerlink" title="每一个应用层（TCP/IP参考模型的最高层）协议一般都会使用到两个传输层协议之一"></a>每一个应用层（TCP/IP参考模型的最高层）协议一般都会使用到两个传输层协议之一</h4><p><em>ps. 以下协议是应用层协议：</em></p>
-<p>运行在TCP协议上的协议：</p>
-<ul>
-<li>HTTP（Hypertext Transfer Protocol，超文本传输协议），主要用于普通浏览。</li>
-<li>HTTPS（HTTP over SSL，安全超文本传输协议）,HTTP协议的安全版本。</li>
-<li>FTP（File Transfer Protocol，文件传输协议），用于文件传输。</li>
-<li>POP3（Post Office Protocol, version 3，邮局协议），收邮件用。</li>
-<li>SMTP（Simple Mail Transfer Protocol，简单邮件传输协议），用来发送电子邮件。</li>
-<li>TELNET（Teletype over the Network，网络电传），通过一个终端（terminal）登陆到网络。</li>
-<li>SSH（Secure Shell，用于替代安全性差的TELNET），用于加密安全登陆用。</li>
-</ul>
-<p>运行在UDP协议上的协议：</p>
-<ul>
-<li>BOOTP（Boot Protocol，启动协议），应用于无盘设备。</li>
-<li>NTP（Network Time Protocol，网络时间协议），用于网络同步。</li>
-<li>DHCP（Dynamic Host Configuration Protocol，动态主机配置协议），动态配置IP地址。</li>
-</ul>
-<p>运行在TCP和UDP协议上：</p>
-<ul>
-<li>DNS（Domain Name Service，域名服务），用于完成地址查找，邮件转发等工作。</li>
-</ul>
-<h3 id="网络层（网际层）"><a href="#网络层（网际层）" class="headerlink" title="网络层（网际层）"></a>网络层（网际层）</h3><p>网络层负责为分组交换网上的不同<strong>主机</strong>提供通信服务。在发送数据时，网络层把运输层产生的报文段或用户数据报封装成分组和包进行传送。在 TCP/IP 体系结构中，由于网络层使用 IP 协议，因此分组也叫 IP 数据报 ，简称数据报。</p>
-<p>互联网是由大量的异构（heterogeneous）网络通过路由器（router）相互连接起来的。互联网使用的网络层协议是无连接的网际协议（Intert Prococol）和许多路由选择协议，因此互联网的网络层也叫做网际层或 IP 层。</p>
-<h3 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h3><p>数据链路层(data link layer)通常简称为链路层。两台主机之间的数据传输，总是在一段一段的链路上传送的，这就需要使用专门的链路层的协议。</p>
-<p>在两个相邻节点之间传送数据时，数据链路层将网络层交下来的 IP 数据报组装成帧，在两个相邻节点间的链路上传送帧。每一帧包括数据和必要的控制信息（如同步信息，地址信息，差错控制等）。</p>
-<h3 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h3><p>在物理层上所传送的数据单位是比特。</p>
-<h3 id="数据传输过程"><a href="#数据传输过程" class="headerlink" title="数据传输过程"></a>数据传输过程</h3><p><img src="https://i.loli.net/2020/06/09/bgk9DNdcfawv5Fe.png" alt="数据在各层之间的传递过程"></p>
-<h2 id="TCP的三次握手四次挥手"><a href="#TCP的三次握手四次挥手" class="headerlink" title="TCP的三次握手四次挥手"></a>TCP的三次握手四次挥手</h2><h3 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h3><p><img src="https://i.loli.net/2020/06/10/RQOy2WUYzfbxtmv.png" alt="三次握手"></p>
-<h3 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h3><p><img src="https://i.loli.net/2020/06/10/lD6isBec9Oh2zWo.jpg" alt="四次挥手"></p>
-<p>MSL是Maximum Segment Lifetime英文的缩写，中文可以译为“报文最大生存时间”，他是任何报文在网络上存在的最长时间，超过这个时间报文将被丢弃。</p>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
-<li>谢希仁. 计算机网络（第7版）. 电子工业出版社</li>
-<li><a href="https://blog.csdn.net/ThinkWon/article/details/104903925" target="_blank" rel="noopener">重学TCP/IP协议和三次握手四次挥手</a></li>
-<li><a href="https://blog.csdn.net/ls5718/article/details/52141571?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task" target="_blank" rel="noopener">TCP/UDP区别以及UDP如何实现可靠传输</a></li>
-</ul>
-
+            <p>
+              计算机网络概念网络协议在计算机网络要做到有条不紊地交换数据，就必须遵守一些事先约定好的规则，比如交换数据的格式、是否需要发送一个应答信息。这些规则被称为网络协议。
+计算机网络体系结构计算机网络体系结构是指计算机网络层次结构模型，它是各层的协议以及层次之间的端口的集合。在计算机网络中实现通信必须依靠网
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2020/06/10/network/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -601,129 +493,21 @@
 
       
           
-            <h1 id="一、基础知识"><a href="#一、基础知识" class="headerlink" title="一、基础知识"></a>一、基础知识</h1><h2 id="1-框架有三种选择：-Jekyll、Hexo、WordPress"><a href="#1-框架有三种选择：-Jekyll、Hexo、WordPress" class="headerlink" title="1.框架有三种选择：(Jekyll、Hexo、WordPress)"></a>1.框架有三种选择：(Jekyll、<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">Hexo</a>、WordPress)</h2><ul>
-<li><a href="https://hexo.io/themes/" target="_blank" rel="noopener">Hexo主题</a></li>
-<li><a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT主题</a><h2 id="2-Nginx是一款轻量级的Web-服务器-反向代理服务器及电子邮件（IMAP-POP3）代理服务器，简单来说就是你输入ip-域名时帮你打开网页文件的。"><a href="#2-Nginx是一款轻量级的Web-服务器-反向代理服务器及电子邮件（IMAP-POP3）代理服务器，简单来说就是你输入ip-域名时帮你打开网页文件的。" class="headerlink" title="2.Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，简单来说就是你输入ip/域名时帮你打开网页文件的。"></a>2.Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，简单来说就是你输入ip/域名时帮你打开网页文件的。</h2><h1 id="二、本地环境"><a href="#二、本地环境" class="headerlink" title="二、本地环境"></a>二、本地环境</h1>MacOS 、Linux 、Window安装过程不同，具体请看Hexo官网教程。本篇以MacOS为例。<h2 id="1-安装Git"><a href="#1-安装Git" class="headerlink" title="1.安装Git"></a>1.安装Git</h2><h3 id="1-MacOS"><a href="#1-MacOS" class="headerlink" title="1)MacOS:"></a>1)MacOS:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install git</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="2-Linux"><a href="#2-Linux" class="headerlink" title="2)Linux"></a>2)Linux</h3><ul>
-<li>Ubuntu,Debian: <code>sudo apt-get install git-core</code></li>
-<li>CentOS: <code>sudo yum install git-core</code></li>
-<li>验证是否安装成功：<code>git --version</code><h2 id="2-安装NodeJs"><a href="#2-安装NodeJs" class="headerlink" title="2.安装NodeJs"></a>2.安装NodeJs</h2>NodeJS官网有提供安装包：<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a> 下载安装即可<br>验证是否安装成功：<code>node --version</code><br>如果出现版本信息即安装成功<h2 id="3-安装Hexo"><a href="#3-安装Hexo" class="headerlink" title="3.安装Hexo"></a>3.安装Hexo</h2><h3 id="1-安装："><a href="#1-安装：" class="headerlink" title="1)安装："></a>1)安装：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>有的是用<code>npm install -g hexo</code><br>他们的不同之处请看这篇<a href="https://one-more-tech.gitlab.io/Hexo-%E4%B8%8E-Hexo-cli-%E7%9A%84%E5%85%B3%E7%B3%BB%E3%80%81%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/index/" target="_blank" rel="noopener">https://one-more-tech.gitlab.io/Hexo-%E4%B8%8E-Hexo-cli-%E7%9A%84%E5%85%B3%E7%B3%BB%E3%80%81%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/index/</a></p>
-<h3 id="2-本地创建一个文件夹存放Hexo的博客源码，cd进该文件夹后输入-hexo-initProjectName（这里的ProjectName就是你的项目文件名称，如-hexo-initblog）。完成后源文件夹会出现如下目录结构："><a href="#2-本地创建一个文件夹存放Hexo的博客源码，cd进该文件夹后输入-hexo-initProjectName（这里的ProjectName就是你的项目文件名称，如-hexo-initblog）。完成后源文件夹会出现如下目录结构：" class="headerlink" title="2)本地创建一个文件夹存放Hexo的博客源码，cd进该文件夹后输入: hexo initProjectName（这里的ProjectName就是你的项目文件名称，如 hexo initblog）。完成后源文件夹会出现如下目录结构："></a>2)本地创建一个文件夹存放Hexo的博客源码，cd进该文件夹后输入: <code>hexo init</code>ProjectName（这里的ProjectName就是你的项目文件名称，如 <code>hexo init</code>blog）。完成后源文件夹会出现如下目录结构：</h3><p><img src="https://b2.bmp.ovh/imgs/2019/08/6b7b2fef7377b680.png" alt="目录"></p>
-<p>cd 进该文件夹(如blog)后输入<code>hexo s -debug</code>或者<code>hexo server</code> 就能启动项目了。如果启动成功会出现以下提示：<br><img src="https://b2.bmp.ovh/imgs/2019/08/6d84089d158f5b9b.png" alt></p>
-<p>在浏览器输入<code>localhost:4000</code> 就能访问项目了。<br>初始使用是Hexo的默认主题，我们也可以使下载NexT的主题配置，将下载后的next文件夹直接丢到themes文件夹中即可，具体使用方法请查看<a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT官网</a>。或者下载<a href="https://hexo.io/themes/" target="_blank" rel="noopener">其他hexo主题</a></p>
-<h1 id="三、服务器"><a href="#三、服务器" class="headerlink" title="三、服务器"></a>三、服务器</h1><p><em>ps:如果使用github.io，只需以 github用户名.github.io 为名建立一个仓库就行了，之后可以用 github用户名.github.io 访问博客</em></p>
-<p>服务器，域名，备案等自行查看参考文章。</p>
-<h2 id="1-SSH连接远程服务器"><a href="#1-SSH连接远程服务器" class="headerlink" title="1.SSH连接远程服务器"></a>1.SSH连接远程服务器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh USERNAME@IP</span><br></pre></td></tr></table></figure>
-
-<p>USERNAME为服务器用户名，一般阿里的的服务器初始用户名为root，IP为你的公网IP地址，如：<code>ssh root@111.111.111.111</code></p>
-<h2 id="2-配置SSH公钥"><a href="#2-配置SSH公钥" class="headerlink" title="2.配置SSH公钥"></a>2.配置SSH公钥</h2><h3 id="1）生成公钥"><a href="#1）生成公钥" class="headerlink" title="1）生成公钥"></a>1）生成公钥</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
-
-<p>键入这个命令后，会提示让你给这个公钥配置密码（passphrase），我们既然是为了避免多次输入密码， 这里为什么还要给公钥配置密码呢，所以我们要一路回车，不理他（会出现三次）</p>
-<h3 id="2）将本地公钥拷贝到服务器"><a href="#2）将本地公钥拷贝到服务器" class="headerlink" title="2）将本地公钥拷贝到服务器"></a>2）将本地公钥拷贝到服务器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id USERNAME@IP</span><br></pre></td></tr></table></figure>
-
-<p>如果之前已经生成过的，用以下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i sshPATH USERNAME@IP</span><br></pre></td></tr></table></figure>
-
-<p>如:<code>ssh-copy-id -i .ssh/id_rsa.pub root@111.111.111</code><br>id_rsa是私钥，id_rsa.pub是公钥，要传到服务器的是公钥.pub<br>(参考三、1)</p>
-<h3 id="3-只需要在步骤最后输入一次服务器密码，以后再连接SSH就不需要输入密码了"><a href="#3-只需要在步骤最后输入一次服务器密码，以后再连接SSH就不需要输入密码了" class="headerlink" title="3)只需要在步骤最后输入一次服务器密码，以后再连接SSH就不需要输入密码了"></a>3)只需要在步骤最后输入一次服务器密码，以后再连接SSH就不需要输入密码了</h3><h2 id="3-安装Git"><a href="#3-安装Git" class="headerlink" title="3.安装Git"></a>3.安装Git</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install git-core</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-安装Nginx"><a href="#4-安装Nginx" class="headerlink" title="4.安装Nginx"></a>4.安装Nginx</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nginx</span><br></pre></td></tr></table></figure>
-
-<p>启动nginx：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service nginx start</span><br></pre></td></tr></table></figure>
-
-<p>然后你在浏览器中输入自己的公网IP，可以看到如下就证明nginx安装成功：<br><img src="https://b2.bmp.ovh/imgs/2019/08/44d040e51ec0ae1e.png" alt></p>
-<h2 id="5-创建一个网站的根目录（用于存放网站的部署的静态文件）"><a href="#5-创建一个网站的根目录（用于存放网站的部署的静态文件）" class="headerlink" title="5.创建一个网站的根目录（用于存放网站的部署的静态文件）"></a>5.创建一个网站的根目录（用于存放网站的部署的静态文件）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /var/www/blog</span><br></pre></td></tr></table></figure>
-
-<h2 id="6-nginx的配置"><a href="#6-nginx的配置" class="headerlink" title="6.nginx的配置"></a>6.nginx的配置</h2><p>我的Nginx版本是1.10.3，一般nginx配置文件夹是在/etc/nginx/下的，如果是其他版本的，先搞清楚自己的配置文件夹在哪里的，有的是在/usr/下。</p>
-<p>目前找到三种配置的办法：</p>
-<h3 id="1）网上大部分教程都是在-etc-nginx-conf-d-这个文件夹下-vim-FILENAME-conf-d-来创建一个配置文件，在里面写入："><a href="#1）网上大部分教程都是在-etc-nginx-conf-d-这个文件夹下-vim-FILENAME-conf-d-来创建一个配置文件，在里面写入：" class="headerlink" title="1）网上大部分教程都是在 /etc/nginx/conf.d 这个文件夹下 vim FILENAME.conf.d 来创建一个配置文件，在里面写入："></a>1）网上大部分教程都是在 /etc/nginx/conf.d 这个文件夹下 vim FILENAME.conf.d 来创建一个配置文件，在里面写入：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    listen 80;//端口号</span><br><span class="line">    server_name _;//域名</span><br><span class="line">    root /var/www/blog;/*网站根目录，出于权限问题考虑，建议把网站配置在www文件目录下*/</span><br><span class="line">    location / &#123;</span><br><span class="line">        index index.htm index.html</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>但是我试了很多次都没有成功，不太清楚conf.d目录下的配置怎么载入的。</p>
-<h3 id="2）修改总配置文件："><a href="#2）修改总配置文件：" class="headerlink" title="2）修改总配置文件："></a>2）修改总配置文件：</h3><p>首先备份一下nginx.conf ：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/nginx</span><br><span class="line">cp nginx.conf nginx.conf.bak</span><br></pre></td></tr></table></figure>
-
-<p>然后vim修改  /etc/nginx/nginx.conf ，把server模块里的端口号(listen)、域名(server_name)、根目录(root)改为和1）相同。<br>因为nginx.conf是总配置文件，某个小错误可能会导致网站打不开，所以更推荐第三种。</p>
-<h3 id="3）修改-etc-nginx-sites-available-default："><a href="#3）修改-etc-nginx-sites-available-default：" class="headerlink" title="3）修改 /etc/nginx/sites-available/default："></a>3）修改 /etc/nginx/sites-available/default：</h3><p>vim /etc/nginx/sites-available/default<br>同上，把server把server模块里root后面改为你的网页根目录。本例是改为root /var/www/blog;<br>注：如果需要配置多个虚拟主机，需要用<code>ln -sf /etc/nginx/sites-available/* /etc/nginx/sites-enabled</code>创建软连接，具体请查看参考</p>
-<h3 id="4）重启Nginx"><a href="#4）重启Nginx" class="headerlink" title="4）重启Nginx"></a>4）重启Nginx</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service nginx restart</span><br></pre></td></tr></table></figure>
-
-<h2 id="7-Git的建仓与配置"><a href="#7-Git的建仓与配置" class="headerlink" title="7.Git的建仓与配置"></a>7.Git的建仓与配置</h2><p>建仓：<br>第1）步和第2）步有两种方法</p>
-<h3 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h3><h3 id="1-创建一个文件夹存作为git仓库"><a href="#1-创建一个文件夹存作为git仓库" class="headerlink" title="1)创建一个文件夹存作为git仓库"></a>1)创建一个文件夹存作为git仓库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir PATH/FILENAME</span><br></pre></td></tr></table></figure>
-
-<p>如：<code>mkdir ~/blog.git</code><br>然后 <code>cd ~/blog.git</code></p>
-<h4 id="2-建仓"><a href="#2-建仓" class="headerlink" title="2)建仓"></a>2)建仓</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init --bare</span><br></pre></td></tr></table></figure>
-
-<h3 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h3><h3 id="1）"><a href="#1）" class="headerlink" title="1）"></a>1）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br></pre></td></tr></table></figure>
-
-<h3 id="2）"><a href="#2）" class="headerlink" title="2）"></a>2）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init --bare FILENAME</span><br></pre></td></tr></table></figure>
-
-<p>如：<code>git init --bare blog.git</code></p>
-<h3 id="3）如果新建了用户，或者不是root（管理员）账号，还需要修改仓库的权限："><a href="#3）如果新建了用户，或者不是root（管理员）账号，还需要修改仓库的权限：" class="headerlink" title="3）如果新建了用户，或者不是root（管理员）账号，还需要修改仓库的权限："></a>3）如果新建了用户，或者不是root（管理员）账号，还需要修改仓库的权限：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown -R USERNAME:GROUP FILENAME</span><br></pre></td></tr></table></figure>
-
-<p>比如新建了一个用户git来建站，则 <code>chown -R git:git ~/blog.git</code><br>本例没有这一步，就略过修改权限<br>配置hooks：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/blog.git</span><br><span class="line">vim post-receive</span><br></pre></td></tr></table></figure>
-
-<p>在post-receive中写入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">rm -rf /var/www/blog</span><br><span class="line">git clone /root/blog.git /var/www/blog</span><br></pre></td></tr></table></figure>
-
-<p>或者：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">git --work-tree=/var/www/blog --git-dir=/root/blog.git checkout -f</span><br></pre></td></tr></table></figure>
-
-<p>赋予这个文件夹权限：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x ~/blog.git/hooks/post-receive</span><br></pre></td></tr></table></figure>
-
-<h1 id="四、本地Hexo配置"><a href="#四、本地Hexo配置" class="headerlink" title="四、本地Hexo配置"></a>四、本地Hexo配置</h1><p>回到本地的机器上，进入你的hexo文件夹（就是你完成hexo init的那个）<br>找到_config.yml, 修改里面的deploy：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: USERNAME@IP:GitPath //如：root@111.111.111.111:/root/blog.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-
-<p><em>注：USERNAME指的是你的服务器用户名，本例是root</em><br>     <em>IP是指你服务器的公网IP</em><br>     <em>GitPath是服务器上的Git仓库路上，按上面的流程应该是：/root/blog.git</em></p>
-<p><em>如果使用的是github.io，那么整个repo就改为你的github仓库地址，如：<a href="https://xxx.github.io" target="_blank" rel="noopener">https://xxx.github.io</a></em></p>
-<h1 id="五、发布项目"><a href="#五、发布项目" class="headerlink" title="五、发布项目"></a>五、发布项目</h1><h2 id="1-cd进你的hexo根目录（就是你完成hexo-init的那个）"><a href="#1-cd进你的hexo根目录（就是你完成hexo-init的那个）" class="headerlink" title="1.cd进你的hexo根目录（就是你完成hexo init的那个）"></a>1.cd进你的hexo根目录（就是你完成hexo init的那个）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>或者<code>hexo g -d</code>  </p>
-<p>如果显示not fount git，是因为我们没有在这个项目中安装git插件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git —save</span><br></pre></td></tr></table></figure>
-
-<p>安装完后再来一遍 <code>hexo g -d</code></p>
-<p>然后会让你输入你公网IP对应服务器的密码，输入完成后会生成一堆静态文件，并部署到远程服务器上</p>
-<p>如果上述一切都操作成功，你就可以在浏览器输入IP或域名查看你的项目了</p>
-<h1 id="Hexo基本命令："><a href="#Hexo基本命令：" class="headerlink" title="Hexo基本命令："></a>Hexo基本命令：</h1><h3 id="1-新建文章"><a href="#1-新建文章" class="headerlink" title="1.新建文章"></a>1.新建文章</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;文章名&quot;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-刷新-目的是删除原来的public文件夹，避免污染"><a href="#2-刷新-目的是删除原来的public文件夹，避免污染" class="headerlink" title="2.刷新(目的是删除原来的public文件夹，避免污染)"></a>2.刷新(目的是删除原来的public文件夹，避免污染)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-生成-amp-amp-部署"><a href="#3-生成-amp-amp-部署" class="headerlink" title="3.生成&amp;&amp;部署"></a>3.生成&amp;&amp;部署</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<h1 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h1><ul>
-<li><a href="https://www.jianshu.com/p/f4658df66a15" target="_blank" rel="noopener">Hexo博客使用valine评论系统无效果及终极解决方案</a></li>
-</ul>
-<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><ul>
-<li><a href="https://tycoding.cn/2018/04/27/other/%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8EHexo%E7%9A%84Blog/" target="_blank" rel="noopener">搭建步骤</a></li>
-<li><a href="http://blog.clannadbred.com/2017/10/28/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CNginx%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/" target="_blank" rel="noopener">搭建步骤</a></li>
-<li><a href="https://www.jianshu.com/p/43889e748b89" target="_blank" rel="noopener">搭建步骤</a></li>
-<li><a href="https://www.jianshu.com/p/e03e363713f9" target="_blank" rel="noopener">很多个性化主题教程链接</a></li>
-<li><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="noopener">hexo的安装和使用</a></li>
-<li><a href="https://hackwork.org/handbook/website/56/" target="_blank" rel="noopener">服务器，域名</a></li>
-<li><a href="http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html" target="_blank" rel="noopener">ssh</a></li>
-<li><a href="https://segmentfault.com/a/1190000014027697" target="_blank" rel="noopener">Nginx安装</a></li>
-<li><a href="https://www.jianshu.com/p/849343f679aa" target="_blank" rel="noopener">Nginx配置</a></li>
-<li><a href="https://www.jianshu.com/p/fd25a9c008a0" target="_blank" rel="noopener">Nginx目录说明</a></li>
-<li><a href="https://www.jianshu.com/p/efab29b6c3b0" target="_blank" rel="noopener">Nginx多个虚拟主机</a></li>
-</ul>
-<h2 id="ps"><a href="#ps" class="headerlink" title="ps:"></a>ps:</h2><p>如果想在首页不显示某篇文章，只在分类中显示，可以修改 <code>themes/next/layout/index.swig</code> 文件，把</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;% block content %&#125;</span><br><span class="line">  &lt;section id=&quot;posts&quot; class=&quot;posts-expand&quot;&gt;</span><br><span class="line">    &#123;%- for post in page.posts %&#125;</span><br><span class="line">      &#123;&#123; partial(&apos;_macro/post.swig&apos;, &#123;is_index: true&#125;) &#125;&#125;</span><br><span class="line">    &#123;%- endfor %&#125;</span><br><span class="line">  &lt;/section&gt;</span><br></pre></td></tr></table></figure>
-
-<p>改为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;% block content %&#125;</span><br><span class="line">  &lt;section id=&quot;posts&quot; class=&quot;posts-expand&quot;&gt;</span><br><span class="line">    &#123;%- for post in page.posts %&#125;</span><br><span class="line">      &#123;%- if post.hide != true %&#125;</span><br><span class="line">        &#123;&#123; partial(&apos;_macro/post.swig&apos;, &#123;is_index: true&#125;) &#125;&#125;</span><br><span class="line">      &#123;%- endif %&#125;</span><br><span class="line">    &#123;%- endfor %&#125;</span><br><span class="line">  &lt;/section&gt;</span><br></pre></td></tr></table></figure>
-
-<p>然后在要隐藏文章的md文件的front-matter中加上<code>hide: true</code></p>
-
+            <p>
+              一、基础知识1.框架有三种选择：(Jekyll、Hexo、WordPress)
+Hexo主题
+NexT主题2.Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，简单来说就是你输入ip/域名时帮你打开网页文件的。二、本地环境MacOS 、Linux 、W
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/08/02/blogBuild/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>

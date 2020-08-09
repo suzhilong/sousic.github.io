@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>Leetcode每日一题 - 2020年八月 | SOUSIC</title>
+  <meta name="description" content="8月3日 415. 字符串相加（简单）给定两个字符串形式的非负整数 num1 和num2 ，计算它们的和。 注意： 1234num1 和num2 的长度都小于 5100.num1 和num2 都只包含数字 0-9.num1 和num2 都不包含任何前导零。你不能使用任何內建 BigInteger 库， 也不能直接将输入的字符串转换为整数形式。  题解：两个数字位数不同时，在指针当前下标处于负数的时">
+<meta name="keywords" content="Leetcode daily">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode每日一题 - 2020年八月">
+<meta property="og:url" content="https://github.com/suzhilong/suzhilong.github.io.git/2020/08/01/LeetcodeDaily_Aug/index.html">
+<meta property="og:site_name" content="SOUSIC">
+<meta property="og:description" content="8月3日 415. 字符串相加（简单）给定两个字符串形式的非负整数 num1 和num2 ，计算它们的和。 注意： 1234num1 和num2 的长度都小于 5100.num1 和num2 都只包含数字 0-9.num1 和num2 都不包含任何前导零。你不能使用任何內建 BigInteger 库， 也不能直接将输入的字符串转换为整数形式。  题解：两个数字位数不同时，在指针当前下标处于负数的时">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-08-05T08:50:09.331Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Leetcode每日一题 - 2020年八月">
+<meta name="twitter:description" content="8月3日 415. 字符串相加（简单）给定两个字符串形式的非负整数 num1 和num2 ，计算它们的和。 注意： 1234num1 和num2 的长度都小于 5100.num1 和num2 都只包含数字 0-9.num1 和num2 都不包含任何前导零。你不能使用任何內建 BigInteger 库， 也不能直接将输入的字符串转换为整数形式。  题解：两个数字位数不同时，在指针当前下标处于负数的时">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://github.com/suzhilong/suzhilong.github.io.git/2020/08/01/LeetcodeDaily_Aug/index.html">
+  
+  
+    <link rel="icon" href="../../images/favicon-32x32-next.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/suzhilong" target="_blank">
+          <img class="img-circle img-rotate" src="/../../images/favicon-32x32-next.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">SOUSIC</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">哈库呐玛塔塔</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> </small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/suzhilong" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>哈库呐玛塔塔</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CS/">CS</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/robot/">robot</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web前端/">web前端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂/">杂</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Computer-vision/">Computer vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode-daily/">Leetcode daily</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/autonomous-driving/">autonomous driving</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/">cpp</a><span class="tag-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-LeetcodeDaily_Aug" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Leetcode每日一题 - 2020年八月
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/08/01/LeetcodeDaily_Aug/" class="article-date">
+	  <time datetime="2020-08-01T12:00:00.000Z" itemprop="datePublished">2020-08-01</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Algorithm/">Algorithm</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Leetcode-daily/">Leetcode daily</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+	<span class="article-read hidden-xs">
+    	<i class="icon icon-eye-fill" aria-hidden="true"></i>
+    	<span id="/2020/08/01/LeetcodeDaily_Aug/" class="leancloud_visitors"  data-flag-title="Leetcode每日一题 - 2020年八月">0</span>
+    </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/08/01/LeetcodeDaily_Aug/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.1k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="8月3日-415-字符串相加（简单）"><a href="#8月3日-415-字符串相加（简单）" class="headerlink" title="8月3日 415. 字符串相加（简单）"></a>8月3日 <a href="https://leetcode-cn.com/problemset/all/" target="_blank" rel="noopener">415. 字符串相加（简单）</a></h1><p>给定两个字符串形式的非负整数 num1 和num2 ，计算它们的和。</p>
+<p>注意：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">num1 和num2 的长度都小于 5100.</span><br><span class="line">num1 和num2 都只包含数字 0-9.</span><br><span class="line">num1 和num2 都不包含任何前导零。</span><br><span class="line">你不能使用任何內建 BigInteger 库， 也不能直接将输入的字符串转换为整数形式。</span><br></pre></td></tr></table></figure>
+
+<p>题解：<br>两个数字位数不同时，在指针当前下标处于负数的时候返回 0，等价于对位数较短的数字进行了补零操作，这样就可以除去两个数字位数不同情况的处理。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">string addStrings(string num1, string num2)&#123;</span><br><span class="line">    int i = num1.length() - 1, j = num2.length() - 1, add = 0;</span><br><span class="line">    string res = &quot;&quot;;</span><br><span class="line">    while (i &gt;= 0 || j &gt;= 0 || carry != 0) &#123;</span><br><span class="line">        int x = i &gt;= 0 ? num1[i] - &apos;0&apos; : 0;</span><br><span class="line">        int y = j &gt;= 0 ? num2[j] - &apos;0&apos; : 0;</span><br><span class="line">        int result = x + y + carry;</span><br><span class="line">        res.push_back(&apos;0&apos; + result % 10);</span><br><span class="line">        carry = result / 10;</span><br><span class="line">        i -= 1;</span><br><span class="line">        j -= 1;</span><br><span class="line">    &#125;</span><br><span class="line">    // 计算完以后的答案需要翻转过来</span><br><span class="line">    reverse(res.begin(), res.end());</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度：O(max{n1,n2})<br>空间复杂度：O(1)</p>
+<h1 id="8月4日-207-课程表（中等）"><a href="#8月4日-207-课程表（中等）" class="headerlink" title="8月4日 207. 课程表（中等）"></a>8月4日 <a href="https://leetcode-cn.com/problems/course-schedule/" target="_blank" rel="noopener">207. 课程表（中等）</a></h1><p>你这个学期必须选修 numCourse 门课程，记为 0 到 numCourse-1 。</p>
+<p>在选修某些课程之前需要一些先修课程。 例如，想要学习课程 0 ，你需要先完成课程 1 ，我们用一个匹配来表示他们：[0,1]</p>
+<p>给定课程总量以及它们的先决条件，请你判断是否可能完成所有课程的学习？</p>
+<p>示例 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: 2, [[1,0]] </span><br><span class="line">输出: true</span><br><span class="line">解释: 总共有 2 门课程。学习课程 1 之前，你需要完成课程 0。所以这是可能的。</span><br></pre></td></tr></table></figure>
+
+<p>示例 2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: 2, [[1,0],[0,1]]</span><br><span class="line">输出: false</span><br><span class="line">解释: 总共有 2 门课程。学习课程 1 之前，你需要先完成​课程 0；并且学习课程 0 之前，你还应先完成课程 1。这是不可能的。</span><br></pre></td></tr></table></figure>
+
+<p>提示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入的先决条件是由 边缘列表 表示的图形，而不是 邻接矩阵 。详情请参见图的表示法。</span><br><span class="line">你可以假定输入的先决条件中没有重复的边。</span><br><span class="line">1 &lt;= numCourses &lt;= 10^5</span><br></pre></td></tr></table></figure>
+
+<p>题解：  </p>
+<ol>
+<li>有向图的dfs遍历。<br><code>visited[i]</code>表示第i和节点的状态，0表示没有被访问过，1表示正在被访问，2表示访问结束的节点。<code>circle</code>表示有向图有环。使用dfs遍历有向图：</li>
+</ol>
+<ul>
+<li>当正在访问的节点（visited[i]=1）又被访问时，说明有向图存在环，返回false。</li>
+<li>全部节点访问完毕，返回true<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">void dfs(int u, vector&lt;vector&lt;int&gt; &gt; &amp;graph, vector&lt;int&gt; &amp;visited)&#123;</span><br><span class="line">    visited[u] = 1;//正在访问该节点</span><br><span class="line">    for(int v:graph[u])&#123;</span><br><span class="line">        if(visited[v]==0)&#123;</span><br><span class="line">            dfs(v, graph, visited);</span><br><span class="line">            if(circle)</span><br><span class="line">                return;</span><br><span class="line">        &#125;else if(visited[v]==1)&#123;</span><br><span class="line">            circle = true;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    visited[u] = 2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool canFinish(int numCourses, vector&lt;vector&lt;int&gt; &gt;&amp; prerequisites) &#123;</span><br><span class="line">    if(prerequisites.empty())</span><br><span class="line">        return true;</span><br><span class="line">    vector&lt;vector&lt;int&gt; &gt; graph(numCourses);</span><br><span class="line">    for (auto course : prerequisites)</span><br><span class="line">    &#123;//build graph</span><br><span class="line">        graph[course[1]].push_back(course[0]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    vector&lt;int&gt; visited(numCourses);</span><br><span class="line">    for (int i = 0; i &lt; numCourses &amp;&amp; !circle; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(!visited[i])</span><br><span class="line">            dfs(i, graph, visited);</span><br><span class="line">    &#125;</span><br><span class="line">    return !circle;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>时间复杂度：O(m+n)。m是有向图的边，n是有向图的节点。<br>空间复杂度：O(m+n)</p>
+<ol start="2">
+<li>bfs入度为0的点<br>拓扑排序中，起点都是入度为0的点。把所有入度为0的节点放入队列，依次访问队列中的节点。访问的时候把所有从该节点出去的边都删掉，即该节点出发连接的边的入度都减1。再把入度减到0的点加入队列。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">bool canFinish(int numCourses, vector&lt;vector&lt;int&gt; &gt;&amp; prerequisites) &#123;</span><br><span class="line">    if(prerequisites.empty())</span><br><span class="line">        return true;</span><br><span class="line">    vector&lt;vector&lt;int&gt; &gt; graph(numCourses);</span><br><span class="line">    vector&lt;int&gt; inDegree(numCourses, 0);</span><br><span class="line">    for (auto course : prerequisites)</span><br><span class="line">    &#123;//build graph</span><br><span class="line">        graph[course[1]].push_back(course[0]);</span><br><span class="line">        inDegree[course[0]]++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    queue&lt;int&gt; que;</span><br><span class="line">    for (int i = 0; i &lt; numCourses;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(inDegree[i]==0)</span><br><span class="line">            que.push(i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int visited = 0;</span><br><span class="line">    while (!que.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        visited++;</span><br><span class="line">        int u = que.front();</span><br><span class="line">        que.pop();</span><br><span class="line">        for(int v:graph[u])&#123;</span><br><span class="line">            inDegree[v]--;</span><br><span class="line">            if(inDegree[v]==0)</span><br><span class="line">                que.push(v);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return visited == numCourses;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>时间复杂度：O(m+n)。m是有向图的边，n是有向图的节点。<br>空间复杂度：O(m+n)</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://github.com/suzhilong/suzhilong.github.io.git/2020/08/01/LeetcodeDaily_Aug/" title="Leetcode每日一题 - 2020年八月" target="_blank" rel="external">https://github.com/suzhilong/suzhilong.github.io.git/2020/08/01/LeetcodeDaily_Aug/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/suzhilong" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/../../images/favicon-32x32-next.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/suzhilong" target="_blank"><span class="text-dark">SOUSIC</span><small class="ml-1x">哈库呐玛塔塔</small></a></h3>
+        <div>This is me!</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2020/07/12/STL/" title="STL常用方法"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat" data-mobile-sites="weibo,qq"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/../../images/alipay.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/../../images/wechatpay.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/suzhilong" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2020 Su Zhilong
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<!-- custom analytics part create by xiamo -->
+<script defer src="https://cdn1.lncld.net/static/js/av-min-1.2.1.js"></script>
+<script defer>
+AV.init({
+  appId: '',
+  appKey: ''
+});
+
+function showTime(Counter) {
+	var query = new AV.Query(Counter);
+		var visitors= $('.leancloud_visitors');
+		query.greaterThanOrEqualTo("time", 0);		
+		query.find({
+			success: function(results) {
+				if (results.length == 0) {				
+					return;
+				}
+				var data = results;
+				visitors.each(function(){
+					var url = $(this).attr('id').trim();					
+					for (var i = 0; i < data.length; i++) {
+						var object = data[i];
+						var content = object.get('time');
+						var _url = object.get('url')
+						if(url == _url){
+							$(this).text(content);
+						}
+					}
+				})
+				
+			},
+			error: function(object, error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
+}
+
+function addCount(Counter) {
+	var Counter = AV.Object.extend("Counter");
+	url = $(".leancloud_visitors").attr('id').trim();
+	title = $(".leancloud_visitors").attr('data-flag-title').trim();
+	var query = new AV.Query(Counter);
+	query.equalTo("url", url);
+	query.find({
+		success: function(results) {
+			if (results.length > 0) {
+				var counter = results[0];
+				counter.fetchWhenSave(true);
+				counter.increment("time");
+				counter.save(null, {
+					success: function(counter) {
+						var content = counter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(counter, error) {
+						console.log('Failed to save Visitor num, with error message: ' + error.message);
+					}
+				});
+			} else {
+				var newcounter = new Counter();
+				newcounter.set("title", title);
+				newcounter.set("url", url);
+				newcounter.set("time", 1);
+				newcounter.save(null, {
+					success: function(newcounter) {
+					    console.log("newcounter.get('time')="+newcounter.get('time'));
+						var content = newcounter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(newcounter, error) {
+						console.log('Failed to create');
+					}
+				});
+			}
+		},
+		error: function(error) {
+			console.log('Error:' + error.code + " " + error.message);
+		}
+	});
+}
+$(function() {
+	var Counter = AV.Object.extend("Counter");
+	if ($('.leancloud_visitors').length == 1) {
+		addCount(Counter);
+	} else {
+		showTime(Counter);
+	}
+}); 
+</script>
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: true,
+    notify: false,
+    appId: 'uaEz4DL2UqM1jg1eGmpd8vhF-gzGzoHsz',
+    appKey: 'SzL1ETN5dDwbXjnzyJYJkjTb',
+    placeholder: 'Comment',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

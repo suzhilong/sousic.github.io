@@ -1,24 +1,87 @@
 <!DOCTYPE html>
-<html lang=zh>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="Cache-Control" content="no-transform">
-  <meta http-equiv="Cache-Control" content="no-siteapp">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="format-detection" content="telephone=no,email=no,adress=no">
-  <!-- Color theme for statusbar -->
-  <meta name="theme-color" content="#000000">
-  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
-  <meta http-equiv="window-target" content="_top">
   
-  
-  <title>Nginx搭建基于Hexo的Blog | SOUSIC</title>
-  <meta name="description" content="一、基础知识1.框架有三种选择：(Jekyll、Hexo、WordPress) Hexo主题 NexT主题2.Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，简单来说就是你输入ip/域名时帮你打开网页文件的。二、本地环境MacOS 、Linux 、Window安装过程不同，具体请看Hexo官网教程。本篇以MacOS为例。1.安装Git1)MacOS">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo,Nginx,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="SOUSIC" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="一、基础知识1.框架有三种选择：(Jekyll、Hexo、WordPress) Hexo主题 NexT主题2.Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，简单来说就是你输入ip/域名时帮你打开网页文件的。二、本地环境MacOS 、Linux 、Window安装过程不同，具体请看Hexo官网教程。本篇以MacOS为例。1.安装Git1)MacOS">
 <meta name="keywords" content="Hexo,Nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nginx搭建基于Hexo的Blog">
@@ -34,234 +97,236 @@
 <meta name="twitter:title" content="Nginx搭建基于Hexo的Blog">
 <meta name="twitter:description" content="一、基础知识1.框架有三种选择：(Jekyll、Hexo、WordPress) Hexo主题 NexT主题2.Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，简单来说就是你输入ip/域名时帮你打开网页文件的。二、本地环境MacOS 、Linux 、Window安装过程不同，具体请看Hexo官网教程。本篇以MacOS为例。1.安装Git1)MacOS">
 <meta name="twitter:image" content="https://b2.bmp.ovh/imgs/2019/08/6b7b2fef7377b680.png">
-  <!-- Canonical links -->
-  <link rel="canonical" href="https://github.com/suzhilong/suzhilong.github.io.git/2019/08/02/blogBuild/index.html">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/suzhilong/suzhilong.github.io.git/2019/08/02/blogBuild/">
+
+
+
+
+
+  <title>Nginx搭建基于Hexo的Blog | SOUSIC</title>
   
-  
-    <link rel="icon" href="../../images/favicon-32x32-next.png" type="image/x-icon">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
-  
-  
-  
+
+
+
+
+
+
+
+
 </head>
 
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
-<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
-  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-  <div class="slimContent">
-    <div class="navbar-header">
-      
-      
-      <div class="profile-block text-center">
-        <a id="avatar" href="https://github.com/suzhilong" target="_blank">
-          <img class="img-circle img-rotate" src="/../../images/favicon-32x32-next.png" width="200" height="200">
-        </a>
-        <h2 id="name" class="hidden-xs hidden-sm">SOUSIC</h2>
-        <h3 id="title" class="hidden-xs hidden-sm hidden-md">哈库呐玛塔塔</h3>
-        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> </small>
-      </div>
-      
-      <div class="search" id="search-form-wrap">
+  
+  
+    
+  
 
-    <form class="search-form sidebar-form">
-        <div class="input-group">
-            <input type="text" class="search-form-input form-control" placeholder="搜索" />
-            <span class="input-group-btn">
-                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
-            </span>
-        </div>
-    </form>
-    <div class="ins-search">
-  <div class="ins-search-mask"></div>
-  <div class="ins-search-container">
-    <div class="ins-input-wrapper">
-      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
-      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SOUSIC</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
-    <div class="ins-section-wrapper">
-      <div class="ins-section-container"></div>
-    </div>
+      
+        <p class="site-subtitle">哈库呐玛塔塔</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
   </div>
 </div>
 
+<nav class="site-nav">
+  
 
-</div>
-      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
-      <ul class="nav navbar-nav main-nav menu-highlight">
-        
+  
+    <ul id="menu" class="menu">
+      
         
         <li class="menu-item menu-item-home">
-          <a href="/.">
+          <a href="/" rel="section">
             
-            <i class="icon icon-home-fill"></i>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
-            <span class="menu-title">首页</span>
+            Home
           </a>
         </li>
-        
+      
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives">
+          <a href="/archives/" rel="section">
             
-            <i class="icon icon-archives-fill"></i>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
-            <span class="menu-title">归档</span>
+            Archives
           </a>
         </li>
-        
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories">
-            
-            <i class="icon icon-folder"></i>
-            
-            <span class="menu-title">分类</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags">
-            
-            <i class="icon icon-tags"></i>
-            
-            <span class="menu-title">标签</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about">
-            
-            <i class="icon icon-cup-fill"></i>
-            
-            <span class="menu-title">关于</span>
-          </a>
-        </li>
-        
-      </ul>
       
-	
-    <ul class="social-links">
-    	
-        <li><a href="https://github.com/suzhilong" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
-        
+
+      
     </ul>
-
-    </nav>
-  </div>
-</header>
+  
 
   
-    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
-  <div class="slimContent">
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
     
-      <div class="widget">
-    <h3 class="widget-title">公告</h3>
-    <div class="widget-body">
-        <div id="board">
-            <div class="content">
-                <p>哈库呐玛塔塔</p>
-            </div>
-        </div>
-    </div>
-</div>
 
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CS/">CS</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/robot/">robot</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web前端/">web前端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂/">杂</a><span class="category-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget-body">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Computer-vision/">Computer vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode-daily/">Leetcode daily</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/autonomous-driving/">autonomous driving</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/">cpp</a><span class="tag-list-count">4</span></li></ul>
-    </div>
-  </div>
-
-
-    
-  </div>
-</aside>
+  
 
   
   
-<main class="main" role="main">
-  <div class="content">
-  <article id="post-blogBuild" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-    
-    <div class="article-header">
-      
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Nginx搭建基于Hexo的Blog
-    </h1>
   
 
-      
-      <div class="article-meta">
-        <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2019/08/02/blogBuild/" class="article-date">
-	  <time datetime="2019-08-02T07:37:22.000Z" itemprop="datePublished">2019-08-02</time>
-	</a>
-</span>
-        
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/web前端/">web前端</a>
-  </span>
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/suzhilong/suzhilong.github.io.git/2019/08/02/blogBuild/">
 
-        
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Hexo/">Hexo</a>, <a class="article-tag-link" href="/tags/Nginx/">Nginx</a>
-  </span>
-
-
-        
-	<span class="article-read hidden-xs">
-	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
-	    <span id="busuanzi_container_page_pv">
-			<span id="busuanzi_value_page_pv">0</span>
-		</span>
-	</span>
-
-
-	<span class="article-read hidden-xs">
-    	<i class="icon icon-eye-fill" aria-hidden="true"></i>
-    	<span id="/2019/08/02/blogBuild/" class="leancloud_visitors"  data-flag-title="Nginx搭建基于Hexo的Blog">0</span>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Su Zhilong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/08/02/blogBuild/#comments" class="article-comment-link">评论</a></span>
-        
-	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.9k(字)</span>
-	
-	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 8(分)</span>
-	
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SOUSIC">
+    </span>
 
-      </div>
-    </div>
-    <div class="article-entry marked-body" itemprop="articleBody">
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Nginx搭建基于Hexo的Blog</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-02T15:37:22+08:00">
+                2019-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                    <span itemprop="name">web前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
       
         <h1 id="一、基础知识"><a href="#一、基础知识" class="headerlink" title="一、基础知识"></a>一、基础知识</h1><h2 id="1-框架有三种选择：-Jekyll、Hexo、WordPress"><a href="#1-框架有三种选择：-Jekyll、Hexo、WordPress" class="headerlink" title="1.框架有三种选择：(Jekyll、Hexo、WordPress)"></a>1.框架有三种选择：(Jekyll、<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">Hexo</a>、WordPress)</h2><ul>
 <li><a href="https://hexo.io/themes/" target="_blank" rel="noopener">Hexo主题</a></li>
@@ -387,307 +452,390 @@
 
       
     </div>
-    <div class="article-footer">
-      <blockquote class="mt-2x">
-  <ul class="post-copyright list-unstyled">
     
-    <li class="post-copyright-link hidden-xs">
-      <strong>本文链接：</strong>
-      <a href="https://github.com/suzhilong/suzhilong.github.io.git/2019/08/02/blogBuild/" title="Nginx搭建基于Hexo的Blog" target="_blank" rel="external">https://github.com/suzhilong/suzhilong.github.io.git/2019/08/02/blogBuild/</a>
-    </li>
     
-    <li class="post-copyright-license">
-      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
-    </li>
-  </ul>
-</blockquote>
+    
 
+    
 
-<div class="panel panel-default panel-badger">
-  <div class="panel-body">
-    <figure class="media">
-      <div class="media-left">
-        <a href="https://github.com/suzhilong" target="_blank" class="img-burn thumb-sm visible-lg">
-          <img src="/../../images/favicon-32x32-next.png" class="img-rounded w-full" alt="">
-        </a>
-      </div>
-      <div class="media-body">
-        <h3 class="media-heading"><a href="https://github.com/suzhilong" target="_blank"><span class="text-dark">SOUSIC</span><small class="ml-1x">哈库呐玛塔塔</small></a></h3>
-        <div>This is me!</div>
-      </div>
-    </figure>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+          
+            <a href="/tags/Nginx/" rel="tag"># Nginx</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/02/imss/" rel="next" title="imss">
+                <i class="fa fa-chevron-left"></i> imss
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/25/algorithm/" rel="prev" title="SOUSIC的algorithm总结">
+                SOUSIC的algorithm总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
-</div>
-
-
-    </div>
+  
+  
+  
   </article>
-  
-    
-  <section id="comments">
-  	
-      <div id="vcomments"></div>
-    
-  </section>
 
 
-  
-</div>
 
-  <nav class="bar bar-footer clearfix" data-stick-bottom>
-  <div class="bar-inner">
-  
-  <ul class="pager pull-left">
-    
-    <li class="prev">
-      <a href="/2020/05/25/algorithm/" title="SOUSIC的algorithm总结"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
-    
-    <li class="next">
-      <a href="/2019/08/02/imss/" title="imss"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
-    </li>
-    
-    
-  </ul>
-  
-  
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
-  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
-    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
-  </div> -->
-  
-  
-  <div class="bar-right">
-    
-    <div class="share-component" data-sites="weibo,qq,wechat" data-mobile-sites="weibo,qq"></div>
-    
+    <div class="post-spread">
+      
+    </div>
   </div>
-  </div>
-</nav>
+
+
+          </div>
+          
+
+
+          
+
   
-<!-- Modal -->
-<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content donate">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <div class="modal-body">
-        <div class="donate-box">
-          <div class="donate-head">
-            <p>感谢您的支持，我会继续努力的!</p>
-          </div>
-          <div class="tab-content">
-            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
-              <div class="donate-payimg">
-                <img src="/../../images/alipay.png" alt="扫码支持" title="扫一扫" />
-              </div>
-              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
-              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
-            </div>
-            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
-              <div class="donate-payimg">
-                <img src="/../../images/wechatpay.png" alt="扫码支持" title="扫一扫" />
-              </div>
-              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
-              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
-            </div>
-          </div>
-          <div class="donate-footer">
-            <ul class="nav nav-tabs nav-justified" role="tablist">
-              <li role="presentation" class="active">
-                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
-              </li>
-              <li role="presentation" class="">
-                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
-              </li>
-            </ul>
-          </div>
+
+
+
         </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Su Zhilong</p>
+              <p class="site-description motion-element" itemprop="description">I will always be with you</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、基础知识"><span class="nav-number">1.</span> <span class="nav-text">一、基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-框架有三种选择：-Jekyll、Hexo、WordPress"><span class="nav-number">1.1.</span> <span class="nav-text">1.框架有三种选择：(Jekyll、Hexo、WordPress)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Nginx是一款轻量级的Web-服务器-反向代理服务器及电子邮件（IMAP-POP3）代理服务器，简单来说就是你输入ip-域名时帮你打开网页文件的。"><span class="nav-number">1.2.</span> <span class="nav-text">2.Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，简单来说就是你输入ip/域名时帮你打开网页文件的。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、本地环境"><span class="nav-number">2.</span> <span class="nav-text">二、本地环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-安装Git"><span class="nav-number">2.1.</span> <span class="nav-text">1.安装Git</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-MacOS"><span class="nav-number">2.1.1.</span> <span class="nav-text">1)MacOS:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Linux"><span class="nav-number">2.1.2.</span> <span class="nav-text">2)Linux</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-安装NodeJs"><span class="nav-number">2.2.</span> <span class="nav-text">2.安装NodeJs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-安装Hexo"><span class="nav-number">2.3.</span> <span class="nav-text">3.安装Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装："><span class="nav-number">2.3.1.</span> <span class="nav-text">1)安装：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-本地创建一个文件夹存放Hexo的博客源码，cd进该文件夹后输入-hexo-initProjectName（这里的ProjectName就是你的项目文件名称，如-hexo-initblog）。完成后源文件夹会出现如下目录结构："><span class="nav-number">2.3.2.</span> <span class="nav-text">2)本地创建一个文件夹存放Hexo的博客源码，cd进该文件夹后输入: hexo initProjectName（这里的ProjectName就是你的项目文件名称，如 hexo initblog）。完成后源文件夹会出现如下目录结构：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、服务器"><span class="nav-number">3.</span> <span class="nav-text">三、服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-SSH连接远程服务器"><span class="nav-number">3.1.</span> <span class="nav-text">1.SSH连接远程服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-配置SSH公钥"><span class="nav-number">3.2.</span> <span class="nav-text">2.配置SSH公钥</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）生成公钥"><span class="nav-number">3.2.1.</span> <span class="nav-text">1）生成公钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）将本地公钥拷贝到服务器"><span class="nav-number">3.2.2.</span> <span class="nav-text">2）将本地公钥拷贝到服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-只需要在步骤最后输入一次服务器密码，以后再连接SSH就不需要输入密码了"><span class="nav-number">3.2.3.</span> <span class="nav-text">3)只需要在步骤最后输入一次服务器密码，以后再连接SSH就不需要输入密码了</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-安装Git"><span class="nav-number">3.3.</span> <span class="nav-text">3.安装Git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-安装Nginx"><span class="nav-number">3.4.</span> <span class="nav-text">4.安装Nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-创建一个网站的根目录（用于存放网站的部署的静态文件）"><span class="nav-number">3.5.</span> <span class="nav-text">5.创建一个网站的根目录（用于存放网站的部署的静态文件）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-nginx的配置"><span class="nav-number">3.6.</span> <span class="nav-text">6.nginx的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）网上大部分教程都是在-etc-nginx-conf-d-这个文件夹下-vim-FILENAME-conf-d-来创建一个配置文件，在里面写入："><span class="nav-number">3.6.1.</span> <span class="nav-text">1）网上大部分教程都是在 /etc/nginx/conf.d 这个文件夹下 vim FILENAME.conf.d 来创建一个配置文件，在里面写入：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）修改总配置文件："><span class="nav-number">3.6.2.</span> <span class="nav-text">2）修改总配置文件：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）修改-etc-nginx-sites-available-default："><span class="nav-number">3.6.3.</span> <span class="nav-text">3）修改 /etc/nginx/sites-available/default：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4）重启Nginx"><span class="nav-number">3.6.4.</span> <span class="nav-text">4）重启Nginx</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Git的建仓与配置"><span class="nav-number">3.7.</span> <span class="nav-text">7.Git的建仓与配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法一："><span class="nav-number">3.7.1.</span> <span class="nav-text">方法一：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-创建一个文件夹存作为git仓库"><span class="nav-number">3.7.2.</span> <span class="nav-text">1)创建一个文件夹存作为git仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-建仓"><span class="nav-number">3.7.2.1.</span> <span class="nav-text">2)建仓</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法二："><span class="nav-number">3.7.3.</span> <span class="nav-text">方法二：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1）"><span class="nav-number">3.7.4.</span> <span class="nav-text">1）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）"><span class="nav-number">3.7.5.</span> <span class="nav-text">2）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）如果新建了用户，或者不是root（管理员）账号，还需要修改仓库的权限："><span class="nav-number">3.7.6.</span> <span class="nav-text">3）如果新建了用户，或者不是root（管理员）账号，还需要修改仓库的权限：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、本地Hexo配置"><span class="nav-number">4.</span> <span class="nav-text">四、本地Hexo配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、发布项目"><span class="nav-number">5.</span> <span class="nav-text">五、发布项目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-cd进你的hexo根目录（就是你完成hexo-init的那个）"><span class="nav-number">5.1.</span> <span class="nav-text">1.cd进你的hexo根目录（就是你完成hexo init的那个）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo基本命令："><span class="nav-number">6.</span> <span class="nav-text">Hexo基本命令：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-新建文章"><span class="nav-number">6.0.1.</span> <span class="nav-text">1.新建文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-刷新-目的是删除原来的public文件夹，避免污染"><span class="nav-number">6.0.2.</span> <span class="nav-text">2.刷新(目的是删除原来的public文件夹，避免污染)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-生成-amp-amp-部署"><span class="nav-number">6.0.3.</span> <span class="nav-text">3.生成&amp;&amp;部署</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#主题配置"><span class="nav-number">7.</span> <span class="nav-text">主题配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参考："><span class="nav-number">7.1.</span> <span class="nav-text">参考：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ps"><span class="nav-number">7.2.</span> <span class="nav-text">ps:</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
       </div>
-    </div>
-  </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Su Zhilong</span>
+
+  
 </div>
 
 
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
-</main>
 
-  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
-	
-	
-    <ul class="social-links">
-    	
-        <li><a href="https://github.com/suzhilong" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
         
-    </ul>
 
-    <div class="copyright">
-    	
-        &copy; 2020 Su Zhilong
+
+
+
+
+
+
         
-        <div class="publishby">
-        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
-        </div>
-    </div>
-</footer>
-  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
-<script>
-window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
-</script>
-<script src="/js/plugin.min.js"></script>
-<script src="/js/application.js"></script>
+      </div>
+    </footer>
 
-    <script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(未命名)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
-
-
-
-
-
-   
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-<!-- custom analytics part create by xiamo -->
-<script defer src="https://cdn1.lncld.net/static/js/av-min-1.2.1.js"></script>
-<script defer>
-AV.init({
-  appId: '',
-  appKey: ''
-});
-
-function showTime(Counter) {
-	var query = new AV.Query(Counter);
-		var visitors= $('.leancloud_visitors');
-		query.greaterThanOrEqualTo("time", 0);		
-		query.find({
-			success: function(results) {
-				if (results.length == 0) {				
-					return;
-				}
-				var data = results;
-				visitors.each(function(){
-					var url = $(this).attr('id').trim();					
-					for (var i = 0; i < data.length; i++) {
-						var object = data[i];
-						var content = object.get('time');
-						var _url = object.get('url')
-						if(url == _url){
-							$(this).text(content);
-						}
-					}
-				})
-				
-			},
-			error: function(object, error) {
-				console.log("Error: " + error.code + " " + error.message);
-			}
-		});
-}
-
-function addCount(Counter) {
-	var Counter = AV.Object.extend("Counter");
-	url = $(".leancloud_visitors").attr('id').trim();
-	title = $(".leancloud_visitors").attr('data-flag-title').trim();
-	var query = new AV.Query(Counter);
-	query.equalTo("url", url);
-	query.find({
-		success: function(results) {
-			if (results.length > 0) {
-				var counter = results[0];
-				counter.fetchWhenSave(true);
-				counter.increment("time");
-				counter.save(null, {
-					success: function(counter) {
-						var content = counter.get('time');
-						$(document.getElementById(url)).text(content);
-					},
-					error: function(counter, error) {
-						console.log('Failed to save Visitor num, with error message: ' + error.message);
-					}
-				});
-			} else {
-				var newcounter = new Counter();
-				newcounter.set("title", title);
-				newcounter.set("url", url);
-				newcounter.set("time", 1);
-				newcounter.save(null, {
-					success: function(newcounter) {
-					    console.log("newcounter.get('time')="+newcounter.get('time'));
-						var content = newcounter.get('time');
-						$(document.getElementById(url)).text(content);
-					},
-					error: function(newcounter, error) {
-						console.log('Failed to create');
-					}
-				});
-			}
-		},
-		error: function(error) {
-			console.log('Error:' + error.code + " " + error.message);
-		}
-	});
-}
-$(function() {
-	var Counter = AV.Object.extend("Counter");
-	if ($('.leancloud_visitors').length == 1) {
-		addCount(Counter);
-	} else {
-		showTime(Counter);
-	}
-}); 
-</script>
-
-
-
-   
     
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/valine"></script>
-  <script type="text/javascript">
-  var GUEST = ['nick', 'mail', 'link'];
-  var meta = 'nick,mail,link';
-  meta = meta.split(',').filter(function(item) {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#vcomments',
-    verify: true,
-    notify: false,
-    appId: 'uaEz4DL2UqM1jg1eGmpd8vhF-gzGzoHsz',
-    appKey: 'SzL1ETN5dDwbXjnzyJYJkjTb',
-    placeholder: 'Comment',
-    avatar: 'mm',
-    meta: meta,
-    pageSize: '10' || 10,
-    visitor: false
-  });
-  </script>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
 
-     
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
 
 
 
 
 
 
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
 
 </body>
 </html>

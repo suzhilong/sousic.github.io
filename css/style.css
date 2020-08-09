@@ -9209,4 +9209,4 @@ body.okayNav-loaded {
   }
 }
 
-@import 'toc'
+@import '_partial/toc.styl'

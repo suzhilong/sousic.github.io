@@ -1955,7 +1955,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-06 19:43:05" itemprop="dateModified" datetime="2020-08-06T19:43:05+08:00">2020-08-06</time>
+                <time title="修改时间：2020-08-10 22:38:57" itemprop="dateModified" datetime="2020-08-10T22:38:57+08:00">2020-08-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1987,14 +1987,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>26k</span>
+              <span>36k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>24 分钟</span>
+              <span>33 分钟</span>
             </span>
 
         </div>
@@ -2269,21 +2269,37 @@
 
 <h2 id="C-中常用的设计模式"><a href="#C-中常用的设计模式" class="headerlink" title="C++中常用的设计模式"></a>C++中常用的设计模式</h2><p>共有23种设计模式，但真正在开发中常用的模式有：</p>
 <ol>
-<li>Factory Method(工厂模式)；</li>
-<li>Strategy(策略模式)；</li>
-<li>Singleton(单例模式)；</li>
-<li>Iterator(迭代器模式)；</li>
-<li>Abstract Factory(抽象工厂模式)；</li>
-<li>Builder(建造者模式)；</li>
-<li>Adapter(适配器模式)；</li>
-<li>Bridge(桥接模式)；</li>
-<li>Composite(组合模式)；</li>
-<li>Interpreter(解释器模式)；</li>
-<li>Command(命令模式)；</li>
-<li>Mediator(中介者模式)；</li>
-<li>Observer(观察者模式)；</li>
-<li>State(状态模式)；</li>
-<li>Proxy(代理模式)。</li>
+<li><p>Factory Method(工厂模式)；</p>
+</li>
+<li><p>Strategy(策略模式)；</p>
+</li>
+<li><p>Singleton(单例模式)；</p>
+</li>
+<li><p>Iterator(迭代器模式)；</p>
+</li>
+<li><p>Abstract Factory(抽象工厂模式)；</p>
+</li>
+<li><p>Builder(建造者模式)；</p>
+</li>
+<li><p>Adapter(适配器模式)；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">class Target &#123;  // Target，客户期望的接口，可以使具体或抽象的类，也可以是接口</span><br><span class="line">public:</span><br><span class="line">    virtual void Request() = 0;</span><br><span class="line">    virtual ~Target()&#123;&#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class Adaptee &#123; //需适配的类</span><br><span class="line">public:</span><br><span class="line">    void SpecificRequest() &#123; cout &lt;&lt; &quot;Adaptee&quot; &lt;&lt; endl; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class Adapter1 : public Target &#123; //通过内部包装一个Adaptee对象，把源接口转换为目标接口：</span><br><span class="line">private:</span><br><span class="line">    Adaptee* adaptee;</span><br><span class="line">public:</span><br><span class="line">    Adapter1() &#123; adaptee = new Adaptee(); &#125;</span><br><span class="line">    void Request() &#123; adaptee-&gt;SpecificRequest(); &#125;  // 调用Request()方法会转换成调用adaptee.SpecificRequest()</span><br><span class="line">    ~Adapter1() &#123; delete adaptee; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class Adapter2 : public Target&#123;</span><br><span class="line">private:</span><br><span class="line">    Adaptee *adaptee;</span><br><span class="line">public:</span><br><span class="line">    Adapter2() &#123; adaptee = new Adaptee(); &#125;</span><br><span class="line">    void Request() &#123; adaptee-&gt;SpecificRequest(); &#125;</span><br><span class="line">    ~Adapter2() &#123; delete adaptee; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    Target *target = new Adapter1();</span><br><span class="line">    target-&gt;Request();</span><br><span class="line">    delete target;</span><br><span class="line"></span><br><span class="line">    Target *target2 = new Adapter2();</span><br><span class="line">    target-&gt;Request();</span><br><span class="line">    delete target2;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Bridge(桥接模式)；</p>
+</li>
+<li><p>Composite(组合模式)；</p>
+</li>
+<li><p>Interpreter(解释器模式)；</p>
+</li>
+<li><p>Command(命令模式)；</p>
+</li>
+<li><p>Mediator(中介者模式)；</p>
+</li>
+<li><p>Observer(观察者模式)；</p>
+</li>
+<li><p>State(状态模式)；</p>
+</li>
+<li><p>Proxy(代理模式)。</p>
+</li>
 </ol>
 <h2 id="设计模式6大原则"><a href="#设计模式6大原则" class="headerlink" title="设计模式6大原则"></a>设计模式6大原则</h2><ol>
 <li>单一职责原则(Single Responsibility Principle)</li>
@@ -2405,6 +2421,11 @@
 </ul>
 </li>
 </ol>
+<h2 id="ref-1"><a href="#ref-1" class="headerlink" title="ref"></a>ref</h2><ul>
+<li><a href="https://blog.csdn.net/BostonRayAlen/article/details/93041395?utm_medium=distribute.wap_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.wap_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase" target="_blank" rel="noopener">C/C++ 最常见50道面试题</a></li>
+<li><a href="https://blog.csdn.net/hsq1596753614/article/details/80249605?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase" target="_blank" rel="noopener">C/C++ 经典面试题（一）之常考概念</a></li>
+<li><a href="https://blog.csdn.net/ljh0302/article/details/81098764?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase" target="_blank" rel="noopener">常见C++笔试面试题整理</a></li>
+</ul>
 <h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h2 id="链表和数组的区别在哪里？"><a href="#链表和数组的区别在哪里？" class="headerlink" title="链表和数组的区别在哪里？"></a>链表和数组的区别在哪里？</h2><p>链表和数组都可以叫线性表，数组又叫顺序表，主要区别在于：</p>
 <ul>
 <li>存储形式：数组是一块连续的空间，声明时就要确定长度。链表是一块可不连续的动态空间，长度可变，每个结点要保存相邻结点指针。</li>
@@ -2426,15 +2447,122 @@
 </ol>
 <h2 id="HashMap扩容机制"><a href="#HashMap扩容机制" class="headerlink" title="HashMap扩容机制"></a>HashMap扩容机制</h2><p>HashMap的容量是有限的。当经过多次元素插入的时候，使得HashMap达到一定的饱和度，Key映射位置的几率不断变大。这个时候（扩容因子=0.75），HashMap就需要扩容了，也就是Resize。一般是增加1倍。</p>
 <p><em>扩容因子：数组中元素的个数/数组容量</em></p>
-<h2 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h2><h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="数据库范式"><a href="#数据库范式" class="headerlink" title="数据库范式"></a>数据库范式</h2><ul>
-<li><a href="https://blog.csdn.net/Wenco1/article/details/88077279?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.nonecase" target="_blank" rel="noopener">详解第一范式、第二范式、第三范式、BCNF范式</a></li>
-<li><a href="https://blog.csdn.net/wyh7280/article/details/83350722?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-5.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-5.nonecase" target="_blank" rel="noopener">范式通俗理解：1NF、2NF、3NF和BNCF</a></li>
+<h2 id="B树和B-树"><a href="#B树和B-树" class="headerlink" title="B树和B+树"></a>B树和B+树</h2><h3 id="B树"><a href="#B树" class="headerlink" title="B树"></a>B树</h3><p>B树是一颗多路平衡查找树。</p>
+<ul>
+<li>每个节点最多有m-1个关键字（可以存有的键值对）。</li>
+<li>根节点最少可以只有1个关键字。</li>
+<li>非根节点至少有m/2个关键字。</li>
+<li>每个节点中的关键字都按照从小到大的顺序排列，每个关键字的左子树中的所有关键字都小于它，而右子树中的所有关键字都大于它。</li>
+<li>所有叶子节点都位于同一层，或者说根节点到每个叶子节点的长度都相同。</li>
+<li>每个节点都存有索引和数据，也就是对应的key和value。</li>
 </ul>
-<h2 id="关系型数据库和非关系型数据库"><a href="#关系型数据库和非关系型数据库" class="headerlink" title="关系型数据库和非关系型数据库"></a>关系型数据库和非关系型数据库</h2><ul>
+<p>所以，根节点的关键字数量范围：1 &lt;= k &lt;= m-1，非根节点的关键字数量范围：m/2 &lt;= k &lt;= m-1。</p>
+<p>另外，我们需要注意一个概念，描述一颗B树时需要指定它的阶数，阶数表示了一个节点最多有多少个孩子节点，一般用字母m表示阶数。</p>
+<h3 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h3><p>B+树其实和B树是非常相似的。</p>
+<p>相同点：</p>
+<ul>
+<li>根节点至少一个元素</li>
+<li>非根节点元素范围：m/2 &lt;= k &lt;= m-1</li>
+</ul>
+<p>不同点：</p>
+<ul>
+<li>B+树有两种类型的节点：内部结点（也称索引结点）和叶子结点。内部节点就是非叶子节点，内部节点不存储数据，只存储索引，数据都存储在叶子节点。</li>
+<li>内部结点中的key都按照从小到大的顺序排列，对于内部结点中的一个key，左树中的所有key都小于它，右子树中的key都大于等于它。叶子结点中的记录也按照key的大小排列。</li>
+<li>每个叶子结点都存有相邻叶子结点的指针，叶子结点本身依关键字的大小自小而大顺序链接。</li>
+<li>父节点存有右孩子的第一个元素的索引。</li>
+</ul>
+<h3 id="B-树相对于B树的优势"><a href="#B-树相对于B树的优势" class="headerlink" title="B+树相对于B树的优势"></a>B+树相对于B树的优势</h3><p>可以归结为下面几点：</p>
+<ul>
+<li>单一节点存储的元素更多，使得查询的IO次数更少，所以也就使得它更适合做为数据库MySQL的底层数据结构了。</li>
+<li>所有的查询都要查找到叶子节点，查询性能是稳定的，而B树，每个节点都可以查找到数据，所以不稳定。</li>
+<li>所有的叶子节点形成了一个有序链表，更加便于查找。</li>
+</ul>
+<h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2><p><strong>平衡二叉树</strong>就是为了解决<strong>二叉查找树</strong>退化成一颗链表而诞生。</p>
+<p>虽然<strong>平衡树</strong>解决了<strong>二叉查找树</strong>退化为近似链表的缺点，能够把查找时间控制在 O(logn)，不过却不是最佳的，因为平衡树要求每个节点的左子树和右子树的高度差至多等于1，这个要求实在是太严了，导致每次进行插入/删除节点的时候，几乎都会破坏平衡树的第二个规则，进而我们都需要通过左旋和右旋来进行调整，使之再次成为一颗符合要求的<strong>平衡树</strong>。</p>
+<p>显然，如果在那种插入、删除很频繁的场景中，平衡树需要频繁着进行调整，这会使平衡树的性能大打折扣，为了解决这个问题，于是有了<strong>红黑树</strong>，<strong>红黑树</strong>具有如下特点：</p>
+<ol>
+<li>具有二叉查找树的特点；</li>
+<li>根节点是黑色的；</li>
+<li>每个叶子节点都是黑色的空节点（NIL），也就是说，叶子节点不存数据；</li>
+<li>任何相邻的节点都不能同时为红色，也就是说，红色节点是被黑色节点隔开的(但是黑色节点可以相连)；</li>
+<li>每个节点，从该节点到达其可达的叶子节点是所有路径，都包含相同数目的黑色节点。</li>
+</ol>
+<h3 id="红黑树和AVL树的区别："><a href="#红黑树和AVL树的区别：" class="headerlink" title="红黑树和AVL树的区别："></a>红黑树和AVL树的区别：</h3><p>AVL 和 RBT 都是二叉查找树的优化。其性能要远远好于二叉查找树。他们之间都有自己的优势，其应用上也有不同。</p>
+<ul>
+<li>结构对比：AVL的结构高度平衡，RBT的结构基本平衡。平衡度AVL &gt; RBT.</li>
+<li>查找对比：AVL 查找时间复杂度最好，最坏情况都是O(logN)。RBT 查找时间复杂度最好为O(logN)，最坏情况下比AVL略差。</li>
+<li>插入删除对比：<ol>
+<li>AVL的插入和删除结点很容易造成树结构的不平衡，而RBT的平衡度要求较低。因此在大量数据插入的情况下，RBT需要通过旋转变色操作来重新达到平衡的频度要小于AVL。</li>
+<li>如果需要平衡处理时，RBT比AVL多一种变色操作，而且变色的时间复杂度在O(logN)数量级上。但是由于操作简单，所以在实践中这种变色仍然是非常快速的。</li>
+<li>当插入一个结点都引起了树的不平衡，AVL和RBT都最多需要2次旋转操作。但删除一个结点引起不平衡后，AVL最多需要logN 次旋转操作，而RBT最多只需要3次。因此两者插入一个结点的代价差不多，但删除一个结点的代价RBT要低一些。</li>
+<li>AVL和RBT的插入删除代价主要还是消耗在查找待操作的结点上。因此时间复杂度基本上都是与O(logN) 成正比的。</li>
+</ol>
+</li>
+</ul>
+<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="数据库范式"><a href="#数据库范式" class="headerlink" title="数据库范式"></a>数据库范式</h2><ul>
+<li><p>1NF(第一范式)<br>属性（对应于表中的字段）不能再被分割，也就是这个字段只能是一个值，不能再分为多个其他的字段了。1NF是所有关系型数据库的最基本要求 ，也就是说关系型数据库中创建的表一定满足第一范式。</p>
+</li>
+<li><p>2NF(第二范式)<br>2NF在1NF的基础之上，消除了非主属性对于码的部分函数依赖。如下图所示，展示了第一范式到第二范式的过渡。第二范式在第一范式的基础上增加了一个列，这个列称为主键，非主属性都依赖于主键。</p>
+</li>
+<li><p>3NF(第三范式)<br>3NF在2NF的基础之上，消除了非主属性对于码的传递函数依赖 。符合3NF要求的数据库设计，基本上解决了数据冗余过大，插入异常，修改异常，删除异常的问题。比如在关系R(学号 ,姓名, 系名，系主任)中，学号 → 系名，系名 → 系主任，所以存在非主属性系主任对于学号的传递函数依赖，所以该表的设计，不符合3NF的要求。</p>
+</li>
+<li><p>总结</p>
+<ul>
+<li>1NF：属性不可再分。</li>
+<li>2NF：1NF的基础之上，消除了非主属性对于码的部分函数依赖。</li>
+<li>3NF：3NF在2NF的基础之上，消除了非主属性对于码的传递函数依赖 。</li>
+</ul>
+</li>
+<li><p><a href="https://blog.csdn.net/Wenco1/article/details/88077279?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.nonecase" target="_blank" rel="noopener">详解第一范式、第二范式、第三范式、BCNF范式</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/wyh7280/article/details/83350722?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-5.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-5.nonecase" target="_blank" rel="noopener">范式通俗理解：1NF、2NF、3NF和BNCF</a></p>
+</li>
+</ul>
+<h2 id="关系型数据库和非关系型数据库"><a href="#关系型数据库和非关系型数据库" class="headerlink" title="关系型数据库和非关系型数据库"></a>关系型数据库和非关系型数据库</h2><h3 id="关系型数据库"><a href="#关系型数据库" class="headerlink" title="关系型数据库"></a>关系型数据库</h3><p>关系型数据库，是指采用了<strong>关系模型</strong>来组织数据的数据库。</p>
+<p>主要代表：SQL Server, Oracle, Mysql, PostgreSQL</p>
+<p>关系模型指的就是二维表格模型，而一个关系型数据库就是由二维表及其之间的联系所组成的一个数据组织。关系模型中常用的概念：</p>
+<ul>
+<li>关系：可以理解为一张二维表，每个关系都具有一个关系名，就是通常说的表名</li>
+<li>元组：可以理解为二维表中的一行，在数据库中经常被称为记录</li>
+<li>属性：可以理解为二维表中的一列，在数据库中经常被称为字段</li>
+<li>域：属性的取值范围，也就是数据库中某一列的取值限制</li>
+<li>关键字：一组可以唯一标识元组的属性，数据库中常称为主键，由一个或多个列组成</li>
+<li>关系模式：指对关系的描述。其格式为：关系名(属性1，属性2， … … ，属性N)，在数据库中成为表结构</li>
+<li>码：码就是能唯一标识实体的属性，对应表中的列。</li>
+<li>候选码： 若关系中的某一属性或属性组的值能唯一的标识一个元组，而其任何、子集都不能再标识，则称该属性组为候选码。例如：在学生实体中，“学号”是能唯一的区分学生实体的，同时又假设“姓名”、“班级”的属性组合足以区分学生实体，那么{学号}和{姓名，班级}都是候选码。</li>
+<li>主码：主码也叫主键。主码是从候选码中选出来的。 一个实体集中只能有一个主码，但可以有多个候选码。</li>
+<li>外码：外码也叫外键。如果一个关系中的一个属性是另外一个关系中的主码则这个属性为外码。</li>
+<li>主属性：候选码中出现过的属性称为主属性。比如关系 工人（工号，身份证号，姓名，性别，部门）.显然工号和身份证号都能够唯一标示这个关系，所以都是候选码。工号、身份证号这两个属性就是主属性。如果主码是一个属性组，那么属性组中的属性都是主属性。</li>
+<li>非主属性：不包含在任何一个候选码中的属性称为非主属性。比如在关系——学生（学号，姓名，年龄，性别，班级）中，主码是“学号”，那么其他的“姓名”、“年龄”、“性别”、“班级”就都可以称为非主属性。</li>
+</ul>
+<p>关系型数据库的优点：</p>
+<ul>
+<li>容易理解：二维表结构是非常贴近逻辑世界的一个概念，关系模型相对网状、层次等其他模型来说更容易理解</li>
+<li>使用方便：通用的SQL语言使得操作关系型数据库非常方便</li>
+<li>易于维护：数据库的ACID属性，大大减低了数据冗余和数据不一致的概率</li>
+</ul>
+<p>关系型数据库的瓶颈：</p>
+<ul>
+<li>海量数据的读写效率：对于网站的并发量高，往往达到每秒上万次的请求，对于传统关系型数据库来说，硬盘I/o是一个很大的挑战。</li>
+<li>高扩展性和可用性：在基于web的结构中，数据库是最难以横向拓展的，当一个应用系统的用户量和访问量与日俱增的时候，数据库没有办法像web Server那样简单的通过添加更多的硬件和服务节点来拓展性能和负载能力。</li>
+</ul>
+<h3 id="主键和外键有什么区别"><a href="#主键和外键有什么区别" class="headerlink" title="主键和外键有什么区别"></a>主键和外键有什么区别</h3><ul>
+<li>主键(主码)：主键用于唯一标识一个元组，不能有重复，不允许为空。一个表只能有一个主键。</li>
+<li>外键(外码)：外键用来和其他表建立联系用，外键是另一表的主键，外键是可以有重复的，可以是空值。一个表可以有多个外键。</li>
+</ul>
+<h3 id="非关系型数据库-NoSQL"><a href="#非关系型数据库-NoSQL" class="headerlink" title="非关系型数据库 NoSQL"></a>非关系型数据库 NoSQL</h3><p>主要指那些非关系型的、分布式的，且一般不保证ACID的数据存储系统。依据结构化方法以及应用场合的不同，主要分为以下几类：</p>
+<ol>
+<li>面向高性能并发读写的key-value数据库：key-value数据库的主要特点即使具有极高的并发读写性能，Redis,Tokyo Cabinet,Flare就是这类的代表</li>
+<li>面向海量数据访问的面向文档数据库：这类数据库的特点是，可以在海量的数据中快速的查询数据，典型代表为MongoDB以及CouchDB</li>
+<li>面向可扩展性的分布式数据库：这类数据库想解决的问题就是传统数据库存在可扩展性上的缺陷，这类数据库可以适应数据量的增加以及数据结构的变化</li>
+</ol>
+<p>缺点：但是由于Nosql约束少，所以也不能够像sql那样提供where字段属性的查询。因此适合存储较为简单的数据。有一些不能够持久化数据，所以需要和关系型数据库结合。</p>
+<h3 id="ref-2"><a href="#ref-2" class="headerlink" title="ref"></a>ref</h3><ul>
 <li><a href="https://blog.csdn.net/oChangWen/article/details/53423301" target="_blank" rel="noopener">关系型数据库和非关系型数据库区别、oracle与mysql的区别</a></li>
+<li><a href="https://blog.csdn.net/lzj3462144/article/details/70973368?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.channel_param&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.channel_param" target="_blank" rel="noopener">关系型数据库 VS 非关系型数据库</a></li>
 </ul>
 <h2 id="主键索引和唯一索引区别"><a href="#主键索引和唯一索引区别" class="headerlink" title="主键索引和唯一索引区别"></a>主键索引和唯一索引区别</h2><p>唯一索引的值可以为null吗<br>主键索引的值可以为null吗<br>一个表有几个主键<br>一个表可以有多个唯一索引吗</p>
-<h2 id="sql语句"><a href="#sql语句" class="headerlink" title="sql语句"></a>sql语句</h2><h2 id="数据库事务的4个特征"><a href="#数据库事务的4个特征" class="headerlink" title="数据库事务的4个特征"></a>数据库事务的4个特征</h2><ul>
+<h2 id="sql语句"><a href="#sql语句" class="headerlink" title="sql语句"></a>sql语句</h2><h2 id="数据库事务的4个特征（ACID特性）"><a href="#数据库事务的4个特征（ACID特性）" class="headerlink" title="数据库事务的4个特征（ACID特性）"></a>数据库事务的4个特征（ACID特性）</h2><ul>
 <li>原子性（Atomicity）：事务作为一个整体被执行，包含在其中的对数据库的操作要么全部被执行，要么都不执行。</li>
 <li>一致性（Consistency）：事务应确保数据库的状态从一个一致状态转变为另一个一致状态。一致状态的含义是数据库中的数据应满足完整性约束。</li>
 <li>隔离性（Isolation）：多个事务并发执行时，一个事务的执行不应影响其他事务的执行。</li>
@@ -2447,6 +2575,9 @@
 <li>Read Committed（读已提交）：可避免脏读的情况</li>
 <li>Read uncommitted（读未提交）：最低级别，任何情况均无法保证；</li>
 </ol>
+<h2 id="ref-3"><a href="#ref-3" class="headerlink" title="ref"></a>ref</h2><ul>
+<li><a href="https://www.nowcoder.com/discuss/468424?source_id=profile_create&channel=1011" target="_blank" rel="noopener">面试题之数据库</a> </li>
+</ul>
 <h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><h2 id="OSI七层模型"><a href="#OSI七层模型" class="headerlink" title="OSI七层模型"></a>OSI七层模型</h2><p><a href="https://suzhilong.github.io/2020/06/10/network/" target="_blank" rel="noopener">博客</a></p>
 <h2 id="网络协议有那些"><a href="#网络协议有那些" class="headerlink" title="网络协议有那些"></a>网络协议有那些</h2><p><a href="https://suzhilong.github.io/2020/06/10/network/" target="_blank" rel="noopener">博客</a></p>
 <h2 id="简述TCP三次握手与四次挥手"><a href="#简述TCP三次握手与四次挥手" class="headerlink" title="简述TCP三次握手与四次挥手"></a>简述TCP三次握手与四次挥手</h2><p><a href="https://suzhilong.github.io/2020/06/10/network/" target="_blank" rel="noopener">博客</a></p>
@@ -2456,6 +2587,41 @@
 <h2 id="为什么连接的时候是三次握手，关闭的时候却是四次握手？"><a href="#为什么连接的时候是三次握手，关闭的时候却是四次握手？" class="headerlink" title="为什么连接的时候是三次握手，关闭的时候却是四次握手？"></a>为什么连接的时候是三次握手，关闭的时候却是四次握手？</h2><p>因为只有在客户端和服务端都没有数据要发送的时候才能断开TCP。客户端发出FIN报文时只能保证客户端没有数据发了，服务端还有没有数据发客户端是不知道的。而服务端收到客户端的FIN报文后只能先回复客户端一个确认报文来告诉客户端我服务端已经收到你的FIN报文了，但我服务端还有一些数据没发完，等这些数据发完了服务端才能给客户端发FIN报文（所以不能一次性将确认报文和FIN报文发给客户端，就是这里多出来了一次）。</p>
 <h2 id="为什么客户端发出第四次挥手的确认报文后要等2MSL的时间才能释放TCP连接？"><a href="#为什么客户端发出第四次挥手的确认报文后要等2MSL的时间才能释放TCP连接？" class="headerlink" title="为什么客户端发出第四次挥手的确认报文后要等2MSL的时间才能释放TCP连接？"></a>为什么客户端发出第四次挥手的确认报文后要等2MSL的时间才能释放TCP连接？</h2><p>这里同样是要考虑丢包的问题，如果第四次挥手的报文丢失，服务端没收到确认ack报文就会重发第三次挥手的报文，这样报文一去一回最长时间就是2MSL，所以需要等这么长时间来确认服务端确实已经收到了。</p>
 <h2 id="TCP和UDP的对比"><a href="#TCP和UDP的对比" class="headerlink" title="TCP和UDP的对比"></a>TCP和UDP的对比</h2><p><a href="https://suzhilong.github.io/2020/06/10/network/" target="_blank" rel="noopener">博客</a></p>
+<h2 id="TCP怎么保证可靠"><a href="#TCP怎么保证可靠" class="headerlink" title="TCP怎么保证可靠"></a>TCP怎么保证可靠</h2><ol>
+<li>应用数据被分割成 TCP 认为最适合发送的数据块。</li>
+<li>TCP 给发送的每一个包进行编号，接收方对数据包进行排序，把有序数据传送给应用层。</li>
+<li>校验和：TCP 将保持它首部和数据的检验和。这是一个端到端的检验和，目的是检测数据在传输过程中的任何变化。如果收到段的检验和有差错，TCP 将丢弃这个报文段和不确认收到此报文段。</li>
+<li>TCP 的接收端会丢弃重复的数据。</li>
+<li>流量控制：TCP 连接的每一方都有固定大小的缓冲空间，TCP的接收端只允许发送端发送接收端缓冲区能接纳的数据。当接收方来不及处理发送方的数据，能提示发送方降低发送的速率，防止包丢失。TCP 使用的流量控制协议是可变大小的滑动窗口协议。 （TCP 利用滑动窗口实现流量控制）</li>
+<li>拥塞控制：当网络拥塞时，减少数据的发送。</li>
+<li>ARQ协议：也是为了实现可靠传输的，它的基本原理就是每发完一个分组就停止发送，等待对方确认。在收到确认后再发下一个分组。</li>
+<li>超时重传：当 TCP 发出一个段后，它启动一个定时器，等待目的端确认收到这个报文段。如果不能及时收到一个确认，将重发这个报文段。</li>
+</ol>
+<h2 id="拥塞控制和流量控制"><a href="#拥塞控制和流量控制" class="headerlink" title="拥塞控制和流量控制"></a>拥塞控制和流量控制</h2><p>都是保证TCP可靠的方法。</p>
+<ul>
+<li>拥塞控制：拥塞控制是作用于网络的，它是防止过多的数据注入到网络中，避免出现网络负载过大的情况</li>
+<li>流量控制：流量控制是作用于接收者的，它是控制发送者的发送速度从而使接收者来得及接收，防止分组丢失的</li>
+</ul>
+<h3 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h3><ul>
+<li>慢开始：从小到大逐渐增大发送窗口，每个传输轮次后将 cwnd 大小加倍。</li>
+<li>拥塞避免：用慢开始门限（ssthresh）的阈值来控制 cwnd 的增长<ul>
+<li>cwnd &lt; ssthresh , 使用慢开始算法</li>
+<li>cwnd = ssthresh , 使用慢开始算法或拥塞避免算法（线性增长，一般是加1）都可以</li>
+<li>cwnd &gt; ssthresh , 使用拥塞避免算法。只要发现网络中出现拥塞就<strong>乘法减小</strong>ssthresh并从cwnd=1开始重新执行慢开始算法。</li>
+</ul>
+</li>
+<li>快重传：允许发送方再连续收到 3 个重复的确认后就可以开始执行乘法减小过程而不必再等待所设置的重传计时器到时。</li>
+<li>快恢复：是与快重传算法配合使用的一个算法。快恢复算法后与原来不同的一点是当发现网络出现拥塞并执行了乘法减小过程后，并不是设置cwnd=1并重新开始执行慢开始算法，而是让 cwnd =乘法减小后的ssthresh并开始执行拥塞避免算法。</li>
+</ul>
+<p><em>ps. ssthresh的设置：TCP/IP 中规定无论是在慢开始阶段还是在拥塞避免阶段，只要发现网络中出现拥塞（没有按时收到确认），就要把ssthresh设置为此时发送窗口的一半大小（不能小于2）</em></p>
+<h3 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h3><ul>
+<li>RTT算法</li>
+<li>滑动窗口<ul>
+<li>发送窗口</li>
+<li>接受窗口</li>
+</ul>
+</li>
+</ul>
 <h2 id="使UPD可靠的方法"><a href="#使UPD可靠的方法" class="headerlink" title="使UPD可靠的方法"></a>使UPD可靠的方法</h2><p><a href="https://suzhilong.github.io/2020/06/10/network/" target="_blank" rel="noopener">博客</a></p>
 <h2 id="简述Socket通信基本步骤"><a href="#简述Socket通信基本步骤" class="headerlink" title="简述Socket通信基本步骤"></a>简述Socket通信基本步骤</h2><p>具体分成两个部分：</p>
 <ol>
@@ -2476,9 +2642,23 @@
 </ul>
 </li>
 </ol>
+<h2 id="为什么会发生-TCP-粘包、拆包"><a href="#为什么会发生-TCP-粘包、拆包" class="headerlink" title="为什么会发生 TCP 粘包、拆包"></a>为什么会发生 TCP 粘包、拆包</h2><ol>
+<li>应用程序写入的数据大于套接字缓冲区大小，这将会发生拆包。</li>
+<li>应用程序写入数据小于套接字缓冲区大小，网卡将应用多次写入的数据发送到网络上，这将会发生粘包。</li>
+<li>进行 MSS （最大报文长度）大小的 TCP 分段，当 <code>TCP报文长度 - TCP头部长度 &gt; MSS</code> 的时候将发生拆包。</li>
+<li>接收方法不及时读取套接字缓冲区数据，这将发生粘包。</li>
+</ol>
+<h2 id="如何处理粘包、拆包？"><a href="#如何处理粘包、拆包？" class="headerlink" title="如何处理粘包、拆包？"></a>如何处理粘包、拆包？</h2><ol>
+<li>使用带消息头的协议、消息头存储消息开始标识及消息长度信息，服务端获取消息头的时候解析出消息长度，然后向后读取该长度的内容。</li>
+<li>设置定长消息，服务端每次读取既定长度的内容作为一条完整消息，当消息不够长时，空位补上固定字符。</li>
+<li>设置消息边界，服务端从网络流中按消息编辑分离出消息内容，一般使用‘\n’。</li>
+<li>更为复杂的协议。</li>
+</ol>
 <h2 id="GET、POST的区别"><a href="#GET、POST的区别" class="headerlink" title="GET、POST的区别"></a>GET、POST的区别</h2><ul>
-<li>GET只获取</li>
-<li>POST可以修改</li>
+<li>作用<br>GET 用于获取资源，而 POST 用于传输数据。</li>
+<li>参数<br>GET 和 POST 的请求都能使用额外的参数，但是 GET 的参数是以查询字符串出现在 URL 中，而 POST 的参数存储在实体主体中。</li>
+<li>安全<br>GET 方法是安全的，而 POST 却不是。安全就是说请求方法不会改变服务器状态，也就是说它只是可读的。因为 POST 的目的是传送数据，这个数据可能是用户上传的表单，上传成功之后，服务器可能把这个数据存储到数据库中，因此状态也就发生了改变。所以，从这个方面来讲，POST是不安全的。</li>
+<li>幂等<br>GET方法都是幂等的，但 POST 方法不是。幂等就是说，同样的请求被执行一次与连续执行多次的效果是一样的，服务器的状态也是一样的。所以，幂等方法不应该具有副作用。</li>
 </ul>
 <h2 id="HTTP与HTTPS的区别"><a href="#HTTP与HTTPS的区别" class="headerlink" title="HTTP与HTTPS的区别"></a>HTTP与HTTPS的区别</h2><ol>
 <li>https协议需要到ca申请证书，一般免费证书较少，因而需要一定费用。</li>
@@ -2486,9 +2666,18 @@
 <li>http和https使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。</li>
 <li>http的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。</li>
 </ol>
-<h3 id="ref-1"><a href="#ref-1" class="headerlink" title="ref"></a>ref</h3><ul>
+<p>HTTPS是运行在SSL/TLS之上的HTTP协议，SSL/TLS 运行在TCP之上。所有传输的内容都经过加密，加密采用对称加密，但对称加密的密钥用服务器方的证书进行了非对称加密。所以说，HTTP 安全性没有 HTTPS高，但是 HTTPS 比HTTP耗费更多服务器资源。</p>
+<ul>
+<li>对称加密：密钥只有一个，加密解密为同一个密码，且加解密速度快，典型的对称加密算法有DES、AES等；</li>
+<li>非对称加密：密钥成对出现（且根据公钥无法推知私钥，根据私钥也无法推知公钥），加密解密使用不同密钥（公钥加密需要私钥解密，私钥加密需要公钥解密），相对对称加密速度较慢，典型的非对称加密算法有RSA、DSA等。</li>
+</ul>
+<h3 id="ref-4"><a href="#ref-4" class="headerlink" title="ref"></a>ref</h3><ul>
 <li><a href="https://juejin.im/entry/58d7635e5c497d0057fae036" target="_blank" rel="noopener">详细解析HTTP 与HTTPS 的区别</a></li>
 </ul>
+<h2 id="HTTP长连接，短连接是什么？"><a href="#HTTP长连接，短连接是什么？" class="headerlink" title="HTTP长连接，短连接是什么？"></a>HTTP长连接，短连接是什么？</h2><p>HTTP协议的长连接和短连接，实质上是TCP协议的长连接和短连接。</p>
+<p>在HTTP/1.0中默认使用短连接。也就是说，客户端和服务器每进行一次HTTP操作，就建立一次连接，任务结束就中断连接。当客户端浏览器访问的某个HTML或其他类型的Web页中包含有其他的Web资源（如JavaScript文件、图像文件、CSS文件等），每遇到这样一个Web资源，浏览器就会重新建立一个HTTP会话。</p>
+<p>而从HTTP/1.1起，默认使用长连接，用以保持连接特性。使用长连接的HTTP协议，会在响应头加入这行代码：<code>Connection:keep-alive</code></p>
+<p>在使用长连接的情况下，当一个网页打开完成后，客户端和服务器之间用于传输HTTP数据的TCP连接不会关闭，客户端再次访问这个服务器时，会继续使用这一条已经建立的连接。Keep-Alive不会永久保持连接，它有一个保持时间，可以在不同的服务器软件（如Apache）中设定这个时间。实现长连接需要客户端和服务端都支持长连接。</p>
 <h2 id="HTTP1-1-和-HTTP2-0-的区别"><a href="#HTTP1-1-和-HTTP2-0-的区别" class="headerlink" title="HTTP1.1 和 HTTP2.0 的区别"></a>HTTP1.1 和 HTTP2.0 的区别</h2><ul>
 <li><strong>新的二进制格式</strong>（Binary Format），HTTP1.x的解析是基于文本。基于文本协议的格式解析存在天然缺陷，文本的表现形式有多样性，要做到健壮性考虑的场景必然很多，二进制则不同，只认0和1的组合。基于这种考虑HTTP2.0的协议解析决定采用二进制格式，实现方便且健壮。</li>
 <li><strong>多路复用</strong>（MultiPlexing），即连接共享，即每一个request都是是用作连接共享机制的。一个request对应一个id，这样一个连接上可以有多个request，每个连接的request可以随机的混杂在一起，接收方可以根据request的 id将request再归属到各自不同的服务端请求里面。</li>
@@ -2496,33 +2685,41 @@
 <li><strong>服务端推送</strong>（server push），同SPDY一样，HTTP2.0也具有server push功能。</li>
 </ul>
 <p>ref. <a href="https://juejin.im/entry/5981c5df518825359a2b9476" target="_blank" rel="noopener">HTTP1.0、HTTP1.1 和 HTTP2.0 的区别</a></p>
-<h2 id="拥塞控制和流量控制"><a href="#拥塞控制和流量控制" class="headerlink" title="拥塞控制和流量控制"></a>拥塞控制和流量控制</h2><ul>
-<li>拥塞控制：拥塞控制是作用于网络的，它是防止过多的数据注入到网络中，避免出现网络负载过大的情况</li>
-<li>流量控制：流量控制是作用于接收者的，它是控制发送者的发送速度从而使接收者来得及接收，防止分组丢失的</li>
-</ul>
-<h3 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h3><ul>
-<li>慢开始：从小到大逐渐增大发送窗口，每个传输轮次后将 cwnd 大小加倍。</li>
-<li>拥塞避免：用慢开始门限（ssthresh）的阈值来控制 cwnd 的增长<ul>
-<li>cwnd &lt; ssthresh , 使用慢开始算法</li>
-<li>cwnd = ssthresh , 使用慢开始算法或拥塞避免算法（线性增长，一般是加1）都可以</li>
-<li>cwnd &gt; ssthresh , 使用拥塞避免算法。只要发现网络中出现拥塞就<strong>乘法减小</strong>ssthresh并从cwnd=1开始重新执行慢开始算法。</li>
+<h2 id="输入URL到显示网页的过程"><a href="#输入URL到显示网页的过程" class="headerlink" title="输入URL到显示网页的过程"></a>输入URL到显示网页的过程</h2><ol>
+<li>DNS解析：简单地说就是找到URL对应的IP地址。</li>
+<li>TCP连接：浏览器与目标服务器建立TCP连接<ul>
+<li>HTTP协议建立在TCP协议之上，HTTP请求前，需先进行TCP连接，形成客户端到服务器的稳定的通道。俗称TCP的三次握手。</li>
+<li>TCP连接完成后，HTTP请求开始，请求有多种方式，常见的有GET，POST等。</li>
 </ul>
 </li>
-<li>快重传：允许发送方再连续收到 3 个重复的确认后就可以开始执行乘法减小过程而不必再等待所设置的重传计时器到时。</li>
-<li>快恢复：是与快重传算法配合使用的一个算法。快恢复算法后与原来不同的一点是当发现网络出现拥塞并执行了乘法减小过程后，并不是设置cwnd=1并重新开始执行慢开始算法，而是让 cwnd =乘法减小后的ssthresh并开始执行拥塞避免算法。</li>
+<li>发送HTTP请求<ul>
+<li>HTTP请求包含请求头，也可能包含请求体两部分，请求头中包含我们希望对请求文件的操作的信息，请求体中包含传递给后台的参数。</li>
 </ul>
-<p><em>ps. ssthresh的设置：TCP/IP 中规定无论是在慢开始阶段还是在拥塞避免阶段，只要发现网络中出现拥塞（没有按时收到确认），就要把ssthresh设置为此时发送窗口的一半大小（不能小于2）</em></p>
-<h3 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h3><ul>
-<li>RTT算法</li>
-<li>滑动窗口</li>
+</li>
+<li>服务器处理请求并返回HTTP报文<ul>
+<li>服务器收到HTTP请求后，后台开始工作，如负载平衡，跨域等，这里就是后端的工作了。</li>
+<li>文件处理完毕，生成响应数据包，响应也包含两部分，响应头和相应体，响应体就是我们所请求的文件。</li>
+<li>经过网络传输，文件被下载到本地客户端，客户端开始加载。</li>
 </ul>
-<h2 id="输入URL到显示网页的过程"><a href="#输入URL到显示网页的过程" class="headerlink" title="输入URL到显示网页的过程"></a>输入URL到显示网页的过程</h2><ol>
-<li>DNS解析</li>
-<li>TCP连接</li>
-<li>HTTP请求</li>
-<li>回应HTML</li>
+</li>
+<li>浏览器解析渲染HTML页面<ul>
+<li>客户端浏览器加载了HTML文件后，由上到下解析HTML为DOM树（DOM Tree）。</li>
+<li>遇到CSS文件，CSS中的url发起HTTP请求。</li>
+<li>这是第二次HTTP请求，由于HTTP1.1协议增加了Connection: keep-alive声明，故TCP连接不会关闭，可以复用。</li>
+<li>HTTP连接是无状态连接，客户端与服务器端需要重新发起请求–响应。在请求CSS的过程中，解析器继续解析HTML，然后到了script标签。</li>
+<li>由于script可能会改变DOM结构，故解析器停止生成DOM树，解析器被js阻塞，等待js文件发起HTTP请求，然后加载。这是第三次HTTP请求。js执行完成后解析器继续解析。</li>
+<li>由于CSS文件可能会影响js文件的执行结果，因此需等CSS文件加载完成后再执行。</li>
+<li>浏览器收到CSS文件后，开始解析CSS文件为CSSOM树（CSS Rule Tree）。</li>
+<li>CSSOM树生成后，DOM Tree与CSS Rule Tree结合生成渲染树（Render Tree）。</li>
+<li>Render Tree会被CSS文件阻塞，渲染树生成后，先布局，绘制渲染树中节点的属性(位置，宽度，大小等)，然后渲染，页面就会呈现信息。</li>
+<li>继续边解析边渲染，遇到了另一个js文件，js文件执行后改变了DOM树，渲染树从被改变的dom开始再次渲染。</li>
+<li>继续向下渲染，碰到一个img标签，浏览器发起HTTP请求，不会等待img加载完成，继续向下渲染，之后再重新渲染此部分。</li>
+<li>DOM树遇到HTML结束标签，停止解析，进而渲染结束。</li>
+</ul>
+</li>
+<li>连接结束</li>
 </ol>
-<p>涉及到的协议：IP(网络)、OPSF(路由)、ARD(本地MAC解析)</p>
+<p>涉及到的协议：IP(网络)、OPSF(路由)、ARP(本地MAC解析)</p>
 <h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h2 id="内核态（管态）和用户态（目态）"><a href="#内核态（管态）和用户态（目态）" class="headerlink" title="内核态（管态）和用户态（目态）"></a>内核态（管态）和用户态（目态）</h2><p>用户态（User Mode）：处于用户态执行时，进程所能访问的内存空间和对象受到限制，其所处于占有的处理器是可被抢占的。</p>
 <p>内核态（Kernel Mode）：处于内核态执行时，则能访问所有的内存空间和对象，且所占有的处理器是不允许被抢占的。</p>
 <p>三种会导致用户态到内核态切换的情况：</p>
@@ -2707,7 +2904,7 @@
 <li>杀死：<code>kill -PID</code> 或强制杀死<code>kill -KILL PID</code></li>
 <li>重启：<code>kill -HUP PID</code></li>
 </ul>
-<h3 id="ref-2"><a href="#ref-2" class="headerlink" title="ref"></a>ref</h3><p><a href="https://www.nowcoder.com/discuss/450511?type=all&order=time&pos=&page=1&channel=666&source_id=search_all" target="_blank" rel="noopener">进程、线程基础知识全家桶</a></p>
+<h3 id="ref-5"><a href="#ref-5" class="headerlink" title="ref"></a>ref</h3><p><a href="https://www.nowcoder.com/discuss/450511?type=all&order=time&pos=&page=1&channel=666&source_id=search_all" target="_blank" rel="noopener">进程、线程基础知识全家桶</a></p>
 <h2 id="有哪些锁？"><a href="#有哪些锁？" class="headerlink" title="有哪些锁？"></a>有哪些锁？</h2><ul>
 <li>互斥锁：同一时间只能有一个线程获得互斥锁，其他线程阻塞进入休眠态</li>
 <li>读写锁：同一时间可以有多个线程获得读锁，适用于读操作频繁的场景</li>
@@ -2773,7 +2970,7 @@
 <li><p><a href="https://zh.wikipedia.org/wiki/%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">银行家算法</a></p>
 </li>
 </ul>
-<h3 id="ref-3"><a href="#ref-3" class="headerlink" title="ref."></a>ref.</h3><ul>
+<h3 id="ref-6"><a href="#ref-6" class="headerlink" title="ref."></a>ref.</h3><ul>
 <li><a href="https://blog.csdn.net/wljliujuan/article/details/79614019?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param" target="_blank" rel="noopener">死锁</a></li>
 </ul>
 <h2 id="ubuntu开机的时候系统做了什么"><a href="#ubuntu开机的时候系统做了什么" class="headerlink" title="ubuntu开机的时候系统做了什么"></a>ubuntu开机的时候系统做了什么</h2><ul>
@@ -2783,15 +2980,89 @@
 <li>加载内核<br>内核的加载，内核加载后，接开始操作系统初始化，根据进程的优先级启动进程。</li>
 </ul>
 <p>ref. <a href="https://blog.csdn.net/u013830021/article/details/72840669" target="_blank" rel="noopener">ubuntu启动过程</a></p>
-<h2 id="什么是内存碎片，怎么解决"><a href="#什么是内存碎片，怎么解决" class="headerlink" title="什么是内存碎片，怎么解决"></a>什么是内存碎片，怎么解决</h2><h1 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h1><h2 id="epoll、poll、select区别"><a href="#epoll、poll、select区别" class="headerlink" title="epoll、poll、select区别"></a>epoll、poll、select区别</h2><h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><h2 id="3老鼠确定8瓶子原理"><a href="#3老鼠确定8瓶子原理" class="headerlink" title="3老鼠确定8瓶子原理"></a>3老鼠确定8瓶子原理</h2><ol>
+<h2 id="Linux文件系统"><a href="#Linux文件系统" class="headerlink" title="Linux文件系统"></a>Linux文件系统</h2><p>Linux文件系统里面有文件和目录，组成一个树状的结构，树的每一个叶子节点表示文件或者空目录。每个文件基本上都由两部分组成：</p>
+<ul>
+<li>inode：一个文件占用一个 inode，记录文件的属性，同时记录此文件的内容所在的 block 编号；</li>
+<li>block：记录文件的内容，文件太大时，会占用多个 block。</li>
+</ul>
+<p>除此之外还包括：</p>
+<ul>
+<li>superblock：记录文件系统的整体信息，包括 inode 和 block 的总量、使用量、剩余量，以及文件系统的格式与相关信息等；</li>
+<li>block bitmap：记录 block 是否被使用的位图。</li>
+</ul>
+<p>当要读取一个文件的内容时，先在 inode 中查找文件内容所在的所有 block，然后把所有 block 的内容读出来。</p>
+<h2 id="硬链接和软链接有什么区别？"><a href="#硬链接和软链接有什么区别？" class="headerlink" title="硬链接和软链接有什么区别？"></a>硬链接和软链接有什么区别？</h2><ul>
+<li>硬链接就是在目录下创建一个条目，记录着文件名与 inode 编号，这个 inode 就是源文件的 inode。删除任意一个条目，文件还是存在，只要引用数量不为 0。但是硬链接有限制，它不能跨越文件系统，也不能对目录进行链接。</li>
+<li>符号链接文件保存着源文件所在的绝对路径，在读取时会定位到源文件上，可以理解为 Windows 的快捷方式。当源文件被删除了，链接文件就打不开了。因为记录的是路径，所以可以为目录建立符号链接。</li>
+</ul>
+<h2 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h2><p>虚拟内存就是说，让物理内存扩充成更大的逻辑内存，从而让程序获得更多的可用内存。虚拟内存使用部分加载的技术，让一个进程或者资源的某些页面加载进内存，从而能够加载更多的进程，甚至能加载比内存大的进程，这样看起来好像内存变大了，这部分内存其实包含了磁盘或者硬盘，并且就叫做虚拟内存。</p>
+<h2 id="分页系统"><a href="#分页系统" class="headerlink" title="分页系统"></a>分页系统</h2><p>分页就是说，将磁盘或者硬盘分为大小固定的数据块，叫做页，然后内存也分为同样大小的块，叫做页框。当进程执行的时候，会将磁盘的页载入内存的某些页框中，并且正在执行的进程如果发生缺页中断也会发生这个过程。页和页框都是由两个部分组成的，一个是页号或者页框号，一个是偏移量。分页一般是有硬件来完成的，每个页都对应一个页框，它们的对应关系存放在一个叫做页表的数据结构中，页号作为这个页表的索引，页框号作为页表的值。操作系统负责维护这个页表。</p>
+<h2 id="分页和分段有什区别？"><a href="#分页和分段有什区别？" class="headerlink" title="分页和分段有什区别？"></a>分页和分段有什区别？</h2><ul>
+<li>分页对程序员是透明的，但是分段需要程序员显式划分每个段。</li>
+<li>分页的地址空间是一维地址空间，分段是二维的。</li>
+<li>页的大小不可变，段的大小可以动态改变。</li>
+<li>分页主要用于实现虚拟内存，从而获得更大的地址空间；分段主要是为了使程序和数据可以被划分为逻辑上独立的地址空间并且有助于共享和保护。</li>
+</ul>
+<h2 id="页面替换算法"><a href="#页面替换算法" class="headerlink" title="页面替换算法"></a>页面替换算法</h2><ul>
+<li><p>最佳算法<br>所选择的被换出的页面将是最长时间内不再被访问，通常可以保证获得最低的缺页率。这是一种理论上的算法，因为无法知道一个页面多长时间不再被访问。</p>
+</li>
+<li><p>先进先出<br>选择换出的页面是最先进入的页面。该算***将那些经常被访问的页面也被换出，从而使缺页率升高。</p>
+</li>
+<li><p>LRU<br>虽然无法知道将来要使用的页面情况，但是可以知道过去使用页面的情况。LRU 将最近最久未使用的页面换出。为了实现 LRU，需要在内存中维护一个所有页面的链表。当一个页面被访问时，将这个页面移到链表表头。这样就能保证链表表尾的页面是最近最久未访问的。因为每次访问都需要更新链表，因此这种方式实现的 LRU 代价很高。</p>
+</li>
+<li><p>时钟算法<br>时钟算法使用环形链表将页面连接起来，再使用一个指针指向最老的页面。它将整个环形链表的每一个页面做一个标记，如果标记是0，那么暂时就不会被替换，然后时钟算法遍历整个环，遇到标记为1的就替换，否则将标记为0的标记为1。</p>
+</li>
+</ul>
+<h2 id="什么是内存碎片，怎么解决"><a href="#什么是内存碎片，怎么解决" class="headerlink" title="什么是内存碎片，怎么解决"></a>什么是内存碎片，怎么解决</h2><h2 id="伙伴算法-Buddy-system"><a href="#伙伴算法-Buddy-system" class="headerlink" title="伙伴算法(Buddy system)"></a>伙伴算法(Buddy system)</h2><p>Buddy（伙伴的定义）：<br>这里给出伙伴的概念，满足以下三个条件的称为伙伴：</p>
+<ol>
+<li>两个块大小相同；</li>
+<li>两个块地址连续；</li>
+<li>两个块必须是同一个大块中分离出来的；</li>
+</ol>
+<ul>
+<li>伙伴算法分配内存:<br>若申请的内存大小为n则将n向上取整为2的幂设次数为s,则需要分配s大小的内存块,定位大相应数组：<ol>
+<li>如果该数组有剩余内存块,则分配出去；</li>
+<li>若没有剩余内存块就沿数组向上查找,然后再将该内存块分割出来s并将剩余的内存块放入相应大小的数组中。</li>
+</ol>
+</li>
+</ul>
+<p>例如分配5大小的内存块：定位到大小为8的链表中。若该链表中之中没有空余元素,则定位到16的链表中,16中有剩余元素,则取出该元素,并分割出大小为8的内存块供用户使用,然后将剩余的8连接到大小为8的数组中。</p>
+<ul>
+<li>伙伴算法的内存合并:<br>当用户用完内存后会归还,然后根据该内存块实际大小(向上取整为2的幂)归入链表中,在归入之前,<ol>
+<li>我们还要检测他的伙伴内存块是否空闲,</li>
+<li>如果空闲就合并在一起,合并后转到1,继续执行.</li>
+<li>若果不是空闲的就直接归入链表中.</li>
+</ol>
+</li>
+</ul>
+<p>一般来说,伙伴算法实现中会用位图记录内存块是否被使用,用于伙伴内存的合并。</p>
+<p>伙伴算法的特点:</p>
+<ul>
+<li>伙伴算法会浪费大量的内存，(如果需要大小为9的内存块必须分配大小为16的内存块)</li>
+<li>优点也是明显的，分配和合并算法都很简单易行。</li>
+</ul>
+<p><em>ps. 对于小块内存的分配和回收,伙伴算法效果不好，一般采用slab算法,或者叫做slab机制</em></p>
+<h2 id="磁盘调度算法"><a href="#磁盘调度算法" class="headerlink" title="磁盘调度算法"></a>磁盘调度算法</h2><ul>
+<li>先来先服务<ul>
+<li>按照磁盘请求的顺序进行调度。</li>
+<li>优点是公平和简单。缺点也很明显，因为未对寻道做任何优化，使平均寻道时间可能较长。</li>
+</ul>
+</li>
+<li>最短寻道时间优先<ul>
+<li>优先调度与当前磁头所在磁道距离最近的磁道。</li>
+<li>虽然平均寻道时间比较低，但是不够公平。如果新到达的磁道请求总是比一个在等待的磁道请求近，那么在等待的磁道请求会一直等待下去，也就是出现饥饿现象。一般来说，两端的磁道请求更容易出现饥饿现象。</li>
+</ul>
+</li>
+<li>电梯算法<ul>
+<li>也叫SCAN扫描算法。电梯算法就是说读写磁头总是保持一个方向运行，直到该方向没有请求为止，然后改变运行方向。</li>
+<li>因为考虑了移动方向，因此所有的磁盘请求都会被满足，解决了最短寻道时间优先的饥饿问题。</li>
+</ul>
+</li>
+</ul>
+<h1 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h1><h2 id="epoll、poll、select区别"><a href="#epoll、poll、select区别" class="headerlink" title="epoll、poll、select区别"></a>epoll、poll、select区别</h2><h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><h2 id="3老鼠确定8瓶子原理"><a href="#3老鼠确定8瓶子原理" class="headerlink" title="3老鼠确定8瓶子原理"></a>3老鼠确定8瓶子原理</h2><ol>
 <li>二分法：每次取一半混合给小鼠喝。但是瓶子太多就不好混合了。</li>
 <li>二进制：每只老鼠代表一位，n只老鼠可以检测2^n个瓶子。</li>
 </ol>
-<h1 id="ref-4"><a href="#ref-4" class="headerlink" title="ref"></a>ref</h1><ul>
-<li><a href="https://blog.csdn.net/BostonRayAlen/article/details/93041395?utm_medium=distribute.wap_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.wap_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase" target="_blank" rel="noopener">C/C++ 最常见50道面试题</a></li>
-<li><a href="https://blog.csdn.net/hsq1596753614/article/details/80249605?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase" target="_blank" rel="noopener">C/C++ 经典面试题（一）之常考概念</a></li>
-<li><a href="https://blog.csdn.net/ljh0302/article/details/81098764?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase" target="_blank" rel="noopener">常见C++笔试面试题整理</a></li>
-</ul>
 
       
     </div>
@@ -5362,12 +5633,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">325k</span>
+    <span title="站点总字数">336k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:56</span>
+    <span title="站点阅读时长">5:05</span>
 </div>
 
         

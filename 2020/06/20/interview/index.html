@@ -29,7 +29,7 @@
 <meta property="og:description" content="C++C++源文件到可执行文件的过程对于C/C++编写的程序，从源代码到可执行文件，一般经过下面四个步骤：  预处理，产生.ii文件 对所有的“#define”进行宏展开； 处理所有的条件编译指令，比如“#if”,“#ifdef”，“#elif”，“#else”,“#endif” 处理“#include”指令，这个过程是递归的，也就是说被包含的文件可能还包含其他文件 删除所有的注释“//”和“/*">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2020/07/26/qWaBZCesYmz5GQT.jpg">
-<meta property="og:updated_time" content="2020-08-11T02:13:39.492Z">
+<meta property="og:updated_time" content="2020-08-11T03:32:03.230Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试常见题">
 <meta name="twitter:description" content="C++C++源文件到可执行文件的过程对于C/C++编写的程序，从源代码到可执行文件，一般经过下面四个步骤：  预处理，产生.ii文件 对所有的“#define”进行宏展开； 处理所有的条件编译指令，比如“#if”,“#ifdef”，“#elif”，“#else”,“#endif” 处理“#include”指令，这个过程是递归的，也就是说被包含的文件可能还包含其他文件 删除所有的注释“//”和“/*">
@@ -199,7 +199,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-11 10:13:39" itemprop="dateModified" datetime="2020-08-11T10:13:39+08:00">2020-08-11</time>
+                <time title="修改时间：2020-08-11 11:32:03" itemprop="dateModified" datetime="2020-08-11T11:32:03+08:00">2020-08-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -421,7 +421,7 @@
 <li>从实现角度<br>vtable在构造函数调用后才建立，所以构造函数不能是虚函数。在调用构造函数时还不能确定对象的真实类型（由于子类会调父类的构造函数）；并且构造函数的作用是提供初始化，在对象生命期仅仅运行一次，不是对象的动态行为，没有必要成为虚函数。</li>
 </ul>
 </li>
-<li><p>析构函数常常是虚函数<br>创建一个对象时我们总是要明白指定对象的类型。虽然我们可能通过基类的指针或引用去访问它但析构却不一定，我们往往通过基类的指针来销毁对象。这时候假设析构函数不是虚函数，就不能正确识别对象类型从而不能正确调用析构函数。<br>如果基类的析构函数不是虚函数，派生类的析构函数用不上，会造成资源的泄漏。</p>
+<li><p>析构函数常常是虚函数<br>创建一个对象时我们总是要明白指定对象的类型。虽然我们可能通过基类的指针或引用去访问它。但析构却不一定，我们往往通过基类的指针来销毁对象。这时候假设析构函数不是虚函数，就不能正确识别对象类型从而不能正确调用析构函数。<br>如果基类的析构函数不是虚函数，派生类的析构函数用不上，会造成资源的泄漏。</p>
 </li>
 </ol>
 <h3 id="构造函数和析构函数，可以调用其他的虚函数吗？"><a href="#构造函数和析构函数，可以调用其他的虚函数吗？" class="headerlink" title="构造函数和析构函数，可以调用其他的虚函数吗？"></a>构造函数和析构函数，可以调用其他的虚函数吗？</h3><p>《Effective C++》条款09：绝不在构造函数或析构函数中调用虚函数。</p>

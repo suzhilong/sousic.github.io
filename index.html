@@ -1955,7 +1955,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-11 13:50:38" itemprop="dateModified" datetime="2020-08-11T13:50:38+08:00">2020-08-11</time>
+                <time title="修改时间：2020-08-11 13:58:31" itemprop="dateModified" datetime="2020-08-11T13:58:31+08:00">2020-08-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -2501,7 +2501,7 @@
 <h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="数据库范式"><a href="#数据库范式" class="headerlink" title="数据库范式"></a>数据库范式</h2><ul>
 <li><p>1NF(第一范式)<br>属性（对应于表中的字段）不能再被分割，也就是这个字段只能是一个值，不能再分为多个其他的字段了。1NF是所有关系型数据库的最基本要求 ，也就是说关系型数据库中创建的表一定满足第一范式。</p>
 </li>
-<li><p>2NF(第二范式)<br>2NF在1NF的基础之上，消除了非主属性对于码的部分函数依赖。如下图所示，展示了第一范式到第二范式的过渡。第二范式在第一范式的基础上增加了一个列，这个列称为主键，非主属性都依赖于主键。</p>
+<li><p>2NF(第二范式)<br>2NF在1NF的基础之上，消除了非主属性对于码的部分函数依赖。第二范式在第一范式的基础上增加了一个列，这个列称为主键，非主属性都依赖于主键。</p>
 </li>
 <li><p>3NF(第三范式)<br>3NF在2NF的基础之上，消除了非主属性对于码的传递函数依赖 。符合3NF要求的数据库设计，基本上解决了数据冗余过大，插入异常，修改异常，删除异常的问题。比如在关系R(学号 ,姓名, 系名，系主任)中，学号 → 系名，系名 → 系主任，所以存在非主属性系主任对于学号的传递函数依赖，所以该表的设计，不符合3NF的要求。</p>
 </li>
@@ -2512,10 +2512,11 @@
 <li>3NF：3NF在2NF的基础之上，消除了非主属性对于码的传递函数依赖 。</li>
 </ul>
 </li>
-<li><p><a href="https://blog.csdn.net/Wenco1/article/details/88077279?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.nonecase" target="_blank" rel="noopener">详解第一范式、第二范式、第三范式、BCNF范式</a></p>
-</li>
-<li><p><a href="https://blog.csdn.net/wyh7280/article/details/83350722?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-5.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-5.nonecase" target="_blank" rel="noopener">范式通俗理解：1NF、2NF、3NF和BNCF</a></p>
-</li>
+</ul>
+<p>ref.</p>
+<ul>
+<li><a href="https://blog.csdn.net/Wenco1/article/details/88077279?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.nonecase" target="_blank" rel="noopener">详解第一范式、第二范式、第三范式、BCNF范式</a></li>
+<li><a href="https://blog.csdn.net/wyh7280/article/details/83350722?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-5.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-5.nonecase" target="_blank" rel="noopener">范式通俗理解：1NF、2NF、3NF和BNCF</a></li>
 </ul>
 <h2 id="关系型数据库和非关系型数据库"><a href="#关系型数据库和非关系型数据库" class="headerlink" title="关系型数据库和非关系型数据库"></a>关系型数据库和非关系型数据库</h2><h3 id="关系型数据库"><a href="#关系型数据库" class="headerlink" title="关系型数据库"></a>关系型数据库</h3><p>关系型数据库，是指采用了<strong>关系模型</strong>来组织数据的数据库。</p>
 <p>主要代表：SQL Server, Oracle, Mysql, PostgreSQL</p>

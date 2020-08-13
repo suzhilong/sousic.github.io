@@ -29,7 +29,7 @@
 <meta property="og:description" content="面向对象的三个基本特征面向对象的三个基本特征是：封装、继承、多态。封装可以隐藏实现细节，使得代码模块化；继承可以扩展已存在的代码模块（类）。它们的目的都是代码重用；而多态则是为了实现另一个目的——接口重用。 封装是指利用抽象数据类型将数据和基于数据的操作封装在一起，使其构成一个不可分割的独立实体，数据被保护在抽象数据类型的内部，尽可能地隐藏内部的细节，只保留一些对外接口使之与外部发生联系。 封装把">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2020/08/05/2eGU6kMy8Xp5v4Y.png">
-<meta property="og:updated_time" content="2020-08-10T04:48:31.547Z">
+<meta property="og:updated_time" content="2020-08-12T07:38:49.452Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ Review">
 <meta name="twitter:description" content="面向对象的三个基本特征面向对象的三个基本特征是：封装、继承、多态。封装可以隐藏实现细节，使得代码模块化；继承可以扩展已存在的代码模块（类）。它们的目的都是代码重用；而多态则是为了实现另一个目的——接口重用。 封装是指利用抽象数据类型将数据和基于数据的操作封装在一起，使其构成一个不可分割的独立实体，数据被保护在抽象数据类型的内部，尽可能地隐藏内部的细节，只保留一些对外接口使之与外部发生联系。 封装把">
@@ -199,7 +199,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-10 12:48:31" itemprop="dateModified" datetime="2020-08-10T12:48:31+08:00">2020-08-10</time>
+                <time title="修改时间：2020-08-12 15:38:49" itemprop="dateModified" datetime="2020-08-12T15:38:49+08:00">2020-08-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -617,7 +617,7 @@
 <h2 id="malloc-free-和-new-delete-区别如下："><a href="#malloc-free-和-new-delete-区别如下：" class="headerlink" title="malloc/free 和 new/delete 区别如下："></a>malloc/free 和 new/delete 区别如下：</h2><ol>
 <li>属性不同：malloc/free是标准库函数，new/delete是操作符（运算符）</li>
 <li>申请的内存所在位置：new操作符从<strong>自由存储区（free store）</strong>上为对象动态分配内存空间，而malloc函数从<strong>堆</strong>上动态分配内存。 </li>
-<li>内存分配失败时的返回值：new内存分配失败时，会抛出<strong>bac_alloc异常</strong>，它不会返回NULL；malloc分配内存失败时返回<strong>NULL</strong>。</li>
+<li>内存分配失败时的返回值：new内存分配失败时，会抛出<strong>bad_alloc异常</strong>，它不会返回NULL；malloc分配内存失败时返回<strong>NULL</strong>。</li>
 <li>是否需要指定内存大小：new/delete分配可以自动计算需要的字节数，malloc/free需要人为指定</li>
 <li>是否调用构造函数/析构函数：new会先调用operator_ new函数，申请足够的内存（通常底层使用malloc实现）。然后调用类型的构造函数，初始化成员变量，最后返回自定义类型指针。delete先调用析构函数，然后调用operator_ delete函数释放内存（通常底层使用free实现）。malloc/free是库函数，只能动态的申请和释放内存，无法强制要求其做自定义类型对象构造和析构工作。</li>
 <li>能否重载：opeartor_new/operator_delete允许重载,malloc/free不允许重载</li>
@@ -1054,12 +1054,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">343k</span>
+    <span title="站点总字数">344k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:12</span>
+    <span title="站点阅读时长">5:13</span>
 </div>
 
         

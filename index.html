@@ -962,7 +962,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-12 10:57:03" itemprop="dateModified" datetime="2020-08-12T10:57:03+08:00">2020-08-12</time>
+                <time title="修改时间：2020-08-13 15:38:20" itemprop="dateModified" datetime="2020-08-13T15:38:20+08:00">2020-08-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1919,8 +1919,9 @@ Output: [-1,-1]
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Yes</span><br><span class="line">Yes</span><br><span class="line">No</span><br></pre></td></tr></table></figure>
 
 <p>题解（略）</p>
-<h4 id="77-Leetcode每日一题-2020年六月：6月8日"><a href="#77-Leetcode每日一题-2020年六月：6月8日" class="headerlink" title="77. Leetcode每日一题-2020年六月：6月8日"></a>77. <a href="https://suzhilong.github.io/2020/06/01/LeetcodeDaily/" target="_blank" rel="noopener">Leetcode每日一题-2020年六月：6月8日</a></h4><h2 id="3-9-string模拟数字运算"><a href="#3-9-string模拟数字运算" class="headerlink" title="3.9 string模拟数字运算"></a>3.9 string模拟数字运算</h2><h3 id="大数相乘"><a href="#大数相乘" class="headerlink" title="大数相乘"></a>大数相乘</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">string bigMultiple(string num1, string num2)&#123;</span><br><span class="line">    int m = num1.size(), n = num2.size();</span><br><span class="line">    vector&lt;long long&gt; num(m + n - 1, 0);</span><br><span class="line"></span><br><span class="line">    for (int i = 0; i &lt; m;i++)&#123;//前面是高位，后面是低位</span><br><span class="line">        int a = num1[i] - &apos;0&apos;;</span><br><span class="line">        for (int j = 0; j &lt; n; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            int b = num2[j] - &apos;0&apos;;</span><br><span class="line">            num[i + j] += a * b;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int carry = 0;</span><br><span class="line">    for (int i = num.size() - 1; i &gt;= 0;i--)&#123;//前面是高位，后面是低位</span><br><span class="line">        int cur = num[i] + carry;</span><br><span class="line">        num[i] = cur % 10;</span><br><span class="line">        carry = cur / 10;</span><br><span class="line">    &#125;</span><br><span class="line">    if(carry!=0)&#123;</span><br><span class="line">        int cur = carry % 10;</span><br><span class="line">        carry /= 10;</span><br><span class="line">        num.insert(num.begin(), cur);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    string res = &quot;&quot;;</span><br><span class="line">    for (auto a : num)</span><br><span class="line">    &#123;</span><br><span class="line">        res += to_string(a);</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="77-Leetcode每日一题-2020年六月：6月8日"><a href="#77-Leetcode每日一题-2020年六月：6月8日" class="headerlink" title="77. Leetcode每日一题-2020年六月：6月8日"></a>77. <a href="https://suzhilong.github.io/2020/06/01/LeetcodeDaily/" target="_blank" rel="noopener">Leetcode每日一题-2020年六月：6月8日</a></h4><h2 id="3-9-string模拟数字运算"><a href="#3-9-string模拟数字运算" class="headerlink" title="3.9 string模拟数字运算"></a>3.9 string模拟数字运算</h2><h3 id="大数相乘"><a href="#大数相乘" class="headerlink" title="大数相乘"></a>大数相乘</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">string bigMultiple(string num1, string num2)&#123;</span><br><span class="line">    int m = num1.size(), n = num2.size();</span><br><span class="line">    vector&lt;long long&gt; num(m + n - 1, 0);</span><br><span class="line"></span><br><span class="line">    for (int i = 0; i &lt; m;i++)&#123;//前面是高位，后面是低位</span><br><span class="line">        int a = num1[i] - &apos;0&apos;;</span><br><span class="line">        for (int j = 0; j &lt; n; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            int b = num2[j] - &apos;0&apos;;</span><br><span class="line">            num[i + j] += a * b;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int carry = 0;</span><br><span class="line">    for (int i = num.size() - 1; i &gt;= 0;i--)&#123;//前面是高位，后面是低位</span><br><span class="line">        int cur = num[i] + carry;</span><br><span class="line">        num[i] = cur % 10;</span><br><span class="line">        carry = cur / 10;</span><br><span class="line">    &#125;</span><br><span class="line">    while(carry!=0)&#123;</span><br><span class="line">        int cur = carry % 10;</span><br><span class="line">        carry /= 10;</span><br><span class="line">        num.insert(num.begin(), cur);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    string res = &quot;&quot;;</span><br><span class="line">    for (auto a : num)</span><br><span class="line">    &#123;</span><br><span class="line">        res += to_string(a);</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>时间复杂度：O(m*n)<br>空间复杂度：O(m+n)</p>
 <h3 id="大数相加"><a href="#大数相加" class="headerlink" title="大数相加"></a>大数相加</h3><h3 id="大数相减"><a href="#大数相减" class="headerlink" title="大数相减"></a>大数相减</h3><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
 <li>严蔚敏, 吴伟民. 数据结构（C语言版）. 清华大学出版社</li>
 <li>算法导论（中文版）. 机械工业出版社</li>
@@ -2105,7 +2106,7 @@ Output: [-1,-1]
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-11 13:58:31" itemprop="dateModified" datetime="2020-08-11T13:58:31+08:00">2020-08-11</time>
+                <time title="修改时间：2020-08-12 16:17:03" itemprop="dateModified" datetime="2020-08-12T16:17:03+08:00">2020-08-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -2407,6 +2408,8 @@ Output: [-1,-1]
 <li>类的静态成员变量编译时被分配到静态/全局区，因此静态成员变量是属于类的，所有对象共用一份，不计入类的内存空间</li>
 <li>静态成员函数和非静态成员函数都是存放在代码区的，是属于类的，类可以直接调用静态成员函数，不可以直接调用非静态成员函数，两者主要的区别是有无this指针<br><a href="https://zhuanlan.zhihu.com/p/103384358" target="_blank" rel="noopener">C++类在内存中的存储方式</a></li>
 </ul>
+<h2 id="类成员变量的初始化顺序"><a href="#类成员变量的初始化顺序" class="headerlink" title="类成员变量的初始化顺序"></a>类成员变量的初始化顺序</h2><p>成员变量在使用初始化列表初始化时，与构造函数中初始化成员列表的顺序无关，只与定义成员变量的顺序有关。因为成员变量的初始化次序是根据变量在内存中次序有关，而内存中的排列顺序早在编译期就根据变量的定义次序决定了。</p>
+<p><a href="https://www.cnblogs.com/littleswan/p/12511022.html" target="_blank" rel="noopener">C++类成员变量的初始化顺序</a></p>
 <h2 id="map和unordered-map的区别"><a href="#map和unordered-map的区别" class="headerlink" title="map和unordered_map的区别"></a>map和unordered_map的区别</h2><ul>
 <li>排序：map在缺省下，map按照递增的顺序进行排序；unordered_map不排序</li>
 <li>内部原理：map内部采用了红黑树（自平衡的二叉搜索树），实现了数据排序；unordered_map内部采用了哈希表</li>
@@ -3141,6 +3144,7 @@ Output: [-1,-1]
 <li>block bitmap：记录 block 是否被使用的位图。</li>
 </ul>
 <p>当要读取一个文件的内容时，先在 inode 中查找文件内容所在的所有 block，然后把所有 block 的内容读出来。</p>
+<p><a href="https://www.cnblogs.com/huxiao-tee/p/4657851.html" target="_blank" rel="noopener">从内核文件系统看文件读写过程</a></p>
 <h2 id="硬链接和软链接有什么区别？"><a href="#硬链接和软链接有什么区别？" class="headerlink" title="硬链接和软链接有什么区别？"></a>硬链接和软链接有什么区别？</h2><ul>
 <li>硬链接就是在目录下创建一个条目，记录着文件名与 inode 编号，这个 inode 就是源文件的 inode。删除任意一个条目，文件还是存在，只要引用数量不为 0。但是硬链接有限制，它不能跨越文件系统，也不能对目录进行链接。</li>
 <li>符号链接文件保存着源文件所在的绝对路径，在读取时会定位到源文件上，可以理解为 Windows 的快捷方式。当源文件被删除了，链接文件就打不开了。因为记录的是路径，所以可以为目录建立符号链接。</li>
@@ -3263,7 +3267,7 @@ Output: [-1,-1]
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-10 12:48:31" itemprop="dateModified" datetime="2020-08-10T12:48:31+08:00">2020-08-10</time>
+                <time title="修改时间：2020-08-12 15:38:49" itemprop="dateModified" datetime="2020-08-12T15:38:49+08:00">2020-08-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -3681,7 +3685,7 @@ Output: [-1,-1]
 <h2 id="malloc-free-和-new-delete-区别如下："><a href="#malloc-free-和-new-delete-区别如下：" class="headerlink" title="malloc/free 和 new/delete 区别如下："></a>malloc/free 和 new/delete 区别如下：</h2><ol>
 <li>属性不同：malloc/free是标准库函数，new/delete是操作符（运算符）</li>
 <li>申请的内存所在位置：new操作符从<strong>自由存储区（free store）</strong>上为对象动态分配内存空间，而malloc函数从<strong>堆</strong>上动态分配内存。 </li>
-<li>内存分配失败时的返回值：new内存分配失败时，会抛出<strong>bac_alloc异常</strong>，它不会返回NULL；malloc分配内存失败时返回<strong>NULL</strong>。</li>
+<li>内存分配失败时的返回值：new内存分配失败时，会抛出<strong>bad_alloc异常</strong>，它不会返回NULL；malloc分配内存失败时返回<strong>NULL</strong>。</li>
 <li>是否需要指定内存大小：new/delete分配可以自动计算需要的字节数，malloc/free需要人为指定</li>
 <li>是否调用构造函数/析构函数：new会先调用operator_ new函数，申请足够的内存（通常底层使用malloc实现）。然后调用类型的构造函数，初始化成员变量，最后返回自定义类型指针。delete先调用析构函数，然后调用operator_ delete函数释放内存（通常底层使用free实现）。malloc/free是库函数，只能动态的申请和释放内存，无法强制要求其做自定义类型对象构造和析构工作。</li>
 <li>能否重载：opeartor_new/operator_delete允许重载,malloc/free不允许重载</li>
@@ -4014,7 +4018,7 @@ Output: [-1,-1]
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-12 10:43:37" itemprop="dateModified" datetime="2020-08-12T10:43:37+08:00">2020-08-12</time>
+                <time title="修改时间：2020-08-13 15:38:27" itemprop="dateModified" datetime="2020-08-13T15:38:27+08:00">2020-08-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -4046,14 +4050,14 @@ Output: [-1,-1]
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>12k</span>
+              <span>13k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>11 分钟</span>
+              <span>12 分钟</span>
             </span>
 
         </div>
@@ -4172,6 +4176,20 @@ Output: [-1,-1]
 </li>
 </ol>
 <p>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
+<h1 id="8月13日-43-字符串相乘（中等）"><a href="#8月13日-43-字符串相乘（中等）" class="headerlink" title="8月13日 43. 字符串相乘（中等）"></a>8月13日 <a href="https://leetcode-cn.com/problems/multiply-strings/" target="_blank" rel="noopener">43. 字符串相乘（中等）</a></h1><p>给定两个以字符串形式表示的非负整数 num1 和 num2，返回 num1 和 num2 的乘积，它们的乘积也表示为字符串形式。</p>
+<p>示例 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: num1 = &quot;2&quot;, num2 = &quot;3&quot;</span><br><span class="line">输出: &quot;6&quot;</span><br></pre></td></tr></table></figure>
+
+<p>示例 2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: num1 = &quot;123&quot;, num2 = &quot;456&quot;</span><br><span class="line">输出: &quot;56088&quot;</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">num1 和 num2 的长度小于110。</span><br><span class="line">num1 和 num2 只包含数字 0-9。</span><br><span class="line">num1 和 num2 均不以零开头，除非是数字 0 本身。</span><br><span class="line">不能使用任何标准库的大数类型（比如 BigInteger）或直接将输入转换为整数来处理。</span><br></pre></td></tr></table></figure>
+
+<p>题解：<br>大数相乘问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">string multiply(string num1, string num2)&#123;</span><br><span class="line">    int m = num1.size(), n = num2.size();</span><br><span class="line">    vector&lt;long long&gt; num(m + n - 1, 0);</span><br><span class="line"></span><br><span class="line">    for (int i = 0; i &lt; m;i++)&#123;//前面是高位，后面是低位</span><br><span class="line">        int a = num1[i] - &apos;0&apos;;</span><br><span class="line">        for (int j = 0; j &lt; n; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            int b = num2[j] - &apos;0&apos;;</span><br><span class="line">            num[i + j] += a * b;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int carry = 0;</span><br><span class="line">    for (int i = num.size() - 1; i &gt;= 0;i--)&#123;//前面是高位，后面是低位</span><br><span class="line">        int cur = num[i] + carry;</span><br><span class="line">        num[i] = cur % 10;</span><br><span class="line">        carry = cur / 10;</span><br><span class="line">    &#125;</span><br><span class="line">    while(carry!=0)&#123;</span><br><span class="line">        int cur = carry % 10;</span><br><span class="line">        carry /= 10;</span><br><span class="line">        num.insert(num.begin(), cur);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    string res = &quot;&quot;;</span><br><span class="line">    for (auto a : num)</span><br><span class="line">    &#123;</span><br><span class="line">        res += to_string(a);</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度：O(m*n)<br>空间复杂度：O(m+n)</p>
 
       
     </div>
@@ -5809,12 +5827,12 @@ Output: [-1,-1]
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">343k</span>
+    <span title="站点总字数">344k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:12</span>
+    <span title="站点阅读时长">5:13</span>
 </div>
 
         

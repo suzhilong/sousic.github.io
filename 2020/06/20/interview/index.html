@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/08/13/ij4qSdQV8bUFnPy.png">
 <meta property="og:image" content="https://i.loli.net/2020/08/13/eNUzQE9g8YIP3H4.png">
 <meta property="og:image" content="https://i.loli.net/2020/07/26/qWaBZCesYmz5GQT.jpg">
-<meta property="og:updated_time" content="2020-08-14T02:19:48.842Z">
+<meta property="og:updated_time" content="2020-08-15T10:16:54.724Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试常见题">
 <meta name="twitter:description" content="C++C++源文件到可执行文件的过程对于C/C++编写的程序，从源代码到可执行文件，一般经过下面四个步骤：  预处理，产生.ii文件 对所有的“#define”进行宏展开； 处理所有的条件编译指令，比如“#if”,“#ifdef”，“#elif”，“#else”,“#endif” 处理“#include”指令，这个过程是递归的，也就是说被包含的文件可能还包含其他文件 删除所有的注释“//”和“/*">
@@ -202,7 +202,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-14 10:19:48" itemprop="dateModified" datetime="2020-08-14T10:19:48+08:00">2020-08-14</time>
+                <time title="修改时间：2020-08-15 18:16:54" itemprop="dateModified" datetime="2020-08-15T18:16:54+08:00">2020-08-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -992,7 +992,7 @@
 </li>
 <li>连接结束</li>
 </ol>
-<p>涉及到的协议：IP(网络)、OPSF(路由)、ARP(本地MAC解析)</p>
+<p>涉及到的协议：IP(网络)、OSPF(路由)、ARP(本地MAC解析)</p>
 <h2 id="ARP，RARP-和-ICMP"><a href="#ARP，RARP-和-ICMP" class="headerlink" title="ARP，RARP 和 ICMP"></a>ARP，RARP 和 ICMP</h2><ul>
 <li>ARP协议：属于ipv4协议簇，工作在数据链路层。其功能是把网络层32位的IP转换成数据链路层48位的MAC地址，在这个过程中有一个很重要的表——<strong>ARP缓存表</strong>，<ul>
 <li>ARP缓存表中缓存了IP地址和MAC地址的映射关系。如果没有缓存的情况，ARP会广播某一个IP的信息，收到这个广播的设备会回应一个包，表示我是不是这个IP地址。如果是，广播该IP地址的设备会记录对应设备的MAC地址。</li>
@@ -1120,7 +1120,7 @@
 <h4 id="线程安全怎么实现"><a href="#线程安全怎么实现" class="headerlink" title="线程安全怎么实现"></a>线程安全怎么实现</h4><p><strong>线程安全定义</strong>：当多个线程访问一个对象时，如果不用考虑这些线程在运行时环境下的调度和交替执行，也不需要进行额外的同步，或者在调用方进行任何其他的协调操作，调用这个对象的行为都可以获得正确的结果，那么这个对象就是线程安全的。</p>
 <p>线程安全的实现方式：</p>
 <ol>
-<li>互斥同步：指多个线程并发访问共享数据时，保证共享数据在同一时刻只被一个线程使用。常见的互斥实现方式有：临界区（critical selection），互斥量(mutex)和信号量(semaphore)。互斥同步最主要的问题就是进行线程阻塞和唤醒所带来的性能问题，因此这种实现方式也叫阻塞同步。从处理问题的方式上来说，互斥同步属于一种悲观的并发策略。</li>
+<li>互斥同步：指多个线程并发访问共享数据时，保证共享数据在同一时刻只被一个线程使用。常见的互斥实现方式有：临界区(critical selection)，互斥量(mutex)和信号量(semaphore)。互斥同步最主要的问题就是进行线程阻塞和唤醒所带来的性能问题，因此这种实现方式也叫阻塞同步。从处理问题的方式上来说，互斥同步属于一种悲观的并发策略。</li>
 <li>非阻塞同步：随着硬件指令集的发展，我们有了另外的一个选择：基于冲突检测的乐观并发策略。也就是先进行操作，如果没有其它线程使用共享数据，那就操作成功；如果有，那就再采取补偿措施。这种方式不需要把线程挂起，因此称为：非阻塞同步(Non-Blocking Synchronization)。</li>
 <li>无同步方案：<ul>
 <li>可重入代码</li>
@@ -1550,12 +1550,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">348k</span>
+    <span title="站点总字数">349k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:16</span>
+    <span title="站点阅读时长">5:17</span>
 </div>
 
         

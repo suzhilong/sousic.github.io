@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/06/19/eLGVs6wMJf9BOyr.png">
 <meta property="og:image" content="https://i.loli.net/2020/07/12/GXVphrYafON5jFw.png">
 <meta property="og:image" content="https://i.loli.net/2020/07/29/N1O2xGlCm54yuQI.png">
-<meta property="og:updated_time" content="2020-08-14T03:10:28.400Z">
+<meta property="og:updated_time" content="2020-08-17T03:31:29.528Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SOUSIC的algorithm总结">
 <meta name="twitter:description" content="一、算法基础&amp;emsp;&amp;emsp;春节后疫情一直没开学，赋闲在家刷了一个多月的算法，总结了一下，形成了下面的文章。包含了数据结构类例题和算法类例题，大部分是Leecode中的典型题目，也有实习笔试中的真题和剑指Offer中的题目。题解使用C++，代码均由本人在参考题解之后所写。全部都在本地编译运行通过。（目前大概70多题，还有数据结构类例题未完善）相关github   1.1 常用数据结构1.1">
@@ -201,7 +201,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-14 11:10:28" itemprop="dateModified" datetime="2020-08-14T11:10:28+08:00">2020-08-14</time>
+                <time title="修改时间：2020-08-17 11:31:29" itemprop="dateModified" datetime="2020-08-17T11:31:29+08:00">2020-08-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -233,14 +233,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>126k</span>
+              <span>129k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1:55</span>
+              <span>1:57</span>
             </span>
 
         </div>
@@ -312,15 +312,24 @@
 </li>
 </ul>
 <h2 id="2-2-二叉树"><a href="#2-2-二叉树" class="headerlink" title="2.2 二叉树"></a>2.2 二叉树</h2><h3 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h3><p>二叉树的遍历可以实现很多树相关的操作，如二叉树的序列化。二叉树的序列化本质上是对其值进行编码，更重要的是对其结构进行编码。可以遍历树来完成。  </p>
+<p><a href="https://github.com/suzhilong/Algorithm/tree/master/BinaryTree">二叉树遍历的cpp实现</a></p>
 <p>我们一般有两个策略：</p>
 <ul>
 <li><p>BFS（即层序遍历）：BFS 可以按照层次的顺序从上到下遍历所有的节点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">void levelOrder(BinaryTree *root)&#123;</span><br><span class="line">    queue&lt;BinaryTree *&gt; que;</span><br><span class="line">    que.push(root);</span><br><span class="line"></span><br><span class="line">    while(!que.empty())&#123;</span><br><span class="line">        BinaryTree *curNode = que.front();</span><br><span class="line">        cout &lt;&lt; curNode-&gt;val &lt;&lt; &quot; &quot;;</span><br><span class="line">        que.pop();</span><br><span class="line">        if(curNode-&gt;lc!=nullptr)</span><br><span class="line">            que.push(curNode-&gt;lc);</span><br><span class="line">        if(curNode-&gt;rc!=nullptr)</span><br><span class="line">            que.push(curNode-&gt;rc);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>DFS：DFS 可以从一个根开始，一直延伸到某个叶，然后回到根，到达另一个分支。根据根节点、左节点和右节点之间的相对顺序，可以进一步将DFS策略区分为：</p>
 <ul>
-<li>先序遍历</li>
-<li>中序遍历</li>
-<li>后序遍历</li>
+<li><p>先序遍历</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">//递归</span><br><span class="line">void preOrder_recursion(BinaryTree *root)&#123;</span><br><span class="line">    if(root==nullptr)</span><br><span class="line">        return;</span><br><span class="line">    cout &lt;&lt; root-&gt;val &lt;&lt; &quot; &quot;;</span><br><span class="line">    preOrder_recursion(root-&gt;lc);</span><br><span class="line">    preOrder_recursion(root-&gt;rc);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//非递归</span><br><span class="line">void preOrder_non_recursion(BinaryTree *root)&#123;</span><br><span class="line">    stack&lt;BinaryTree *&gt; st;</span><br><span class="line"></span><br><span class="line">    while(root!=nullptr || !st.empty())&#123;</span><br><span class="line">        if(root!=nullptr)&#123;</span><br><span class="line">            cout &lt;&lt; root-&gt;val &lt;&lt; &quot; &quot;;</span><br><span class="line">            st.push(root);</span><br><span class="line">            root = root-&gt;lc;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            root = st.top();</span><br><span class="line">            st.pop();</span><br><span class="line">            root = root-&gt;rc;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>中序遍历</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">//递归</span><br><span class="line">void inOrder_recursion(BinaryTree *root)&#123;</span><br><span class="line">    if(root==nullptr)</span><br><span class="line">        return;</span><br><span class="line">    inOrder_recursion(root-&gt;lc);</span><br><span class="line">    cout &lt;&lt; root-&gt;val &lt;&lt; &quot; &quot;;</span><br><span class="line">    inOrder_recursion(root-&gt;rc);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//非递归</span><br><span class="line">void inOrder_non_recursion(BinaryTree *root)&#123;</span><br><span class="line">    stack&lt;BinaryTree *&gt; st;</span><br><span class="line"></span><br><span class="line">    while(root!=nullptr || !st.empty())&#123;</span><br><span class="line">        if(root!=nullptr)&#123;</span><br><span class="line">            st.push(root);</span><br><span class="line">            root = root-&gt;lc;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            root = st.top();</span><br><span class="line">            st.pop();</span><br><span class="line">            cout &lt;&lt; root-&gt;val &lt;&lt; &quot; &quot;;</span><br><span class="line">            root = root-&gt;rc;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>后序遍历</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">//递归</span><br><span class="line">void posOrder_recursion(BinaryTree *root)&#123;</span><br><span class="line">    if(root==nullptr)</span><br><span class="line">        return;</span><br><span class="line">    posOrder_recursion(root-&gt;lc);</span><br><span class="line">    posOrder_recursion(root-&gt;rc);</span><br><span class="line">    cout &lt;&lt; root-&gt;val &lt;&lt; &quot; &quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//非递归</span><br><span class="line">void posOrder_non_recursion(BinaryTree *root)&#123;</span><br><span class="line">    stack&lt;BinaryTree *&gt; st;</span><br><span class="line">    BinaryTree *lastVisited = root;</span><br><span class="line"></span><br><span class="line">    while(root!=nullptr || !st.empty())&#123;</span><br><span class="line">        if(root!=nullptr)&#123;</span><br><span class="line">            st.push(root);</span><br><span class="line">            root = root-&gt;lc;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            root = st.top();</span><br><span class="line">            if(root-&gt;lc == nullptr || root-&gt;rc == lastVisited)&#123;</span><br><span class="line">                cout &lt;&lt; root-&gt;val &lt;&lt; &quot; &quot;;</span><br><span class="line">                st.pop();</span><br><span class="line">                lastVisited = root;</span><br><span class="line">                root = nullptr;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                root = root-&gt;rc;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
 </ul>
 </li>
 </ul>
@@ -1333,12 +1342,12 @@ Output: [-1,-1]
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">349k</span>
+    <span title="站点总字数">351k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:17</span>
+    <span title="站点阅读时长">5:19</span>
 </div>
 
         

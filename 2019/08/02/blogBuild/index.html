@@ -20,21 +20,21 @@
     var CONFIG = {"hostname":"github.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="一、基础知识1.框架有三种选择：(Jekyll、Hexo、WordPress) Hexo主题 NexT主题2.Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，简单来说就是你输入ip/域名时帮你打开网页文件的。二、本地环境MacOS 、Linux 、Window安装过程不同，具体请看Hexo官网教程。本篇以MacOS为例。1.安装Git1)MacOS">
+  <meta name="description" content="一、基础知识1.框架有三种选择：(Jekyll、Hexo、WordPress) Hexo主题 NexT主题  2.Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，简单来说就是你输入ip/域名时帮你打开网页文件的。">
 <meta name="keywords" content="Hexo,Nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nginx搭建基于Hexo的Blog">
 <meta property="og:url" content="https://github.com/suzhilong/suzhilong.github.io.git/2019/08/02/blogBuild/index.html">
 <meta property="og:site_name" content="SOUSIC">
-<meta property="og:description" content="一、基础知识1.框架有三种选择：(Jekyll、Hexo、WordPress) Hexo主题 NexT主题2.Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，简单来说就是你输入ip/域名时帮你打开网页文件的。二、本地环境MacOS 、Linux 、Window安装过程不同，具体请看Hexo官网教程。本篇以MacOS为例。1.安装Git1)MacOS">
+<meta property="og:description" content="一、基础知识1.框架有三种选择：(Jekyll、Hexo、WordPress) Hexo主题 NexT主题  2.Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，简单来说就是你输入ip/域名时帮你打开网页文件的。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://b2.bmp.ovh/imgs/2019/08/6b7b2fef7377b680.png">
 <meta property="og:image" content="https://b2.bmp.ovh/imgs/2019/08/6d84089d158f5b9b.png">
 <meta property="og:image" content="https://b2.bmp.ovh/imgs/2019/08/44d040e51ec0ae1e.png">
-<meta property="og:updated_time" content="2020-08-17T07:06:00.163Z">
+<meta property="og:updated_time" content="2020-08-17T07:35:53.865Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nginx搭建基于Hexo的Blog">
-<meta name="twitter:description" content="一、基础知识1.框架有三种选择：(Jekyll、Hexo、WordPress) Hexo主题 NexT主题2.Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，简单来说就是你输入ip/域名时帮你打开网页文件的。二、本地环境MacOS 、Linux 、Window安装过程不同，具体请看Hexo官网教程。本篇以MacOS为例。1.安装Git1)MacOS">
+<meta name="twitter:description" content="一、基础知识1.框架有三种选择：(Jekyll、Hexo、WordPress) Hexo主题 NexT主题  2.Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，简单来说就是你输入ip/域名时帮你打开网页文件的。">
 <meta name="twitter:image" content="https://b2.bmp.ovh/imgs/2019/08/6b7b2fef7377b680.png">
 
 <link rel="canonical" href="https://github.com/suzhilong/suzhilong.github.io.git/2019/08/02/blogBuild/">
@@ -229,7 +229,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-17 15:06:00" itemprop="dateModified" datetime="2020-08-17T15:06:00+08:00">2020-08-17</time>
+                <time title="修改时间：2020-08-17 15:35:53" itemprop="dateModified" datetime="2020-08-17T15:35:53+08:00">2020-08-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -282,10 +282,12 @@
       
         <h1 id="一、基础知识"><a href="#一、基础知识" class="headerlink" title="一、基础知识"></a>一、基础知识</h1><h2 id="1-框架有三种选择：-Jekyll、Hexo、WordPress"><a href="#1-框架有三种选择：-Jekyll、Hexo、WordPress" class="headerlink" title="1.框架有三种选择：(Jekyll、Hexo、WordPress)"></a>1.框架有三种选择：(Jekyll、<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">Hexo</a>、WordPress)</h2><ul>
 <li><a href="https://hexo.io/themes/" target="_blank" rel="noopener">Hexo主题</a></li>
-<li><a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT主题</a><h2 id="2-Nginx是一款轻量级的Web-服务器-反向代理服务器及电子邮件（IMAP-POP3）代理服务器，简单来说就是你输入ip-域名时帮你打开网页文件的。"><a href="#2-Nginx是一款轻量级的Web-服务器-反向代理服务器及电子邮件（IMAP-POP3）代理服务器，简单来说就是你输入ip-域名时帮你打开网页文件的。" class="headerlink" title="2.Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，简单来说就是你输入ip/域名时帮你打开网页文件的。"></a>2.Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，简单来说就是你输入ip/域名时帮你打开网页文件的。</h2><h1 id="二、本地环境"><a href="#二、本地环境" class="headerlink" title="二、本地环境"></a>二、本地环境</h1>MacOS 、Linux 、Window安装过程不同，具体请看Hexo官网教程。本篇以MacOS为例。<h2 id="1-安装Git"><a href="#1-安装Git" class="headerlink" title="1.安装Git"></a>1.安装Git</h2><h3 id="1-MacOS"><a href="#1-MacOS" class="headerlink" title="1)MacOS:"></a>1)MacOS:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install git</span><br></pre></td></tr></table></figure>
-
-</li>
+<li><a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT主题</a></li>
 </ul>
+<h2 id="2-Nginx是一款轻量级的Web-服务器-反向代理服务器及电子邮件（IMAP-POP3）代理服务器，简单来说就是你输入ip-域名时帮你打开网页文件的。"><a href="#2-Nginx是一款轻量级的Web-服务器-反向代理服务器及电子邮件（IMAP-POP3）代理服务器，简单来说就是你输入ip-域名时帮你打开网页文件的。" class="headerlink" title="2.Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，简单来说就是你输入ip/域名时帮你打开网页文件的。"></a>2.Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，简单来说就是你输入ip/域名时帮你打开网页文件的。</h2><a id="more"></a>
+<h1 id="二、本地环境"><a href="#二、本地环境" class="headerlink" title="二、本地环境"></a>二、本地环境</h1><p>MacOS 、Linux 、Window安装过程不同，具体请看Hexo官网教程。本篇以MacOS为例。</p>
+<h2 id="1-安装Git"><a href="#1-安装Git" class="headerlink" title="1.安装Git"></a>1.安装Git</h2><h3 id="1-MacOS"><a href="#1-MacOS" class="headerlink" title="1)MacOS:"></a>1)MacOS:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install git</span><br></pre></td></tr></table></figure>
+
 <h3 id="2-Linux"><a href="#2-Linux" class="headerlink" title="2)Linux"></a>2)Linux</h3><ul>
 <li>Ubuntu,Debian: <code>sudo apt-get install git-core</code></li>
 <li>CentOS: <code>sudo yum install git-core</code></li>

@@ -28,7 +28,7 @@
 <meta property="og:site_name" content="SOUSIC">
 <meta property="og:description" content="数据结构笔记">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-08-18T09:32:31.050Z">
+<meta property="og:updated_time" content="2020-08-19T14:41:24.378Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构">
 <meta name="twitter:description" content="数据结构笔记">
@@ -225,7 +225,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-18 17:32:31" itemprop="dateModified" datetime="2020-08-18T17:32:31+08:00">2020-08-18</time>
+                <time title="修改时间：2020-08-19 22:41:24" itemprop="dateModified" datetime="2020-08-19T22:41:24+08:00">2020-08-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -327,6 +327,7 @@
 <li>单一节点存储的元素更多，使得查询的IO次数更少，所以也就使得它更适合做为数据库MySQL的底层数据结构了。</li>
 <li>所有的查询都要查找到叶子节点，查询性能是稳定的，而B树，每个节点都可以查找到数据，所以不稳定。</li>
 <li>所有的叶子节点形成了一个有序链表，更加便于查找。</li>
+<li>叶子结点连起来还可以范围查询。</li>
 </ul>
 <h1 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h1><p><strong>平衡二叉树</strong>就是为了解决<strong>二叉查找树</strong>退化成一颗链表而诞生。</p>
 <p>虽然<strong>平衡树</strong>解决了<strong>二叉查找树</strong>退化为近似链表的缺点，能够把查找时间控制在 O(logn)，不过却不是最佳的，因为平衡树要求每个节点的左子树和右子树的高度差至多等于1，这个要求实在是太严了，导致每次进行插入/删除节点的时候，几乎都会破坏平衡树的第二个规则，进而我们都需要通过左旋和右旋来进行调整，使之再次成为一颗符合要求的<strong>平衡树</strong>。</p>

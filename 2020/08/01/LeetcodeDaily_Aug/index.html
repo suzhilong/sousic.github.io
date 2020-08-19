@@ -28,7 +28,7 @@
 <meta property="og:site_name" content="SOUSIC">
 <meta property="og:description" content="8月份每日一题">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-08-17T07:58:00.544Z">
+<meta property="og:updated_time" content="2020-08-19T07:21:46.020Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode每日一题 - 2020年八月">
 <meta name="twitter:description" content="8月份每日一题">
@@ -225,7 +225,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-17 15:58:00" itemprop="dateModified" datetime="2020-08-17T15:58:00+08:00">2020-08-17</time>
+                <time title="修改时间：2020-08-19 15:21:46" itemprop="dateModified" datetime="2020-08-19T15:21:46+08:00">2020-08-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -257,14 +257,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>13k</span>
+              <span>14k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>12 分钟</span>
+              <span>13 分钟</span>
             </span>
             <div class="post-description">8月份每日一题</div>
 
@@ -398,6 +398,16 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">string multiply(string num1, string num2)&#123;</span><br><span class="line">    int m = num1.size(), n = num2.size();</span><br><span class="line">    vector&lt;long long&gt; num(m + n - 1, 0);</span><br><span class="line"></span><br><span class="line">    for (int i = 0; i &lt; m;i++)&#123;//前面是高位，后面是低位</span><br><span class="line">        int a = num1[i] - &apos;0&apos;;</span><br><span class="line">        for (int j = 0; j &lt; n; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            int b = num2[j] - &apos;0&apos;;</span><br><span class="line">            num[i + j] += a * b;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int carry = 0;</span><br><span class="line">    for (int i = num.size() - 1; i &gt;= 0;i--)&#123;//前面是高位，后面是低位</span><br><span class="line">        int cur = num[i] + carry;</span><br><span class="line">        num[i] = cur % 10;</span><br><span class="line">        carry = cur / 10;</span><br><span class="line">    &#125;</span><br><span class="line">    while(carry!=0)&#123;</span><br><span class="line">        int cur = carry % 10;</span><br><span class="line">        carry /= 10;</span><br><span class="line">        num.insert(num.begin(), cur);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    string res = &quot;&quot;;</span><br><span class="line">    for (auto a : num)</span><br><span class="line">    &#123;</span><br><span class="line">        res += to_string(a);</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>时间复杂度：O(m*n)<br>空间复杂度：O(m+n)</p>
+<h1 id="8月19日-647-回文子串（中等）"><a href="#8月19日-647-回文子串（中等）" class="headerlink" title="8月19日 647. 回文子串（中等）"></a>8月19日 <a href="https://leetcode-cn.com/problems/palindromic-substrings/" target="_blank" rel="noopener">647. 回文子串（中等）</a></h1><p>给定一个字符串，你的任务是计算这个字符串中有多少个回文子串。</p>
+<p>具有不同开始位置或结束位置的子串，即使是由相同的字符组成，也会被视作不同的子串。</p>
+<p>示例 1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：&quot;abc&quot;</span><br><span class="line">输出：3</span><br><span class="line">解释：三个回文子串: &quot;a&quot;, &quot;b&quot;, &quot;c&quot;</span><br></pre></td></tr></table></figure>
+
+<p>示例 2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入：&quot;aaa&quot;</span><br><span class="line">输出：6</span><br><span class="line">解释：6个回文子串: &quot;a&quot;, &quot;a&quot;, &quot;a&quot;, &quot;aa&quot;, &quot;aa&quot;, &quot;aaa&quot;</span><br><span class="line">``` </span><br><span class="line">题解：  </span><br><span class="line">枚举每一个字串，再判断是不是回文。</span><br></pre></td></tr></table></figure>
+
+<p>bool isPalindrome(string str){<br>    int L = 0, R = str.size() - 1;<br>    while(L&lt;R){<br>        if(str[L]!=str[R])<br>            break;<br>        L++;<br>        R–;<br>    }<br>    return L&gt;=R;<br>}</p>
+<p>int countSubstrings(string s) {<br>    int n = s.size();<br>    if(n==0) return 0;<br>    int res = n;<br>    for(int m=2;m&lt;=n;m++){<br>        for(int i=0;i&lt;=n-m;i++){<br>            string cur_str = s.substr(i,m);<br>            if(isPalindrome(cur_str))<br>                res++;<br>        }<br>    }<br>    return res;<br>}<br>```<br>时间复杂度：O(n^2)<br>空间复杂度：O(1)</p>
 
     </div>
 
@@ -502,7 +512,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#8月3日-415-字符串相加（简单）"><span class="nav-number">1.</span> <span class="nav-text">8月3日 415. 字符串相加（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8月4日-207-课程表（中等）"><span class="nav-number">2.</span> <span class="nav-text">8月4日 207. 课程表（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#真题"><span class="nav-number">3.</span> <span class="nav-text">真题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模版匹配"><span class="nav-number">3.1.</span> <span class="nav-text">模版匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#找到最小的排列组合数"><span class="nav-number">3.2.</span> <span class="nav-text">找到最小的排列组合数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1477-找两个和为目标值且不重叠的子数组"><span class="nav-number">3.3.</span> <span class="nav-text">1477. 找两个和为目标值且不重叠的子数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16进制和10进制的互转"><span class="nav-number">3.4.</span> <span class="nav-text">16进制和10进制的互转</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8月10日-696-计数二进制子串"><span class="nav-number">4.</span> <span class="nav-text">8月10日 696. 计数二进制子串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8月11日-130-被围绕的区域（中等）"><span class="nav-number">5.</span> <span class="nav-text">8月11日 130. 被围绕的区域（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8月12日-133-克隆图（中等）"><span class="nav-number">6.</span> <span class="nav-text">8月12日 133. 克隆图（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8月13日-43-字符串相乘（中等）"><span class="nav-number">7.</span> <span class="nav-text">8月13日 43. 字符串相乘（中等）</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#8月3日-415-字符串相加（简单）"><span class="nav-number">1.</span> <span class="nav-text">8月3日 415. 字符串相加（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8月4日-207-课程表（中等）"><span class="nav-number">2.</span> <span class="nav-text">8月4日 207. 课程表（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#真题"><span class="nav-number">3.</span> <span class="nav-text">真题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模版匹配"><span class="nav-number">3.1.</span> <span class="nav-text">模版匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#找到最小的排列组合数"><span class="nav-number">3.2.</span> <span class="nav-text">找到最小的排列组合数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1477-找两个和为目标值且不重叠的子数组"><span class="nav-number">3.3.</span> <span class="nav-text">1477. 找两个和为目标值且不重叠的子数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16进制和10进制的互转"><span class="nav-number">3.4.</span> <span class="nav-text">16进制和10进制的互转</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8月10日-696-计数二进制子串"><span class="nav-number">4.</span> <span class="nav-text">8月10日 696. 计数二进制子串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8月11日-130-被围绕的区域（中等）"><span class="nav-number">5.</span> <span class="nav-text">8月11日 130. 被围绕的区域（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8月12日-133-克隆图（中等）"><span class="nav-number">6.</span> <span class="nav-text">8月12日 133. 克隆图（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8月13日-43-字符串相乘（中等）"><span class="nav-number">7.</span> <span class="nav-text">8月13日 43. 字符串相乘（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8月19日-647-回文子串（中等）"><span class="nav-number">8.</span> <span class="nav-text">8月19日 647. 回文子串（中等）</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -572,12 +582,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">352k</span>
+    <span title="站点总字数">354k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:20</span>
+    <span title="站点阅读时长">5:22</span>
 </div>
 
         

@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2020/08/05/2eGU6kMy8Xp5v4Y.png">
 <meta property="og:image" content="https://i.loli.net/2020/08/27/ZNPO91H7jUeS6Ti.png">
-<meta property="og:updated_time" content="2020-08-29T14:00:37.980Z">
+<meta property="og:updated_time" content="2020-08-29T14:16:06.850Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ Review">
 <meta name="twitter:description" content="C++基础知识复习总结">
@@ -228,7 +228,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-29 22:00:37" itemprop="dateModified" datetime="2020-08-29T22:00:37+08:00">2020-08-29</time>
+                <time title="修改时间：2020-08-29 22:16:06" itemprop="dateModified" datetime="2020-08-29T22:16:06+08:00">2020-08-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1248,6 +1248,15 @@
 <li>多线程：std::thread、std::atomic、std::condition_variable</li>
 <li>智能指针内存管理：std::shared_ptr、std::weak_ptr、std::unique_ptr</li>
 <li>其他：std::function、std::bind和lamda表达式</li>
+<li>C++11中对类(class)新增的特性：<ul>
+<li>default/delete 控制默认函数</li>
+<li>override /final 强制重写/禁止重写虚函数</li>
+<li>委托构造函数 Delegating constructors</li>
+<li>继承的构造函数 Inheriting constructors</li>
+<li>类内部成员的初始化 Non-static data member initializers</li>
+<li>移动构造和移动赋值</li>
+</ul>
+</li>
 </ol>
 <h2 id="nullptr常量"><a href="#nullptr常量" class="headerlink" title="nullptr常量"></a>nullptr常量</h2><p>C++中NULL仅仅是define NULL 0的一个宏定义，因此，有时候会产生歧义。<br>    - 比如f（char*）和f（int），参数传NULL的话到底该调用哪个？事实上，在VS下测试这样的函数重载会优先调用f（int），但是f（char *）也是正确的，因此C++引入nullptr来避免这个问题<br>    - nullptr是一个空指针，可以被转换成其他任意指针的类型</p>
 <h2 id="auto关键字"><a href="#auto关键字" class="headerlink" title="auto关键字"></a>auto关键字</h2><p>让编译器替我们去分析表达式所属的类型，直接推导。尤其是STL中map的迭代器这种很长的类型，适合用auto。</p>
@@ -1278,6 +1287,7 @@
 </ul>
 <h2 id="ref-11"><a href="#ref-11" class="headerlink" title="ref"></a>ref</h2><ul>
 <li><a href="https://www.cnblogs.com/feng-sc/p/5710724.html" target="_blank" rel="noopener">C++11常用特性的使用经验总结</a></li>
+<li><a href="https://www.cnblogs.com/me115/p/4777997.html" target="_blank" rel="noopener">C++11中对类(class)新增的特性</a></li>
 </ul>
 <h1 id="C-中常用的设计模式"><a href="#C-中常用的设计模式" class="headerlink" title="C++中常用的设计模式"></a>C++中常用的设计模式</h1><p>共有23种设计模式，但真正在开发中常用的模式有：</p>
 <ol>

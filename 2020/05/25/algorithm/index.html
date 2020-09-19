@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/06/19/eLGVs6wMJf9BOyr.png">
 <meta property="og:image" content="https://i.loli.net/2020/07/12/GXVphrYafON5jFw.png">
 <meta property="og:image" content="https://i.loli.net/2020/07/29/N1O2xGlCm54yuQI.png">
-<meta property="og:updated_time" content="2020-09-19T08:52:26.619Z">
+<meta property="og:updated_time" content="2020-09-19T09:58:34.389Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SOUSIC的algorithm总结">
 <meta name="twitter:description" content="一、算法基础&amp;emsp;&amp;emsp;春节后疫情一直没开学，赋闲在家刷了一个多月的算法，总结了一下，形成了下面的文章。包含了数据结构类例题和算法类例题，大部分是Leecode中的典型题目，也有实习笔试中的真题和剑指Offer中的题目。题解使用C++，代码均由本人在参考题解之后所写。相关github">
@@ -229,7 +229,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-19 16:52:26" itemprop="dateModified" datetime="2020-09-19T16:52:26+08:00">2020-09-19</time>
+                <time title="修改时间：2020-09-19 17:58:34" itemprop="dateModified" datetime="2020-09-19T17:58:34+08:00">2020-09-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -261,7 +261,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>150k</span>
+              <span>151k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -671,7 +671,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;vector&lt;int&gt; &gt; subArrySum(vector&lt;int&gt; &amp;A, int &amp;d)&#123;</span><br><span class="line">    unordered_map&lt;int, vector&lt;pair&lt;int,int&gt; &gt; &gt; umap; //key:前缀和  val:出现的开始和结束索引 序列</span><br><span class="line">    int pre = 0;</span><br><span class="line">    umap[0].push_back(&#123;0, -1&#125;);</span><br><span class="line">    vector&lt;pair&lt;int, int&gt; &gt; idxs;</span><br><span class="line">    for (int i = 0; i &lt; A.size(); i++)&#123;</span><br><span class="line">        pre += A[i];</span><br><span class="line">        if(umap.find(pre-d) != umap.end())&#123;</span><br><span class="line">            for(auto &amp;p : umap[pre-d])//记录满足的索引</span><br><span class="line">                idxs.push_back(&#123;p.second + 1, i&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        umap[pre].push_back(&#123;0, i&#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    vector&lt;vector&lt;int&gt; &gt; res;</span><br><span class="line">    for(auto &amp;idx : idxs)&#123;</span><br><span class="line">        vector&lt;int&gt; tmp;</span><br><span class="line">        for (int i = idx.first; i &lt;= idx.second; i++)</span><br><span class="line">            tmp.push_back(A[i]);</span><br><span class="line">        res.push_back(tmp);</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h5 id="子集合-子序列"><a href="#子集合-子序列" class="headerlink" title="子集合/子序列"></a>子集合/子序列</h5><p>题解：<br>剪枝回溯，当和<code>&gt;k</code>时丢弃该分支。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;vector&lt;int&gt; &gt; subSetSum(vector&lt;int&gt; &amp;A, int &amp;d)&#123;//子集</span><br><span class="line">    return &#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">set&lt;vector&lt;int&gt; &gt; resSet;</span><br><span class="line"></span><br><span class="line">void backtracking(vector&lt;int&gt; &amp;pre, int preSum, int idx, vector&lt;int&gt; &amp;nums, int &amp;k)&#123;</span><br><span class="line">    if(preSum &gt; k)</span><br><span class="line">        return;</span><br><span class="line">    if(preSum == k)&#123;</span><br><span class="line">        sort(pre.begin(), pre.end());</span><br><span class="line">        resSet.insert(pre);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int curSum = preSum;</span><br><span class="line">    for (int i = idx; i &lt; nums.size(); i++)&#123;</span><br><span class="line">        pre.push_back(nums[i]);</span><br><span class="line">        curSum += nums[i];</span><br><span class="line">        backtracking(pre, curSum, i + 1, nums, k);</span><br><span class="line">        curSum -= nums[i];</span><br><span class="line">        pre.erase(pre.end() - 1, pre.end());</span><br><span class="line">    &#125;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vector&lt;vector&lt;int&gt; &gt; subSetSum(vector&lt;int&gt; &amp;nums, int &amp;k)&#123;//子集</span><br><span class="line">    vector&lt;int&gt; pre;</span><br><span class="line">    backtracking(pre, 0, 0, nums, k);</span><br><span class="line">    vector&lt;vector&lt;int&gt; &gt; res(resSet.begin(), resSet.end());</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="递增子序列"><a href="#递增子序列" class="headerlink" title="递增子序列"></a>递增子序列</h4><p>&emsp;&emsp;已知一个序列 {S1, S2,…,Sn}，取出若干数组成新的序列 {Si1, Si2,…, Sim}，其中 i1、i2 … im 保持递增，即新序列中各个数仍然保持原数列中的先后顺序，称新序列为原序列的一个子序列。如果在子序列中，当下标 ix &gt; iy 时，Six &gt; Siy，称子序列为原序列的一个递增子序列。<br>&emsp;&emsp;定义一个数组 dp 存储最长递增子序列的长度，dp[n] 表示以 Sn 结尾的序列的最长递增子序列长度。对于一个递增子序列 {Si1, Si2,…,Sim}，如果 im &lt; n 并且 Sim &lt; Sn，此时 {Si1, Si2,…, Sim, Sn} 为一个递增子序列，递增子序列的长度增加 1。<br>&emsp;&emsp;满足上述条件的递增子序列中，长度最长的那个递增子序列就是要找的，在长度最长的递增子序列上加上 Sn 就构成了以 Sn 为结尾的最长递增子序列。<br>&emsp;&emsp;因此 dp[n] = max{ dp[i]+1 | Si &lt; Sn &amp;&amp; i &lt; n} 。<br>&emsp;&emsp;因为在求 dp[n] 时可能无法找到一个满足条件的递增子序列，此时 {Sn} 就构成了递增子序列，需要对前面的求解方程做修改，令 dp[n] 最小为 1，即：<br><code>dp[n] = max{1,dp[i]+1|Si&lt;Sn &amp;&amp; i&lt;n}</code><br>&emsp;&emsp;对于一个长度为 N 的序列，最长递增子序列并不一定会以 SN 为结尾，因此 dp[N] 不是序列的最长递增子序列的长度，需要遍历 dp 数组找出最大值才是所要的结果，max{ dp[i] | 1 &lt;= i &lt;= N} 即为所求。</p>
 <p>reference: <a href="https://blog.csdn.net/u013178472/article/details/54926531" target="_blank" rel="noopener">最长递增子序列的三种算法</a><br>1.以上解法的时间复杂度为 O(N2)<br>2.可以使用二分查找将时间复杂度降低为 O(NlogN)<br>3.也可以用最长公共子序列法：查找原序列和排序后的序列的最长公共自序列，具体参见链接</p>
@@ -1526,12 +1526,12 @@ Output: [-1,-1]
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">388k</span>
+    <span title="站点总字数">389k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:53</span>
+    <span title="站点阅读时长">5:54</span>
 </div>
 
         

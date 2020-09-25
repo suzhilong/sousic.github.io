@@ -33,10 +33,11 @@
 <meta property="og:image" content="https://i.loli.net/2020/06/09/bgk9DNdcfawv5Fe.png">
 <meta property="og:image" content="https://i.loli.net/2020/06/10/RQOy2WUYzfbxtmv.png">
 <meta property="og:image" content="https://i.loli.net/2020/06/10/lD6isBec9Oh2zWo.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/09/25/ZoESaLNlwbrugkv.png">
 <meta property="og:image" content="https://i.loli.net/2020/08/13/CwRs32gdhp1xfYv.png">
 <meta property="og:image" content="https://i.loli.net/2020/08/13/ij4qSdQV8bUFnPy.png">
 <meta property="og:image" content="https://i.loli.net/2020/08/13/eNUzQE9g8YIP3H4.png">
-<meta property="og:updated_time" content="2020-09-03T02:59:04.440Z">
+<meta property="og:updated_time" content="2020-09-25T04:52:50.167Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络">
 <meta name="twitter:description" content="计算机网络概念网络协议在计算机网络要做到有条不紊地交换数据，就必须遵守一些事先约定好的规则，比如交换数据的格式、是否需要发送一个应答信息。这些规则被称为网络协议。 计算机网络体系结构计算机网络体系结构是指计算机网络层次结构模型，它是各层的协议以及层次之间的端口的集合。在计算机网络中实现通信必须依靠网络通信协议，目前广泛采用的是国际标准化组织（ISO）1997年提出的开放系统互联（Open Syst">
@@ -234,7 +235,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-03 10:59:04" itemprop="dateModified" datetime="2020-09-03T10:59:04+08:00">2020-09-03</time>
+                <time title="修改时间：2020-09-25 12:52:50" itemprop="dateModified" datetime="2020-09-25T12:52:50+08:00">2020-09-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -420,7 +421,11 @@
 <li>快重传：允许发送方再连续收到 3 个重复的确认后就可以开始执行乘法减小过程而不必再等待所设置的重传计时器到时。</li>
 <li>快恢复：是与快重传算法配合使用的一个算法。快恢复算法后与原来不同的一点是当发现网络出现拥塞并执行了乘法减小过程后，并不是设置cwnd=1并重新开始执行慢开始算法，而是让 cwnd =乘法减小后的ssthresh并开始执行拥塞避免算法。</li>
 </ul>
+<p><img src="https://i.loli.net/2020/09/25/ZoESaLNlwbrugkv.png" alt="拥塞控制"></p>
 <p><em>ps. ssthresh的设置：TCP/IP 中规定无论是在慢开始阶段还是在拥塞避免阶段，只要发现网络中出现拥塞（没有按时收到确认），就要把ssthresh设置为此时发送窗口的一半大小（不能小于2）</em></p>
+<ul>
+<li><a href="https://blog.csdn.net/qq_41431406/article/details/97926927" target="_blank" rel="noopener">TCP的拥塞控制（详解）</a></li>
+</ul>
 <h3 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h3><ul>
 <li>RTT算法</li>
 <li>滑动窗口<ul>

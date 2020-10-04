@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/08/13/CwRs32gdhp1xfYv.png">
 <meta property="og:image" content="https://i.loli.net/2020/08/13/ij4qSdQV8bUFnPy.png">
 <meta property="og:image" content="https://i.loli.net/2020/08/13/eNUzQE9g8YIP3H4.png">
-<meta property="og:updated_time" content="2020-09-25T04:52:50.167Z">
+<meta property="og:updated_time" content="2020-10-04T11:58:41.380Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络">
 <meta name="twitter:description" content="计算机网络概念网络协议在计算机网络要做到有条不紊地交换数据，就必须遵守一些事先约定好的规则，比如交换数据的格式、是否需要发送一个应答信息。这些规则被称为网络协议。 计算机网络体系结构计算机网络体系结构是指计算机网络层次结构模型，它是各层的协议以及层次之间的端口的集合。在计算机网络中实现通信必须依靠网络通信协议，目前广泛采用的是国际标准化组织（ISO）1997年提出的开放系统互联（Open Syst">
@@ -235,7 +235,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-25 12:52:50" itemprop="dateModified" datetime="2020-09-25T12:52:50+08:00">2020-09-25</time>
+                <time title="修改时间：2020-10-04 19:58:41" itemprop="dateModified" datetime="2020-10-04T19:58:41+08:00">2020-10-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -267,7 +267,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>10k</span>
+              <span>11k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -446,13 +446,15 @@
 <li>实时协议（RTP）：有效负载识别，序列编号，时间戳和投递监听</li>
 <li>基于UDP的数据传输协议（UDT）：序列号、滑动窗口</li>
 </ul>
-<h2 id="为什么会发生-TCP-粘包、拆包"><a href="#为什么会发生-TCP-粘包、拆包" class="headerlink" title="为什么会发生 TCP 粘包、拆包"></a>为什么会发生 TCP 粘包、拆包</h2><ol>
+<h2 id="为什么会发生-TCP-粘包、拆包"><a href="#为什么会发生-TCP-粘包、拆包" class="headerlink" title="为什么会发生 TCP 粘包、拆包"></a>为什么会发生 TCP 粘包、拆包</h2><p>粘包问题是由TCP是“字节流”协议，没有消息边界所引起的。</p>
+<ol>
 <li>应用程序写入的数据大于套接字缓冲区大小，这将会发生拆包。</li>
 <li>应用程序写入数据小于套接字缓冲区大小，网卡将应用多次写入的数据发送到网络上，这将会发生粘包。</li>
 <li>进行 MSS （最大报文长度）大小的 TCP 分段，当 <code>TCP报文长度 - TCP头部长度 &gt; MSS</code> 的时候将发生拆包。</li>
 <li>接收方法不及时读取套接字缓冲区数据，这将发生粘包。</li>
 </ol>
-<h2 id="如何处理粘包、拆包？"><a href="#如何处理粘包、拆包？" class="headerlink" title="如何处理粘包、拆包？"></a>如何处理粘包、拆包？</h2><ol>
+<h2 id="如何处理粘包、拆包？"><a href="#如何处理粘包、拆包？" class="headerlink" title="如何处理粘包、拆包？"></a>如何处理粘包、拆包？</h2><p>解决粘包的方法就是由应用层进行分包处理，本质上就是由应用层来维护消息和消息的边界。</p>
+<ol>
 <li>使用带消息头的协议、消息头存储消息开始标识及消息长度信息，服务端获取消息头的时候解析出消息长度，然后向后读取该长度的内容。</li>
 <li>设置定长消息，服务端每次读取既定长度的内容作为一条完整消息，当消息不够长时，空位补上固定字符。</li>
 <li>设置消息边界，服务端从网络流中按消息编辑分离出消息内容，一般使用‘\n’。</li>

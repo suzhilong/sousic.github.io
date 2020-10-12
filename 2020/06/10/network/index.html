@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/08/13/CwRs32gdhp1xfYv.png">
 <meta property="og:image" content="https://i.loli.net/2020/08/13/ij4qSdQV8bUFnPy.png">
 <meta property="og:image" content="https://i.loli.net/2020/08/13/eNUzQE9g8YIP3H4.png">
-<meta property="og:updated_time" content="2020-10-04T11:58:41.380Z">
+<meta property="og:updated_time" content="2020-10-12T09:41:20.331Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络">
 <meta name="twitter:description" content="计算机网络概念网络协议在计算机网络要做到有条不紊地交换数据，就必须遵守一些事先约定好的规则，比如交换数据的格式、是否需要发送一个应答信息。这些规则被称为网络协议。 计算机网络体系结构计算机网络体系结构是指计算机网络层次结构模型，它是各层的协议以及层次之间的端口的集合。在计算机网络中实现通信必须依靠网络通信协议，目前广泛采用的是国际标准化组织（ISO）1997年提出的开放系统互联（Open Syst">
@@ -235,7 +235,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-04 19:58:41" itemprop="dateModified" datetime="2020-10-04T19:58:41+08:00">2020-10-04</time>
+                <time title="修改时间：2020-10-12 17:41:20" itemprop="dateModified" datetime="2020-10-12T17:41:20+08:00">2020-10-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -267,14 +267,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>11k</span>
+              <span>12k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>10 分钟</span>
+              <span>11 分钟</span>
             </span>
 
         </div>
@@ -356,6 +356,19 @@
 <h2 id="TCP的三次握手四次挥手"><a href="#TCP的三次握手四次挥手" class="headerlink" title="TCP的三次握手四次挥手"></a>TCP的三次握手四次挥手</h2><h3 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h3><p><img src="https://i.loli.net/2020/06/10/RQOy2WUYzfbxtmv.png" alt="三次握手"></p>
 <h3 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h3><p><img src="https://i.loli.net/2020/06/10/lD6isBec9Oh2zWo.jpg" alt="四次挥手"></p>
 <p>MSL是Maximum Segment Lifetime英文的缩写，中文可以译为“报文最大生存时间”，他是任何报文在网络上存在的最长时间，超过这个时间报文将被丢弃。</p>
+<ul>
+<li><strong>CLOSED</strong>：表示初始状态。</li>
+<li><strong>LISTEN</strong>：该状态表示服务器端的某个SOCKET处于监听状态，可以接受连接。</li>
+<li><strong>SYN_SENT</strong>：这个状态与SYN_RCVD遥相呼应，当客户端SOCKET执行CONNECT连接时，它首先发送SYN报文，随即进入到了SYN_SENT状态，并等待服务端的发送三次握手中的第2个报文。SYN_SENT状态表示客户端已发送SYN报文。</li>
+<li><strong>SYN_RCVD</strong>: 该状态表示接收到SYN报文，在正常情况下，这个状态是服务器端的SOCKET在建立TCP连接时的三次握手会话过程中的一个中间状态，很短暂。此种状态时，当收到客户端的ACK报文后，会进入到ESTABLISHED状态。</li>
+<li><strong>ESTABLISHED</strong>：表示连接已经建立。</li>
+<li><strong>FIN_WAIT_1</strong>: FIN_WAIT_1和FIN_WAIT_2状态的真正含义都是表示等待对方的FIN报文。区别是：FIN_WAIT_1状态是当socket在ESTABLISHED状态时，想主动关闭连接，向对方发送了FIN报文，此时该socket进入到FIN_WAIT_1状态。FIN_WAIT_2状态是当对方回应ACK后，该socket进入到FIN_WAIT_2状态，正常情况下，对方应马上回应ACK报文，所以FIN_WAIT_1状态一般较难见到，而FIN_WAIT_2状态可用netstat看到。</li>
+<li><strong>FIN_WAIT_2</strong>：主动关闭链接的一方，发出FIN收到ACK以后进入该状态。称之为半连接或半关闭状态。该状态下的socket只能接收数据，不能发。</li>
+<li><strong>TIME_WAIT</strong>: 表示收到了对方的FIN报文，并发送出了ACK报文，等2MSL后即可回到CLOSED可用状态。如果FIN_WAIT_1状态下，收到对方同时带 FIN标志和ACK标志的报文时，可以直接进入到TIME_WAIT状态，而无须经过FIN_WAIT_2状态。</li>
+<li><strong>CLOSING</strong>: 这种状态较特殊，属于一种较罕见的状态。正常情况下，当你发送FIN报文后，按理来说是应该先收到（或同时收到）对方的 ACK报文，再收到对方的FIN报文。但是CLOSING状态表示你发送FIN报文后，并没有收到对方的ACK报文，反而却也收到了对方的FIN报文。什么情况下会出现此种情况呢？如果双方几乎在同时close一个SOCKET的话，那么就出现了双方同时发送FIN报文的情况，也即会出现CLOSING状态，表示双方都正在关闭SOCKET连接。</li>
+<li><strong>CLOSE_WAIT</strong>: 此种状态表示在等待关闭。当对方关闭一个SOCKET后发送FIN报文给自己，系统会回应一个ACK报文给对方，此时则进入到CLOSE_WAIT状态。接下来呢，察看是否还有数据发送给对方，如果没有可以 close这个SOCKET，发送FIN报文给对方，即关闭连接。所以在CLOSE_WAIT状态下，需要关闭连接。</li>
+<li><strong>LAST_ACK</strong>: 该状态是被动关闭一方在发送FIN报文后，最后等待对方的ACK报文。当收到ACK报文后，即可以进入到CLOSED可用状态。</li>
+</ul>
 <h3 id="为什么TCP连接的时候是3次，不是2次"><a href="#为什么TCP连接的时候是3次，不是2次" class="headerlink" title="为什么TCP连接的时候是3次，不是2次"></a>为什么TCP连接的时候是3次，不是2次</h3><p>因为需要考虑连接时丢包的问题，如果只握手2次，第二次握手时如果服务端发给客户端的确认报文段丢失，此时服务端已经准备好了收发数(可以理解服务端已经连接成功)据，而客户端一直没收到服务端的确认报文，所以客户端就不知道服务端是否已经准备好了(可以理解为客户端未连接成功)，这种情况下客户端不会给服务端发数据，也会忽略服务端发过来的数据。</p>
 <p>如果是三次握手，即便发生丢包也不会有问题，比如如果第三次握手客户端发的确认ack报文丢失，服务端在一段时间内没有收到确认ack报文的话就会重新进行第二次握手，也就是服务端会重发SYN报文段，客户端收到重发的报文段后会再次给服务端发送确认ack报文。</p>
 <h3 id="为什么连接的时候是三次握手，关闭的时候却是四次握手？"><a href="#为什么连接的时候是三次握手，关闭的时候却是四次握手？" class="headerlink" title="为什么连接的时候是三次握手，关闭的时候却是四次握手？"></a>为什么连接的时候是三次握手，关闭的时候却是四次握手？</h3><p>因为只有在客户端和服务端都没有数据要发送的时候才能断开TCP。客户端发出FIN报文时只能保证客户端没有数据发了，服务端还有没有数据发客户端是不知道的。而服务端收到客户端的FIN报文后只能先回复客户端一个确认报文来告诉客户端我服务端已经收到你的FIN报文了，但我服务端还有一些数据没发完，等这些数据发完了服务端才能给客户端发FIN报文（所以不能一次性将确认报文和FIN报文发给客户端，就是这里多出来了一次）。</p>
@@ -780,12 +793,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">396k</span>
+    <span title="站点总字数">398k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:01</span>
+    <span title="站点阅读时长">6:02</span>
 </div>
 
         

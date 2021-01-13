@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[ubuntu开机失败——ACPI Error]]></title>
     <url>%2F2021%2F01%2F30%2FacpiError%2F</url>
-    <content type="text"><![CDATA[开机循环进入GNU GRUB 或者 黑屏 有提示ACPI Error错误如图： 解决办法1）先用下面方法进入系统 在GUN GRUB界面，选择ubuntu，按e开启编辑； 在开头为linux的一行最后，加上apci=off 按f10重启 2）更改grub 修改grub文件：sudo vim /etc/default/grub 把GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash&quot;改为GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash acpi=off&quot;(vim的使用方法请自行搜索) sudo update-grub ref Booting Ubuntu with “acpi=off” grub parameter]]></content>
+    <content type="text"><![CDATA[开机循环进入GNU GRUB 或者 黑屏 有提示ACPI Error错误如图： 解决办法1）先用下面方法进入系统 在GUN GRUB界面，选择ubuntu，按e开启编辑； 在开头为linux的一行最后，加上apci=off 按f10重启 2）更改grub 修改grub文件：sudo vim /etc/default/grub 把GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash&quot;改为GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash acpi=off&quot;(vim的使用方法请自行搜索) sudo update-grub ref 这是由于acpi和ubuntu版本不兼容：Booting Ubuntu with “acpi=off” grub parameter]]></content>
       <categories>
         <category>OS</category>
       </categories>

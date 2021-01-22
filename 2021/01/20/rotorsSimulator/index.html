@@ -20,21 +20,21 @@
     var CONFIG = {"hostname":"github.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="安装1. 新建工作空间并初始化（有工作空间的跳过此步骤）123mkdir -p ~/rotors_ws/srccd ~/rotors_ws/srccatkin_init_workspace  2. 克隆源代码12cd ~/rotors_ws/srcgit clone https://github.com/ethz-asl/rotors_simulator.git">
+  <meta name="description" content="uav_tracking项目代码 安装 rotors_simulator1. 新建工作空间并初始化（有工作空间的跳过此步骤）123mkdir -p ~/rotors_ws/srccd ~/rotors_ws/srccatkin_init_workspace  2. 克隆源代码12cd ~/rotors_ws/srcgit clone https://github.com/ethz-asl/roto">
 <meta name="keywords" content="Drone">
 <meta property="og:type" content="article">
-<meta property="og:title" content="无人机仿真：rotors_simulator的使用">
+<meta property="og:title" content="基于rotors_simulator和ROS的无人机跟踪">
 <meta property="og:url" content="https://github.com/suzhilong/suzhilong.github.io.git/2021/01/20/rotorsSimulator/index.html">
 <meta property="og:site_name" content="SOUSIC">
-<meta property="og:description" content="安装1. 新建工作空间并初始化（有工作空间的跳过此步骤）123mkdir -p ~/rotors_ws/srccd ~/rotors_ws/srccatkin_init_workspace  2. 克隆源代码12cd ~/rotors_ws/srcgit clone https://github.com/ethz-asl/rotors_simulator.git">
+<meta property="og:description" content="uav_tracking项目代码 安装 rotors_simulator1. 新建工作空间并初始化（有工作空间的跳过此步骤）123mkdir -p ~/rotors_ws/srccd ~/rotors_ws/srccatkin_init_workspace  2. 克隆源代码12cd ~/rotors_ws/srcgit clone https://github.com/ethz-asl/roto">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2021/01/20/aTE2lOB9qC6zjAw.png">
 <meta property="og:image" content="https://i.loli.net/2021/01/20/QJHVIyC8GUeKwtZ.png">
 <meta property="og:image" content="https://i.loli.net/2021/01/20/PFDWncqtCIsiaJw.png">
-<meta property="og:updated_time" content="2021-01-20T13:03:04.739Z">
+<meta property="og:updated_time" content="2021-01-21T05:12:21.455Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="无人机仿真：rotors_simulator的使用">
-<meta name="twitter:description" content="安装1. 新建工作空间并初始化（有工作空间的跳过此步骤）123mkdir -p ~/rotors_ws/srccd ~/rotors_ws/srccatkin_init_workspace  2. 克隆源代码12cd ~/rotors_ws/srcgit clone https://github.com/ethz-asl/rotors_simulator.git">
+<meta name="twitter:title" content="基于rotors_simulator和ROS的无人机跟踪">
+<meta name="twitter:description" content="uav_tracking项目代码 安装 rotors_simulator1. 新建工作空间并初始化（有工作空间的跳过此步骤）123mkdir -p ~/rotors_ws/srccd ~/rotors_ws/srccatkin_init_workspace  2. 克隆源代码12cd ~/rotors_ws/srcgit clone https://github.com/ethz-asl/roto">
 <meta name="twitter:image" content="https://i.loli.net/2021/01/20/aTE2lOB9qC6zjAw.png">
 
 <link rel="canonical" href="https://github.com/suzhilong/suzhilong.github.io.git/2021/01/20/rotorsSimulator/">
@@ -50,7 +50,7 @@
   };
 </script>
 
-  <title>无人机仿真：rotors_simulator的使用 | SOUSIC</title>
+  <title>基于rotors_simulator和ROS的无人机跟踪 | SOUSIC</title>
   
 
 
@@ -212,7 +212,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          无人机仿真：rotors_simulator的使用
+          基于rotors_simulator和ROS的无人机跟踪
         </h1>
 
         <div class="post-meta">
@@ -221,10 +221,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-01-20 19:35:00 / 修改时间：21:03:04" itemprop="dateCreated datePublished" datetime="2021-01-20T19:35:00+08:00">2021-01-20</time>
+              <time title="创建时间：2021-01-20 19:35:00" itemprop="dateCreated datePublished" datetime="2021-01-20T19:35:00+08:00">2021-01-20</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-21 13:12:21" itemprop="dateModified" datetime="2021-01-21T13:12:21+08:00">2021-01-21</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -274,7 +280,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="1-新建工作空间并初始化（有工作空间的跳过此步骤）"><a href="#1-新建工作空间并初始化（有工作空间的跳过此步骤）" class="headerlink" title="1. 新建工作空间并初始化（有工作空间的跳过此步骤）"></a>1. 新建工作空间并初始化（有工作空间的跳过此步骤）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/rotors_ws/src</span><br><span class="line">cd ~/rotors_ws/src</span><br><span class="line">catkin_init_workspace</span><br></pre></td></tr></table></figure>
+        <p><a href="https://github.com/suzhilong/uav_tracking">uav_tracking项目代码</a></p>
+<h1 id="安装-rotors-simulator"><a href="#安装-rotors-simulator" class="headerlink" title="安装 rotors_simulator"></a>安装 <a href="(https://github.com/ethz-asl/rotors_simulator)">rotors_simulator</a></h1><h2 id="1-新建工作空间并初始化（有工作空间的跳过此步骤）"><a href="#1-新建工作空间并初始化（有工作空间的跳过此步骤）" class="headerlink" title="1. 新建工作空间并初始化（有工作空间的跳过此步骤）"></a>1. 新建工作空间并初始化（有工作空间的跳过此步骤）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/rotors_ws/src</span><br><span class="line">cd ~/rotors_ws/src</span><br><span class="line">catkin_init_workspace</span><br></pre></td></tr></table></figure>
 
 <h2 id="2-克隆源代码"><a href="#2-克隆源代码" class="headerlink" title="2. 克隆源代码"></a>2. 克隆源代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/rotors_ws/src</span><br><span class="line">git clone https://github.com/ethz-asl/rotors_simulator.git</span><br></pre></td></tr></table></figure>
 
@@ -298,7 +305,7 @@
 <li><p>打开<code>launch</code>文件</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit ~/rotors_ws/src/rotors_simulator/rotors_gazebo/launch/mav_hovering_example_with_vi_sensor.launch</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>第三行参数<code>firefly</code>可以改为<code>~/rotors_ws/src/rotors_simulator/rotors_description/urdf</code>路径中的任意一个文件名，如<code>iris</code>，<code>ardrone</code>等。</p>
+<li><p>第三行参数<code>firefly</code>可以改为<code>~/rotors_ws/src/rotors_simulator/rotors_description/urdf</code>路径中的任意一个飞机名，如<code>iris</code>，<code>ardrone</code>等。</p>
 </li>
 </ol>
 <h2 id="修改launch文件中的world-name切换场景"><a href="#修改launch文件中的world-name切换场景" class="headerlink" title="修改launch文件中的world_name切换场景"></a>修改<code>launch</code>文件中的<code>world_name</code>切换场景</h2><ol>
@@ -357,15 +364,13 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">source ~/rotors_ws/devel/setup.bash</span><br><span class="line">roslaunch uav_tracking control_test.launch</span><br></pre></td></tr></table></figure>
 
 <p>如果启动成功，就可以看到程序自动启动仿真，无人机根据<code>control_test.cpp</code>的代码开始自己运动</p>
-<p><strong>ps.</strong> <a href="https://github.com/suzhilong/uav_tracking">uav_tracking包</a></p>
-<h1 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h1><ul>
+<h1 id="tracking-包的使用"><a href="#tracking-包的使用" class="headerlink" title="tracking 包的使用"></a>tracking 包的使用</h1><h1 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h1><ul>
 <li><a href="https://github.com/ethz-asl/rotors_simulator">rotors_simulator项目</a></li>
 <li><a href="https://github.com/suzhilong/uav_tracking">uav_tracking包</a></li>
 <li><a href="http://wiki.ros.org/rotors_simulator" target="_blank" rel="noopener">rotors_simulator ROS wiki</a></li>
 <li><a href="https://www.guyuehome.com/7598" target="_blank" rel="noopener">rotors无人机仿真</a></li>
 <li><a href="https://www.guyuehome.com/16351" target="_blank" rel="noopener">无人机ROS仿真包 rotors_simulator 编译教程</a></li>
 <li><a href="https://www.guyuehome.com/21614" target="_blank" rel="noopener">无人机ROS仿真包 rotors_simulator 使用教程</a></li>
-<li></li>
 </ul>
 
     </div>
@@ -408,7 +413,10 @@
     <a href="/2021/01/19/droneSimulator/" rel="prev" title="无人机仿真">
       <i class="fa fa-chevron-left"></i> 无人机仿真
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/01/21/rotorsTracking/" rel="next" title="基于ROS的无人机跟踪：tracking package">
+      基于ROS的无人机跟踪：tracking package <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -468,7 +476,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-新建工作空间并初始化（有工作空间的跳过此步骤）"><span class="nav-number">1.1.</span> <span class="nav-text">1. 新建工作空间并初始化（有工作空间的跳过此步骤）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-克隆源代码"><span class="nav-number">1.2.</span> <span class="nav-text">2. 克隆源代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-初始化wstool，并更新所需库"><span class="nav-number">1.3.</span> <span class="nav-text">3. 初始化wstool，并更新所需库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-编译"><span class="nav-number">1.4.</span> <span class="nav-text">4. 编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-环境变量"><span class="nav-number">1.5.</span> <span class="nav-text">5. 环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-测试"><span class="nav-number">1.6.</span> <span class="nav-text">6. 测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#切换环境和飞机模型"><span class="nav-number">2.</span> <span class="nav-text">切换环境和飞机模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改launch文件中的mav-name切换飞机"><span class="nav-number">2.1.</span> <span class="nav-text">修改launch文件中的mav_name切换飞机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改launch文件中的world-name切换场景"><span class="nav-number">2.2.</span> <span class="nav-text">修改launch文件中的world_name切换场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试"><span class="nav-number">2.3.</span> <span class="nav-text">测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建直接的-ROS-package-来控制飞机"><span class="nav-number">3.</span> <span class="nav-text">创建直接的 ROS package 来控制飞机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-新建-ROS-package"><span class="nav-number">3.1.</span> <span class="nav-text">1. 新建 ROS package</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-修改-uav-tracking-CMakeLists-txt-添加依赖"><span class="nav-number">3.2.</span> <span class="nav-text">2. 修改 uav_tracking/CMakeLists.txt 添加依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-修改-uav-tracking-package-xml"><span class="nav-number">3.3.</span> <span class="nav-text">3. 修改 uav_tracking/package.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-新建测试-cpp-文件"><span class="nav-number">3.4.</span> <span class="nav-text">4. 新建测试 cpp 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-创建launch文件夹并新建control-test-launch文件"><span class="nav-number">3.5.</span> <span class="nav-text">5. 创建launch文件夹并新建control_test.launch文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-在-uav-tracking-CMakeLists-txt-添加编译"><span class="nav-number">3.6.</span> <span class="nav-text">6. 在 uav_tracking/CMakeLists.txt 添加编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-编译"><span class="nav-number">3.7.</span> <span class="nav-text">7. 编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-运行"><span class="nav-number">3.8.</span> <span class="nav-text">8. 运行</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ref"><span class="nav-number">4.</span> <span class="nav-text">ref</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装-rotors-simulator"><span class="nav-number">1.</span> <span class="nav-text">安装 rotors_simulator</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-新建工作空间并初始化（有工作空间的跳过此步骤）"><span class="nav-number">1.1.</span> <span class="nav-text">1. 新建工作空间并初始化（有工作空间的跳过此步骤）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-克隆源代码"><span class="nav-number">1.2.</span> <span class="nav-text">2. 克隆源代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-初始化wstool，并更新所需库"><span class="nav-number">1.3.</span> <span class="nav-text">3. 初始化wstool，并更新所需库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-编译"><span class="nav-number">1.4.</span> <span class="nav-text">4. 编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-环境变量"><span class="nav-number">1.5.</span> <span class="nav-text">5. 环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-测试"><span class="nav-number">1.6.</span> <span class="nav-text">6. 测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#切换环境和飞机模型"><span class="nav-number">2.</span> <span class="nav-text">切换环境和飞机模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改launch文件中的mav-name切换飞机"><span class="nav-number">2.1.</span> <span class="nav-text">修改launch文件中的mav_name切换飞机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改launch文件中的world-name切换场景"><span class="nav-number">2.2.</span> <span class="nav-text">修改launch文件中的world_name切换场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试"><span class="nav-number">2.3.</span> <span class="nav-text">测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建直接的-ROS-package-来控制飞机"><span class="nav-number">3.</span> <span class="nav-text">创建直接的 ROS package 来控制飞机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-新建-ROS-package"><span class="nav-number">3.1.</span> <span class="nav-text">1. 新建 ROS package</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-修改-uav-tracking-CMakeLists-txt-添加依赖"><span class="nav-number">3.2.</span> <span class="nav-text">2. 修改 uav_tracking/CMakeLists.txt 添加依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-修改-uav-tracking-package-xml"><span class="nav-number">3.3.</span> <span class="nav-text">3. 修改 uav_tracking/package.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-新建测试-cpp-文件"><span class="nav-number">3.4.</span> <span class="nav-text">4. 新建测试 cpp 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-创建launch文件夹并新建control-test-launch文件"><span class="nav-number">3.5.</span> <span class="nav-text">5. 创建launch文件夹并新建control_test.launch文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-在-uav-tracking-CMakeLists-txt-添加编译"><span class="nav-number">3.6.</span> <span class="nav-text">6. 在 uav_tracking/CMakeLists.txt 添加编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-编译"><span class="nav-number">3.7.</span> <span class="nav-text">7. 编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-运行"><span class="nav-number">3.8.</span> <span class="nav-text">8. 运行</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tracking-包的使用"><span class="nav-number">4.</span> <span class="nav-text">tracking 包的使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ref"><span class="nav-number">5.</span> <span class="nav-text">ref</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -484,7 +492,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -543,7 +551,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:33</span>
+    <span title="站点阅读时长">6:34</span>
 </div>
 
         

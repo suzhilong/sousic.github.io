@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/apple-touch-icon-next.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"github.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="7月份每日一题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode每日一题 - 2020年七月">
+<meta property="og:url" content="https://github.com/suzhilong/suzhilong.github.io.git/2020/07/01/LeetcodeDaily_July/index.html">
+<meta property="og:site_name" content="SOUSIC">
+<meta property="og:description" content="7月份每日一题">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-01T12:00:00.000Z">
+<meta property="article:modified_time" content="2020-08-17T07:39:45.704Z">
+<meta property="article:author" content="Su Zhilong">
+<meta property="article:tag" content="Leetcode daily">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://github.com/suzhilong/suzhilong.github.io.git/2020/07/01/LeetcodeDaily_July/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Leetcode每日一题 - 2020年七月 | SOUSIC</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="SOUSIC" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">SOUSIC</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">哈库呐玛塔塔</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://github.com/suzhilong/suzhilong.github.io.git/2020/07/01/LeetcodeDaily_July/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Su Zhilong">
+      <meta itemprop="description" content="I will always be with you">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SOUSIC">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Leetcode每日一题 - 2020年七月
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-01 20:00:00" itemprop="dateCreated datePublished" datetime="2020-07-01T20:00:00+08:00">2020-07-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-17 15:39:45" itemprop="dateModified" datetime="2020-08-17T15:39:45+08:00">2020-08-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/07/01/LeetcodeDaily_July/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/07/01/LeetcodeDaily_July/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>34k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>31 分钟</span>
+            </span>
+            <div class="post-description">7月份每日一题</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="7月1日-718-最长重复子数组（中等）"><a href="#7月1日-718-最长重复子数组（中等）" class="headerlink" title="7月1日 718. 最长重复子数组（中等）"></a>7月1日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/">718. 最长重复子数组（中等）</a></h1><p>给两个整数数组 A 和 B ，返回两个数组中公共的、长度最长的子数组的长度。</p>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">A: [1,2,3,2,1]</span><br><span class="line">B: [3,2,1,4,7]</span><br><span class="line">输出：3</span><br><span class="line">解释：</span><br><span class="line">长度最长的公共子数组是 [3, 2, 1] 。</span><br></pre></td></tr></table></figure>
+<p>题解：  </p>
+<ol>
+<li><p>滑动窗口。主串从第一个开始，滑动匹配串直到与主串的当前元素相等，再看后面一共有几个元素相等。分别以 A 为主串和 B 为主串匹配一次取最大。比如A &#x3D; {0,0,0,0,0,0,1,0,0,0}, B &#x3D; {0,0,0,0,0,0,0,1,0,0}，以 A 为主串会得到6。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">int findCore(vector&lt;int&gt;&amp; A, vector&lt;int&gt;&amp; B)&#123;</span><br><span class="line">    int maxLen = 0;</span><br><span class="line">    for (int i = 0; i &lt; A.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        int j = 0;</span><br><span class="line"></span><br><span class="line">        while (j &lt; B.size())</span><br><span class="line">        &#123;</span><br><span class="line">            while(j&lt;B.size() &amp;&amp; B[j]!=A[i])//判断边界的一定要在前面</span><br><span class="line">                j++;</span><br><span class="line">            if(j==B.size())</span><br><span class="line">                break;</span><br><span class="line">            int cur = i;</span><br><span class="line">            while(cur&lt;A.size() &amp;&amp; j&lt;B.size() &amp;&amp; A[cur]==B[j])&#123;</span><br><span class="line">                cur++;</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">            maxLen = max(maxLen, cur - i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return maxLen;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int findLength(vector&lt;int&gt;&amp; A, vector&lt;int&gt;&amp; B) &#123;</span><br><span class="line">    if(A.empty() || B.empty())</span><br><span class="line">        return 0;</span><br><span class="line"></span><br><span class="line">    int a = findCore(A, B);</span><br><span class="line">    int b = findCore(B, A);</span><br><span class="line">    return max(a, b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O((m+n) * min{n,m})。m、n为数组的长度。<br>空间复杂度：O(1)</p>
+</li>
+<li><p>二维dp。dp[i][j]表示A[0:i) 和 B[0:i)最长公共字串长度。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">int findLength(vector&lt;int&gt;&amp; A, vector&lt;int&gt;&amp; B) &#123;</span><br><span class="line">    if(A.empty() || B.empty())</span><br><span class="line">        return 0;</span><br><span class="line"></span><br><span class="line">    int a = A.size(), b = B.size();</span><br><span class="line">    vector&lt;vector&lt;int&gt; &gt; dp(a + 1, vector&lt;int&gt;(b + 1, 0));</span><br><span class="line">    int maxLen = 0;</span><br><span class="line">    for (int i = 1; i &lt;= a; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for (int j = 1; j &lt;= b;j++)&#123;</span><br><span class="line">            if(A[i - 1] == B[j - 1])</span><br><span class="line">                dp[i][j] = dp[i - 1][j - 1] + 1;</span><br><span class="line">            maxLen = max(maxLen, dp[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return maxLen;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(mn)<br>空间复杂度：O(mn)</p>
+</li>
+<li><p>一维dp。<br>因为只用到了上一行的dp，所以可以只用一维dp来做，但是j的更新就需要从后往前，因为更新当前的值需要上一行的前面的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">int findLength(vector&lt;int&gt;&amp; A, vector&lt;int&gt;&amp; B) &#123;</span><br><span class="line">    if(A.empty() || B.empty())</span><br><span class="line">        return 0;</span><br><span class="line"></span><br><span class="line">    int a = A.size(), b = B.size();</span><br><span class="line">    vector&lt;int&gt; dp(b + 1, 0);</span><br><span class="line">    int maxLen = 0;</span><br><span class="line">    for (int i = 1; i &lt;= a; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for (int j = b; j &gt; 0;j--)&#123;</span><br><span class="line">            if(A[i - 1] == B[j - 1])</span><br><span class="line">                dp[j] = dp[j - 1] + 1;</span><br><span class="line">            else</span><br><span class="line">                dp[j] = 0;</span><br><span class="line">            maxLen = max(maxLen, dp[j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return maxLen;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(mn)<br>空间复杂度：O(m)</p>
+</li>
+</ol>
+<h1 id="7月2日-378-有序矩阵中第K小的元素（中等）"><a href="#7月2日-378-有序矩阵中第K小的元素（中等）" class="headerlink" title="7月2日 378. 有序矩阵中第K小的元素（中等）"></a>7月2日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/kth-smallest-element-in-a-sorted-matrix/">378. 有序矩阵中第K小的元素（中等）</a></h1><p>给定一个 n x n 矩阵，其中每行和每列元素均按升序排序，找到矩阵中第 k 小的元素。<br>请注意，它是排序后的第 k 小元素，而不是第 k 个不同的元素。</p>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">matrix = [</span><br><span class="line">   [ 1,  5,  9],</span><br><span class="line">   [10, 11, 13],</span><br><span class="line">   [12, 13, 15]</span><br><span class="line">],</span><br><span class="line">k = 8,</span><br><span class="line"></span><br><span class="line">返回 13。</span><br></pre></td></tr></table></figure>
+<p>题解：  </p>
+<ol>
+<li><p>把二维拉成一维，然后排序。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int kthSmallest(vector&lt;vector&lt;int&gt;&gt;&amp; matrix, int k) &#123;</span><br><span class="line">    vector&lt;int&gt; vec;</span><br><span class="line">    for(int i=0;i&lt;matrix.size();i++)&#123;</span><br><span class="line">        for(int j=0;j&lt;matrix[0].size();j++)&#123;</span><br><span class="line">            vec.push_back(matrix[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(vec.begin(),vec.end());</span><br><span class="line">    return vec[k-1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(n^2 * log(n^2))<br>空间复杂度：O(n^2)</p>
+</li>
+<li><p>类似与归并排序。到第k个就结束。本代码每次都遍历每一行的首位元素，找到最小值弹出。（其实可以用一个小根堆来求最小值，可以减少时间复杂度为O(k * logn)）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">int kthSmallest(vector&lt;vector&lt;int&gt; &gt;&amp; matrix, int k) &#123;</span><br><span class="line">    int n = matrix.size();</span><br><span class="line">    for (int i = 0; i &lt; k;i++)&#123;</span><br><span class="line">        int min = 0;</span><br><span class="line">        for (int j = 0; j &lt; n; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            while (matrix[min].empty())</span><br><span class="line">                min++;</span><br><span class="line">            if (matrix[j].empty())</span><br><span class="line">                continue;</span><br><span class="line">            min = matrix[min][0] &lt;= matrix[j][0] ? min : j;</span><br><span class="line">        &#125;</span><br><span class="line">        if(i==k-1)</span><br><span class="line">            return matrix[min][0];</span><br><span class="line">        matrix[min].erase(matrix[min].begin(), matrix[min].begin() + 1);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(k * n)<br>空间复杂度：O(1)</p>
+</li>
+</ol>
+<h1 id="7月3日-108-将有序数组转换为二叉搜索树（简单）"><a href="#7月3日-108-将有序数组转换为二叉搜索树（简单）" class="headerlink" title="7月3日 108. 将有序数组转换为二叉搜索树（简单）"></a>7月3日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/convert-sorted-array-to-binary-search-tree/">108. 将有序数组转换为二叉搜索树（简单）</a></h1><p>将一个按照升序排列的有序数组，转换为一棵高度平衡二叉搜索树。</p>
+<p>本题中，一个高度平衡二叉树是指一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过 1。</p>
+<p>示例:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">给定有序数组: [-10,-3,0,5,9],</span><br><span class="line"></span><br><span class="line">一个可能的答案是：[0,-3,9,-10,null,5]，它可以表示下面这个高度平衡二叉搜索树：</span><br><span class="line"></span><br><span class="line">      0</span><br><span class="line">     / \</span><br><span class="line">   -3   9</span><br><span class="line">   /   /</span><br><span class="line"> -10  5</span><br></pre></td></tr></table></figure>
+<p>题解：<br>递归。中序遍历，总是选择中间位置左边的数字作为根节点。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">TreeNode *buildTree(vector&lt;int&gt;&amp; nums, int left, int right)&#123;</span><br><span class="line">    if (left &gt; right) &#123;</span><br><span class="line">        return nullptr;</span><br><span class="line">    &#125;</span><br><span class="line">    // 总是选择中间位置左边的数字作为根节点</span><br><span class="line">    int mid = (left + right) / 2;</span><br><span class="line"></span><br><span class="line">    TreeNode* root = new TreeNode(nums[mid]);</span><br><span class="line">    root-&gt;left = buildTree(nums, left, mid - 1);</span><br><span class="line">    root-&gt;right = buildTree(nums, mid + 1, right);</span><br><span class="line">    return root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">TreeNode* sortedArrayToBST(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">    int L = 0, R = nums.size()-1;</span><br><span class="line">    TreeNode *res = buildTree(nums, L, R);</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(n)<br>空间复杂度：O(logn)</p>
+<h1 id="7月4日-32-最长有效括号（困难）"><a href="#7月4日-32-最长有效括号（困难）" class="headerlink" title="7月4日 32. 最长有效括号（困难）"></a>7月4日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/longest-valid-parentheses/">32. 最长有效括号（困难）</a></h1><p>给定一个只包含 ‘(‘ 和 ‘)’ 的字符串，找出最长的包含有效括号的子串的长度。</p>
+<p>示例 1:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;(()&quot;</span><br><span class="line">输出: 2</span><br><span class="line">解释: 最长有效括号子串为 &quot;()&quot;</span><br></pre></td></tr></table></figure>
+<p>示例 2:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;)()())&quot;</span><br><span class="line">输出: 4</span><br><span class="line">解释: 最长有效括号子串为 &quot;()()&quot;</span><br></pre></td></tr></table></figure>
+<p>示例3:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;()(())&quot;</span><br><span class="line">输出: 6</span><br><span class="line">解释，都是有效的。</span><br></pre></td></tr></table></figure>
+<p>题解：  </p>
+<ol>
+<li><p>栈。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">int longestValidParentheses(string s) &#123;</span><br><span class="line">    stack&lt;int&gt; st1;</span><br><span class="line">    st1.push(-1);</span><br><span class="line">    int longest = 0;</span><br><span class="line">    for (int i = 0; i &lt; s.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(s[i]==&#x27;(&#x27;)</span><br><span class="line">            st1.push(i);</span><br><span class="line">        else&#123;</span><br><span class="line">            st1.pop();</span><br><span class="line">            if(st1.empty())</span><br><span class="line">                st1.push(i);</span><br><span class="line">            else</span><br><span class="line">                longest = max(longest, i - st1.top());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return longest;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
+</li>
+<li><p>dp。</p>
+</li>
+</ol>
+<ul>
+<li>s[i]&#x3D;‘)’ 且 s[i−1]&#x3D;‘(’，也就是字符串形如 “……()”“……()”，我们可以推出：<code>dp[i]=dp[i-2]+2</code></li>
+<li>s[i]&#x3D;‘)’ 且 s[i−1]&#x3D;‘)’，也就是字符串形如 “……))”“……))”，我们可以推出：如果s[i−dp[i−1]−1]&#x3D;‘(’，那么：<code>dp[i]=dp[i−1]+dp[i−dp[i−1]−2]+2</code>   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">（代码略）</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="7月5日-44-通配符匹配（困难）"><a href="#7月5日-44-通配符匹配（困难）" class="headerlink" title="7月5日 44. 通配符匹配（困难）"></a>7月5日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/wildcard-matching/">44. 通配符匹配（困难）</a></h1><p>给定一个字符串 (s) 和一个字符模式 (p) ，实现一个支持 ‘?’ 和 ‘*’ 的通配符匹配。</p>
+<ol>
+<li>‘?’ 可以匹配任何单个字符。</li>
+<li>‘*’ 可以匹配任意字符串（包括空字符串）。</li>
+</ol>
+<p>两个字符串完全匹配才算匹配成功。</p>
+<p>说明:</p>
+<ol>
+<li>s 可能为空，且只包含从 a-z 的小写字母。</li>
+<li>p 可能为空，且只包含从 a-z 的小写字母，以及字符 ? 和 *。</li>
+</ol>
+<p>示例 1:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">s = &quot;aa&quot;</span><br><span class="line">p = &quot;a&quot;</span><br><span class="line">输出: false</span><br><span class="line">解释: &quot;a&quot; 无法匹配 &quot;aa&quot; 整个字符串。</span><br></pre></td></tr></table></figure>
+<p>示例 2:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">s = &quot;aa&quot;</span><br><span class="line">p = &quot;*&quot;</span><br><span class="line">输出: true</span><br><span class="line">解释: &#x27;*&#x27; 可以匹配任意字符串。</span><br></pre></td></tr></table></figure>
+<p>示例 3:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">s = &quot;cb&quot;</span><br><span class="line">p = &quot;?a&quot;</span><br><span class="line">输出: false</span><br><span class="line">解释: &#x27;?&#x27; 可以匹配 &#x27;c&#x27;, 但第二个 &#x27;a&#x27; 无法匹配 &#x27;b&#x27;。</span><br></pre></td></tr></table></figure>
+<p>示例 4:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">s = &quot;adceb&quot;</span><br><span class="line">p = &quot;*a*b&quot;</span><br><span class="line">输出: true</span><br><span class="line">解释: 第一个 &#x27;*&#x27; 可以匹配空字符串, 第二个 &#x27;*&#x27; 可以匹配字符串 &quot;dce&quot;.</span><br></pre></td></tr></table></figure>
+<p>示例 5:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">s = &quot;acdcb&quot;</span><br><span class="line">p = &quot;a*c?b&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
+<p>题解：  </p>
+<ol>
+<li><p>递归。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">bool matchCore(string s, string p, int idxS, int idxP)&#123;</span><br><span class="line">    if(idxS == s.size() &amp;&amp; idxP == p.size())</span><br><span class="line">        return true;</span><br><span class="line">    if(idxS &gt;= s.size())&#123;</span><br><span class="line">        if(p[idxP] != &#x27;*&#x27;)</span><br><span class="line">            return false;</span><br><span class="line">        else</span><br><span class="line">            return matchCore(s, p, idxS, idxP + 1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(p[idxP]==&#x27;*&#x27;)&#123;</span><br><span class="line">        if(idxP==p.size()-1)</span><br><span class="line">            return true;</span><br><span class="line">        while(p[idxP]==&#x27;*&#x27;)//匹配连续的&#x27;*&#x27;</span><br><span class="line">            idxP++;</span><br><span class="line">        return matchCore(s, p, idxS + 1, idxP - 1) || matchCore(s, p, idxS, idxP);</span><br><span class="line">    &#125;</span><br><span class="line">    if(p[idxP]==&#x27;?&#x27; || s[idxS]==p[idxP])</span><br><span class="line">        return matchCore(s, p, idxS + 1, idxP + 1);</span><br><span class="line">    else</span><br><span class="line">        return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool isMatch(string s, string p) &#123;</span><br><span class="line">    return matchCore(s, p, 0, 0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(2^k)。k是‘*’串的个数。超时，941 &#x2F; 1809 个通过测试用例。<br>空间复杂度：O(2^k)，递归调用需要用到栈</p>
+</li>
+<li><p>dp。<br><code>dp[i][j]</code>表示字符串s的前i个字符p的前j个字符是否能匹配。</p>
+</li>
+</ol>
+<ul>
+<li>注意：s和p下标是从 0 开始的。</li>
+<li>当<code>s[i-1]==p[j-1]</code>或<code>p[j-1]==&#39;?&#39;</code>时：<code>dp[i][j] = dp[i - 1][j - 1]</code>。</li>
+<li>当<code>p[j-1]==&#39;*&#39;</code>时：如果使用’*‘，则<code>dp[i][j] = dp[i-1][j]</code>；如果不使用’*‘，则<code>dp[i][j] = dp[i][j-1]</code>。</li>
+<li>初始状态：<code>dp[0][0] = true</code>；<code>dp[i][0] = false</code>；如果直到<code>p[i]</code>前面都是”*“，<code>dp[0][0～i] = true</code>。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">bool isMatch(string s, string p) &#123;</span><br><span class="line">    int m = s.size(), n = p.size();</span><br><span class="line">    vector&lt;vector&lt;bool&gt; &gt; dp(m + 1, vector&lt;bool&gt;(n + 1, false));</span><br><span class="line"></span><br><span class="line">    dp[0][0] = true;</span><br><span class="line">    for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        if (p[i - 1] == &#x27;*&#x27;)</span><br><span class="line">            dp[0][i] = true;</span><br><span class="line">        else</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for (int i = 1; i &lt;= m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for (int j = 1; j &lt;= n;j++)&#123;</span><br><span class="line">            if(p[j-1]==&#x27;?&#x27; || p[j-1]==s[i-1])</span><br><span class="line">                dp[i][j] = dp[i - 1][j - 1];</span><br><span class="line">            else if(p[j-1]==&#x27;*&#x27;)</span><br><span class="line">                dp[i][j] = dp[i][j - 1] || dp[i - 1][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dp[m][n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+时间复杂度：O(mn)<br>空间复杂度：O(mn)</li>
+</ul>
+<p><em>ps. 以后碰到这种题，直接用dp，递归基本都是时间复杂度比较高的。</em></p>
+<h1 id="7月6日-63-不同路径-II（中等）"><a href="#7月6日-63-不同路径-II（中等）" class="headerlink" title="7月6日 63. 不同路径 II（中等）"></a>7月6日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/unique-paths-ii/">63. 不同路径 II（中等）</a></h1><p>一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。<br>机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。</p>
+<p>现在考虑网格中有障碍物。那么从左上角到右下角将会有多少条不同的路径？</p>
+<p>网格中的障碍物和空位置分别用 1 和 0 来表示。</p>
+<p>说明：m 和 n 的值均不超过 100。</p>
+<p>示例 1:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">[</span><br><span class="line">  [0,0,0],</span><br><span class="line">  [0,1,0],</span><br><span class="line">  [0,0,0]</span><br><span class="line">]</span><br><span class="line">输出: 2</span><br><span class="line">解释:</span><br><span class="line">3x3 网格的正中间有一个障碍物。</span><br><span class="line">从左上角到右下角一共有 2 条不同的路径：</span><br><span class="line">1. 向右 -&gt; 向右 -&gt; 向下 -&gt; 向下</span><br><span class="line">2. 向下 -&gt; 向下 -&gt; 向右 -&gt; 向右</span><br></pre></td></tr></table></figure>
+<p>题解：  </p>
+<ol>
+<li>二维dp。<br><code>dp[i][j] = dp[i-1][j] + dp[i][j-1]</code></li>
+</ol>
+<p>注意初始化：</p>
+<ul>
+<li>当obstacleGrid[i][j]&#x3D;&#x3D;1时dp[i][j] &#x3D; 0；</li>
+<li>第一行和第一列，obstacleGrid[0][j]&#x3D;&#x3D;1和obstacleGrid[i][0]&#x3D;&#x3D;1之前初始化为1。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">int uniquePathsWithObstacles(vector&lt;vector&lt;int&gt; &gt;&amp; obstacleGrid) &#123;</span><br><span class="line">    int m = obstacleGrid.size(), n = obstacleGrid[0].size();</span><br><span class="line">    if(m==0 || obstacleGrid[0][0]==1)</span><br><span class="line">        return 0;</span><br><span class="line"></span><br><span class="line">    vector&lt;vector&lt;int&gt; &gt; dp(m,vector&lt;int&gt;(n,0));</span><br><span class="line"></span><br><span class="line">    dp[0][0] = 1;</span><br><span class="line">    for (int i = 1; i &lt; m; i++)&#123;</span><br><span class="line">        if(obstacleGrid[i][0]==1)</span><br><span class="line">            break;</span><br><span class="line">        dp[i][0] = 1;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int j = 1; j &lt; n;j++)&#123;</span><br><span class="line">        if(obstacleGrid[0][j]==1)</span><br><span class="line">            break;</span><br><span class="line">        dp[0][j] = 1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for (int i = 1; i &lt; m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for (int j = 1; j &lt; n;j++)&#123;</span><br><span class="line">            if(obstacleGrid[i][j]==1)</span><br><span class="line">                continue;</span><br><span class="line">            dp[i][j] = dp[i-1][j] + dp[i][j-1];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dp[m-1][n-1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="2">
+<li>一维dp。<br>因为只会用到上一行j之后（含j）的数据，所以可以优化为只用一维dp。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">int uniquePathsWithObstacles(vector&lt;vector&lt;int&gt; &gt;&amp; obstacleGrid) &#123;</span><br><span class="line">    int m = obstacleGrid.size(), n = obstacleGrid[0].size();</span><br><span class="line">    if(m==0 || obstacleGrid[0][0]==1)</span><br><span class="line">        return 0;</span><br><span class="line"></span><br><span class="line">    vector&lt;int&gt; dp(n+1,0);</span><br><span class="line">    dp[0] = 1;</span><br><span class="line">    for (int i = 1; i &lt; n; i++)&#123;</span><br><span class="line">        if(obstacleGrid[0][i]==1)</span><br><span class="line">            break;</span><br><span class="line">        dp[i] = 1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for (int i = 1; i &lt; m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(dp[0]==1 &amp;&amp; obstacleGrid[i][0]==0)</span><br><span class="line">            dp[0] = 1;</span><br><span class="line">        else</span><br><span class="line">            dp[0] = 0;</span><br><span class="line">        for (int j = 1; j &lt; n; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(obstacleGrid[i][j]==1)</span><br><span class="line">                dp[j] = 0;</span><br><span class="line">            else</span><br><span class="line">                dp[j] = dp[j] + dp[j - 1];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dp[n-1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="7月7日-112-路径总和（简单）"><a href="#7月7日-112-路径总和（简单）" class="headerlink" title="7月7日 112. 路径总和（简单）"></a>7月7日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/path-sum/">112. 路径总和（简单）</a></h1><p>给定一个二叉树和一个目标和，判断该树中是否存在根节点到叶子节点的路径，这条路径上所有节点值相加等于目标和。</p>
+<p><strong>说明</strong>: 叶子节点是指没有子节点的节点。</p>
+<p>示例:<br>给定如下二叉树，以及目标和 sum &#x3D; 22，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">              5</span><br><span class="line">             / \</span><br><span class="line">            4   8</span><br><span class="line">           /   / \</span><br><span class="line">          11  13  4</span><br><span class="line">         /  \      \</span><br><span class="line">        7    2      1</span><br><span class="line">返回 true, 因为存在目标和为 22 的根节点到叶子节点的路径 5-&gt;4-&gt;11-&gt;2。</span><br></pre></td></tr></table></figure>
+<p>题解：  </p>
+<ol>
+<li><p>dfs（递归）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">bool hasPathSum(TreeNode* root, int sum) &#123;</span><br><span class="line">    if(root==nullptr)</span><br><span class="line">        return false;</span><br><span class="line">    if(root-&gt;left==nullptr &amp;&amp; root-&gt;right==nullptr)&#123;</span><br><span class="line">        return root-&gt;val==sum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int curVal = root-&gt;val;</span><br><span class="line">    return hasPathSum(root-&gt;left,sum-curVal) || hasPathSum(root-&gt;right,sum-curVal);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(n)<br>空间复杂度：O(h)。h为树的高度，最坏情况下h &#x3D; n。</p>
+</li>
+<li><p>bfs。队列实现。时空复杂度都是O(n)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">（代码略）</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="7月8日-程序员面试金典-面试题-16-11-跳水板（简单）"><a href="#7月8日-程序员面试金典-面试题-16-11-跳水板（简单）" class="headerlink" title="7月8日 程序员面试金典 面试题 16.11. 跳水板（简单）"></a>7月8日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/diving-board-lcci/">程序员面试金典 面试题 16.11. 跳水板（简单）</a></h1><p>你正在使用一堆木板建造跳水板。有两种类型的木板，其中长度较短的木板长度为shorter，长度较长的木板长度为longer。你必须正好使用k块木板。编写一个方法，生成跳水板所有可能的长度。<br>返回的长度需要从小到大排列。</p>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">shorter = 1</span><br><span class="line">longer = 2</span><br><span class="line">k = 3</span><br><span class="line">输出： &#123;3,4,5,6&#125;</span><br></pre></td></tr></table></figure>
+<p>题解：<br>shorter的使用次数分别为0-k。<br>注意返回需要从小到大。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; divingBoard(int shorter, int longer, int k) &#123;</span><br><span class="line">    if(k==0)</span><br><span class="line">        return &#123;&#125;;</span><br><span class="line">    if (shorter == longer) &#123;</span><br><span class="line">        return &#123;shorter * k&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;int&gt; res;</span><br><span class="line">    for(int i=0;i&lt;=k;i++)&#123;</span><br><span class="line">        res.push_back(shorter*(k-i)+longer*i);</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(k)<br>空间复杂度：O(k)</p>
+<h1 id="7月9日-程序员面试金典-面试题-17-13-恢复空格（中等）"><a href="#7月9日-程序员面试金典-面试题-17-13-恢复空格（中等）" class="headerlink" title="7月9日 程序员面试金典 面试题 17.13. 恢复空格（中等）"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/re-space-lcci/">7月9日 程序员面试金典 面试题 17.13. 恢复空格（中等）</a></h1><p>哦，不！你不小心把一个长篇文章中的空格、标点都删掉了，并且大写也弄成了小写。像句子”I reset the computer. It still didn’t boot!”已经变成了”iresetthecomputeritstilldidntboot”。在处理标点符号和大小写之前，你得先把它断成词语。当然了，你有一本厚厚的词典dictionary，不过，有些词没在词典里。假设文章用sentence表示，设计一个算法，把文章断开，要求未识别的字符最少，返回未识别的字符数。</p>
+<p><strong>注意</strong>：本题相对原题稍作改动，只需返回未识别的字符数</p>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">dictionary = [&quot;looked&quot;,&quot;just&quot;,&quot;like&quot;,&quot;her&quot;,&quot;brother&quot;]</span><br><span class="line">sentence = &quot;jesslookedjustliketimherbrother&quot;</span><br><span class="line">输出： 7</span><br><span class="line">解释： 断句后为&quot;jess looked just like tim her brother&quot;，共7个未识别字符。</span><br></pre></td></tr></table></figure>
+<p>题解：<br>dp。<br><code>dp[i]</code> 表示第 <code>i</code> 个之前字母（含i）之前未识别的最少字符数。</p>
+<ul>
+<li>当s[i-d:d)与字典中某一字符串匹配时： dp[i] &#x3D; min(dp[i - d],dp[i])。需要枚举每一个字典中的字符串。</li>
+<li>当与所有不重合时： dp[i] &#x3D; dp[i -1] + 1， 把 s[i-1] 当作一个未识别字符。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">int respace(vector&lt;string&gt;&amp; dictionary, string sentence) &#123;</span><br><span class="line">    vector&lt;int&gt; dp(sentence.size() + 1,sentence.size());</span><br><span class="line">    dp[0] = 0;</span><br><span class="line">    for (int i = 1; i &lt;= sentence.size(); i++) &#123;</span><br><span class="line">        for (string dict : dictionary) &#123;</span><br><span class="line">            int d = dict.size();</span><br><span class="line">            if (i &gt;= d &amp;&amp; sentence.substr(i - d, d) == dict)</span><br><span class="line">                dp[i] = min(dp[i - d], dp[i]);</span><br><span class="line">            else dp[i] = min(dp[i - 1] + 1,dp[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dp[sentence.size()];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+时间复杂度：O(n*k)。n 为字符串 s 的长度，k为字典的长度。<br>空间复杂度：O(n)</li>
+</ul>
+<h1 id="7月10日-309-最佳买卖股票时机含冷冻期（中等）"><a href="#7月10日-309-最佳买卖股票时机含冷冻期（中等）" class="headerlink" title="7月10日 309. 最佳买卖股票时机含冷冻期（中等）"></a>7月10日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/solution/zui-jia-mai-mai-gu-piao-shi-ji-han-leng-dong-qi-4/">309. 最佳买卖股票时机含冷冻期（中等）</a></h1><p>给定一个整数数组，其中第 i 个元素代表了第 i 天的股票价格 。​<br>设计一个算法计算出最大利润。在满足以下约束条件下，你可以尽可能地完成更多的交易（多次买卖一支股票）:</p>
+<p>你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。<br>卖出股票后，你无法在第二天买入股票 (即冷冻期为 1 天)。</p>
+<p>示例:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,2,3,0,2]</span><br><span class="line">输出: 3 </span><br><span class="line">解释: 对应的交易状态为: [买入, 卖出, 冷冻期, 买入, 卖出]</span><br></pre></td></tr></table></figure>
+<p>题解：<br>dp。<br>dp[i] 表示第 i 天结束之后的累计最大收益。<br>一共有三个状态：A观望，B持股，C冷却</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">状态转移图：A-(观望)-&gt;A,</span><br><span class="line">        A-(买入｜-price)-&gt;B,</span><br><span class="line">        B-(观望)-&gt;B,</span><br><span class="line">        B-(卖出|+price)-&gt;C,</span><br><span class="line">        C-(冷却)-&gt;A</span><br></pre></td></tr></table></figure>
+<ul>
+<li>持有：用dp[i][0]表示</li>
+<li>冷却：用dp[i][1]表示</li>
+<li>观望：用dp[i][2]表示</li>
+</ul>
+<p>根据状态转移图可以写出dp[i][j]的状态转移方程：</p>
+<ul>
+<li>dp[i][0] &#x3D; max(dp[i - 1][2] - prices[i], dp[i - 1][0]);</li>
+<li>dp[i][1] &#x3D; dp[i - 1][0] + prices[i];</li>
+<li>dp[i][2] &#x3D; max(dp[i - 1][1], dp[i - 1][2]);<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int maxProfit(vector&lt;int&gt;&amp; prices) &#123;</span><br><span class="line">    if(prices.empty())</span><br><span class="line">        return 0;</span><br><span class="line">    vector&lt;vector&lt;int&gt; &gt; dp(prices.size(), vector&lt;int&gt;(3));</span><br><span class="line">    dp[0][0] = -prices[0];</span><br><span class="line">    for (int i = 1; i &lt; prices.size();i++)&#123;</span><br><span class="line">        dp[i][0] = max(dp[i - 1][2] - prices[i], dp[i - 1][0]);</span><br><span class="line">        dp[i][1] = dp[i - 1][0] + prices[i];</span><br><span class="line">        dp[i][2] = max(dp[i - 1][1], dp[i - 1][2]);</span><br><span class="line">    &#125;</span><br><span class="line">    return max(dp[prices.size() - 1][1], dp[prices.size() - 1][2]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+时间复杂度：O(n)<br>空间复杂度：O(n)</li>
+</ul>
+<h1 id="7月11日-315-计算右侧小于当前元素的个数（困难）"><a href="#7月11日-315-计算右侧小于当前元素的个数（困难）" class="headerlink" title="7月11日 315. 计算右侧小于当前元素的个数（困难）"></a>7月11日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/count-of-smaller-numbers-after-self/">315. 计算右侧小于当前元素的个数（困难）</a></h1><p>给定一个整数数组 nums，按要求返回一个新数组 *counts。数组 *counts 有该性质： counts[i] 的值是 nums[i] 右侧小于 nums[i] 的元素的数量。</p>
+<p>示例:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入: [5,2,6,1]</span><br><span class="line">输出: [2,1,1,0] </span><br><span class="line">解释:</span><br><span class="line">5 的右侧有 2 个更小的元素 (2 和 1).</span><br><span class="line">2 的右侧仅有 1 个更小的元素 (1).</span><br><span class="line">6 的右侧有 1 个更小的元素 (1).</span><br><span class="line">1 的右侧有 0 个更小的元素.</span><br></pre></td></tr></table></figure>
+<p>题解：</p>
+<ol>
+<li>暴力。O(n^2)<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; countSmaller(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">    vector&lt;int&gt; res(nums.size());</span><br><span class="line">    for(int i = 0;i&lt;nums.size();i++)&#123;</span><br><span class="line">        int greater = 0;</span><br><span class="line">        for(int j=i+1;j&lt;nums.size();j++)&#123;</span><br><span class="line">            if(nums[j]&lt;nums[i])</span><br><span class="line">                greater++;</span><br><span class="line">        &#125;</span><br><span class="line">        res[i] = greater;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>从后往前，维护一个升序数组。插入的序号就是比它小数字的个数。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">int insertNums(vector&lt;int&gt; &amp;sorted, int num)&#123;</span><br><span class="line">    if(sorted.size()==1)&#123;</span><br><span class="line">        if(num&gt;sorted[0])&#123;</span><br><span class="line">            sorted.push_back(num);</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            sorted.insert(sorted.begin(),num);</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int l = 0, r = sorted.size()-1;</span><br><span class="line">    int mid = (l + r) / 2;</span><br><span class="line">    while (l &lt;= r)</span><br><span class="line">    &#123;</span><br><span class="line">        if(sorted[mid]&lt;num)</span><br><span class="line">            l = mid + 1;</span><br><span class="line">        else</span><br><span class="line">            r = mid - 1;</span><br><span class="line">        mid = (l+r)/2;</span><br><span class="line">    &#125;</span><br><span class="line">    sorted.insert(sorted.begin()+l, num);</span><br><span class="line">    return l;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vector&lt;int&gt; countSmaller(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">    if(nums.empty())</span><br><span class="line">        return &#123;&#125;;</span><br><span class="line">    vector&lt;int&gt; sorted;</span><br><span class="line">    vector&lt;int&gt; res(nums.size());</span><br><span class="line">    sorted.push_back(nums[nums.size()-1]);</span><br><span class="line">    for(int i=nums.size()-2;i&gt;=0;i--)&#123;</span><br><span class="line">        int idx = insertNums(sorted, nums[i]);</span><br><span class="line">        res[i] = idx;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+时间复杂度：O(nlogn)。每次插入二分查找需要O(logn)的复杂度。<br>空间复杂度：O(n)</li>
+</ol>
+<h1 id="真题"><a href="#真题" class="headerlink" title="真题"></a>真题</h1><p>给定两个长度为n，值不重复的数列 A &amp; B ，将 A 这个数列进行入栈出栈操作，请问能否得到 B。</p>
+<p>示例1：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">A = [0,1,2,3,4]</span><br><span class="line">B = [2,1,0,4,3]</span><br><span class="line"></span><br><span class="line">输出： Y</span><br></pre></td></tr></table></figure>
+<p>示例2:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">A = [0]</span><br><span class="line">B = [1]</span><br><span class="line"></span><br><span class="line">输出： N</span><br></pre></td></tr></table></figure>
+<p>题解：  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">bool canGetB(vector&lt;int&gt; A, vector&lt;int&gt; B)&#123;</span><br><span class="line">    stack&lt;int&gt; st;</span><br><span class="line">    int idxA = 0, idxB = 0;</span><br><span class="line">    for (; idxB &lt; B.size(); idxB++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(idxA&lt;A.size() &amp;&amp; !st.empty() &amp;&amp; st.top()==B[idxB])&#123;</span><br><span class="line">            st.pop();</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        while (idxA&lt;A.size() &amp;&amp; A[idxA]!=B[idxB])</span><br><span class="line">        &#123;</span><br><span class="line">            st.push(A[idxA]);</span><br><span class="line">            idxA++;</span><br><span class="line">        &#125;</span><br><span class="line">        if(idxA&lt;A.size())&#123;</span><br><span class="line">            idxA++;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">    while(!st.empty() &amp;&amp; idxB&lt;B.size())&#123;</span><br><span class="line">        if(B[idxB]==st.top())&#123;</span><br><span class="line">            idxB++;</span><br><span class="line">            st.pop();</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(idxA &lt; A.size() || idxB &lt; B.size())</span><br><span class="line">        return false;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
+<h1 id="7月12日-174-地下城游戏（困难）"><a href="#7月12日-174-地下城游戏（困难）" class="headerlink" title="7月12日 174. 地下城游戏（困难）"></a>7月12日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/dungeon-game/">174. 地下城游戏（困难）</a></h1><p>一些恶魔抓住了公主（P）并将她关在了地下城的右下角。地下城是由 M x N 个房间组成的二维网格。我们英勇的骑士（K）最初被安置在左上角的房间里，他必须穿过地下城并通过对抗恶魔来拯救公主。</p>
+<p>骑士的初始健康点数为一个正整数。如果他的健康点数在某一时刻降至 0 或以下，他会立即死亡。</p>
+<p>有些房间由恶魔守卫，因此骑士在进入这些房间时会失去健康点数（若房间里的值为负整数，则表示骑士将损失健康点数）；其他房间要么是空的（房间里的值为 0），要么包含增加骑士健康点数的魔法球（若房间里的值为正整数，则表示骑士将增加健康点数）。</p>
+<p>为了尽快到达公主，骑士决定每次只向右或向下移动一步。</p>
+<p>编写一个函数来计算确保骑士能够拯救到公主所需的最低初始健康点数。</p>
+<p>例如，考虑到如下布局的地下城，如果骑士遵循最佳路径 右 -&gt; 右 -&gt; 下 -&gt; 下，则骑士的初始健康点数至少为 7。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-2(K)  -3    3</span><br><span class="line">-5	  -10    1</span><br><span class="line">10	   30   -5(P)</span><br></pre></td></tr></table></figure>
+<p>说明:</p>
+<ul>
+<li>骑士的健康点数没有上限。</li>
+<li>任何房间都可能对骑士的健康点数造成威胁，也可能增加骑士的健康点数，包括骑士进入的左上角房间以及公主被监禁的右下角房间。</li>
+</ul>
+<p>题解：<br>反向dp。<br>因为正向dp需要维护两个重要变量：当 前HP 和 最大伤害。没办法做到<strong>无后效性</strong>。<br><code>dp[i][j]</code> 表示从坐标 <code>(i,j)</code> 到终点所需的最小初始值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int calculateMinimumHP(vector&lt;vector&lt;int&gt; &gt;&amp; dungeon) &#123;</span><br><span class="line">    if(dungeon.empty())</span><br><span class="line">        return 0;</span><br><span class="line">    int M = dungeon.size(), N = dungeon[0].size();</span><br><span class="line">    vector&lt;vector&lt;int&gt; &gt; dp(M+1, vector&lt;int&gt;(N+1, INT_MAX));</span><br><span class="line">    dp[M][N - 1] = dp[M - 1][N] = 1;</span><br><span class="line">    for (int i = M - 1; i &gt;= 0;i--)&#123;</span><br><span class="line">        for (int j = N - 1; j &gt;= 0;j--)&#123;</span><br><span class="line">            int minn = min(dp[i + 1][j], dp[i][j + 1]);</span><br><span class="line">            dp[i][j] = max(minn - dungeon[i][j], 1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dp[0][0];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(MN)<br>空间复杂度：O(MN)</p>
+<h1 id="7月13日-350-两个数组的交集-II（简单）"><a href="#7月13日-350-两个数组的交集-II（简单）" class="headerlink" title="7月13日 350. 两个数组的交集 II（简单）"></a>7月13日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/intersection-of-two-arrays-ii/">350. 两个数组的交集 II（简单）</a></h1><p>给定两个数组，编写一个函数来计算它们的交集。</p>
+<p>示例 1：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums1 = [1,2,2,1], nums2 = [2,2]</span><br><span class="line">输出：[2,2]</span><br></pre></td></tr></table></figure>
+<p>示例 2:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums1 = [4,9,5], nums2 = [9,4,9,8,4]</span><br><span class="line">输出：[4,9]</span><br></pre></td></tr></table></figure>
+<p>题解：   </p>
+<ol>
+<li><p>双指针。但是需要先排序。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; intersect(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) &#123;</span><br><span class="line">    sort(nums1.begin(),nums1.end());</span><br><span class="line">    sort(nums2.begin(),nums2.end());</span><br><span class="line"></span><br><span class="line">    vector&lt;int&gt; res;</span><br><span class="line">    int idx1=0,idx2=0;</span><br><span class="line">    while(idx1&lt;nums1.size() &amp;&amp; idx2&lt;nums2.size())&#123;</span><br><span class="line">        if(nums1[idx1]==nums2[idx2])&#123;</span><br><span class="line">            res.push_back(nums1[idx1]);</span><br><span class="line">            idx1++;</span><br><span class="line">            idx2++;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            if(nums1[idx1]&lt;nums2[idx2])</span><br><span class="line">                idx1++;</span><br><span class="line">            else</span><br><span class="line">                idx2++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(mlogm<em>nlogn)。 排序需要 O(nlogn</em>mlogm)。<br>空间复杂度：O(min{m,n})。</p>
+</li>
+<li><p>哈希表。遍历其中一个数组，存入哈希表。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; intersect(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) &#123;</span><br><span class="line">    if(nums2.size()&lt;nums1.size())</span><br><span class="line">        return intersect(nums2, nums1);</span><br><span class="line">    unordered_map&lt;int,int&gt; numMap;</span><br><span class="line">    for (int n : nums1)</span><br><span class="line">        numMap[n]++;</span><br><span class="line"></span><br><span class="line">    vector&lt;int&gt; res;</span><br><span class="line">    for (int n : nums2)</span><br><span class="line">    &#123;</span><br><span class="line">        if(numMap.count(n))&#123;</span><br><span class="line">            res.push_back(n);</span><br><span class="line">            numMap[n]--;</span><br><span class="line">            if(numMap[n]==0)</span><br><span class="line">                numMap.erase(n);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(m+n)。<br>空间复杂度：O(min{m,n})。</p>
+</li>
+</ol>
+<h1 id="7月14日-120-三角形最小路径和（中等）"><a href="#7月14日-120-三角形最小路径和（中等）" class="headerlink" title="7月14日 120. 三角形最小路径和（中等）"></a>7月14日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/triangle/">120. 三角形最小路径和（中等）</a></h1><p>给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。</p>
+<p>相邻的结点 在这里指的是 下标 与 上一层结点下标 相同或者等于 上一层结点下标 + 1 的两个结点。</p>
+<p>例如，给定三角形：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">     [2],</span><br><span class="line">    [3,4],</span><br><span class="line">   [6,5,7],</span><br><span class="line">  [4,1,8,3]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>自顶向下的最小路径和为 11（即，2 + 3 + 5 + 1 &#x3D; 11）。</p>
+<p><strong>说明</strong>：<br>如果你可以只使用 O(n) 的额外空间（n 为三角形的总行数）来解决这个问题，那么你的算法会很加分。</p>
+<p>题解：</p>
+<ol>
+<li>普通dp。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">int minimumTotal(vector&lt;vector&lt;int&gt; &gt;&amp; triangle) &#123;</span><br><span class="line">    if(triangle.empty())</span><br><span class="line">        return 0;</span><br><span class="line">    int n = triangle.size();</span><br><span class="line">    vector&lt;vector&lt;int&gt; &gt; dp(n,vector&lt;int&gt;(n));</span><br><span class="line">    dp[0][0] = triangle[0][0];</span><br><span class="line">    for (int i = 1; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        dp[i][0] = dp[i - 1][0] + triangle[i][0];</span><br><span class="line">        for (int j = 1; j &lt; i;j++)&#123;</span><br><span class="line">            dp[i][j] = min(dp[i - 1][j - 1], dp[i - 1][j]) + triangle[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">        dp[i][i] = dp[i - 1][i - 1] + triangle[i][i];</span><br><span class="line">    &#125;</span><br><span class="line">    return *min_element(dp[n - 1].begin(), dp[n - 1].end());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+时间复杂度：O(n^2)。<br>空间复杂度：O(n^2)。</li>
+</ol>
+<h1 id="7月15日-96-不同的二叉搜索树（中等）"><a href="#7月15日-96-不同的二叉搜索树（中等）" class="headerlink" title="7月15日 96. 不同的二叉搜索树（中等）"></a>7月15日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/unique-binary-search-trees/">96. 不同的二叉搜索树（中等）</a></h1><p>给定一个整数 n，求以 1 … n 为节点组成的二叉搜索树有多少种？</p>
+<p>示例:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">输入: 3</span><br><span class="line">输出: 5</span><br><span class="line"></span><br><span class="line">解释:</span><br><span class="line">给定 n = 3, 一共有 5 种不同结构的二叉搜索树:</span><br><span class="line"></span><br><span class="line">   1         3     3      2      1</span><br><span class="line">    \       /     /      / \      \</span><br><span class="line">     3     2     1      1   3      2</span><br><span class="line">    /     /       \                 \</span><br><span class="line">   2     1         2                 3</span><br></pre></td></tr></table></figure>
+<p>题解：</p>
+<ol>
+<li>dp。<br>设需要求 n 个节点。以一个节点为根节点，左子树的数量加右子树的数量就是以这个节点为根节点的数量。遍历不同的根节点（0~n）累加。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int numTrees(int n) &#123;</span><br><span class="line">    vector&lt;int&gt; dp(n + 1, 0);</span><br><span class="line">    dp[0] = 1;</span><br><span class="line">    dp[1] = 1;</span><br><span class="line"></span><br><span class="line">    for (int i = 2; i &lt;= n; ++i) &#123;</span><br><span class="line">        for (int j = 1; j &lt;= i; ++j) &#123;</span><br><span class="line">            dp[i] += dp[j - 1] * dp[i - j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dp[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>数学。<br>数学上被称为卡塔兰数。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">nt numTrees(int n) &#123;</span><br><span class="line">    long long C = 1;</span><br><span class="line">    for (int i = 0; i &lt; n; ++i) &#123;</span><br><span class="line">        C = C * 2 * (2 * i + 1) / (i + 2);</span><br><span class="line">    &#125;</span><br><span class="line">    return (int)C;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="7月16日-785-判断二分图（中等）"><a href="#7月16日-785-判断二分图（中等）" class="headerlink" title="7月16日 785. 判断二分图（中等）"></a>7月16日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/is-graph-bipartite/">785. 判断二分图（中等）</a></h1><p>给定一个无向图graph，当这个图为二分图时返回true。</p>
+<p>如果我们能将一个图的节点集合分割成两个独立的子集A和B，并使图中的每一条边的两个节点一个来自A集合，一个来自B集合，我们就将这个图称为二分图。</p>
+<p>graph将会以邻接表方式给出，<code>graph[i]</code>表示图中与节点i相连的所有节点。每个节点都是一个在0到graph.length-1之间的整数。这图中没有自环和平行边： <code>graph[i]</code> 中不存在i，并且<code>graph[i]</code>中没有重复的值。</p>
+<p>示例 1:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">输入: [[1,3], [0,2], [1,3], [0,2]]</span><br><span class="line">输出: true</span><br><span class="line">解释: </span><br><span class="line">无向图如下:</span><br><span class="line">0----1</span><br><span class="line">|    |</span><br><span class="line">|    |</span><br><span class="line">3----2</span><br><span class="line">我们可以将节点分成两组: &#123;0, 2&#125; 和 &#123;1, 3&#125;。</span><br></pre></td></tr></table></figure>
+<p>示例 2:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">输入: [[1,2,3], [0,2], [0,1,3], [0,2]]</span><br><span class="line">输出: false</span><br><span class="line">解释: </span><br><span class="line">无向图如下:</span><br><span class="line">0----1</span><br><span class="line">| \  |</span><br><span class="line">|  \ |</span><br><span class="line">3----2</span><br><span class="line">我们不能将节点分割成两个独立的子集。</span><br></pre></td></tr></table></figure>
+<p>题解：<br>bfs或者dfs，把经过的点分别标上交替的记号。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">（代码待补全）</span><br></pre></td></tr></table></figure>
+
+<h1 id="7月17日-35-搜索插入位置（简单）"><a href="#7月17日-35-搜索插入位置（简单）" class="headerlink" title="7月17日 35. 搜索插入位置（简单）"></a>7月17日 <a href="">35. 搜索插入位置（简单）</a></h1><p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
+<p>你可以假设数组中无重复元素。</p>
+<p>示例 1:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,3,5,6], 5</span><br><span class="line">输出: 2</span><br></pre></td></tr></table></figure>
+<p>示例 2:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,3,5,6], 2</span><br><span class="line">输出: 1</span><br></pre></td></tr></table></figure>
+<p>示例 3:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,3,5,6], 7</span><br><span class="line">输出: 4</span><br></pre></td></tr></table></figure>
+<p>示例 4:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,3,5,6], 0</span><br><span class="line">输出: 0</span><br></pre></td></tr></table></figure>
+<p>题解：<br>二分查找。可以用O(n)的复杂度顺序遍历。但是一看到排好序，就想到了二分查找。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">int searchInsert(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">    if(nums.empty())</span><br><span class="line">        return 0;</span><br><span class="line">    int L=0,R=nums.size()-1;</span><br><span class="line">    int mid;</span><br><span class="line">    while(L&lt;=R)&#123;</span><br><span class="line">        mid = (L+R)/2;</span><br><span class="line">        if(nums[mid]&gt;target)</span><br><span class="line">            R = mid - 1;</span><br><span class="line">        else if(nums[mid]&lt;target)</span><br><span class="line">            L = mid + 1;</span><br><span class="line">        else</span><br><span class="line">            return mid;</span><br><span class="line">    &#125;</span><br><span class="line">    return L;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(logn)。<br>空间复杂度：O(1)。</p>
+<h1 id="7月18日-97-交错字符串（困难）"><a href="#7月18日-97-交错字符串（困难）" class="headerlink" title="7月18日 97. 交错字符串（困难）"></a>7月18日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/interleaving-string/">97. 交错字符串（困难）</a></h1><p>给定三个字符串 s1, s2, s3, 验证 s3 是否是由 s1 和 s2 交错组成的。</p>
+<p>示例 1:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: s1 = &quot;aabcc&quot;, s2 = &quot;dbbca&quot;, s3 = &quot;aadbbcbcac&quot;</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+<p>示例 2:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: s1 = &quot;aabcc&quot;, s2 = &quot;dbbca&quot;, s3 = &quot;aadbbbaccc&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
+<p>题解：</p>
+<ol>
+<li>双指针递归。（超时）99 &#x2F; 101 个通过测试用例<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">bool isInterleaveCore(string s1,string s2,string s3,int idx1,int idx2,int idx3)&#123;</span><br><span class="line">    if(idx1==s1.size())</span><br><span class="line">        return s2.substr(idx2,s2.size()-idx2+1)==s3.substr(idx3,s3.size()-idx3+1);</span><br><span class="line">    if(idx2==s2.size())</span><br><span class="line">        return s1.substr(idx1,s1.size()-idx1+1)==s3.substr(idx3,s3.size()-idx3+1);</span><br><span class="line">    if(s1[idx1]==s3[idx3])&#123;</span><br><span class="line">        if(s2[idx2]==s3[idx3])</span><br><span class="line">            return isInterleaveCore(s1,s2,s3,idx1+1,idx2,idx3+1) || isInterleaveCore(s1,s2,s3,idx1,idx2+1,idx3+1);</span><br><span class="line">        else</span><br><span class="line">            return isInterleaveCore(s1,s2,s3,idx1+1,idx2,idx3+1);</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        if(s2[idx2]==s3[idx3])</span><br><span class="line">            return isInterleaveCore(s1,s2,s3,idx1,idx2+1,idx3+1);</span><br><span class="line">        else</span><br><span class="line">            return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool isInterleave(string s1, string s2, string s3) &#123;</span><br><span class="line">    if(s3.size() != s1.size()+s2.size())</span><br><span class="line">        return false;</span><br><span class="line">    return isInterleaveCore(s1,s2,s3,0,0,0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>二维dp。<br>dp[i][j] 表示字符串 s3[0:i+j] 能否由 s1[0:i] 和 s2[0:j] 组成。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">bool isInterleave(string s1, string s2, string s3) &#123;</span><br><span class="line">    if(s3.size() != s1.size()+s2.size())</span><br><span class="line">        return false;</span><br><span class="line">    vector&lt;vector&lt;bool&gt; &gt; dp(s1.size()+1,vector&lt;bool&gt;(s2.size()+1,false));</span><br><span class="line"></span><br><span class="line">    dp[0][0] = true;</span><br><span class="line">    for(int i=1;i&lt;=s1.size();i++)&#123;</span><br><span class="line">        if(s1[i-1]==s3[i-1])</span><br><span class="line">            dp[i][0] = true;</span><br><span class="line">        else</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=1;i&lt;=s2.size();i++)&#123;</span><br><span class="line">        if(s2[i-1]==s3[i-1])</span><br><span class="line">            dp[0][i] = true;</span><br><span class="line">        else</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for(int i=1;i&lt;=s1.size();i++)&#123;</span><br><span class="line">        for(int j=1;j&lt;=s2.size();j++)&#123;</span><br><span class="line">            dp[i][j] = (s1[i-1]==s3[i+j-1] &amp;&amp; dp[i-1][j]) || (s2[j-1]==s3[i+j-1] &amp;&amp; dp[i][j-1]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dp[s1.size()][s2.size()];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+时间复杂度：O(mn)。m 为s1的长度，n 为s2的长度。<br>空间复杂度：O(mn)。</li>
+</ol>
+<p>ref. <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/interleaving-string/solution/lei-si-lu-jing-wen-ti-zhao-zhun-zhuang-tai-fang-ch/">leetcode题解</a></p>
+<ol start="3">
+<li>一维dp。<br>因为dp在计算时只用到了上一行，所以可以优化为只用一维数组。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">代码略</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="7月19日-312-戳气球（困难）"><a href="#7月19日-312-戳气球（困难）" class="headerlink" title="7月19日 312. 戳气球（困难）"></a>7月19日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/burst-balloons/">312. 戳气球（困难）</a></h1><p>有 n 个气球，编号为0 到 n-1，每个气球上都标有一个数字，这些数字存在数组 nums 中。</p>
+<p>现在要求你戳破所有的气球。如果你戳破气球 i ，就可以获得 <code>nums[left] * nums[i] * nums[right]</code> 个硬币。 这里的 <code>left</code> 和 <code>right</code> 代表和 <code>i</code> 相邻的两个气球的序号。注意当你戳破了气球 <code>i</code> 后，气球 <code>left</code> 和气球 <code>right</code> 就变成了相邻的气球。</p>
+<p>求所能获得硬币的最大数量。</p>
+<p>说明:</p>
+<ul>
+<li>你可以假设 nums[-1] &#x3D; nums[n] &#x3D; 1，但注意它们不是真实存在的所以并不能被戳破。</li>
+<li>0 ≤ n ≤ 500, 0 ≤ nums[i] ≤ 100</li>
+</ul>
+<p>示例:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入: [3,1,5,8]</span><br><span class="line">输出: 167 </span><br><span class="line">解释: nums = [3,1,5,8] --&gt; [3,5,8] --&gt;   [3,8]   --&gt;  [8]  --&gt; []</span><br><span class="line">     coins =  3*1*5      +  3*5*8    +  1*3*8      + 1*8*1   = 167</span><br></pre></td></tr></table></figure>
+<p>题解：<br>dp。<br><code>dp[i][j]</code>表示<code>(i:j)</code>开区间内所能得到的最大值。外层循环要倒序，因为子问题<code>dp[k][j]</code>要在父问题<code>dp[i][j]</code>（i&lt;&#x3D;k&lt;&#x3D;j）之前。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">int maxCoins(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">    int n = nums.size();</span><br><span class="line">    vector&lt;vector&lt;int&gt; &gt; dp(n + 2, vector&lt;int&gt;(n + 2, 0));</span><br><span class="line">    nums.insert(nums.begin(), 1);</span><br><span class="line">    nums.push_back(1);</span><br><span class="line">    for (int i = n - 1; i &gt;= 0; i--) &#123;</span><br><span class="line">        for (int j = i + 2; j &lt;= n + 1; j++) &#123;</span><br><span class="line">            for (int k = i + 1; k &lt; j; k++) &#123;</span><br><span class="line">                dp[i][j] = max(</span><br><span class="line">                        dp[i][j],</span><br><span class="line">                        (dp[i][k] + dp[k][j] + nums[i] * nums[k] * nums[j]));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dp[0][n + 1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(n^3)。<br>空间复杂度：O(n^2)。</p>
+<h1 id="7月20日-167-两数之和-II-输入有序数组（简单）"><a href="#7月20日-167-两数之和-II-输入有序数组（简单）" class="headerlink" title="7月20日 167. 两数之和 II - 输入有序数组（简单）"></a>7月20日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/">167. 两数之和 II - 输入有序数组（简单）</a></h1><p>给定一个已按照升序排列 的有序数组，找到两个数使得它们相加之和等于目标数。</p>
+<p>函数应该返回这两个下标值 index1 和 index2，其中 index1 必须小于 index2。</p>
+<p>说明:</p>
+<ul>
+<li>返回的下标值（index1 和 index2）不是从零开始的。</li>
+<li>你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。</li>
+</ul>
+<p>示例:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: numbers = [2, 7, 11, 15], target = 9</span><br><span class="line">输出: [1,2]</span><br><span class="line">解释: 2 与 7 之和等于目标数 9 。因此 index1 = 1, index2 = 2 。</span><br></pre></td></tr></table></figure>
+<p>题解：</p>
+<ol>
+<li><p>哈希表。<br>哈希表保存每个元素，再遍历一次即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; numbers, int target) &#123;</span><br><span class="line">    unordered_map&lt;int, int&gt; numMap;</span><br><span class="line">    for (int i = 0; i &lt; numbers.size();i++)</span><br><span class="line">        numMap[numbers[i]] = i;</span><br><span class="line"></span><br><span class="line">    for (int i = 0; i &lt; numbers.size();i++)&#123;</span><br><span class="line">        auto it = numMap.find(target - numbers[i]);</span><br><span class="line">        if (it != numMap.end())</span><br><span class="line">            return &#123;i + 1, it-&gt;second+1&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    return &#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(n)。<br>空间复杂度：O(n)。</p>
+</li>
+<li><p>二分查找。时间复杂度：O(nlogn)。空间复杂度：O(1)。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">代码略</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>双指针。<br>初始时两个指针分别指向第一个元素位置和最后一个元素的位置。每次计算两个指针指向的两个元素之和，并和目标值比较。如果两个元素之和等于目标值，则发现了唯一解。如果两个元素之和小于目标值，则将左侧指针右移一位。如果两个元素之和大于目标值，则将右侧指针左移一位。移动指针之后，重复上述操作，直到找到答案。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; numbers, int target) &#123;</span><br><span class="line">    int L = 0, R = numbers.size() - 1;</span><br><span class="line">    while (L &lt; R) &#123;</span><br><span class="line">        int sum = numbers[L] + numbers[R];</span><br><span class="line">        if (sum == target) &#123;</span><br><span class="line">            return &#123;L + 1, R + 1&#125;;</span><br><span class="line">        &#125; else if (sum &lt; target) &#123;</span><br><span class="line">            ++L;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            --R;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return &#123;-1, -1&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(n)。<br>空间复杂度：O(1)。</p>
+</li>
+</ol>
+<h1 id="7月21日-95-不同的二叉搜索树-II（中等）"><a href="#7月21日-95-不同的二叉搜索树-II（中等）" class="headerlink" title="7月21日 95. 不同的二叉搜索树 II（中等）"></a>7月21日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/unique-binary-search-trees-ii/">95. 不同的二叉搜索树 II（中等）</a></h1><p>给定一个整数 n，生成所有由 1 … n 为节点所组成的 二叉搜索树 。</p>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">输入：3</span><br><span class="line">输出：</span><br><span class="line">[</span><br><span class="line">  [1,null,3,2],</span><br><span class="line">  [3,2,null,1],</span><br><span class="line">  [3,1,null,null,2],</span><br><span class="line">  [2,1,3],</span><br><span class="line">  [1,null,2,null,3]</span><br><span class="line">]</span><br><span class="line">解释：</span><br><span class="line">以上的输出对应以下 5 种不同结构的二叉搜索树：</span><br><span class="line"></span><br><span class="line">   1         3     3      2      1</span><br><span class="line">    \       /     /      / \      \</span><br><span class="line">     3     2     1      1   3      2</span><br><span class="line">    /     /       \                 \</span><br><span class="line">   2     1         2                 3</span><br></pre></td></tr></table></figure>
+<p><strong>提示</strong>：0 &lt;&#x3D; n &lt;&#x3D; 8</p>
+<p>题解：<br>递归。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;TreeNode*&gt; generateSubTree(int L, int R)&#123;</span><br><span class="line">    if(L&gt;R)</span><br><span class="line">        return &#123;nullptr&#125;;</span><br><span class="line"></span><br><span class="line">    vector&lt;TreeNode*&gt; Trees;</span><br><span class="line">    for(int i=L;i&lt;=R;i++)&#123;</span><br><span class="line">        vector&lt;TreeNode*&gt; leftTree = generateSubTree(L,i-1);</span><br><span class="line">        vector&lt;TreeNode*&gt; rightTree = generateSubTree(i+1,R);</span><br><span class="line"></span><br><span class="line">        for(auto lTree:leftTree)&#123;</span><br><span class="line">            for(auto rTree:rightTree)&#123;</span><br><span class="line">                TreeNode* root = new TreeNode(i);</span><br><span class="line">                root-&gt;left = lTree;</span><br><span class="line">                root-&gt;right = rTree;</span><br><span class="line">                Trees.push_back(root);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return Trees;</span><br><span class="line">&#125;</span><br><span class="line">vector&lt;TreeNode*&gt; generateTrees(int n) &#123;</span><br><span class="line">    if(n==0)</span><br><span class="line">        return &#123;&#125;;</span><br><span class="line">    return generateSubTree(1,n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="7月22日-剑指-Offer-11-旋转数组的最小数字（简单）"><a href="#7月22日-剑指-Offer-11-旋转数组的最小数字（简单）" class="headerlink" title="7月22日 剑指 Offer 11. 旋转数组的最小数字（简单）"></a>7月22日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/">剑指 Offer 11. 旋转数组的最小数字（简单）</a></h1><p>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。输入一个递增排序的数组的一个旋转，输出旋转数组的最小元素。例如，数组 <code>[3,4,5,1,2]</code> 为 <code>[1,2,3,4,5]</code> 的一个旋转，该数组的最小值为1。</p>
+<p>示例 1：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：[3,4,5,1,2]</span><br><span class="line">输出：1</span><br></pre></td></tr></table></figure>
+<p>示例 2：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：[2,2,2,0,1]</span><br><span class="line">输出：0</span><br></pre></td></tr></table></figure>
+<p>题解：  </p>
+<ol>
+<li><p>暴力。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int minArray(vector&lt;int&gt;&amp; numbers) &#123;</span><br><span class="line">    if(numbers.empty())</span><br><span class="line">        return 0;</span><br><span class="line">    for(int i=1;i&lt;numbers.size();i++)&#123;</span><br><span class="line">        if(numbers[i]&lt;numbers[i-1])</span><br><span class="line">            return numbers[i];</span><br><span class="line">    &#125;</span><br><span class="line">    return numbers[0];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
+</li>
+<li><p>二分。<br>注意：当<code>numbers[mid]==numbers[R]</code>时，由于重复元素的存在，我们并不能确定<code>numbers[mid]</code>究竟在最小值的左侧还是右侧，因此我们不能忽略某一部分的元素。但是由于它们的值相同，所以可以忽略二分查找区间的右端点<code>numbers[R]</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">int minArray(vector&lt;int&gt;&amp; numbers) &#123;</span><br><span class="line">    if(numbers.empty())</span><br><span class="line">        return 0;</span><br><span class="line">    int L=0,R=numbers.size()-1;</span><br><span class="line">    while(L&lt;R)&#123;</span><br><span class="line">        int mid = (L+R)/2;</span><br><span class="line">        if(numbers[mid]&lt;numbers[R])</span><br><span class="line">            R=mid;</span><br><span class="line">        else if(numbers[mid]&gt;numbers[R])</span><br><span class="line">            L=mid+1;</span><br><span class="line">        else&#123;</span><br><span class="line">            R--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return numbers[R];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(logn)<br>空间复杂度：O(1)</p>
+</li>
+</ol>
+<h1 id="7月23日-64-最小路径和（中等）"><a href="#7月23日-64-最小路径和（中等）" class="headerlink" title="7月23日 64. 最小路径和（中等）"></a>7月23日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-path-sum/">64. 最小路径和（中等）</a></h1><p>给定一个包含非负整数的 m x n 网格，请找出一条从左上角到右下角的路径，使得路径上的数字总和为最小。</p>
+<p><strong>说明</strong>：每次只能向下或者向右移动一步。</p>
+<p>示例:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">[</span><br><span class="line">  [1,3,1],</span><br><span class="line">  [1,5,1],</span><br><span class="line">  [4,2,1]</span><br><span class="line">]</span><br><span class="line">输出: 7</span><br><span class="line">解释: 因为路径 1→3→1→1→1 的总和最小。</span><br></pre></td></tr></table></figure>
+<p>题解：</p>
+<ol>
+<li><p>二维dp。<br><code>dp[i][j]</code>表示走到第i行第j列格子时的最小值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">int minPathSum(vector&lt;vector&lt;int&gt;&gt;&amp; grid) &#123;</span><br><span class="line">    if(grid.empty())</span><br><span class="line">        return 0;</span><br><span class="line">    int m = grid.size(),n=grid[0].size();</span><br><span class="line">    vector&lt;vector&lt;int&gt; &gt; dp(m+1,vector&lt;int&gt;(n+1,INT_MAX));</span><br><span class="line">    dp[1][1] = grid[0][0];</span><br><span class="line">    for(int i = 1;i&lt;=m;i++)&#123;</span><br><span class="line">        for(int j = 1;j&lt;=n;j++)&#123;</span><br><span class="line">            if(i==1&amp;&amp;j==1)</span><br><span class="line">                continue;</span><br><span class="line">            dp[i][j] = min(dp[i-1][j],dp[i][j-1])+grid[i-1][j-1];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dp[m][n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(mn)<br>空间复杂度：O(mn)</p>
+</li>
+<li><p>一维dp。<br>因为只用到了上一行的dp，所以二维dp可以优化为一维。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">int minPathSum(vector&lt;vector&lt;int&gt;&gt;&amp; grid) &#123;</span><br><span class="line">    if(grid.empty())</span><br><span class="line">        return 0;</span><br><span class="line">    int m = grid.size(),n=grid[0].size();</span><br><span class="line">    vector&lt;int&gt; dp(n,0);</span><br><span class="line">    </span><br><span class="line">    dp[0] = grid[0][0];</span><br><span class="line">    for(int i = 1;i&lt;n;i++)</span><br><span class="line">        dp[i] = grid[0][i]+dp[i-1];</span><br><span class="line">    </span><br><span class="line">    for(int i = 1;i&lt;m;i++)&#123;</span><br><span class="line">        for(int j = 0;j&lt;n;j++)&#123;</span><br><span class="line">            if(j==0)</span><br><span class="line">                dp[j] = dp[j]+grid[i][0];</span><br><span class="line">            else</span><br><span class="line">                dp[j] = min(dp[j-1],dp[j])+grid[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dp[n-1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(mn)<br>空间复杂度：O(n)</p>
+</li>
+</ol>
+<h1 id="7月24日-1025-除数博弈（简单）"><a href="#7月24日-1025-除数博弈（简单）" class="headerlink" title="7月24日 1025. 除数博弈（简单）"></a>7月24日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/divisor-game/">1025. 除数博弈（简单）</a></h1><p>爱丽丝和鲍勃一起玩游戏，他们轮流行动。爱丽丝先手开局。</p>
+<p>最初，黑板上有一个数字 N 。在每个玩家的回合，玩家需要执行以下操作：</p>
+<p>选出任一 x，满足 0 &lt; x &lt; N 且 N % x &#x3D;&#x3D; 0 。<br>用 N - x 替换黑板上的数字 N 。<br>如果玩家无法执行这些操作，就会输掉游戏。</p>
+<p>只有在爱丽丝在游戏中取得胜利时才返回 True，否则返回 false。假设两个玩家都以最佳状态参与游戏。</p>
+<p>示例 1：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：2</span><br><span class="line">输出：true</span><br><span class="line">解释：爱丽丝选择 1，鲍勃无法进行操作。</span><br></pre></td></tr></table></figure>
+<p>示例 2：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：3</span><br><span class="line">输出：false</span><br><span class="line">解释：爱丽丝选择 1，鲍勃也选择 1，然后爱丽丝无法进行操作。</span><br></pre></td></tr></table></figure>
+<p>题解：</p>
+<ol>
+<li><p>dp。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">bool divisorGame(int N) &#123;</span><br><span class="line">    vector&lt;bool&gt; dp(N+1,false);</span><br><span class="line">    dp[1] = false;</span><br><span class="line">    dp[2]= true;</span><br><span class="line">    int n=N;</span><br><span class="line">    for(int i=3;i&lt;=N;i++)&#123;</span><br><span class="line">        for(int j=1;j&lt;i;j++)&#123;</span><br><span class="line">            if(i % j == 0 &amp;&amp; !dp[i - j])&#123;</span><br><span class="line">                dp[i] = true;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dp[N];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(N^2)<br>空间复杂度：O(N)</p>
+</li>
+<li><p>归纳法。N 为奇数的时候 Alice（先手）必败，N 为偶数的时候 Alice 必胜。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bool divisorGame(int N) &#123;</span><br><span class="line">    return N % 2 == 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(1)<br>空间复杂度：O(1)</p>
+</li>
+</ol>
+<h1 id="7月25日-410-分割数组的最大值（困难）"><a href="#7月25日-410-分割数组的最大值（困难）" class="headerlink" title="7月25日 410. 分割数组的最大值（困难）"></a>7月25日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/split-array-largest-sum/">410. 分割数组的最大值（困难）</a></h1><p>给定一个非负整数数组和一个整数 m，你需要将这个数组分成 m 个非空的连续子数组。设计一个算法使得这 m 个子数组各自和的最大值最小。</p>
+<p><strong>注意</strong>:<br>数组长度 n 满足以下条件:</p>
+<ul>
+<li>1 ≤ n ≤ 1000</li>
+<li>1 ≤ m ≤ min(50, n)</li>
+</ul>
+<p>示例:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">nums = [7,2,5,10,8]</span><br><span class="line">m = 2</span><br><span class="line"></span><br><span class="line">输出:</span><br><span class="line">18</span><br><span class="line"></span><br><span class="line">解释:</span><br><span class="line">一共有四种方法将nums分割为2个子数组。</span><br><span class="line">其中最好的方式是将其分为[7,2,5] 和 [10,8]，</span><br><span class="line">因为此时这两个子数组各自的和的最大值为18，在所有情况中最小。</span><br></pre></td></tr></table></figure>
+<p>题解：</p>
+<ol>
+<li>dp。<code>dp[i][j]</code>表示前i个数被分成j段的答案。<code>dp[i][j]</code>的状态转移方程为：<ul>
+<li><code>dp[i][j] = min(max(dp[k][j-1],subSum(k+1,i)))</code></li>
+</ul>
+</li>
+</ol>
+<p>其中<code>min</code>里需要枚举k&#x3D;[0,i)，subSum(k+1,i)表示nums[k+1]到nums[i]的和。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">int splitArray(vector&lt;int&gt;&amp; nums, int m) &#123;</span><br><span class="line">    vector&lt;vector&lt;long long&gt; &gt; dp(nums.size() + 1, vector&lt;long long&gt;(m + 1, LLONG_MAX));</span><br><span class="line"></span><br><span class="line">    vector&lt;long long&gt; preSum(nums.size() + 1, 0);</span><br><span class="line"></span><br><span class="line">    for (int i = 1; i &lt;= nums.size();i++)</span><br><span class="line">        preSum[i] = preSum[i - 1] + nums[i-1];</span><br><span class="line"></span><br><span class="line">    dp[0][0] = 0;</span><br><span class="line">    for (int i = 1; i &lt;= nums.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for (int j = 1; j &lt;= min(m, i); j++)</span><br><span class="line">        &#123;</span><br><span class="line">            for (int k = 0; k &lt; i; k++)</span><br><span class="line">                dp[i][j] = min(dp[i][j], max(dp[k][j - 1], preSum[i] - preSum[k]));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return (int)dp[nums.size()][m];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(m * n^2)<br>空间复杂度：O(mn)</p>
+<h1 id="7月26日-329-矩阵中的最长递增路径（困难）"><a href="#7月26日-329-矩阵中的最长递增路径（困难）" class="headerlink" title="7月26日 329. 矩阵中的最长递增路径（困难）"></a>7月26日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/longest-increasing-path-in-a-matrix/">329. 矩阵中的最长递增路径（困难）</a></h1><p>给定一个整数矩阵，找出最长递增路径的长度。</p>
+<p>对于每个单元格，你可以往上，下，左，右四个方向移动。 你不能在对角线方向上移动或移动到边界外（即不允许环绕）。</p>
+<p>示例 1:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = </span><br><span class="line">[</span><br><span class="line">  [9,9,4],</span><br><span class="line">  [6,6,8],</span><br><span class="line">  [2,1,1]</span><br><span class="line">] </span><br><span class="line">输出: 4 </span><br><span class="line">解释: 最长递增路径为 [1, 2, 6, 9]。</span><br></pre></td></tr></table></figure>
+<p>示例 2:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = </span><br><span class="line">[</span><br><span class="line">  [3,4,5],</span><br><span class="line">  [3,2,6],</span><br><span class="line">  [2,2,1]</span><br><span class="line">] </span><br><span class="line">输出: 4 </span><br><span class="line">解释: 最长递增路径是 [3, 4, 5, 6]。注意不允许在对角线方向上移动。</span><br></pre></td></tr></table></figure>
+<p>题解：<br>有记忆的dfs。<br>普通dfs会超时，所以加了二位矩阵来记录已经得到的最长序列。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;vector&lt;int&gt; &gt; dirs = &#123;&#123;-1, 0&#125;, &#123;1, 0&#125;, &#123;0, -1&#125;, &#123;0, 1&#125;&#125;;</span><br><span class="line"></span><br><span class="line">int dfs(vector&lt;vector&lt;int&gt; &gt; &amp;matrix, int i, int j, vector&lt;vector&lt;int&gt; &gt; &amp;memo)&#123;</span><br><span class="line">    if(memo[i][j]!=0)</span><br><span class="line">        return memo[i][j];</span><br><span class="line">    memo[i][j] = 1;</span><br><span class="line">    for(auto d:dirs)&#123;</span><br><span class="line">        if (i + d[0] &gt;= 0 &amp;&amp; i + d[0] &lt; matrix.size() </span><br><span class="line">            &amp;&amp; j + d[1] &gt;= 0 &amp;&amp; j + d[1] &lt; matrix[0].size() </span><br><span class="line">            &amp;&amp; matrix[i + d[0]][j + d[1]] &gt; matrix[i][j])</span><br><span class="line">            memo[i][j] = max(memo[i][j], dfs(matrix, i + d[0], j + d[1], memo) + 1);</span><br><span class="line">    &#125;</span><br><span class="line">    return memo[i][j];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int longestIncreasingPath(vector&lt;vector&lt;int&gt; &gt;&amp; matrix) &#123;</span><br><span class="line">    if(matrix.empty())</span><br><span class="line">        return 0;</span><br><span class="line">    int m = matrix.size(), n = matrix[0].size();</span><br><span class="line">    vector&lt;vector&lt;int&gt; &gt; memo(m, vector&lt;int&gt;(n, 0));</span><br><span class="line">    int res = 0;</span><br><span class="line">    for (int i = 0; i &lt; m; ++i) &#123;</span><br><span class="line">        for (int j = 0; j &lt; n; ++j) &#123;</span><br><span class="line">            res = max(res, dfs(matrix, i, j, memo));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(mn)<br>空间复杂度：O(mn)</p>
+<h1 id="7月27日-392-判断子序列（简单）"><a href="#7月27日-392-判断子序列（简单）" class="headerlink" title="7月27日 392. 判断子序列（简单）"></a>7月27日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/is-subsequence/">392. 判断子序列（简单）</a></h1><p>给定字符串 s 和 t ，判断 s 是否为 t 的子序列。</p>
+<p>你可以认为 s 和 t 中仅包含英文小写字母。字符串 t 可能会很长（长度 ~&#x3D; 500,000），而 s 是个短字符串（长度 &lt;&#x3D;100）。</p>
+<p>字符串的一个子序列是原始字符串删除一些（也可以不删除）字符而不改变剩余字符相对位置形成的新字符串。（例如，”ace”是”abcde”的一个子序列，而”aec”不是）。</p>
+<p>示例 1:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = &quot;abc&quot;, t = &quot;ahbgdc&quot;</span><br><span class="line">返回 true.</span><br></pre></td></tr></table></figure>
+<p>示例 2:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = &quot;axc&quot;, t = &quot;ahbgdc&quot;</span><br><span class="line">返回 false.</span><br></pre></td></tr></table></figure>
+
+<p>后续挑战：<br>如果有大量输入的 S，称作S1, S2, … , Sk 其中 k &gt;&#x3D; 10亿，你需要依次检查它们是否为 T 的子序列。在这种情况下，你会怎样改变代码？</p>
+<p>题解：<br>双指针。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">bool isSubsequence(string s, string t) &#123;</span><br><span class="line">    if(t.empty())&#123;</span><br><span class="line">        if(s.empty())</span><br><span class="line">            return true;</span><br><span class="line">        else</span><br><span class="line">            return false;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    int idxS=0,idxT=0;</span><br><span class="line">    while(idxS&lt;s.size() &amp;&amp; idxT&lt;t.size())&#123;</span><br><span class="line">        if(s[idxS]==t[idxT])</span><br><span class="line">            idxS++;</span><br><span class="line">        idxT++;</span><br><span class="line">    &#125;</span><br><span class="line">    return idxS==s.size();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(m+n)<br>空间复杂度：O(1)</p>
+<h1 id="7月28日-104-二叉树的最大深度（简单）"><a href="#7月28日-104-二叉树的最大深度（简单）" class="headerlink" title="7月28日 104. 二叉树的最大深度（简单）"></a>7月28日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/">104. 二叉树的最大深度（简单）</a></h1><p>给定一个二叉树，找出其最大深度。</p>
+<p>二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。</p>
+<p><strong>说明</strong>: 叶子节点是指没有子节点的节点。</p>
+<p>示例：<br><code>给定二叉树 [3,9,20,null,null,15,7]，     3    / \   9  20     /  \    15   7 返回它的最大深度 3 。</code></p>
+<p>题解：</p>
+<ol>
+<li><p>层序遍历（BFS）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">int maxDepth(TreeNode* root)&#123;</span><br><span class="line">    if(root==nullptr)</span><br><span class="line">        return 0;</span><br><span class="line">    queue&lt;TreeNode*&gt; que;</span><br><span class="line">    que.push(root);</span><br><span class="line">    int hight = 0;</span><br><span class="line">    while(!que.empty())&#123;</span><br><span class="line">        hight++;</span><br><span class="line">        int n = que.size();</span><br><span class="line">        for (int i = 0; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            TreeNode *curNode = que.front();</span><br><span class="line">            que.pop();</span><br><span class="line">            if(curNode-&gt;left!=nullptr)</span><br><span class="line">                que.push(curNode-&gt;left);</span><br><span class="line">            if(curNode-&gt;right!=nullptr)</span><br><span class="line">                que.push(curNode-&gt;right);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return hight;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
+</li>
+<li><p>递归。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int maxDepth(TreeNode* root)&#123;</span><br><span class="line">    if(root==nullptr)</span><br><span class="line">        return 0;</span><br><span class="line">    return max(maxDepth(root-&gt;left), maxDepth(root-&gt;right)) + 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(n)<br>空间复杂度：O(hight)</p>
+</li>
+</ol>
+<h1 id="7月29日-LCP-13-寻宝（困难）"><a href="#7月29日-LCP-13-寻宝（困难）" class="headerlink" title="7月29日 LCP 13. 寻宝（困难）"></a>7月29日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/xun-bao/">LCP 13. 寻宝（困难）</a></h1><p>我们得到了一副藏宝图，藏宝图显示，在一个迷宫中存在着未被世人发现的宝藏。</p>
+<p>迷宫是一个二维矩阵，用一个字符串数组表示。它标识了唯一的入口（用 ‘S’ 表示），和唯一的宝藏地点（用 ‘T’ 表示）。但是，宝藏被一些隐蔽的机关保护了起来。在地图上有若干个机关点（用 ‘M’ 表示），只有所有机关均被触发，才可以拿到宝藏。</p>
+<p>要保持机关的触发，需要把一个重石放在上面。迷宫中有若干个石堆（用 ‘O’ 表示），每个石堆都有无限个足够触发机关的重石。但是由于石头太重，我们一次只能搬一个石头到指定地点。</p>
+<p>迷宫中同样有一些墙壁（用 ‘#’ 表示），我们不能走入墙壁。剩余的都是可随意通行的点（用 ‘.’ 表示）。石堆、机关、起点和终点（无论是否能拿到宝藏）也是可以通行的。</p>
+<p>我们每步可以选择向上&#x2F;向下&#x2F;向左&#x2F;向右移动一格，并且不能移出迷宫。搬起石头和放下石头不算步数。那么，从起点开始，我们最少需要多少步才能最后拿到宝藏呢？如果无法拿到宝藏，返回 -1 。</p>
+<p>示例 1：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入： [&quot;S#O&quot;, &quot;M..&quot;, &quot;M.T&quot;]</span><br><span class="line"></span><br><span class="line">输出：16</span><br><span class="line"></span><br><span class="line">解释：最优路线为： S-&gt;O, cost = 4, 去搬石头 O-&gt;第二行的M, cost = 3, M机关触发 第二行的M-&gt;O, cost = 3, 我们需要继续回去 O 搬石头。 O-&gt;第三行的M, cost = 4, 此时所有机关均触发 第三行的M-&gt;T, cost = 2，去T点拿宝藏。 总步数为16。</span><br></pre></td></tr></table></figure>
+<p>示例 2：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入： [&quot;S#O&quot;, &quot;M.#&quot;, &quot;M.T&quot;]</span><br><span class="line"></span><br><span class="line">输出：-1</span><br><span class="line"></span><br><span class="line">解释：我们无法搬到石头触发机关</span><br></pre></td></tr></table></figure>
+<p>示例 3：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入： [&quot;S#O&quot;, &quot;M.T&quot;, &quot;M..&quot;]</span><br><span class="line"></span><br><span class="line">输出：17</span><br><span class="line"></span><br><span class="line">解释：注意终点也是可以通行的。</span><br></pre></td></tr></table></figure>
+<p>限制：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1 &lt;= maze.length &lt;= 100</span><br><span class="line">1 &lt;= maze[i].length &lt;= 100</span><br><span class="line">maze[i].length == maze[j].length</span><br><span class="line">S 和 T 有且只有一个</span><br><span class="line">0 &lt;= M的数量 &lt;= 16</span><br><span class="line">0 &lt;= O的数量 &lt;= 40，题目保证当迷宫中存在 M 时，一定存在至少一个 O 。</span><br></pre></td></tr></table></figure>
+<p>题解：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br></pre></td><td class="code"><pre><span class="line">int dx[4] = &#123;1, -1, 0, 0&#125;;</span><br><span class="line">int dy[4] = &#123;0, 0, 1, -1&#125;;</span><br><span class="line">int n, m;</span><br><span class="line"></span><br><span class="line">bool inBound(int x, int y) &#123;</span><br><span class="line">    return x &gt;= 0 &amp;&amp; x &lt; n &amp;&amp; y &gt;= 0 &amp;&amp; y &lt; m;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vector&lt;vector&lt;int&gt;&gt; bfs(int x, int y, vector&lt;string&gt;&amp; maze) &#123;</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; ret(n, vector&lt;int&gt;(m, -1));</span><br><span class="line">    ret[x][y] = 0;</span><br><span class="line">    queue&lt;pair&lt;int, int&gt;&gt; Q;</span><br><span class="line">    Q.push(&#123;x, y&#125;);</span><br><span class="line">    while (!Q.empty()) &#123;</span><br><span class="line">        auto p = Q.front();</span><br><span class="line">        Q.pop();</span><br><span class="line">        int x = p.first, y = p.second;</span><br><span class="line">        for (int k = 0; k &lt; 4; k++) &#123;</span><br><span class="line">            int nx = x + dx[k], ny = y + dy[k];</span><br><span class="line">            if (inBound(nx, ny) &amp;&amp; maze[nx][ny] != &#x27;#&#x27; &amp;&amp; ret[nx][ny] == -1) &#123;</span><br><span class="line">                ret[nx][ny] = ret[x][y] + 1;</span><br><span class="line">                Q.push(&#123;nx, ny&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int minimalSteps(vector&lt;string&gt;&amp; maze) &#123;</span><br><span class="line">    n = maze.size(), m = maze[0].size();</span><br><span class="line">    // 机关 &amp; 石头</span><br><span class="line">    vector&lt;pair&lt;int, int&gt;&gt; buttons, stones;</span><br><span class="line">    // 起点 &amp; 终点</span><br><span class="line">    int sx, sy, tx, ty;</span><br><span class="line">    for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">        for (int j = 0; j &lt; m; j++) &#123;</span><br><span class="line">            if (maze[i][j] == &#x27;M&#x27;) &#123;</span><br><span class="line">                buttons.push_back(&#123;i, j&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">            if (maze[i][j] == &#x27;O&#x27;) &#123;</span><br><span class="line">                stones.push_back(&#123;i, j&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">            if (maze[i][j] == &#x27;S&#x27;) &#123;</span><br><span class="line">                sx = i, sy = j;</span><br><span class="line">            &#125;</span><br><span class="line">            if (maze[i][j] == &#x27;T&#x27;) &#123;</span><br><span class="line">                tx = i, ty = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int nb = buttons.size();</span><br><span class="line">    int ns = stones.size();</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; start_dist = bfs(sx, sy, maze);</span><br><span class="line"></span><br><span class="line">    // 边界情况：没有机关</span><br><span class="line">    if (nb == 0) &#123;</span><br><span class="line">        return start_dist[tx][ty];</span><br><span class="line">    &#125;</span><br><span class="line">    // 从某个机关到其他机关 / 起点与终点的最短距离。</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; dist(nb, vector&lt;int&gt;(nb + 2, -1));</span><br><span class="line">    // 中间结果</span><br><span class="line">    vector&lt;vector&lt;vector&lt;int&gt;&gt;&gt; dd(nb);</span><br><span class="line">    for (int i = 0; i &lt; nb; i++) &#123;</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; d = bfs(buttons[i].first, buttons[i].second, maze);</span><br><span class="line">        dd[i] = d;</span><br><span class="line">        // 从某个点到终点不需要拿石头</span><br><span class="line">        dist[i][nb + 1] = d[tx][ty];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for (int i = 0; i &lt; nb; i++) &#123;</span><br><span class="line">        int tmp = -1;</span><br><span class="line">        for (int k = 0; k &lt; ns; k++) &#123;</span><br><span class="line">            int mid_x = stones[k].first, mid_y = stones[k].second;</span><br><span class="line">            if (dd[i][mid_x][mid_y] != -1 &amp;&amp; start_dist[mid_x][mid_y] != -1) &#123;</span><br><span class="line">                if (tmp == -1 || tmp &gt; dd[i][mid_x][mid_y] + start_dist[mid_x][mid_y]) &#123;</span><br><span class="line">                    tmp = dd[i][mid_x][mid_y] + start_dist[mid_x][mid_y];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        dist[i][nb] = tmp;</span><br><span class="line">        for (int j = i + 1; j &lt; nb; j++) &#123;</span><br><span class="line">            int mn = -1;</span><br><span class="line">            for (int k = 0; k &lt; ns; k++) &#123;</span><br><span class="line">                int mid_x = stones[k].first, mid_y = stones[k].second;</span><br><span class="line">                if (dd[i][mid_x][mid_y] != -1 &amp;&amp; dd[j][mid_x][mid_y] != -1) &#123;</span><br><span class="line">                    if (mn == -1 || mn &gt; dd[i][mid_x][mid_y] + dd[j][mid_x][mid_y]) &#123;</span><br><span class="line">                        mn = dd[i][mid_x][mid_y] + dd[j][mid_x][mid_y];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            dist[i][j] = mn;</span><br><span class="line">            dist[j][i] = mn;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 无法达成的情形</span><br><span class="line">    for (int i = 0; i &lt; nb; i++) &#123;</span><br><span class="line">        if (dist[i][nb] == -1 || dist[i][nb + 1] == -1) return -1;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // dp 数组， -1 代表没有遍历到</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; dp(1 &lt;&lt; nb, vector&lt;int&gt;(nb, -1));</span><br><span class="line">    for (int i = 0; i &lt; nb; i++) &#123;</span><br><span class="line">        dp[1 &lt;&lt; i][i] = dist[i][nb];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 由于更新的状态都比未更新的大，所以直接从小到大遍历即可</span><br><span class="line">    for (int mask = 1; mask &lt; (1 &lt;&lt; nb); mask++) &#123;</span><br><span class="line">        for (int i = 0; i &lt; nb; i++) &#123;</span><br><span class="line">            // 当前 dp 是合法的</span><br><span class="line">            if (mask &amp; (1 &lt;&lt; i)) &#123;</span><br><span class="line">                for (int j = 0; j &lt; nb; j++) &#123;</span><br><span class="line">                    // j 不在 mask 里</span><br><span class="line">                    if (!(mask &amp; (1 &lt;&lt; j))) &#123;</span><br><span class="line">                        int next = mask | (1 &lt;&lt; j);</span><br><span class="line">                        if (dp[next][j] == -1 || dp[next][j] &gt; dp[mask][i] + dist[i][j]) &#123;</span><br><span class="line">                            dp[next][j] = dp[mask][i] + dist[i][j];</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int ret = -1;</span><br><span class="line">    int final_mask = (1 &lt;&lt; nb) - 1;</span><br><span class="line">    for (int i = 0; i &lt; nb; i++) &#123;</span><br><span class="line">        if (ret == -1 || ret &gt; dp[final_mask][i] + dist[i][nb + 1]) &#123;</span><br><span class="line">            ret = dp[final_mask][i] + dist[i][nb + 1];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="7月30日-343-整数拆分（中等）"><a href="#7月30日-343-整数拆分（中等）" class="headerlink" title="7月30日 343. 整数拆分（中等）"></a>7月30日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/integer-break/">343. 整数拆分（中等）</a></h1><p>给定一个正整数 n，将其拆分为至少两个正整数的和，并使这些整数的乘积最大化。 返回你可以获得的最大乘积。</p>
+<p>示例 1:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: 2</span><br><span class="line">输出: 1</span><br><span class="line">解释: 2 = 1 + 1, 1 × 1 = 1。</span><br></pre></td></tr></table></figure>
+<p>示例 2:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: 10</span><br><span class="line">输出: 36</span><br><span class="line">解释: 10 = 3 + 3 + 4, 3 × 3 × 4 = 36。</span><br></pre></td></tr></table></figure>
+<p><strong>说明</strong>: 你可以假设 n 不小于 2 且不大于 58。</p>
+<p>题解：</p>
+<ol>
+<li>dp。<br><code>dp[i]</code>表示数字i分解后能达到的最大积。可以分为两种情况：</li>
+</ol>
+<ul>
+<li>1）i分解为j和i-j两个数；</li>
+<li>2）i分解为j和i-j后，i-j还可以再分解，其最大积为<code>dp[i-j]</code>。</li>
+<li>枚举1~i-1每一个点，看哪个点分解后的积最大<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">int integerBreak(int n) &#123;</span><br><span class="line">    vector&lt;int&gt; dp(n+1,0);</span><br><span class="line">    for (int i = 2; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for (int j = 1; j &lt; i; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            dp[i] = max(dp[i], max(j * (i - j), j * dp[i - j]));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dp[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+时间复杂度：O(n^2)<br>空间复杂度：O(n)</li>
+</ul>
+<h1 id="7月31日-程序员面试金典-面试题-08-03-魔术索引（简单）"><a href="#7月31日-程序员面试金典-面试题-08-03-魔术索引（简单）" class="headerlink" title="7月31日 程序员面试金典 面试题 08.03. 魔术索引（简单）"></a>7月31日 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/magic-index-lcci/">程序员面试金典 面试题 08.03. 魔术索引（简单）</a></h1><p>魔术索引。 在数组<code>A[0…n-1]</code>中，有所谓的魔术索引，满足条件<code>A[i] = i</code>。给定一个有序整数数组，编写一种方法找出魔术索引，若有的话，在数组A中找出一个魔术索引，如果没有，则返回-1。若有多个魔术索引，返回索引值最小的一个。</p>
+<p>示例1:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [0, 2, 3, 4, 5]</span><br><span class="line">输出：0</span><br><span class="line">说明: 0下标的元素为0</span><br></pre></td></tr></table></figure>
+<p>示例2:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1, 1, 1]</span><br><span class="line">输出：1</span><br></pre></td></tr></table></figure>
+<p><strong>提示</strong>: nums长度在[1, 1000000]之间</p>
+<p>题解：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int findMagicIndex(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">    for(int i=0;i&lt;nums.size();i++)&#123;</span><br><span class="line">        if(nums[i]==i)</span><br><span class="line">            return i;</span><br><span class="line">    &#125;</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Su Zhilong 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="Su Zhilong 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Leetcode-daily/" rel="tag"># Leetcode daily</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/20/dataStructure/" rel="prev" title="数据结构">
+      <i class="fa fa-chevron-left"></i> 数据结构
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/07/05/OpticalFlow/" rel="next" title="光流法">
+      光流法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%881%E6%97%A5-718-%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">7月1日 718. 最长重复子数组（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%882%E6%97%A5-378-%E6%9C%89%E5%BA%8F%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%AC%ACK%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">7月2日 378. 有序矩阵中第K小的元素（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%883%E6%97%A5-108-%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">7月3日 108. 将有序数组转换为二叉搜索树（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%884%E6%97%A5-32-%E6%9C%80%E9%95%BF%E6%9C%89%E6%95%88%E6%8B%AC%E5%8F%B7%EF%BC%88%E5%9B%B0%E9%9A%BE%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">7月4日 32. 最长有效括号（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%885%E6%97%A5-44-%E9%80%9A%E9%85%8D%E7%AC%A6%E5%8C%B9%E9%85%8D%EF%BC%88%E5%9B%B0%E9%9A%BE%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">7月5日 44. 通配符匹配（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%886%E6%97%A5-63-%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84-II%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89"><span class="nav-number">6.</span> <span class="nav-text">7月6日 63. 不同路径 II（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%887%E6%97%A5-112-%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89"><span class="nav-number">7.</span> <span class="nav-text">7月7日 112. 路径总和（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%888%E6%97%A5-%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%87%91%E5%85%B8-%E9%9D%A2%E8%AF%95%E9%A2%98-16-11-%E8%B7%B3%E6%B0%B4%E6%9D%BF%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89"><span class="nav-number">8.</span> <span class="nav-text">7月8日 程序员面试金典 面试题 16.11. 跳水板（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%889%E6%97%A5-%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%87%91%E5%85%B8-%E9%9D%A2%E8%AF%95%E9%A2%98-17-13-%E6%81%A2%E5%A4%8D%E7%A9%BA%E6%A0%BC%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89"><span class="nav-number">9.</span> <span class="nav-text">7月9日 程序员面试金典 面试题 17.13. 恢复空格（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%8810%E6%97%A5-309-%E6%9C%80%E4%BD%B3%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E6%97%B6%E6%9C%BA%E5%90%AB%E5%86%B7%E5%86%BB%E6%9C%9F%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89"><span class="nav-number">10.</span> <span class="nav-text">7月10日 309. 最佳买卖股票时机含冷冻期（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%8811%E6%97%A5-315-%E8%AE%A1%E7%AE%97%E5%8F%B3%E4%BE%A7%E5%B0%8F%E4%BA%8E%E5%BD%93%E5%89%8D%E5%85%83%E7%B4%A0%E7%9A%84%E4%B8%AA%E6%95%B0%EF%BC%88%E5%9B%B0%E9%9A%BE%EF%BC%89"><span class="nav-number">11.</span> <span class="nav-text">7月11日 315. 计算右侧小于当前元素的个数（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9C%9F%E9%A2%98"><span class="nav-number">12.</span> <span class="nav-text">真题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%8812%E6%97%A5-174-%E5%9C%B0%E4%B8%8B%E5%9F%8E%E6%B8%B8%E6%88%8F%EF%BC%88%E5%9B%B0%E9%9A%BE%EF%BC%89"><span class="nav-number">13.</span> <span class="nav-text">7月12日 174. 地下城游戏（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%8813%E6%97%A5-350-%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86-II%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89"><span class="nav-number">14.</span> <span class="nav-text">7月13日 350. 两个数组的交集 II（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%8814%E6%97%A5-120-%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89"><span class="nav-number">15.</span> <span class="nav-text">7月14日 120. 三角形最小路径和（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%8815%E6%97%A5-96-%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89"><span class="nav-number">16.</span> <span class="nav-text">7月15日 96. 不同的二叉搜索树（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%8816%E6%97%A5-785-%E5%88%A4%E6%96%AD%E4%BA%8C%E5%88%86%E5%9B%BE%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89"><span class="nav-number">17.</span> <span class="nav-text">7月16日 785. 判断二分图（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%8817%E6%97%A5-35-%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89"><span class="nav-number">18.</span> <span class="nav-text">7月17日 35. 搜索插入位置（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%8818%E6%97%A5-97-%E4%BA%A4%E9%94%99%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%88%E5%9B%B0%E9%9A%BE%EF%BC%89"><span class="nav-number">19.</span> <span class="nav-text">7月18日 97. 交错字符串（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%8819%E6%97%A5-312-%E6%88%B3%E6%B0%94%E7%90%83%EF%BC%88%E5%9B%B0%E9%9A%BE%EF%BC%89"><span class="nav-number">20.</span> <span class="nav-text">7月19日 312. 戳气球（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%8820%E6%97%A5-167-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C-II-%E8%BE%93%E5%85%A5%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89"><span class="nav-number">21.</span> <span class="nav-text">7月20日 167. 两数之和 II - 输入有序数组（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%8821%E6%97%A5-95-%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91-II%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89"><span class="nav-number">22.</span> <span class="nav-text">7月21日 95. 不同的二叉搜索树 II（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%8822%E6%97%A5-%E5%89%91%E6%8C%87-Offer-11-%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89"><span class="nav-number">23.</span> <span class="nav-text">7月22日 剑指 Offer 11. 旋转数组的最小数字（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%8823%E6%97%A5-64-%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89"><span class="nav-number">24.</span> <span class="nav-text">7月23日 64. 最小路径和（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%8824%E6%97%A5-1025-%E9%99%A4%E6%95%B0%E5%8D%9A%E5%BC%88%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89"><span class="nav-number">25.</span> <span class="nav-text">7月24日 1025. 除数博弈（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%8825%E6%97%A5-410-%E5%88%86%E5%89%B2%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC%EF%BC%88%E5%9B%B0%E9%9A%BE%EF%BC%89"><span class="nav-number">26.</span> <span class="nav-text">7月25日 410. 分割数组的最大值（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%8826%E6%97%A5-329-%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E8%B7%AF%E5%BE%84%EF%BC%88%E5%9B%B0%E9%9A%BE%EF%BC%89"><span class="nav-number">27.</span> <span class="nav-text">7月26日 329. 矩阵中的最长递增路径（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%8827%E6%97%A5-392-%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89"><span class="nav-number">28.</span> <span class="nav-text">7月27日 392. 判断子序列（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%8828%E6%97%A5-104-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89"><span class="nav-number">29.</span> <span class="nav-text">7月28日 104. 二叉树的最大深度（简单）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%8829%E6%97%A5-LCP-13-%E5%AF%BB%E5%AE%9D%EF%BC%88%E5%9B%B0%E9%9A%BE%EF%BC%89"><span class="nav-number">30.</span> <span class="nav-text">7月29日 LCP 13. 寻宝（困难）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%8830%E6%97%A5-343-%E6%95%B4%E6%95%B0%E6%8B%86%E5%88%86%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89"><span class="nav-number">31.</span> <span class="nav-text">7月30日 343. 整数拆分（中等）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%9C%8831%E6%97%A5-%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%87%91%E5%85%B8-%E9%9D%A2%E8%AF%95%E9%A2%98-08-03-%E9%AD%94%E6%9C%AF%E7%B4%A2%E5%BC%95%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89"><span class="nav-number">32.</span> <span class="nav-text">7月31日 程序员面试金典 面试题 08.03. 魔术索引（简单）</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Su Zhilong"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Su Zhilong</p>
+  <div class="site-description" itemprop="description">I will always be with you</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/suzhilong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;suzhilong"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Su Zhilong</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">379k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">5:44</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'uaEz4DL2UqM1jg1eGmpd8vhF-gzGzoHsz',
+      appKey     : 'SzL1ETN5dDwbXjnzyJYJkjTb',
+      placeholder: "comment",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

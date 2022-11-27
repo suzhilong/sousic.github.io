@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/apple-touch-icon-next.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"github.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一、工具Vue.jsVue是一套用于构建用户界面的渐进式框架。Vue的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。 Vue官方网站 ElementUI一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌面端组件库。 ElementUI官网 可以直接去官网的组件中，选择想要的组件，复制代码直接使用。 NodeJsNode.js 是能够在服务器端运行JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用NodeJs和VueJs搭建网站">
+<meta property="og:url" content="https://github.com/suzhilong/suzhilong.github.io.git/2020/12/15/vue/index.html">
+<meta property="og:site_name" content="SOUSIC">
+<meta property="og:description" content="一、工具Vue.jsVue是一套用于构建用户界面的渐进式框架。Vue的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。 Vue官方网站 ElementUI一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌面端组件库。 ElementUI官网 可以直接去官网的组件中，选择想要的组件，复制代码直接使用。 NodeJsNode.js 是能够在服务器端运行JavaScript">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-15T11:47:00.000Z">
+<meta property="article:modified_time" content="2021-01-31T16:48:42.953Z">
+<meta property="article:author" content="Su Zhilong">
+<meta property="article:tag" content="vue">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://github.com/suzhilong/suzhilong.github.io.git/2020/12/15/vue/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>使用NodeJs和VueJs搭建网站 | SOUSIC</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="SOUSIC" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">SOUSIC</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">哈库呐玛塔塔</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://github.com/suzhilong/suzhilong.github.io.git/2020/12/15/vue/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Su Zhilong">
+      <meta itemprop="description" content="I will always be with you">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SOUSIC">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用NodeJs和VueJs搭建网站
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-15 19:47:00" itemprop="dateCreated datePublished" datetime="2020-12-15T19:47:00+08:00">2020-12-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-01 00:48:42" itemprop="dateModified" datetime="2021-02-01T00:48:42+08:00">2021-02-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">web前端</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/12/15/vue/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/12/15/vue/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="一、工具"><a href="#一、工具" class="headerlink" title="一、工具"></a>一、工具</h1><h2 id="Vue-js"><a href="#Vue-js" class="headerlink" title="Vue.js"></a>Vue.js</h2><p>Vue是一套用于构建用户界面的渐进式框架。Vue的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。</p>
+<p><a target="_blank" rel="noopener" href="https://cn.vuejs.org/">Vue官方网站</a></p>
+<h2 id="ElementUI"><a href="#ElementUI" class="headerlink" title="ElementUI"></a>ElementUI</h2><p>一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌面端组件库。</p>
+<p><a target="_blank" rel="noopener" href="https://element.eleme.cn/#/zh-CN/component/installation">ElementUI官网</a></p>
+<p>可以直接去官网的<strong>组件</strong>中，选择想要的组件，复制代码直接使用。</p>
+<h2 id="NodeJs"><a href="#NodeJs" class="headerlink" title="NodeJs"></a>NodeJs</h2><p>Node.js 是能够在服务器端运行JavaScript 的开放源代码、跨平台 JavaScript 运行环境。</p>
+<p>安装：<code>sudo apt-get install nodejs</code></p>
+<h2 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h2><p>npm 是 Node.js 官方提供的包管理工具，他已经成了 Node.js 包的标准发布平台，用于 Node.js 包的发布、传播、依赖控制。npm 提供了命令行工具，使你可以方便地下载、安装、升级、删除包，也可以让你作为开发者发布并维护包。</p>
+<span id="more"></span>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><code>sudo apt-get install nodejs</code></p>
+<p><em>ps. 安装完后需要使用<code>npm config set registry https://registry.npm.taobao.org</code>切换成淘宝镜像，不然速度很慢。</em></p>
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><p><code>npm i -g n</code></p>
+<p><code>n latest</code></p>
+<h2 id="安装vue"><a href="#安装vue" class="headerlink" title="安装vue"></a>安装vue</h2><p><code>npm i -g @vue/cli</code></p>
+<h2 id="服务端后台常驻进程"><a href="#服务端后台常驻进程" class="headerlink" title="服务端后台常驻进程"></a>服务端后台常驻进程</h2><p><code>npm i -g nodemon</code></p>
+<h2 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h2><p>一个数据库</p>
+<p><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/installation/">官网安装步骤</a></p>
+<p>或</p>
+<p><code>sudo apt-get install mongodb-server</code></p>
+<h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h2><p>Nginx是异步框架的网页服务器，也可以用作反向代理、负载平衡器和HTTP缓存。简单来说，就是通过服务器通过Nginx替你找到html文件。</p>
+<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><p><code>sudo apt-get install nginx</code></p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><ol>
+<li><p>在线配置nginx：<a target="_blank" rel="noopener" href="http://nginxedit.cn/">Go Nginx config</a></p>
+</li>
+<li><p>根据要求依次选择相应的</p>
+<ul>
+<li><strong>网站配置</strong>选项：Preset，域名等等</li>
+<li><strong>全局配置</strong>选项：刚开始基本不用管</li>
+</ul>
+</li>
+<li><p>下载&#x2F;复制config文件</p>
+</li>
+<li><p>把config文件复制到服务器的<code>/etc/nginx/sites-available/</code>文件夹中，再在<code>/etc/nginx/sites-enabled/</code>中创建一个软连接指向<code>/etc/nginx/sites-available/</code>中的config文件</p>
+<p> 例如域名为<code>test.com</code>：<br> <code>cp sites-available/test.com.conf /etc/nginx/sites-available/</code></p>
+<p> <code>cd /etc/nginx/sites-avaible</code></p>
+<p> <code>sudo ln -s ../sites-available/test* /etc/nginx/sites-enabled/</code> </p>
+</li>
+<li><p>Change <a href="mailto:&#x6d;&#101;&#64;&#101;&#120;&#x61;&#109;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#109;">&#x6d;&#101;&#64;&#101;&#120;&#x61;&#109;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#109;</a> to your email<br> <code>sudo certbot --non-interactive --redirect --agree-tos --nginx -d test.com -m me@example.com</code></p>
+</li>
+</ol>
+<h1 id="二、搭建项目"><a href="#二、搭建项目" class="headerlink" title="二、搭建项目"></a>二、搭建项目</h1><p><a href="https://github.com/suzhilong/RCAR2021web_frontEnd">示例项目</a></p>
+<h2 id="项目初始化及其框架"><a href="#项目初始化及其框架" class="headerlink" title="项目初始化及其框架"></a>项目初始化及其框架</h2><p>以示例项目为例：</p>
+<ul>
+<li><code>admin</code>是管理员界面项目，可以用<code>vue create admin</code>来创建，里面包含<code>public</code>和<code>src</code>文件夹，<code>src</code>文件夹就是源代码所在文件夹</li>
+<li><code>desktop</code>是pc桌面界面项目，可以用<code>vue create desktop</code>来创建</li>
+<li><code>web</code>是移动端界面项目，可以用<code>vue create web</code>来创建</li>
+<li><code>server</code>是nodejs组成的服务端项目，包括给后台和前端提供的接口。<ul>
+<li>使用<code>mkdir server</code>创建文件夹后<code>cd server</code>，使用<code>npm init -y</code>初始化一个node项目（会生成一个<code>package.json</code>文件）</li>
+<li>再在文件夹里新建一个<code>index.js</code>作为服务端入口文件</li>
+<li>在<code>package.json</code>的<code>scripts</code>中，插入一行<code>&quot;serve&quot;: &quot;nodemon index.js&quot;,</code>。这样就可以在server中使用<code>npm run serve</code>来运行服务器项目</li>
+</ul>
+</li>
+</ul>
+<p>初始化完以后就可以cd进各个文件夹使用<code>npm run serve</code>本地运行，查看每个项目的效果。</p>
+<p><em>ps: 如果提示错误，可以先使用<code>npm i</code>安装依赖</em></p>
+<h2 id="安装elementUI和路由"><a href="#安装elementUI和路由" class="headerlink" title="安装elementUI和路由"></a>安装elementUI和路由</h2><p>在<code>admin</code>和<code>desktop</code>中，使用<code>vue add element</code>安装ElementUI，<code>vue add router</code>安装路由。</p>
+<h2 id="vue项目文件说明"><a href="#vue项目文件说明" class="headerlink" title="vue项目文件说明"></a>vue项目文件说明</h2><p>以<code>admin</code>为例：</p>
+<ul>
+<li><code>public</code>可以先不管</li>
+<li><code>src</code>是项目源代码<ul>
+<li><code>components</code>是组件文件夹</li>
+<li><code>views</code>存放的主要是总体页面的代码，<code>views</code>中新建.vue文件后，需要再<code>../router.js</code>中增加路由</li>
+</ul>
+</li>
+</ul>
+<h2 id="项目部署"><a href="#项目部署" class="headerlink" title="项目部署"></a>项目部署</h2><h3 id="服务器系统设置"><a href="#服务器系统设置" class="headerlink" title="服务器系统设置"></a>服务器系统设置</h3><h4 id="Install-Packages"><a href="#Install-Packages" class="headerlink" title="Install Packages"></a>Install Packages</h4><ol>
+<li><p>Install Nodejs </p>
+<p> <code>sudo apt-get install nodejs</code></p>
+</li>
+<li><p>Install npm</p>
+<p> <code>sudo apt-get install npm</code></p>
+</li>
+<li><p>Config Taobao registry</p>
+<p> <code>npm config set registry https://registry.npm.taobao.org</code></p>
+</li>
+<li><p>Update Nodejs</p>
+<p> <code>npm i -g n</code></p>
+<p> <code>n latest</code></p>
+<p> Reload cmd shell</p>
+</li>
+<li><p>Install pm2</p>
+<p> <code>npm i -g pm2</code></p>
+</li>
+<li><p>Install Mongodb</p>
+<p> <code>sudo apt-get install mongodb-server</code></p>
+</li>
+<li><p>Install Nginx</p>
+<p> <code>sudo apt-get install nginx</code></p>
+</li>
+<li><p>Install certbot</p>
+<p> <code>sudo apt install -y nginx certbot python-certbot-nginx</code></p>
+</li>
+</ol>
+<h4 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd desktop</span><br><span class="line">npm i</span><br><span class="line">npm run build</span><br></pre></td></tr></table></figure>
+<p><code>npm run build</code>可以编译成静态html文件，直接打开</p>
+<p>把<code>npm run build</code>改为<code>npm run server</code>可以在本地测试网站效果</p>
+<p><strong>注意</strong>：<code>build</code>之前需要把对应文件夹里的<code>vue.config.js</code>（如：<code>desktop/vue.config.js</code>）中的<code>publicPath</code>的<code>/</code>改为<code>./</code>。<code>outputDir:</code>可以改为你想要编译到的目的路径</p>
+<p>以示例项目为例，build 后在<code>desktop</code>中生产的<code>dist</code>文件夹就是静态html文件目录，点击<code>dist/index.html</code>就可以打开网站，把生成的<code>dist</code>文件夹里的文件放到服务器的对应文件夹就可以访问了。</p>
+<h1 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1A4411Y7fi">学习视频</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Su Zhilong 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="Su Zhilong 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/vue/" rel="tag"># vue</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/10/15/%E5%90%8E%E7%AB%AF/" rel="prev" title="网络编程笔记">
+      <i class="fa fa-chevron-left"></i> 网络编程笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/01/13/acpiError/" rel="next" title="ubuntu开机失败——ACPI Error">
+      ubuntu开机失败——ACPI Error <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%B7%A5%E5%85%B7"><span class="nav-number">1.</span> <span class="nav-text">一、工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue-js"><span class="nav-number">1.1.</span> <span class="nav-text">Vue.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ElementUI"><span class="nav-number">1.2.</span> <span class="nav-text">ElementUI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NodeJs"><span class="nav-number">1.3.</span> <span class="nav-text">NodeJs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm"><span class="nav-number">1.4.</span> <span class="nav-text">npm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.4.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0"><span class="nav-number">1.4.2.</span> <span class="nav-text">更新</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85vue"><span class="nav-number">1.5.</span> <span class="nav-text">安装vue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%90%8E%E5%8F%B0%E5%B8%B8%E9%A9%BB%E8%BF%9B%E7%A8%8B"><span class="nav-number">1.6.</span> <span class="nav-text">服务端后台常驻进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB"><span class="nav-number">1.7.</span> <span class="nav-text">MongoDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nginx"><span class="nav-number">1.8.</span> <span class="nav-text">Nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-1"><span class="nav-number">1.8.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">1.8.2.</span> <span class="nav-text">配置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="nav-number">2.</span> <span class="nav-text">二、搭建项目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%A7%8B%E5%8C%96%E5%8F%8A%E5%85%B6%E6%A1%86%E6%9E%B6"><span class="nav-number">2.1.</span> <span class="nav-text">项目初始化及其框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85elementUI%E5%92%8C%E8%B7%AF%E7%94%B1"><span class="nav-number">2.2.</span> <span class="nav-text">安装elementUI和路由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E"><span class="nav-number">2.3.</span> <span class="nav-text">vue项目文件说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2"><span class="nav-number">2.4.</span> <span class="nav-text">项目部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE"><span class="nav-number">2.4.1.</span> <span class="nav-text">服务器系统设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Install-Packages"><span class="nav-number">2.4.1.1.</span> <span class="nav-text">Install Packages</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Setup"><span class="nav-number">2.4.1.2.</span> <span class="nav-text">Setup</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ref"><span class="nav-number">3.</span> <span class="nav-text">Ref</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Su Zhilong"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Su Zhilong</p>
+  <div class="site-description" itemprop="description">I will always be with you</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/suzhilong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;suzhilong"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Su Zhilong</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">379k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">5:44</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'uaEz4DL2UqM1jg1eGmpd8vhF-gzGzoHsz',
+      appKey     : 'SzL1ETN5dDwbXjnzyJYJkjTb',
+      placeholder: "comment",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

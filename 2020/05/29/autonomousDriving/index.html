@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/apple-touch-icon-next.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"github.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Apollo入门课程无人驾驶概览自动驾驶等级 Base level 驾驶员完全控制车辆 Driver Assistance Partial Automation Conditional Automation No Human Interference Full Automation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自动驾驶学习笔记">
+<meta property="og:url" content="https://github.com/suzhilong/suzhilong.github.io.git/2020/05/29/autonomousDriving/index.html">
+<meta property="og:site_name" content="SOUSIC">
+<meta property="og:description" content="Apollo入门课程无人驾驶概览自动驾驶等级 Base level 驾驶员完全控制车辆 Driver Assistance Partial Automation Conditional Automation No Human Interference Full Automation">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/bHOoJ6BejlM8KRk.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/73nypHI6sVFRj1B.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/FKImlxCi4wkb5PD.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/lGRJrT8bH9McOPL.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/ptsd3iNUulVxXRg.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/bocxUA1Xq6j79CV.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/Zrlgpf5BKaWcxoM.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/Q2iBlDWvAm7Xad8.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/owXGPtS7LbvrU2k.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/2ujw1ozqaCJVsgr.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/HVZicw9xelEjUhG.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/2yZuS95M8zNcHCe.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/waeNQVpZzq5vcjX.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/Pwzamb1N8KOLnM3.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/3XQ5JKzaDehpglV.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/rkhCI2YJ7DwNHtV.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/983YTOsjMDvukLy.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/c9vpyuYgtlOG4Lk.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/c15SuOisv3IHQfh.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/9Sh64Qzj57Wekvt.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/BUAse7goTrk34wc.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/3InHB1tAyQegoiv.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/8YR5Dxpe9lizWHP.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/R8o1svtFTbLiKAG.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/xH8elwav6W9oizd.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/evTVtO2wZDBk6sA.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/Kfng4Jab5N1x3Th.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/3gGdxrCHf6Mwk7a.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/RsJbuftcgOIMm2n.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/GCQowiTvbJ9MZN4.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/29/yHuUCpiabecJZrS.png">
+<meta property="article:published_time" content="2020-05-29T04:45:00.000Z">
+<meta property="article:modified_time" content="2020-08-17T07:34:37.898Z">
+<meta property="article:author" content="Su Zhilong">
+<meta property="article:tag" content="autonomous driving">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/29/bHOoJ6BejlM8KRk.png">
+
+<link rel="canonical" href="https://github.com/suzhilong/suzhilong.github.io.git/2020/05/29/autonomousDriving/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>自动驾驶学习笔记 | SOUSIC</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="SOUSIC" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">SOUSIC</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">哈库呐玛塔塔</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://github.com/suzhilong/suzhilong.github.io.git/2020/05/29/autonomousDriving/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Su Zhilong">
+      <meta itemprop="description" content="I will always be with you">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SOUSIC">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          自动驾驶学习笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-29 12:45:00" itemprop="dateCreated datePublished" datetime="2020-05-29T12:45:00+08:00">2020-05-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-17 15:34:37" itemprop="dateModified" datetime="2020-08-17T15:34:37+08:00">2020-08-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/robot/" itemprop="url" rel="index"><span itemprop="name">robot</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/05/29/autonomousDriving/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/05/29/autonomousDriving/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Apollo入门课程"><a href="#Apollo入门课程" class="headerlink" title="Apollo入门课程"></a><a href="https://apollo.auto/devcenter/coursetable_cn.html?target=1">Apollo入门课程</a></h1><h2 id="无人驾驶概览"><a href="#无人驾驶概览" class="headerlink" title="无人驾驶概览"></a>无人驾驶概览</h2><h3 id="自动驾驶等级"><a href="#自动驾驶等级" class="headerlink" title="自动驾驶等级"></a>自动驾驶等级</h3><ol start="0">
+<li>Base level 驾驶员完全控制车辆</li>
+<li>Driver Assistance</li>
+<li>Partial Automation</li>
+<li>Conditional Automation</li>
+<li>No Human Interference</li>
+<li>Full Automation<span id="more"></span>
+<img src="https://i.loli.net/2020/05/29/bHOoJ6BejlM8KRk.png" alt="自动驾驶等级"><br><img src="https://i.loli.net/2020/05/29/73nypHI6sVFRj1B.png" alt="自动驾驶等级"></li>
+</ol>
+<h3 id="无人车的运作方式"><a href="#无人车的运作方式" class="headerlink" title="无人车的运作方式"></a>无人车的运作方式</h3><p><img src="https://i.loli.net/2020/05/29/FKImlxCi4wkb5PD.png" alt="无人车的运作方式">  </p>
+<h3 id="硬件平台"><a href="#硬件平台" class="headerlink" title="硬件平台"></a>硬件平台</h3><p><img src="https://i.loli.net/2020/05/29/lGRJrT8bH9McOPL.png" alt="硬件平台">  </p>
+<ul>
+<li>控制器区域网络(Controller Area Network, CAN)<br><img src="https://i.loli.net/2020/05/29/ptsd3iNUulVxXRg.png"></li>
+<li>GPS</li>
+<li>IMU</li>
+<li>Lidar：(Light)光波</li>
+<li>Radar：(Radio)无线电波</li>
+</ul>
+<h3 id="软件平台"><a href="#软件平台" class="headerlink" title="软件平台"></a>软件平台</h3><ul>
+<li>实时操作系统(RTOS): ubuntu+apollo<ul>
+<li>去中心化：多Node</li>
+<li>Protobuf替代ROS Messagr增加兼容性</li>
+</ul>
+</li>
+<li>运行时框架</li>
+<li>应用程序模块层<br><img src="https://i.loli.net/2020/05/29/bocxUA1Xq6j79CV.png"></li>
+</ul>
+<h3 id="云服务"><a href="#云服务" class="headerlink" title="云服务"></a>云服务</h3><ul>
+<li>HD Map</li>
+<li>Simulation</li>
+<li>Data Platform</li>
+<li>Security</li>
+<li>OTA(空中软件升级)</li>
+<li>DuerOS(智能语音系统)</li>
+</ul>
+<h2 id="高精度地图"><a href="#高精度地图" class="headerlink" title="高精度地图"></a>高精度地图</h2><p>ROI可以提高精度和寻找速度<br>Apollo高清地图格式：OpenDRIVE  </p>
+<h3 id="高清地图组成"><a href="#高清地图组成" class="headerlink" title="高清地图组成"></a>高清地图组成</h3><ul>
+<li>数据采集</li>
+<li>数据处理</li>
+<li>对象检测</li>
+<li>手动验证</li>
+<li>地图发布<br><img src="https://i.loli.net/2020/05/29/Zrlgpf5BKaWcxoM.png" alt="高清地图组成"></li>
+</ul>
+<h2 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h2><ul>
+<li>GNSS(Gloval Navigation Satellite System) RTK(实时运动定位)<ul>
+<li>Satellite</li>
+<li>Control Station</li>
+<li>Receivers</li>
+<li>ps：GPS是GNSS的一种</li>
+</ul>
+</li>
+<li>惯性导航(Inertial Navigation) 可达1000Hz<ul>
+<li>容易飘</li>
+</ul>
+</li>
+<li>激光雷达Lidar<ul>
+<li>ICP</li>
+<li>滤波算法<ul>
+<li>直方图滤波Histogram Filter (有时候称Sum of Squared Difference, SSD)</li>
+<li>卡尔曼滤波</li>
+<li>粒子滤波</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>视觉定位<ul>
+<li>优点：图像易获得</li>
+<li>缺点：没有三维信心</li>
+</ul>
+</li>
+<li>Apollo定位<ul>
+<li>GPS、IMU、LiDar</li>
+<li><img src="https://i.loli.net/2020/05/29/Q2iBlDWvAm7Xad8.png" alt="卡尔曼滤波"></li>
+</ul>
+</li>
+</ul>
+<h2 id="感知"><a href="#感知" class="headerlink" title="感知"></a>感知</h2><ol>
+<li>检测 Detection</li>
+<li>分类 Classification</li>
+<li>跟踪 Tracking</li>
+<li>语义分割 Segmentation</li>
+</ol>
+<h3 id="计算机视觉"><a href="#计算机视觉" class="headerlink" title="计算机视觉"></a>计算机视觉</h3><ul>
+<li>摄像头图像</li>
+<li>LiDAR图像<br><img src="https://i.loli.net/2020/05/29/owXGPtS7LbvrU2k.png"></li>
+</ul>
+<h3 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h3><ul>
+<li>监督学习</li>
+<li>无监督学习</li>
+<li>半监督学习</li>
+<li>强化学习</li>
+</ul>
+<h3 id="检测与分类"><a href="#检测与分类" class="headerlink" title="检测与分类"></a>检测与分类</h3><ul>
+<li>YOLO</li>
+<li>SSD</li>
+</ul>
+<h3 id="Apollo感知"><a href="#Apollo感知" class="headerlink" title="Apollo感知"></a>Apollo感知</h3><ul>
+<li>ROI在高精度地图</li>
+<li>Detection Network</li>
+<li>检测和跟踪</li>
+<li>YOLO车道线检测、目标跟踪</li>
+<li><img src="https://i.loli.net/2020/05/29/2ujw1ozqaCJVsgr.png"></li>
+</ul>
+<h3 id="传感器比较"><a href="#传感器比较" class="headerlink" title="传感器比较"></a>传感器比较</h3><p><img src="https://i.loli.net/2020/05/29/HVZicw9xelEjUhG.png" alt="传感器比较"></p>
+<h3 id="感知融合策略："><a href="#感知融合策略：" class="headerlink" title="感知融合策略："></a>感知融合策略：</h3><ul>
+<li>卡尔曼滤波<ul>
+<li>同步融合</li>
+<li>异步融合</li>
+</ul>
+</li>
+</ul>
+<h2 id="预测"><a href="#预测" class="headerlink" title="预测"></a>预测</h2><ul>
+<li>基于模型的预测</li>
+<li>数据驱动预测</li>
+</ul>
+<h3 id="Apollo预测"><a href="#Apollo预测" class="headerlink" title="Apollo预测"></a>Apollo预测</h3><p>基于车道序列方法<br><img src="https://i.loli.net/2020/05/29/2yZuS95M8zNcHCe.png" alt="基于车道序列方法"><br>神经网络预测车道序列<br>结合车辆物理元素，轨迹生成：可以用多项式拟合  </p>
+<h2 id="规划"><a href="#规划" class="headerlink" title="规划"></a>规划</h2><p>输入：</p>
+<ul>
+<li>map</li>
+<li>location</li>
+<li>destination<br>搜索：讲地图转化为图（graph）</li>
+</ul>
+<h3 id="搜索算法"><a href="#搜索算法" class="headerlink" title="搜索算法"></a>搜索算法</h3><p>A*<br><img src="https://i.loli.net/2020/05/29/waeNQVpZzq5vcjX.png"></p>
+<h3 id="轨迹评估"><a href="#轨迹评估" class="headerlink" title="轨迹评估"></a>轨迹评估</h3><ul>
+<li>无障碍</li>
+<li>乘客舒服</li>
+<li>轨迹实际可行的</li>
+<li>轨迹应该遵守交通规则</li>
+</ul>
+<h3 id="轨迹选择"><a href="#轨迹选择" class="headerlink" title="轨迹选择"></a>轨迹选择</h3><p>成本函数(cost function)。不同路况、场景的成本函数不同</p>
+<h3 id="Frenet坐标系"><a href="#Frenet坐标系" class="headerlink" title="Frenet坐标系"></a>Frenet坐标系</h3><p><img src="https://i.loli.net/2020/05/29/Pwzamb1N8KOLnM3.png" alt="Frenet坐标系"></p>
+<h3 id="路径-速度解耦规则"><a href="#路径-速度解耦规则" class="headerlink" title="路径-速度解耦规则"></a>路径-速度解耦规则</h3><ol>
+<li>路径规划  </li>
+<li>速度规划<ul>
+<li>ST图<br> <img src="https://i.loli.net/2020/05/29/3XQ5JKzaDehpglV.png" alt="ST图"></li>
+<li>障碍物阻挡的ST图：法律限制、速度限制、汽车物理限制等等来筛选曲线<br> <img src="https://i.loli.net/2020/05/29/rkhCI2YJ7DwNHtV.png" alt="障碍物阻挡的ST图"></li>
+<li>二次规划来平滑轨迹</li>
+</ul>
+</li>
+</ol>
+<p>路径规划—&gt;ST图轨迹选择—&gt;二次规划轨迹平滑</p>
+<h3 id="Lattice规划"><a href="#Lattice规划" class="headerlink" title="Lattice规划"></a>Lattice规划</h3><p>ST轨迹（纵向偏移）<br>SL轨迹（横向偏移）<br><img src="https://i.loli.net/2020/05/29/983YTOsjMDvukLy.png" alt="ST_SL">  </p>
+<h3 id="ST轨迹的3组状态："><a href="#ST轨迹的3组状态：" class="headerlink" title="ST轨迹的3组状态："></a>ST轨迹的3组状态：</h3><ul>
+<li>巡航(Cruising)：定速行驶</li>
+<li>跟随(Following)</li>
+<li>停止(Stoping)</li>
+</ul>
+<h3 id="SL轨迹的状态："><a href="#SL轨迹的状态：" class="headerlink" title="SL轨迹的状态："></a>SL轨迹的状态：</h3><ul>
+<li>SL曲线一阶二阶导数都应该为零</li>
+</ul>
+<h2 id="控制"><a href="#控制" class="headerlink" title="控制"></a>控制</h2><ul>
+<li>比例积分微分控制PID<ul>
+<li><img src="https://i.loli.net/2020/05/29/c9vpyuYgtlOG4Lk.png">  </li>
+<li>P——proportional</li>
+<li>I——integral</li>
+<li>D——derivative</li>
+</ul>
+</li>
+<li>线性二次调节器LQR<ul>
+<li>Apollo用来横向控制</li>
+<li><img src="https://i.loli.net/2020/05/29/c15SuOisv3IHQfh.png">  </li>
+<li><img src="https://i.loli.net/2020/05/29/9Sh64Qzj57Wekvt.png">  </li>
+<li><img src="https://i.loli.net/2020/05/29/BUAse7goTrk34wc.png"></li>
+</ul>
+</li>
+<li>模型预测控制MPC（精确，但是慢、难实现）<ol>
+<li>建立车辆模型<ul>
+<li>车辆物理运动模型</li>
+<li>预测</li>
+</ul>
+</li>
+<li>使用优化引擎计算有限时间范围内的控制输入</li>
+<li>执行第一组控制输入</li>
+</ol>
+</li>
+</ul>
+<h1 id="Apollo进阶课程"><a href="#Apollo进阶课程" class="headerlink" title="Apollo进阶课程"></a><a href="https://apollo.auto/devcenter/coursetable_cn.html?target=2">Apollo进阶课程</a></h1><h2 id="定位-1"><a href="#定位-1" class="headerlink" title="定位"></a>定位</h2><ul>
+<li>GNSS</li>
+<li>激光点云</li>
+<li>视觉</li>
+<li>捷连惯性导航及组合导航</li>
+</ul>
+<p>GNSS需要4个卫星的信号才能定位：因为GPS接收器（比如手机）的时间是不准的，所以把t看作未知数。或者说需要加多一颗来减小误差。</p>
+<h3 id="常用坐标系"><a href="#常用坐标系" class="headerlink" title="常用坐标系"></a>常用坐标系</h3><ul>
+<li>地心惯性坐标系（ECI）i系：地心为原点，Z轴指向北极，XY轴位于赤道平面，分别指向两颗恒星。IMU使用这个坐标系</li>
+<li>地心地固坐标系（ECEF）e系：地心为原点，Z轴指向北极，X轴位于赤道平面和格林威治子午面的交线上，Y轴在赤道平面，满足右手法则。</li>
+<li>当地水平坐标系（n系）：东-北-天(E-N-U)和北-东-地(N-E-D)。导航坐标系</li>
+<li>通用横轴墨卡托投影(UTM投影)</li>
+<li>车体坐标系</li>
+<li>相机坐标系</li>
+<li>激光雷达坐标系</li>
+</ul>
+<h3 id="载波定位：RTK、PPP"><a href="#载波定位：RTK、PPP" class="headerlink" title="载波定位：RTK、PPP"></a>载波定位：RTK、PPP</h3><p><img src="https://i.loli.net/2020/05/29/3InHB1tAyQegoiv.png"></p>
+<h3 id="点云的定位"><a href="#点云的定位" class="headerlink" title="点云的定位"></a>点云的定位</h3><ul>
+<li>基于Histogram Filter的激光点云定位<ul>
+<li>SSD(Sum of Squared Difference)</li>
+</ul>
+</li>
+</ul>
+<h3 id="视觉定位技术"><a href="#视觉定位技术" class="headerlink" title="视觉定位技术"></a>视觉定位技术</h3><ul>
+<li>算法流程<ul>
+<li><img src="https://i.loli.net/2020/05/29/8YR5Dxpe9lizWHP.png"></li>
+</ul>
+</li>
+<li>特征匹配<ul>
+<li>粒子滤波</li>
+</ul>
+</li>
+</ul>
+<h3 id="捷联惯性导航系统："><a href="#捷联惯性导航系统：" class="headerlink" title="捷联惯性导航系统："></a>捷联惯性导航系统：</h3><ul>
+<li>初始对准</li>
+<li>惯导解算<ul>
+<li><img src="https://i.loli.net/2020/05/29/R8o1svtFTbLiKAG.png"></li>
+</ul>
+</li>
+</ul>
+<h3 id="组合导航："><a href="#组合导航：" class="headerlink" title="组合导航："></a>组合导航：</h3><ul>
+<li><img src="https://i.loli.net/2020/05/29/xH8elwav6W9oizd.png"></li>
+</ul>
+<h3 id="高精度地图-1"><a href="#高精度地图-1" class="headerlink" title="高精度地图"></a>高精度地图</h3><p>主流通用格式规范：</p>
+<ul>
+<li>NDS(Navigation Data Standard)</li>
+<li>OpenDrive</li>
+<li>OMP<br>公司：</li>
+<li>HERE</li>
+<li>MobilEye</li>
+<li>Google Waymo</li>
+<li>TomTom<br>地图制作流程：</li>
+<li>数据采集</li>
+<li>数据处理<ul>
+<li>点云拼接</li>
+<li>底图产生</li>
+</ul>
+</li>
+<li>元素识别<ul>
+<li>基于深度学习的识别</li>
+<li>基于深度学习的点云分类</li>
+</ul>
+</li>
+<li>人工验证<ul>
+<li>车道线、路沿</li>
+<li>信号灯、标志牌</li>
+<li>虚拟道路、逻辑关系</li>
+</ul>
+</li>
+</ul>
+<h2 id="感知-1"><a href="#感知-1" class="headerlink" title="感知"></a>感知</h2><p><img src="https://i.loli.net/2020/05/29/evTVtO2wZDBk6sA.png" alt="感知技术模块"><br><img src="https://i.loli.net/2020/05/29/Kfng4Jab5N1x3Th.png" alt="传感器对比"></p>
+<h3 id="传感器标定算法"><a href="#传感器标定算法" class="headerlink" title="传感器标定算法"></a>传感器标定算法</h3><p><img src="https://i.loli.net/2020/05/29/3gGdxrCHf6Mwk7a.png" alt="传感器标定算法"></p>
+<h3 id="感知算法"><a href="#感知算法" class="headerlink" title="感知算法"></a>感知算法</h3><ul>
+<li>Lidar感知（检测）<ul>
+<li>启发式方法：Ncut</li>
+<li>DL方法：CNNSeg</li>
+</ul>
+</li>
+<li>视觉<ul>
+<li>DL检测和分割</li>
+<li>跟踪，2d-to-3d，多相机融合</li>
+<li>红绿灯（感知与地图交互）<img src="https://i.loli.net/2020/05/29/RsJbuftcgOIMm2n.png"></li>
+</ul>
+</li>
+<li>Radar感知（检测）</li>
+<li>Ultrasonic感知（检测）</li>
+</ul>
+<h2 id="规划-1"><a href="#规划-1" class="headerlink" title="规划"></a>规划</h2><h3 id="运动规划方法"><a href="#运动规划方法" class="headerlink" title="运动规划方法"></a>运动规划方法</h3><ul>
+<li>环境建模<ul>
+<li>RRT</li>
+<li>Lattice</li>
+</ul>
+</li>
+<li>自动驾驶的现代方法<ul>
+<li>Darpa Challenge Approaches</li>
+<li>Lattice in Frenet Frame</li>
+<li>Spiral, Polynomial and Splines</li>
+<li>Functional Optimization</li>
+</ul>
+</li>
+<li>路径限制类型<ul>
+<li>Local Constraint，例如避免和障碍物碰撞</li>
+<li>Differential Constraint，比如边界曲率</li>
+<li>Global Constraint，比如最短路径</li>
+</ul>
+</li>
+<li>自动驾驶中传统的轨迹生成方法：<ul>
+<li>Configuration Space</li>
+<li>Lattice approach</li>
+<li>RRT based approach</li>
+</ul>
+</li>
+<li>改进和现在的方法<ul>
+<li>Lattice in Frenet Frame</li>
+<li>Splines</li>
+<li>Functional Optimization</li>
+</ul>
+</li>
+</ul>
+<h2 id="控制-1"><a href="#控制-1" class="headerlink" title="控制"></a>控制</h2><h3 id="自动驾驶系统是否满足性能要求可以从三个角度去评测"><a href="#自动驾驶系统是否满足性能要求可以从三个角度去评测" class="headerlink" title="自动驾驶系统是否满足性能要求可以从三个角度去评测"></a>自动驾驶系统是否满足性能要求可以从三个角度去评测</h3><ul>
+<li>时域</li>
+<li>频域</li>
+<li>discrete domain（离散域）</li>
+</ul>
+<h3 id="PID控制：PID控制的基础是比例控制；积分控制可消除稳态误差，但可能增加超调；微分控制可加快大惯性系统响应速度以及减弱超调趋势。"><a href="#PID控制：PID控制的基础是比例控制；积分控制可消除稳态误差，但可能增加超调；微分控制可加快大惯性系统响应速度以及减弱超调趋势。" class="headerlink" title="PID控制：PID控制的基础是比例控制；积分控制可消除稳态误差，但可能增加超调；微分控制可加快大惯性系统响应速度以及减弱超调趋势。"></a>PID控制：PID控制的基础是比例控制；积分控制可消除稳态误差，但可能增加超调；微分控制可加快大惯性系统响应速度以及减弱超调趋势。</h3><ul>
+<li>比例单元P</li>
+<li>积分单元I</li>
+<li>微分单元D</li>
+</ul>
+<h3 id="控制器的类型："><a href="#控制器的类型：" class="headerlink" title="控制器的类型："></a>控制器的类型：</h3><ul>
+<li>开环控制</li>
+<li>前馈环控制<ul>
+<li>Optimal Control（优化控制）<ul>
+<li><img src="https://i.loli.net/2020/05/29/GCQowiTvbJ9MZN4.png" alt="优化控制"></li>
+</ul>
+</li>
+<li>Adaptive Control（自适应控制）</li>
+<li>Robust Control（鲁棒性控制）<ul>
+<li>LQR&#x2F;LTR控制器</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>后馈环控制</li>
+</ul>
+<h1 id="传感器融合"><a href="#传感器融合" class="headerlink" title="传感器融合"></a>传感器融合</h1><h2 id="计算机视觉、激光雷达、毫米波雷达的比较"><a href="#计算机视觉、激光雷达、毫米波雷达的比较" class="headerlink" title="计算机视觉、激光雷达、毫米波雷达的比较"></a>计算机视觉、激光雷达、毫米波雷达的比较</h2><p><img src="https://i.loli.net/2020/05/29/yHuUCpiabecJZrS.png" alt="计算机视觉、激光雷达、毫米波雷达的比较"></p>
+<h2 id="多传感器信息融合总结"><a href="#多传感器信息融合总结" class="headerlink" title="多传感器信息融合总结"></a><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/96881390">多传感器信息融合总结</a></h2>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Su Zhilong 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="Su Zhilong 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/autonomous-driving/" rel="tag"># autonomous driving</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/25/algorithm/" rel="prev" title="SOUSIC的algorithm总结">
+      <i class="fa fa-chevron-left"></i> SOUSIC的algorithm总结
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/01/LeetcodeDaily_June/" rel="next" title="Leetcode每日一题 - 2020年六月">
+      Leetcode每日一题 - 2020年六月 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Apollo%E5%85%A5%E9%97%A8%E8%AF%BE%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">Apollo入门课程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E4%BA%BA%E9%A9%BE%E9%A9%B6%E6%A6%82%E8%A7%88"><span class="nav-number">1.1.</span> <span class="nav-text">无人驾驶概览</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E7%AD%89%E7%BA%A7"><span class="nav-number">1.1.1.</span> <span class="nav-text">自动驾驶等级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E4%BA%BA%E8%BD%A6%E7%9A%84%E8%BF%90%E4%BD%9C%E6%96%B9%E5%BC%8F"><span class="nav-number">1.1.2.</span> <span class="nav-text">无人车的运作方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A1%AC%E4%BB%B6%E5%B9%B3%E5%8F%B0"><span class="nav-number">1.1.3.</span> <span class="nav-text">硬件平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%B9%B3%E5%8F%B0"><span class="nav-number">1.1.4.</span> <span class="nav-text">软件平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%91%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.1.5.</span> <span class="nav-text">云服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE"><span class="nav-number">1.2.</span> <span class="nav-text">高精度地图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E6%B8%85%E5%9C%B0%E5%9B%BE%E7%BB%84%E6%88%90"><span class="nav-number">1.2.1.</span> <span class="nav-text">高清地图组成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%BD%8D"><span class="nav-number">1.3.</span> <span class="nav-text">定位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%84%9F%E7%9F%A5"><span class="nav-number">1.4.</span> <span class="nav-text">感知</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89"><span class="nav-number">1.4.1.</span> <span class="nav-text">计算机视觉</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.4.2.</span> <span class="nav-text">机器学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%88%86%E7%B1%BB"><span class="nav-number">1.4.3.</span> <span class="nav-text">检测与分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Apollo%E6%84%9F%E7%9F%A5"><span class="nav-number">1.4.4.</span> <span class="nav-text">Apollo感知</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%A0%E6%84%9F%E5%99%A8%E6%AF%94%E8%BE%83"><span class="nav-number">1.4.5.</span> <span class="nav-text">传感器比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%84%9F%E7%9F%A5%E8%9E%8D%E5%90%88%E7%AD%96%E7%95%A5%EF%BC%9A"><span class="nav-number">1.4.6.</span> <span class="nav-text">感知融合策略：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%84%E6%B5%8B"><span class="nav-number">1.5.</span> <span class="nav-text">预测</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Apollo%E9%A2%84%E6%B5%8B"><span class="nav-number">1.5.1.</span> <span class="nav-text">Apollo预测</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%84%E5%88%92"><span class="nav-number">1.6.</span> <span class="nav-text">规划</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95"><span class="nav-number">1.6.1.</span> <span class="nav-text">搜索算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%A8%E8%BF%B9%E8%AF%84%E4%BC%B0"><span class="nav-number">1.6.2.</span> <span class="nav-text">轨迹评估</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%A8%E8%BF%B9%E9%80%89%E6%8B%A9"><span class="nav-number">1.6.3.</span> <span class="nav-text">轨迹选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Frenet%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="nav-number">1.6.4.</span> <span class="nav-text">Frenet坐标系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E5%BE%84-%E9%80%9F%E5%BA%A6%E8%A7%A3%E8%80%A6%E8%A7%84%E5%88%99"><span class="nav-number">1.6.5.</span> <span class="nav-text">路径-速度解耦规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lattice%E8%A7%84%E5%88%92"><span class="nav-number">1.6.6.</span> <span class="nav-text">Lattice规划</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ST%E8%BD%A8%E8%BF%B9%E7%9A%843%E7%BB%84%E7%8A%B6%E6%80%81%EF%BC%9A"><span class="nav-number">1.6.7.</span> <span class="nav-text">ST轨迹的3组状态：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SL%E8%BD%A8%E8%BF%B9%E7%9A%84%E7%8A%B6%E6%80%81%EF%BC%9A"><span class="nav-number">1.6.8.</span> <span class="nav-text">SL轨迹的状态：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6"><span class="nav-number">1.7.</span> <span class="nav-text">控制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Apollo%E8%BF%9B%E9%98%B6%E8%AF%BE%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">Apollo进阶课程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%BD%8D-1"><span class="nav-number">2.1.</span> <span class="nav-text">定位</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="nav-number">2.1.1.</span> <span class="nav-text">常用坐标系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%BD%E6%B3%A2%E5%AE%9A%E4%BD%8D%EF%BC%9ARTK%E3%80%81PPP"><span class="nav-number">2.1.2.</span> <span class="nav-text">载波定位：RTK、PPP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%82%B9%E4%BA%91%E7%9A%84%E5%AE%9A%E4%BD%8D"><span class="nav-number">2.1.3.</span> <span class="nav-text">点云的定位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%86%E8%A7%89%E5%AE%9A%E4%BD%8D%E6%8A%80%E6%9C%AF"><span class="nav-number">2.1.4.</span> <span class="nav-text">视觉定位技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%B7%E8%81%94%E6%83%AF%E6%80%A7%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F%EF%BC%9A"><span class="nav-number">2.1.5.</span> <span class="nav-text">捷联惯性导航系统：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E5%AF%BC%E8%88%AA%EF%BC%9A"><span class="nav-number">2.1.6.</span> <span class="nav-text">组合导航：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE-1"><span class="nav-number">2.1.7.</span> <span class="nav-text">高精度地图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%84%9F%E7%9F%A5-1"><span class="nav-number">2.2.</span> <span class="nav-text">感知</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%A0%E6%84%9F%E5%99%A8%E6%A0%87%E5%AE%9A%E7%AE%97%E6%B3%95"><span class="nav-number">2.2.1.</span> <span class="nav-text">传感器标定算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%84%9F%E7%9F%A5%E7%AE%97%E6%B3%95"><span class="nav-number">2.2.2.</span> <span class="nav-text">感知算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%84%E5%88%92-1"><span class="nav-number">2.3.</span> <span class="nav-text">规划</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E5%8A%A8%E8%A7%84%E5%88%92%E6%96%B9%E6%B3%95"><span class="nav-number">2.3.1.</span> <span class="nav-text">运动规划方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6-1"><span class="nav-number">2.4.</span> <span class="nav-text">控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%90%A6%E6%BB%A1%E8%B6%B3%E6%80%A7%E8%83%BD%E8%A6%81%E6%B1%82%E5%8F%AF%E4%BB%A5%E4%BB%8E%E4%B8%89%E4%B8%AA%E8%A7%92%E5%BA%A6%E5%8E%BB%E8%AF%84%E6%B5%8B"><span class="nav-number">2.4.1.</span> <span class="nav-text">自动驾驶系统是否满足性能要求可以从三个角度去评测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PID%E6%8E%A7%E5%88%B6%EF%BC%9APID%E6%8E%A7%E5%88%B6%E7%9A%84%E5%9F%BA%E7%A1%80%E6%98%AF%E6%AF%94%E4%BE%8B%E6%8E%A7%E5%88%B6%EF%BC%9B%E7%A7%AF%E5%88%86%E6%8E%A7%E5%88%B6%E5%8F%AF%E6%B6%88%E9%99%A4%E7%A8%B3%E6%80%81%E8%AF%AF%E5%B7%AE%EF%BC%8C%E4%BD%86%E5%8F%AF%E8%83%BD%E5%A2%9E%E5%8A%A0%E8%B6%85%E8%B0%83%EF%BC%9B%E5%BE%AE%E5%88%86%E6%8E%A7%E5%88%B6%E5%8F%AF%E5%8A%A0%E5%BF%AB%E5%A4%A7%E6%83%AF%E6%80%A7%E7%B3%BB%E7%BB%9F%E5%93%8D%E5%BA%94%E9%80%9F%E5%BA%A6%E4%BB%A5%E5%8F%8A%E5%87%8F%E5%BC%B1%E8%B6%85%E8%B0%83%E8%B6%8B%E5%8A%BF%E3%80%82"><span class="nav-number">2.4.2.</span> <span class="nav-text">PID控制：PID控制的基础是比例控制；积分控制可消除稳态误差，但可能增加超调；微分控制可加快大惯性系统响应速度以及减弱超调趋势。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="nav-number">2.4.3.</span> <span class="nav-text">控制器的类型：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%A0%E6%84%9F%E5%99%A8%E8%9E%8D%E5%90%88"><span class="nav-number">3.</span> <span class="nav-text">传感器融合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E3%80%81%E6%BF%80%E5%85%89%E9%9B%B7%E8%BE%BE%E3%80%81%E6%AF%AB%E7%B1%B3%E6%B3%A2%E9%9B%B7%E8%BE%BE%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">3.1.</span> <span class="nav-text">计算机视觉、激光雷达、毫米波雷达的比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E4%BC%A0%E6%84%9F%E5%99%A8%E4%BF%A1%E6%81%AF%E8%9E%8D%E5%90%88%E6%80%BB%E7%BB%93"><span class="nav-number">3.2.</span> <span class="nav-text">多传感器信息融合总结</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Su Zhilong"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Su Zhilong</p>
+  <div class="site-description" itemprop="description">I will always be with you</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/suzhilong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;suzhilong"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Su Zhilong</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">379k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">5:44</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'uaEz4DL2UqM1jg1eGmpd8vhF-gzGzoHsz',
+      appKey     : 'SzL1ETN5dDwbXjnzyJYJkjTb',
+      placeholder: "comment",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

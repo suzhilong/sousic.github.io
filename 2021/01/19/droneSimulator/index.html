@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/apple-touch-icon-next.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"github.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="无人机仿真的几种方法在ros环境下无人机的仿真方式有以下几种 hector_quadrotor rotors_simulator XTDrone：基于PX4的无人机仿真">
+<meta property="og:type" content="article">
+<meta property="og:title" content="无人机仿真">
+<meta property="og:url" content="https://github.com/suzhilong/suzhilong.github.io.git/2021/01/19/droneSimulator/index.html">
+<meta property="og:site_name" content="SOUSIC">
+<meta property="og:description" content="无人机仿真的几种方法在ros环境下无人机的仿真方式有以下几种 hector_quadrotor rotors_simulator XTDrone：基于PX4的无人机仿真">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/01/19/puTiaGwZLjW5QqH.png">
+<meta property="article:published_time" content="2021-01-19T11:19:00.000Z">
+<meta property="article:modified_time" content="2021-01-20T11:47:47.259Z">
+<meta property="article:author" content="Su Zhilong">
+<meta property="article:tag" content="Drone">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/01/19/puTiaGwZLjW5QqH.png">
+
+<link rel="canonical" href="https://github.com/suzhilong/suzhilong.github.io.git/2021/01/19/droneSimulator/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>无人机仿真 | SOUSIC</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="SOUSIC" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">SOUSIC</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">哈库呐玛塔塔</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://github.com/suzhilong/suzhilong.github.io.git/2021/01/19/droneSimulator/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Su Zhilong">
+      <meta itemprop="description" content="I will always be with you">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SOUSIC">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          无人机仿真
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-01-19 19:19:00" itemprop="dateCreated datePublished" datetime="2021-01-19T19:19:00+08:00">2021-01-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-20 19:47:47" itemprop="dateModified" datetime="2021-01-20T19:47:47+08:00">2021-01-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/robot/" itemprop="url" rel="index"><span itemprop="name">robot</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/01/19/droneSimulator/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/01/19/droneSimulator/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="无人机仿真的几种方法"><a href="#无人机仿真的几种方法" class="headerlink" title="无人机仿真的几种方法"></a>无人机仿真的几种方法</h1><h2 id="在ros环境下无人机的仿真方式有以下几种"><a href="#在ros环境下无人机的仿真方式有以下几种" class="headerlink" title="在ros环境下无人机的仿真方式有以下几种"></a>在ros环境下无人机的仿真方式有以下几种</h2><ul>
+<li><a href="https://github.com/tu-darmstadt-ros-pkg/hector_quadrotor">hector_quadrotor</a></li>
+<li><a href="https://github.com/ethz-asl/rotors_simulator">rotors_simulator</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.yuque.com/xtdrone/manual_cn">XTDrone</a>：基于<a target="_blank" rel="noopener" href="https://docs.px4.io/master/zh/simulation">PX4</a>的无人机仿真<span id="more"></span></li>
+</ul>
+<h2 id="本教程环境"><a href="#本教程环境" class="headerlink" title="本教程环境"></a>本教程环境</h2><ul>
+<li>系统：ubuntu16.04</li>
+<li>ROS版本：kinetic</li>
+</ul>
+<h1 id="hector-quadrotor"><a href="#hector-quadrotor" class="headerlink" title="hector_quadrotor"></a><a href="https://github.com/tu-darmstadt-ros-pkg/hector_quadrotor">hector_quadrotor</a></h1><p><a target="_blank" rel="noopener" href="http://wiki.ros.org/hector_quadrotor">hector_quadrotor wiki</a></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="1-新建工作空间并初始化"><a href="#1-新建工作空间并初始化" class="headerlink" title="1. 新建工作空间并初始化"></a>1. 新建工作空间并初始化</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p hector_quadrotor_catkin/src</span><br><span class="line">cd hector_quadrotor_catkin/src</span><br><span class="line">catkin_init_workspace</span><br></pre></td></tr></table></figure>
+<h3 id="2-克隆源代码"><a href="#2-克隆源代码" class="headerlink" title="2. 克隆源代码"></a>2. 克隆源代码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/tu-darmstadt-ros-pkg/hector_quadrotor.git</span><br></pre></td></tr></table></figure>
+<h3 id="3-初始化wstool，并更新所需库"><a href="#3-初始化wstool，并更新所需库" class="headerlink" title="3. 初始化wstool，并更新所需库"></a>3. 初始化wstool，并更新所需库</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wstool init</span><br><span class="line">wstool merge tutorials.rosinstall</span><br><span class="line">wstool update</span><br></pre></td></tr></table></figure>
+<h3 id="4-编译"><a href="#4-编译" class="headerlink" title="4. 编译"></a>4. 编译</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/hector_quadrotor_catkin/</span><br><span class="line">catkin build</span><br></pre></td></tr></table></figure>
+<h3 id="5-环境变量"><a href="#5-环境变量" class="headerlink" title="5. 环境变量"></a>5. 环境变量</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ./devel/setup.bash</span><br></pre></td></tr></table></figure>
+<p>也可以用下面的方式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;source ~/hector_quadrotor_catkin/devel/setup.bash&quot; &gt;&gt; ~/.bashrc</span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><p>编译成功后可以运行demo试一下，hector_quadrotor一共有两个demo，indoor和outdoor.</p>
+<h3 id="indoor"><a href="#indoor" class="headerlink" title="indoor"></a>indoor</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">roslaunch hector_quadrotor_demo indoor_slam_gazebo.launch</span><br></pre></td></tr></table></figure>
+<h3 id="outdoor"><a href="#outdoor" class="headerlink" title="outdoor"></a>outdoor</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">roslaunch hector_quadrotor_demo outdoor_flight_gazebo.launch</span><br></pre></td></tr></table></figure>
+
+<h2 id="键盘操控"><a href="#键盘操控" class="headerlink" title="键盘操控"></a>键盘操控</h2><p>使用<code>teleop_twist_keyboard package</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ros-kinetic-teleop-twist-keyboard</span><br><span class="line">rosrun teleop_twist_keyboard teleop_twist_keyboard.py</span><br></pre></td></tr></table></figure>
+<p><em>ps:需要先按<code>t</code>让飞机先飞起来才能控制</em></p>
+<h1 id="rotors-simulator"><a href="#rotors-simulator" class="headerlink" title="rotors_simulator"></a><a href="https://github.com/ethz-asl/rotors_simulator">rotors_simulator</a></h1><h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><h3 id="1-新建工作空间并初始化-1"><a href="#1-新建工作空间并初始化-1" class="headerlink" title="1. 新建工作空间并初始化"></a>1. 新建工作空间并初始化</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p rotors_ws/src</span><br><span class="line">cd rotors_ws/src</span><br><span class="line">catkin_init_workspace</span><br></pre></td></tr></table></figure>
+<h3 id="2-克隆源代码-1"><a href="#2-克隆源代码-1" class="headerlink" title="2. 克隆源代码"></a>2. 克隆源代码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/ethz-asl/rotors_simulator.git</span><br></pre></td></tr></table></figure>
+<h3 id="3-初始化wstool，并更新所需库-1"><a href="#3-初始化wstool，并更新所需库-1" class="headerlink" title="3. 初始化wstool，并更新所需库"></a>3. 初始化wstool，并更新所需库</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wstool init</span><br><span class="line">wget https://raw.githubusercontent.com/ethz-asl/rotors_simulator/master/rotors_hil.rosinstall</span><br><span class="line">wstool merge rotors_hil.rosinstall</span><br><span class="line">wstool update</span><br></pre></td></tr></table></figure>
+<h3 id="4-编译-1"><a href="#4-编译-1" class="headerlink" title="4. 编译"></a>4. 编译</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/rotors_ws/</span><br><span class="line">catkin_make</span><br></pre></td></tr></table></figure>
+<h3 id="5-环境变量-1"><a href="#5-环境变量-1" class="headerlink" title="5. 环境变量"></a>5. 环境变量</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ./devel/setup.bash</span><br></pre></td></tr></table></figure>
+<p>也可以用下面的方式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;source ~/rotors_ws/devel/setup.bash&quot; &gt;&gt; ~/.bashrc</span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<h2 id="运行-1"><a href="#运行-1" class="headerlink" title="运行"></a>运行</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">roslaunch rotors_gazebo mav_hovering_example.launch mav_name:=firefly world_name:=basic</span><br></pre></td></tr></table></figure>
+
+<h2 id="功能开发"><a href="#功能开发" class="headerlink" title="功能开发"></a>功能开发</h2><p>更多功能的开发请看<a target="_blank" rel="noopener" href="https://suzhilong.github.io/2021/01/20/rotorsSimulator/">无人机仿真：rotors_simulator的使用</a></p>
+<h1 id="XTDrone"><a href="#XTDrone" class="headerlink" title="XTDrone"></a><a href="https://github.com/robin-shaun/XTDrone">XTDrone</a></h1><p>其实这是基于<a target="_blank" rel="noopener" href="https://docs.px4.io/master/zh/simulation">PX4</a>和ROS的无人机仿真平台，不过有很多已经开发好的项目</p>
+<h2 id="一、PX4的安装"><a href="#一、PX4的安装" class="headerlink" title="一、PX4的安装"></a>一、PX4的安装</h2><p>安装使用PX4可以直接看<a target="_blank" rel="noopener" href="https://www.yuque.com/xtdrone/manual_cn">官方文档</a></p>
+<p>也可以照着<a target="_blank" rel="noopener" href="https://www.yuque.com/xtdrone/manual_cn/basic_config_1.11">XTDrone</a>的步骤（推荐）</p>
+<h3 id="1-安装依赖"><a href="#1-安装依赖" class="headerlink" title="1. 安装依赖"></a>1. 安装依赖</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install -y ninja-build exiftool python-argparse python-empy python-toml python-numpy python-yaml python-dev python-pip ninja-build protobuf-compiler libeigen3-dev genromfs xmlstarlet libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev</span><br><span class="line"></span><br><span class="line">pip2 install pandas jinja2 pyserial cerberus pyulog numpy toml pyquaternion</span><br><span class="line">pip3 install packaging numpy empy toml pyyaml jinja2</span><br><span class="line"></span><br><span class="line">//gazebo</span><br><span class="line">sudo apt install ros-kinetic-gazebo9-*</span><br></pre></td></tr></table></figure>
+<h3 id="2-安装-mavros-以及相关的-geographiclib-dataset"><a href="#2-安装-mavros-以及相关的-geographiclib-dataset" class="headerlink" title="2. 安装 mavros 以及相关的 geographiclib dataset"></a>2. 安装 mavros 以及相关的 geographiclib dataset</h3><p><a target="_blank" rel="noopener" href="http://wiki.ros.org/mavros">mavros</a> 是一个飞机固件与ros通信的包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install ros-kinetic-mavros ros-kinetic-mavros-extras</span><br><span class="line">//如果出现443拒绝连接的情况，可能是因为域名污染，在/etc/hosts中加入raw.githubusercontent.com指定ip就行</span><br><span class="line">wget https://raw.githubusercontent.com/mavlink/mavros/master/mavros/scripts/install_geographiclib_datasets.sh</span><br><span class="line">sudo chmod a+x ./install_geographiclib_datasets.sh</span><br><span class="line">sudo ./install_geographiclib_datasets.sh</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-下载编译px4-Firmware"><a href="#3-下载编译px4-Firmware" class="headerlink" title="3. 下载编译px4 Firmware"></a>3. 下载编译px4 Firmware</h3><h4 id="创建工作空间（已经有工作空间的跳过）"><a href="#创建工作空间（已经有工作空间的跳过）" class="headerlink" title="创建工作空间（已经有工作空间的跳过）"></a>创建工作空间（已经有工作空间的跳过）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/px4_ws/src</span><br><span class="line">cd ~/px4_ws/src/</span><br><span class="line">catkin_init_workspace</span><br><span class="line">cd ..</span><br><span class="line">catkin_make</span><br></pre></td></tr></table></figure>
+<h4 id="下载编译px4"><a href="#下载编译px4" class="headerlink" title="下载编译px4"></a>下载编译px4</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//一般将固件放在主目录下而不是ros的工作空间中</span><br><span class="line">git clone https://github.com/PX4/PX4-Autopilot.git</span><br><span class="line">mv PX4-Autopilot PX4_Firmware</span><br><span class="line">cd PX4_Firmware</span><br><span class="line">//可以根据需求改变版本号v1.x.x</span><br><span class="line">git checkout v1.11.2</span><br><span class="line">git submodule update --init --recursive</span><br><span class="line">//开始编译</span><br><span class="line">make px4_sitl_default gazebo</span><br></pre></td></tr></table></figure>
+
+<h4 id="编译报错"><a href="#编译报错" class="headerlink" title="编译报错"></a>编译报错</h4><p>编译报错时，可能缺少了必要的依赖，可以在编译前：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd ~/PX4_Firmware</span><br><span class="line">bash</span><br><span class="line">//只是进行ros下开发仿真的话，可以把ubuntu.sh里的INSTALL_NUTTX改为’false’，或是加上参数--no-nuttx</span><br><span class="line">bash ./Tools/setup/ubuntu.sh --no-nuttx</span><br></pre></td></tr></table></figure>
+<p><strong>注意：ubuntu.sh可能安装失败，请务必重新运行ubuntu.sh脚本，直至成功</strong></p>
+<h3 id="4-添加环境变量"><a href="#4-添加环境变量" class="headerlink" title="4. 添加环境变量"></a>4. 添加环境变量</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//添加工作空间source</span><br><span class="line">echo &quot;source ~/px4_ws/devel/setup.bash&quot; &gt;&gt; ~/.bashrc</span><br><span class="line"></span><br><span class="line">//添加px4路径</span><br><span class="line">echo &quot;source ~/PX4_Firmware/Tools/setup_gazebo.bash\</span><br><span class="line"> ~/PX4_Firmware/\</span><br><span class="line"> ~/PX4_Firmware/build/px4_sitl_default&quot;\</span><br><span class="line"> &gt;&gt; ~/.bashrc</span><br><span class="line">echo &quot;export ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:~/PX4_Firmware&quot; &gt;&gt; ~/.bashrc</span><br><span class="line">echo &quot;export ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:~/PX4_Firmware/Tools/sitl_gazebo&quot; &gt;&gt; ~/.bashrc</span><br><span class="line"></span><br><span class="line">//source一下</span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-运行"><a href="#5-运行" class="headerlink" title="5. 运行"></a>5. 运行</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ~/PX4_Firmware</span><br><span class="line">//此命令同时启动了mavros</span><br><span class="line">roslaunch px4 mavros_posix_sitl.launch</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、安装无人机的地面站控制软件QGC"><a href="#二、安装无人机的地面站控制软件QGC" class="headerlink" title="二、安装无人机的地面站控制软件QGC"></a>二、安装无人机的地面站控制软件QGC</h2><p><a target="_blank" rel="noopener" href="https://dev.px4.cc/v1.8.2/zh/qgc/">QGroundControl</a> 是一个基于PX4自动驾驶仪配置和飞行的应用程序</p>
+<p><a target="_blank" rel="noopener" href="https://docs.qgroundcontrol.com/master/en/getting_started/download_and_install.html">官方安装指导教程</a></p>
+<h3 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1. 准备工作"></a>1. 准备工作</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -a -G dialout $USER</span><br><span class="line">sudo apt-get remove modemmanager -y</span><br><span class="line">sudo apt install gstreamer1.0-plugins-bad gstreamer1.0-libav gstreamer1.0-gl -y</span><br></pre></td></tr></table></figure>
+<h3 id="2-安装QGC"><a href="#2-安装QGC" class="headerlink" title="2. 安装QGC"></a>2. 安装QGC</h3><h4 id="1-下载"><a href="#1-下载" class="headerlink" title="1) 下载"></a>1) 下载</h4><p>前往<a href="https://github.com/mavlink/qgroundcontrol/releases">QCG发布网站</a>下载合适的版本的<code>QGroundControl.AppImage</code></p>
+<p><strong>注意：</strong> ubuntu16.04只能使用4.0以前的版本，4.0（含）以后的版本至少需要18.04，<a target="_blank" rel="noopener" href="https://docs.qgroundcontrol.com/master/en/getting_started/download_and_install.html">官方安装指导教程</a>中已经说明</p>
+<h4 id="2-安装"><a href="#2-安装" class="headerlink" title="2) 安装"></a>2) 安装</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +x ./QGroundControl.AppImage</span><br><span class="line">./QGroundControl.AppImage  //或者双击就可以打开QGC</span><br></pre></td></tr></table></figure>
+<h4 id="3-使用"><a href="#3-使用" class="headerlink" title="3) 使用"></a>3) 使用</h4><p><code>roslaunch px4 mavros_posix_sitl.launch</code>之后打开QGC会显示<code>飞机已连接</code>，在里面中添加飞行任务，然后<code>上传</code>，再<code>滑动</code>就可以启动飞行任务。</p>
+<p><strong>———————-PX4与ROS基础配置完成———————–</strong></p>
+<p>各部分间的关系如下图所示：</p>
+<p><img src="https://i.loli.net/2021/01/19/puTiaGwZLjW5QqH.png" alt="PX4架构"></p>
+<h2 id="三、XTDrone部分"><a href="#三、XTDrone部分" class="headerlink" title="三、XTDrone部分"></a>三、XTDrone部分</h2><p>见<a target="_blank" rel="noopener" href="https://www.yuque.com/xtdrone/manual_cn/basic_config_1.11">XTDrone使用文档</a></p>
+<h1 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/wendox/article/details/52337171">玩转四旋翼无人机（仿真）</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/phenixlou/article/details/78518207">hector_quadrotor 的编译运行</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.gkmm.tu-darmstadt.de/publications/files/meyer2012quadrotorsimulation.pdf">hector_quadrotor 的论文：Comprehensive Simulation of Quadrotor UAVs<br>using ROS and Gazebo</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.guyuehome.com/7598">rotors无人机仿真</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.guyuehome.com/16351">无人机ROS仿真包 rotors_simulator 编译教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.guyuehome.com/21614">无人机ROS仿真包 rotors_simulator 使用教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.guyuehome.com/7672">PX4无人机ROS下仿真开发</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.guyuehome.com/7699">ROS下基于YOLO的px4无人机目标检测</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.guyuehome.com/8983">基于px4的无人机自主导航</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.px4.io/master/en/dev_setup/dev_env_linux_ubuntu.html">px4文档</a></li>
+<li><a href="https://github.com/robin-shaun/XTDrone">开源无人机项目：XTDrone</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Su Zhilong 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="Su Zhilong 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Drone/" rel="tag"># Drone</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/17/UbuntuNoUSB/" rel="prev" title="ubuntu找不到ttyUSB*">
+      <i class="fa fa-chevron-left"></i> ubuntu找不到ttyUSB*
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/01/20/rotorsSimulator/" rel="next" title="基于rotors_simulator和ROS的无人机仿真">
+      基于rotors_simulator和ROS的无人机仿真 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A0%E4%BA%BA%E6%9C%BA%E4%BB%BF%E7%9C%9F%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">无人机仿真的几种方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8ros%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%97%A0%E4%BA%BA%E6%9C%BA%E7%9A%84%E4%BB%BF%E7%9C%9F%E6%96%B9%E5%BC%8F%E6%9C%89%E4%BB%A5%E4%B8%8B%E5%87%A0%E7%A7%8D"><span class="nav-number">1.1.</span> <span class="nav-text">在ros环境下无人机的仿真方式有以下几种</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E6%95%99%E7%A8%8B%E7%8E%AF%E5%A2%83"><span class="nav-number">1.2.</span> <span class="nav-text">本教程环境</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hector-quadrotor"><span class="nav-number">2.</span> <span class="nav-text">hector_quadrotor</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%96%B0%E5%BB%BA%E5%B7%A5%E4%BD%9C%E7%A9%BA%E9%97%B4%E5%B9%B6%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. 新建工作空间并初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%85%8B%E9%9A%86%E6%BA%90%E4%BB%A3%E7%A0%81"><span class="nav-number">2.1.2.</span> <span class="nav-text">2. 克隆源代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%88%9D%E5%A7%8B%E5%8C%96wstool%EF%BC%8C%E5%B9%B6%E6%9B%B4%E6%96%B0%E6%89%80%E9%9C%80%E5%BA%93"><span class="nav-number">2.1.3.</span> <span class="nav-text">3. 初始化wstool，并更新所需库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E7%BC%96%E8%AF%91"><span class="nav-number">2.1.4.</span> <span class="nav-text">4. 编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">2.1.5.</span> <span class="nav-text">5. 环境变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C"><span class="nav-number">2.2.</span> <span class="nav-text">运行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#indoor"><span class="nav-number">2.2.1.</span> <span class="nav-text">indoor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#outdoor"><span class="nav-number">2.2.2.</span> <span class="nav-text">outdoor</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%AE%E7%9B%98%E6%93%8D%E6%8E%A7"><span class="nav-number">2.3.</span> <span class="nav-text">键盘操控</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rotors-simulator"><span class="nav-number">3.</span> <span class="nav-text">rotors_simulator</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-1"><span class="nav-number">3.1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%96%B0%E5%BB%BA%E5%B7%A5%E4%BD%9C%E7%A9%BA%E9%97%B4%E5%B9%B6%E5%88%9D%E5%A7%8B%E5%8C%96-1"><span class="nav-number">3.1.1.</span> <span class="nav-text">1. 新建工作空间并初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%85%8B%E9%9A%86%E6%BA%90%E4%BB%A3%E7%A0%81-1"><span class="nav-number">3.1.2.</span> <span class="nav-text">2. 克隆源代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%88%9D%E5%A7%8B%E5%8C%96wstool%EF%BC%8C%E5%B9%B6%E6%9B%B4%E6%96%B0%E6%89%80%E9%9C%80%E5%BA%93-1"><span class="nav-number">3.1.3.</span> <span class="nav-text">3. 初始化wstool，并更新所需库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E7%BC%96%E8%AF%91-1"><span class="nav-number">3.1.4.</span> <span class="nav-text">4. 编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-1"><span class="nav-number">3.1.5.</span> <span class="nav-text">5. 环境变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C-1"><span class="nav-number">3.2.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E5%BC%80%E5%8F%91"><span class="nav-number">3.3.</span> <span class="nav-text">功能开发</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XTDrone"><span class="nav-number">4.</span> <span class="nav-text">XTDrone</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81PX4%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">4.1.</span> <span class="nav-text">一、PX4的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="nav-number">4.1.1.</span> <span class="nav-text">1. 安装依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%AE%89%E8%A3%85-mavros-%E4%BB%A5%E5%8F%8A%E7%9B%B8%E5%85%B3%E7%9A%84-geographiclib-dataset"><span class="nav-number">4.1.2.</span> <span class="nav-text">2. 安装 mavros 以及相关的 geographiclib dataset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E4%B8%8B%E8%BD%BD%E7%BC%96%E8%AF%91px4-Firmware"><span class="nav-number">4.1.3.</span> <span class="nav-text">3. 下载编译px4 Firmware</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%B7%A5%E4%BD%9C%E7%A9%BA%E9%97%B4%EF%BC%88%E5%B7%B2%E7%BB%8F%E6%9C%89%E5%B7%A5%E4%BD%9C%E7%A9%BA%E9%97%B4%E7%9A%84%E8%B7%B3%E8%BF%87%EF%BC%89"><span class="nav-number">4.1.3.1.</span> <span class="nav-text">创建工作空间（已经有工作空间的跳过）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E7%BC%96%E8%AF%91px4"><span class="nav-number">4.1.3.2.</span> <span class="nav-text">下载编译px4</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E6%8A%A5%E9%94%99"><span class="nav-number">4.1.3.3.</span> <span class="nav-text">编译报错</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%B7%BB%E5%8A%A0%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">4.1.4.</span> <span class="nav-text">4. 添加环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E8%BF%90%E8%A1%8C"><span class="nav-number">4.1.5.</span> <span class="nav-text">5. 运行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85%E6%97%A0%E4%BA%BA%E6%9C%BA%E7%9A%84%E5%9C%B0%E9%9D%A2%E7%AB%99%E6%8E%A7%E5%88%B6%E8%BD%AF%E4%BB%B6QGC"><span class="nav-number">4.2.</span> <span class="nav-text">二、安装无人机的地面站控制软件QGC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">4.2.1.</span> <span class="nav-text">1. 准备工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%AE%89%E8%A3%85QGC"><span class="nav-number">4.2.2.</span> <span class="nav-text">2. 安装QGC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%B8%8B%E8%BD%BD"><span class="nav-number">4.2.2.1.</span> <span class="nav-text">1) 下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%AE%89%E8%A3%85"><span class="nav-number">4.2.2.2.</span> <span class="nav-text">2) 安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%BD%BF%E7%94%A8"><span class="nav-number">4.2.2.3.</span> <span class="nav-text">3) 使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81XTDrone%E9%83%A8%E5%88%86"><span class="nav-number">4.3.</span> <span class="nav-text">三、XTDrone部分</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ref"><span class="nav-number">5.</span> <span class="nav-text">ref</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Su Zhilong"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Su Zhilong</p>
+  <div class="site-description" itemprop="description">I will always be with you</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/suzhilong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;suzhilong"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Su Zhilong</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">379k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">5:44</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'uaEz4DL2UqM1jg1eGmpd8vhF-gzGzoHsz',
+      appKey     : 'SzL1ETN5dDwbXjnzyJYJkjTb',
+      placeholder: "comment",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

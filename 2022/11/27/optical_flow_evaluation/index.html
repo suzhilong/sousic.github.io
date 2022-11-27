@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/apple-touch-icon-next.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"github.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="本篇文档对鲁棒性的定义：$$goodPoints&#x2F;allPoints$$ 其中 goodPoints：跟踪成功的特征点。即，向前-向后追踪回到开始帧，EPE 小于设定的阈值(单位: pixel)。 allPoints：所有特征点 使用全部特征点测试鲁棒性，$$Harris \gtrsim Tomasi &gt; Fast$$ 使用我们的均匀化策略后的特征点测试鲁棒性，$$Fast &amp;g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="光流鲁棒性评估">
+<meta property="og:url" content="https://github.com/suzhilong/suzhilong.github.io.git/2022/11/27/optical_flow_evaluation/index.html">
+<meta property="og:site_name" content="SOUSIC">
+<meta property="og:description" content="本篇文档对鲁棒性的定义：$$goodPoints&#x2F;allPoints$$ 其中 goodPoints：跟踪成功的特征点。即，向前-向后追踪回到开始帧，EPE 小于设定的阈值(单位: pixel)。 allPoints：所有特征点 使用全部特征点测试鲁棒性，$$Harris \gtrsim Tomasi &gt; Fast$$ 使用我们的均匀化策略后的特征点测试鲁棒性，$$Fast &amp;g">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/11/27/gm1UaiBwIoZrnPc.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/27/Pb8hR4dVBoi7cJn.png">
+<meta property="article:published_time" content="2022-11-27T13:39:00.000Z">
+<meta property="article:modified_time" content="2022-11-27T15:34:08.564Z">
+<meta property="article:author" content="Su Zhilong">
+<meta property="article:tag" content="Computer vision">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/11/27/gm1UaiBwIoZrnPc.png">
+
+<link rel="canonical" href="https://github.com/suzhilong/suzhilong.github.io.git/2022/11/27/optical_flow_evaluation/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>光流鲁棒性评估 | SOUSIC</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="SOUSIC" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">SOUSIC</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">哈库呐玛塔塔</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://github.com/suzhilong/suzhilong.github.io.git/2022/11/27/optical_flow_evaluation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Su Zhilong">
+      <meta itemprop="description" content="I will always be with you">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SOUSIC">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          光流鲁棒性评估
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-11-27 21:39:00 / 修改时间：23:34:08" itemprop="dateCreated datePublished" datetime="2022-11-27T21:39:00+08:00">2022-11-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/robot/" itemprop="url" rel="index"><span itemprop="name">robot</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/robot/SLAM/" itemprop="url" rel="index"><span itemprop="name">SLAM</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/11/27/optical_flow_evaluation/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/11/27/optical_flow_evaluation/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <ol>
+<li>本篇文档对鲁棒性的定义：$$goodPoints&#x2F;allPoints$$ 其中</li>
+<li>goodPoints：跟踪成功的特征点。即，向前-向后追踪回到开始帧，EPE 小于设定的阈值(单位: pixel)。</li>
+<li>allPoints：所有特征点</li>
+<li>使用全部特征点测试鲁棒性，$$Harris \gtrsim Tomasi &gt; Fast$$</li>
+<li>使用我们的均匀化策略后的特征点测试鲁棒性，$$Fast &gt; Tomasi \approx Harris$$</li>
+</ol>
+<span id="more"></span>
+<h1 id="光流评估指标"><a href="#光流评估指标" class="headerlink" title="光流评估指标"></a>光流评估指标</h1><h2 id="误差指标"><a href="#误差指标" class="headerlink" title="误差指标"></a>误差指标</h2><ul>
+<li><p>EPE(Endpoint Error)：估计光流和 ground-truth 光流的欧氏距离<br>$$EPE &#x3D; \sqrt{(u_{est} - u_{gt})^2 + (v_{est} - v_{gt})^2}$$<br><img src="https://s2.loli.net/2022/11/27/gm1UaiBwIoZrnPc.png" alt="EPE.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>AE(Angular Error)：光流向量之间的角度误差。计算角度误差时增加一维，使用的是三维向量 (u, v, 1)<br>$$\mathrm{AE}&#x3D;\arccos \left(\frac{\left(\mathrm{u}<em>{\mathrm{est}}, \mathrm{v}</em>{\text {est }}, 1\right)^{\mathrm{T}} *\left(\mathrm{u}<em>{\mathrm{gt}}, \mathrm{v}</em>{\mathrm{gt}}, 1\right)}{\left.\sqrt{1.0+\mathrm{u}<em>{\mathrm{est}} * \mathrm{u}</em>{\mathrm{est}}+\mathrm{v}<em>{\mathrm{est}} * \mathrm{v}</em>{\mathrm{est}}} \sqrt{1.0+\mathrm{u}<em>{\mathrm{gt}} * \mathrm{u}</em>{\mathrm{gt}}+\mathrm{v}<em>{\mathrm{gt}} * \mathrm{v}</em>{\mathrm{gt}}}\right)}\right)$$<br><img src="https://s2.loli.net/2022/11/27/Pb8hR4dVBoi7cJn.png" alt="AE.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="统计指标"><a href="#统计指标" class="headerlink" title="统计指标"></a>统计指标</h2><ul>
+<li>AEE：平均点误差</li>
+<li>AAE：平均角误差</li>
+</ul>
+<h1 id="Datasets"><a href="#Datasets" class="headerlink" title="Datasets"></a>Datasets</h1><h2 id="MPI-Sintel"><a href="#MPI-Sintel" class="headerlink" title="MPI Sintel"></a><a target="_blank" rel="noopener" href="http://sintel.is.tue.mpg.de/">MPI Sintel</a></h2><p>从人工生成的动画 sintel 中得到光流 ground truth，每一个版本都包含 1041 个可用来训练的图片对，提供的 ground truth 十分密集，大幅度、小幅度的运动都包含。 </p>
+<p>sintel 数据集包括两种版本： </p>
+<ul>
+<li>sintel final：包括运动模糊和一些环境氛围特效，如雾等</li>
+<li>sintel clean：没有 final 的特效</li>
+</ul>
+<h2 id="Crowd-Flow"><a href="#Crowd-Flow" class="headerlink" title="Crowd-Flow"></a><a href="https://github.com/tsenst/CrowdFlow">Crowd-Flow</a></h2><ul>
+<li>序列包含 371 到 1451 个独立运动的个体</li>
+<li>数据集由 10 个长度范围的序列组成，在 300 至 450 帧之间，所有序列均以 25hz 的帧速率和高清分辨率呈现</li>
+<li>与此前光流数据集相比，该数据集除了提高了分辨率和帧的数量之外，还以连续序列而不是单帧对进行组织，允许评估时间一致性，例如以轨迹的形式</li>
+</ul>
+<h2 id="KITTI"><a href="#KITTI" class="headerlink" title="KITTI"></a><a target="_blank" rel="noopener" href="https://www.cvlibs.net/datasets/kitti/index.php">KITTI</a></h2><p>只有一种特殊的动作类型（类似行车记录仪），并且位移很大，视频使用一个摄像头，ground-truth 由 3D 激光雷达得出，远距离的物体，如天空没法被捕捉，导致该数据集光流 ground-truth 比较稀疏。</p>
+<ul>
+<li>KITTI 2012：194 组图片</li>
+<li>KITTI 2015：200 组图片</li>
+</ul>
+<h2 id="Flying-Chairs"><a href="#Flying-Chairs" class="headerlink" title="Flying Chairs"></a><a target="_blank" rel="noopener" href="https://lmb.informatik.uni-freiburg.de/resources/datasets/FlyingChairs.en.html">Flying Chairs</a></h2><p>软件渲染生成的虚拟数据，包含了 22872 对图像。</p>
+<h2 id="SceneFlow"><a href="#SceneFlow" class="headerlink" title="SceneFlow"></a><a target="_blank" rel="noopener" href="https://lmb.informatik.uni-freiburg.de/resources/datasets/SceneFlowDatasets.en.html">SceneFlow</a></h2><p>利用软件渲染生成的虚拟立体数据集，包含 35454 个训练图像（有 ground truth），所有的图片分辨率都是 960x540。<br>主要包含三个子集：</p>
+<ul>
+<li>FlyingThings3D</li>
+<li>Driving</li>
+<li>Monkaa</li>
+</ul>
+<h2 id="Middlebury"><a href="#Middlebury" class="headerlink" title="Middlebury"></a><a target="_blank" rel="noopener" href="http://vision.middlebury.edu/flow/eval">Middlebury</a></h2><ul>
+<li>评估使用 1.1 中的 4 个指标</li>
+<li>gray 和 color 都有</li>
+<li>位移很小，通常小于10个像素</li>
+<li>12 个场景的图片流，每个场景图片只有 10 张</li>
+<li>针对的是全图片的光流，ground-truth 只有 1 帧的。需要把跑出来的光流结果保存成指定的数据格式(.flo)，上传到指定地址</li>
+</ul>
+<h2 id="数据集生成工具"><a href="#数据集生成工具" class="headerlink" title="数据集生成工具"></a>数据集生成工具</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://microsoft.github.io/AirSim/">AirSim</a>：能够生成无人机视角和公路驾驶视角的两类数据</li>
+<li><a target="_blank" rel="noopener" href="http://carla.org/">Carla</a>：高仿真的自动驾驶场景</li>
+</ul>
+<h1 id="不依赖数据集评估方案"><a href="#不依赖数据集评估方案" class="headerlink" title="不依赖数据集评估方案"></a>不依赖数据集评估方案</h1><h2 id="forward-backward"><a href="#forward-backward" class="headerlink" title="forward-backward"></a>forward-backward</h2><p>使用基于奇偶数的 forward-backward：如有 5 幅图像。前向时为 0-2-4，后向时为 4-3-1-0，连起来为 0-2-4-3-1-0。<br>最后使用欧氏距离计算出 0 帧与最后的 0 帧图像之间，特征点位置的漂移 e，即 final drift。设定一个阈值 threshold，计算小于 threshold 的特征点的百分比，为鲁棒性；e 的直方图用于表示稳定性。</p>
+<h1 id="Ref"><a href="#Ref" class="headerlink" title="Ref."></a>Ref.</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/catpico/article/details/122890919">optical flow光流估计的评价指标_wrotcat的博客-CSDN博客</a></li>
+<li><a target="_blank" rel="noopener" href="https://sourceforge.net/p/emgucv/opencv_contrib/ci/4ec320efe1a04604eee4c024c7b9d9d37ddab80a/tree/modules/optflow/samples/optical_flow_evaluation.cpp#l1">Emgu CV &#x2F; OpenCV Contrib Git clone &#x2F; [4ec320] &#x2F;modules&#x2F;optflow&#x2F;samples&#x2F;optical_flow_evaluation.cpp</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.docin.com/p-1461046820.html">图像序列光流计算评估理论及方法研究</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/548858539">最全自动驾驶数据集分享系列四｜光流数据集</a></li>
+<li><a target="_blank" rel="noopener" href="https://opendatalab.com/">Datasets-OpenDataLab</a></li>
+<li><a href="https://github.com/liruoteng/OpticalFlowToolkit">OPTICAL FLOW TOOLKIT</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qxqxqzzz/article/details/100989893">optical flow数据集KITTI 2012 2015 sintel crowd flow_城俊BLOG的博客-CSDN博客</a></li>
+<li>论文：Evaluation of Endoscopic Image Enhancement for Feature Tracking: A New Validation Framework</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010141025/article/details/15810713">特征点检测和追踪评价:A New Validation Framework</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Su Zhilong 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="Su Zhilong 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Computer-vision/" rel="tag"># Computer vision</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/03/30/rcar_wiki/" rel="prev" title="RCAR2021 wiki">
+      <i class="fa fa-chevron-left"></i> RCAR2021 wiki
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%89%E6%B5%81%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87"><span class="nav-number">1.</span> <span class="nav-text">光流评估指标</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AF%E5%B7%AE%E6%8C%87%E6%A0%87"><span class="nav-number">1.1.</span> <span class="nav-text">误差指标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%9F%E8%AE%A1%E6%8C%87%E6%A0%87"><span class="nav-number">1.2.</span> <span class="nav-text">统计指标</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Datasets"><span class="nav-number">2.</span> <span class="nav-text">Datasets</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MPI-Sintel"><span class="nav-number">2.1.</span> <span class="nav-text">MPI Sintel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Crowd-Flow"><span class="nav-number">2.2.</span> <span class="nav-text">Crowd-Flow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KITTI"><span class="nav-number">2.3.</span> <span class="nav-text">KITTI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flying-Chairs"><span class="nav-number">2.4.</span> <span class="nav-text">Flying Chairs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SceneFlow"><span class="nav-number">2.5.</span> <span class="nav-text">SceneFlow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Middlebury"><span class="nav-number">2.6.</span> <span class="nav-text">Middlebury</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7"><span class="nav-number">2.7.</span> <span class="nav-text">数据集生成工具</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8D%E4%BE%9D%E8%B5%96%E6%95%B0%E6%8D%AE%E9%9B%86%E8%AF%84%E4%BC%B0%E6%96%B9%E6%A1%88"><span class="nav-number">3.</span> <span class="nav-text">不依赖数据集评估方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#forward-backward"><span class="nav-number">3.1.</span> <span class="nav-text">forward-backward</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ref"><span class="nav-number">4.</span> <span class="nav-text">Ref.</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Su Zhilong"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Su Zhilong</p>
+  <div class="site-description" itemprop="description">I will always be with you</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/suzhilong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;suzhilong"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Su Zhilong</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">379k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">5:44</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'uaEz4DL2UqM1jg1eGmpd8vhF-gzGzoHsz',
+      appKey     : 'SzL1ETN5dDwbXjnzyJYJkjTb',
+      placeholder: "comment",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

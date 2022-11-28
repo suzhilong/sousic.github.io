@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://s2.loli.net/2022/11/27/gm1UaiBwIoZrnPc.png">
 <meta property="og:image" content="https://s2.loli.net/2022/11/27/Pb8hR4dVBoi7cJn.png">
 <meta property="article:published_time" content="2022-11-27T13:39:00.000Z">
-<meta property="article:modified_time" content="2022-11-27T15:34:08.564Z">
+<meta property="article:modified_time" content="2022-11-28T13:40:14.761Z">
 <meta property="article:author" content="Su Zhilong">
 <meta property="article:tag" content="Computer vision">
 <meta name="twitter:card" content="summary">
@@ -221,10 +221,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-11-27 21:39:00 / 修改时间：23:34:08" itemprop="dateCreated datePublished" datetime="2022-11-27T21:39:00+08:00">2022-11-27</time>
+              <time title="创建时间：2022-11-27 21:39:00" itemprop="dateCreated datePublished" datetime="2022-11-27T21:39:00+08:00">2022-11-27</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-11-28 21:40:14" itemprop="dateModified" datetime="2022-11-28T21:40:14+08:00">2022-11-28</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -259,14 +265,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.2k</span>
+              <span>3.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -288,11 +294,11 @@
 <span id="more"></span>
 <h1 id="光流评估指标"><a href="#光流评估指标" class="headerlink" title="光流评估指标"></a>光流评估指标</h1><h2 id="误差指标"><a href="#误差指标" class="headerlink" title="误差指标"></a>误差指标</h2><ul>
 <li><p>EPE(Endpoint Error)：估计光流和 ground-truth 光流的欧氏距离<br>$$EPE &#x3D; \sqrt{(u_{est} - u_{gt})^2 + (v_{est} - v_{gt})^2}$$<br><img src="https://s2.loli.net/2022/11/27/gm1UaiBwIoZrnPc.png" alt="EPE.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;float&gt; EndPointError(const std::vector&lt;cv::Point2f&gt;&amp; prevPoints, const std::vector&lt;cv::Point2f&gt;&amp; nextPoints, std::vector&lt;uchar&gt; status)</span><br><span class="line">&#123;</span><br><span class="line">    std::vector&lt;float&gt; endPointError;</span><br><span class="line">    for (int i = 0; i &lt; prevPoints.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">      const cv::Point2f prevP = prevPoints[i];</span><br><span class="line">      const cv::Point2f nextP = nextPoints[i];</span><br><span class="line">      float distance = 100.0;</span><br><span class="line">      if ((bool)status[i])</span><br><span class="line">      &#123;</span><br><span class="line">        const cv::Point2f diff = nextP - prevP;</span><br><span class="line">        distance = sqrt((float)diff.ddot(diff));</span><br><span class="line">      &#125;</span><br><span class="line">      endPointError.push_back(distance);</span><br><span class="line">    &#125;</span><br><span class="line">    return endPointError;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
 <li><p>AE(Angular Error)：光流向量之间的角度误差。计算角度误差时增加一维，使用的是三维向量 (u, v, 1)<br>$$\mathrm{AE}&#x3D;\arccos \left(\frac{\left(\mathrm{u}<em>{\mathrm{est}}, \mathrm{v}</em>{\text {est }}, 1\right)^{\mathrm{T}} *\left(\mathrm{u}<em>{\mathrm{gt}}, \mathrm{v}</em>{\mathrm{gt}}, 1\right)}{\left.\sqrt{1.0+\mathrm{u}<em>{\mathrm{est}} * \mathrm{u}</em>{\mathrm{est}}+\mathrm{v}<em>{\mathrm{est}} * \mathrm{v}</em>{\mathrm{est}}} \sqrt{1.0+\mathrm{u}<em>{\mathrm{gt}} * \mathrm{u}</em>{\mathrm{gt}}+\mathrm{v}<em>{\mathrm{gt}} * \mathrm{v}</em>{\mathrm{gt}}}\right)}\right)$$<br><img src="https://s2.loli.net/2022/11/27/Pb8hR4dVBoi7cJn.png" alt="AE.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;float&gt; AngularError(const std::vector&lt;cv::Point2f&gt;&amp; prevPoints, const std::vector&lt;cv::Point2f&gt;&amp; nextPoints, std::vector&lt;uchar&gt; status)</span><br><span class="line">&#123;</span><br><span class="line">    std::vector&lt;float&gt; angularErrs;</span><br><span class="line">    for (int i = 0; i &lt; prevPoints.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">      const cv::Point2f prevPoint2d = prevPoints[i];</span><br><span class="line">      const cv::Point2f nextPoint2d = nextPoints[i];</span><br><span class="line">      const cv::Point3f prevPoint3d(prevPoint2d.x, prevPoint2d.y, 1);</span><br><span class="line">      const cv::Point3f nextPoint3d(nextPoint2d.x, nextPoint2d.y, 1);</span><br><span class="line">      double angularErr = 100.0;</span><br><span class="line">      if ((bool)status[i])</span><br><span class="line">      &#123;</span><br><span class="line">        double vecDocVec = prevPoint3d.ddot(nextPoint3d);</span><br><span class="line">        double vecNormProvecNorm = norm(prevPoint3d) * norm(nextPoint3d);</span><br><span class="line">        double mid = vecDocVec / vecNormProvecNorm;</span><br><span class="line">        double AE = acos(mid);</span><br><span class="line">        angularErr = acos((double)(prevPoint3d.ddot(nextPoint3d) / norm(prevPoint3d) * norm(nextPoint3d)));</span><br><span class="line">      &#125;</span><br><span class="line">      angularErrs.push_back(angularErr);</span><br><span class="line">    &#125;</span><br><span class="line">    return angularErrs;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="统计指标"><a href="#统计指标" class="headerlink" title="统计指标"></a>统计指标</h2><ul>
 <li>AEE：平均点误差</li>
@@ -332,7 +338,10 @@
 <li><a target="_blank" rel="noopener" href="https://microsoft.github.io/AirSim/">AirSim</a>：能够生成无人机视角和公路驾驶视角的两类数据</li>
 <li><a target="_blank" rel="noopener" href="http://carla.org/">Carla</a>：高仿真的自动驾驶场景</li>
 </ul>
-<h1 id="不依赖数据集评估方案"><a href="#不依赖数据集评估方案" class="headerlink" title="不依赖数据集评估方案"></a>不依赖数据集评估方案</h1><h2 id="forward-backward"><a href="#forward-backward" class="headerlink" title="forward-backward"></a>forward-backward</h2><p>使用基于奇偶数的 forward-backward：如有 5 幅图像。前向时为 0-2-4，后向时为 4-3-1-0，连起来为 0-2-4-3-1-0。<br>最后使用欧氏距离计算出 0 帧与最后的 0 帧图像之间，特征点位置的漂移 e，即 final drift。设定一个阈值 threshold，计算小于 threshold 的特征点的百分比，为鲁棒性；e 的直方图用于表示稳定性。</p>
+<h1 id="不依赖数据集评估方案"><a href="#不依赖数据集评估方案" class="headerlink" title="不依赖数据集评估方案"></a>不依赖数据集评估方案</h1><h2 id="forward-backward"><a href="#forward-backward" class="headerlink" title="forward-backward"></a>forward-backward</h2><p>使用基于奇偶数的 forward-backward：如有 5 幅图像。前向时为 0-2-4，后向时为 4-3-1-0，连起来为 0-2-4-3-1-0。<br>最后使用欧氏距离计算出 0 帧与最后的 0 帧图像之间，特征点位置的漂移 e，即 final drift。设定一个阈值 threshold，计算小于 thresh 的特征点的百分比，为鲁棒性；e 的直方图用于表示稳定性。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">float OpticalFlowRubost(std::vector&lt;float&gt; endpointErr, float thresh)</span><br><span class="line">&#123;</span><br><span class="line">    int goodPoint = 0;</span><br><span class="line">    int totalPoint = endpointErr.size();</span><br><span class="line">    for (size_t i = 0; i &lt; totalPoint; i++)</span><br><span class="line">    &#123;</span><br><span class="line">      if (endpointErr[i] &lt; thresh)</span><br><span class="line">      &#123;</span><br><span class="line">        goodPoint++;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return (float)goodPoint / (float)totalPoint;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 <h1 id="Ref"><a href="#Ref" class="headerlink" title="Ref."></a>Ref.</h1><ul>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/catpico/article/details/122890919">optical flow光流估计的评价指标_wrotcat的博客-CSDN博客</a></li>
 <li><a target="_blank" rel="noopener" href="https://sourceforge.net/p/emgucv/opencv_contrib/ci/4ec320efe1a04604eee4c024c7b9d9d37ddab80a/tree/modules/optflow/samples/optical_flow_evaluation.cpp#l1">Emgu CV &#x2F; OpenCV Contrib Git clone &#x2F; [4ec320] &#x2F;modules&#x2F;optflow&#x2F;samples&#x2F;optical_flow_evaluation.cpp</a></li>
@@ -515,12 +524,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">379k</span>
+    <span title="站点总字数">380k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:44</span>
+    <span title="站点阅读时长">5:46</span>
 </div>
 
         

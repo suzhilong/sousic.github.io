@@ -107,88 +107,6 @@
       </tags>
   </entry>
   <entry>
-    <title>STL常用方法</title>
-    <url>/2020/07/12/STL/</url>
-    <content><![CDATA[<h1 id="常用STL库的使用方法"><a href="#常用STL库的使用方法" class="headerlink" title="常用STL库的使用方法"></a>常用STL库的使用方法</h1><p>记录了常用的STL使用方法</p>
-<span id="more"></span>
-<h2 id="vector：数组"><a href="#vector：数组" class="headerlink" title="vector：数组"></a>vector：数组</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;vector&gt;  </span><br><span class="line"></span><br><span class="line">vector&lt;int&gt; a(10);//初始化10个默认为0的数  </span><br><span class="line">vector&lt;int&gt; a(10,1);//初始化10个默认为1的数  </span><br><span class="line">vector&lt;int&gt; a;  </span><br><span class="line"></span><br><span class="line">//初始化二维数组  </span><br><span class="line">vector&lt;vector&lt;int&gt; &gt; 2dVec(m ,vector&lt;int&gt;(n)); //m*n的二维vector，注意两个 &quot;&gt; &quot;之间要有空格</span><br><span class="line">2dVec.push_back(&#123;1, 2, 3&#125;);//可以这样加vector  </span><br><span class="line">vector&lt;vector&lt;int&gt; &gt; 2dVec(m ,vector&lt;int&gt;(n,0)); //m*n的二维vector，所有元素初始化为0  </span><br><span class="line">a.push_back()  </span><br><span class="line">a[0]  </span><br><span class="line">a.front() //首元素  </span><br><span class="line">a.back() //尾元素  </span><br><span class="line">a.size()  </span><br><span class="line">a.pop_back()//删除不输出  </span><br><span class="line">it = a.begin()+1  </span><br><span class="line">a.erase(it)  </span><br><span class="line">it2 = a.begin()+3  </span><br><span class="line">a.erase(it,it2)//删除[it1,it2)  </span><br><span class="line">a.clear()  </span><br><span class="line">a.empty()  </span><br><span class="line">a.insert(it,-1)  </span><br><span class="line"></span><br><span class="line">vector&lt;int&gt;::iterator itDele;</span><br><span class="line">it = find(a.begin(), a.end(), 3);//查找3</span><br><span class="line">if(it!=a.end())//如果找到了</span><br><span class="line"></span><br><span class="line">//pair  make_pair</span><br><span class="line">vector&lt;pair&lt;int ,int&gt; &gt; vp;</span><br><span class="line">vp.push_back(&#123;1, 0&#125;);</span><br><span class="line">vp.push_back(make_pair(0, 1));</span><br><span class="line">vector&lt;pair&lt;int, int&gt; &gt; vp2 = &#123;&#123;1, 0&#125;, &#123;0, 1&#125;, &#123;-1, 0&#125;, &#123;0, -1&#125;&#125;;</span><br><span class="line">vp2.push_back(make_pair&lt;int, int&gt;(5, 6));</span><br></pre></td></tr></table></figure>
-
-<h2 id="list：数组"><a href="#list：数组" class="headerlink" title="list：数组"></a>list：数组</h2><p>Lists将元素按顺序储存在链表中. 与向量(vectors)相比, 它允许快速的插入和删除，但是随机访问却比较慢。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;list&gt;</span><br><span class="line">pop_back() 删除最后一个元素 </span><br><span class="line">pop_front() 删除第一个元素 </span><br><span class="line">push_back() 在list的末尾添加一个元素 </span><br><span class="line">push_front() 在list的头部添加一个元素 </span><br><span class="line">back() 返回最后一个元素 </span><br><span class="line">front() 返回第一个元素 </span><br><span class="line">begin() 返回指向第一个元素的迭代器 </span><br><span class="line">end() 返回末尾的迭代器 </span><br><span class="line">size() 返回list中的元素个数 </span><br><span class="line">clear() 删除所有元素 </span><br><span class="line">empty() 如果list是空的则返回true</span><br><span class="line">a.sort() 给list排序</span><br><span class="line">erase() 删除一个元素 </span><br><span class="line">assign() 给list赋值 </span><br><span class="line">get_allocator() 返回list的配置器 </span><br><span class="line">insert() 插入一个元素到list中 </span><br><span class="line">max_size() 返回list能容纳的最大元素数量 </span><br><span class="line">merge() 合并两个list </span><br><span class="line">rbegin() 返回指向第一个元素的逆向迭代器 </span><br><span class="line">remove() 从list删除元素 </span><br><span class="line">remove_if() 按指定条件删除元素 </span><br><span class="line">rend() 指向list末尾的逆向迭代器 </span><br><span class="line">resize() 改变list的大小 </span><br><span class="line">reverse() 把list的元素倒转 </span><br><span class="line">splice() 合并两个list </span><br><span class="line">swap() 交换两个list </span><br><span class="line">unique() 删除list中重复的元素</span><br></pre></td></tr></table></figure>
-
-<h2 id="stack：栈"><a href="#stack：栈" class="headerlink" title="stack：栈"></a>stack：栈</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;stack&gt;</span><br><span class="line"></span><br><span class="line">stack&lt;int&gt; a;</span><br><span class="line">a.push()</span><br><span class="line">a.top()</span><br><span class="line">a.pop()</span><br><span class="line">a.empty()</span><br><span class="line">a.size()</span><br></pre></td></tr></table></figure>
-
-<h2 id="queue：队列"><a href="#queue：队列" class="headerlink" title="queue：队列"></a>queue：队列</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;queue&gt;</span><br><span class="line"></span><br><span class="line">queue&lt;int&gt; a;</span><br><span class="line">a.push()</span><br><span class="line">a.front()</span><br><span class="line">a.back()</span><br><span class="line">a.pop()</span><br><span class="line">a.empty()</span><br><span class="line">a.size()</span><br></pre></td></tr></table></figure>
-
-<h2 id="priority-queue：堆"><a href="#priority-queue：堆" class="headerlink" title="priority_queue：堆"></a>priority_queue：堆</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;queue&gt;</span><br><span class="line"></span><br><span class="line">//priority_queue&lt;type,container,function&gt;</span><br><span class="line">//小根堆，a&gt;b</span><br><span class="line">priority_queue &lt;int,vector&lt;int&gt;,greater&lt;int&gt; &gt; q; </span><br><span class="line">//大根堆，a&lt;b</span><br><span class="line">priority_queue &lt;int,vector&lt;int&gt;,less&lt;int&gt; &gt; q;</span><br><span class="line">//默认是大根堆</span><br><span class="line">priority_queue &lt;int&gt; q ;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//自定义堆的比较方式</span><br><span class="line">//方法1，用类</span><br><span class="line">class cmp</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    bool operator()(const pair&lt;int, int&gt; &amp;a, const pair&lt;int, int&gt; &amp;b)&#123;</span><br><span class="line">        return a.second &gt; b.second; //a&gt;b = greater&lt;int&gt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">//方法2，用struct</span><br><span class="line">struct cmp</span><br><span class="line">&#123;</span><br><span class="line">    bool operator()(const pair&lt;int, int&gt; &amp;a, const pair&lt;int, int&gt; &amp;b)&#123;</span><br><span class="line">        return a.second &gt; b.second;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">priority_queue&lt;pair&lt;int, int&gt;,vector&lt;pair&lt;int,int&gt; &gt;, cmp&gt; pq;</span><br><span class="line"></span><br><span class="line">//注意！没有front和back</span><br><span class="line">q.push()</span><br><span class="line">q.pop()</span><br><span class="line">q.top()</span><br><span class="line">q.empty()</span><br><span class="line">q.size()</span><br></pre></td></tr></table></figure>
-
-<h2 id="map-x2F-unordered-map"><a href="#map-x2F-unordered-map" class="headerlink" title="map&#x2F;unordered_map"></a>map&#x2F;unordered_map</h2><p>哈希表的实现：STL中，<code>map/set</code> 对应的数据结构是红黑树。红黑树是一种近似于平衡的二叉查找树，里面的数据是有序的。在红黑树上做查找操作的时间复杂度为 O(logN)。而 <code>unordered_map/unordered_set</code> 对应 哈希表，哈希表的特点就是查找效率高，时间复杂度为常数级别 O(1)， 而额外空间复杂度则要高出许多而且无序。所以对于需要高效率查询的情况，使用 <code>unordered_map</code> 容器。而如果对内存大小比较敏感或者数据存储要求有序的话，则可以用 <code>map</code> 容器。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;map&gt;</span><br><span class="line"></span><br><span class="line">std:map&lt;int,int&gt; mapA;</span><br><span class="line">//插入</span><br><span class="line">mapA.insert(std::pair&lt;int,int&gt;(0,1));</span><br><span class="line">mapA.insert(map&lt;int,int&gt;::value_type (0,1));</span><br><span class="line">mapA[0] = 1;</span><br><span class="line">mapA.at(0)</span><br><span class="line">mapA.size()</span><br><span class="line">map&lt;int, int&gt;::iterator iter;//迭代器</span><br><span class="line">mapA.erase(key/iter)</span><br><span class="line">mapA.clear()</span><br><span class="line">mapA.empty()</span><br><span class="line">mapA.count() //由于map不包含重复的key，因此m.count(key)取值为0，或者1，表示是否包含。</span><br><span class="line">mapA.find(key)//返回迭代器，判断是否存在。</span><br><span class="line">mapA.find(key) != mapA.end() //为真说明存在</span><br><span class="line"></span><br><span class="line">#include &lt;unordered_map&gt; //和map差不多</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2020/06/15/2eMDTN3HXOPt9oK.png" alt="map的用法"></p>
-<h3 id="map的注意事项："><a href="#map的注意事项：" class="headerlink" title="map的注意事项："></a>map的注意事项：</h3><ul>
-<li>在map中，由key查找value时，首先要判断map中是否包含key。</li>
-<li>如果不检查，直接返回map[key]，可能会出现意想不到的行为。如果map包含key，没有问题，如果map不包含key，使用下标有一个危险的副作用，会在map中插入一个key的元素，value取默认值，返回value。也就是说，map[key]不可能返回null。</li>
-</ul>
-<p>比如：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">unordered_map&lt;string, int&gt; mapA;</span><br><span class="line">cout &lt;&lt; mapA.size() &lt;&lt; endl; //这时为0</span><br><span class="line">int a = mapA[&quot;aa&quot;] //本来是空map，但是调用mapA[&quot;aa&quot;]之后，会自动插入mapA[&quot;aa&quot;]=0，返回0</span><br><span class="line">cout &lt;&lt; mapA.size() &lt;&lt; endl; //这使为1</span><br></pre></td></tr></table></figure>
-
-<h2 id="set-x2F-multiset-x2F-unordered-set"><a href="#set-x2F-multiset-x2F-unordered-set" class="headerlink" title="set&#x2F;multiset&#x2F;unordered_set"></a>set&#x2F;multiset&#x2F;unordered_set</h2><p>set和multiset的区别：</p>
-<ul>
-<li>set不可以有重复的元素</li>
-<li>multiset可以有重复的元素</li>
-</ul>
-<p>和map&#x2F;unordered_map一样，也是set&#x2F;multiset使用红黑树实现，unordered_set使用哈希表实现。unordered_set和unordered_map内部实现的公共接口大致相同。</p>
-<ol>
-<li>set是按照一定的次序存储元素的容器，set遍历后有序，默认按照小于排序</li>
-<li>set中只放value，但是底层存放的是&lt;value, value&gt;的键值对。每个value必须是惟一的</li>
-<li>set允许插入和删除，不允许修改</li>
-<li>set按照内部比较对象（类型比较）所指示的特定严格弱排序准则进行排序</li>
-<li>set在底层用二叉搜索树（红黑树）实现</li>
-<li>set中查找、插入、删除元素的复杂度为O(logn)，unordered_set为O(1)</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;set&gt;</span><br><span class="line">#include &lt;unordered_set&gt;</span><br><span class="line"></span><br><span class="line">unordered_set&lt;int&gt; us;</span><br><span class="line">us.insert(2);//插入</span><br><span class="line">unordered_set&lt;int&gt; us1(us);//us1=us</span><br><span class="line">unordered_set&lt;int&gt; us2(us1.begin(),us1.end());</span><br><span class="line"></span><br><span class="line">us.erase(6); //删除键值为6的元素</span><br><span class="line">set&lt;int&gt;::iterator it;  </span><br><span class="line">it = us.find(6); //查找键值为6的元素</span><br><span class="line">int n = us.count(6);//也能判断一个数是否在集合中。n=0不在，n=在</span><br><span class="line"></span><br><span class="line">set&lt;int&gt; s = &#123;3,8,12,15&#125;</span><br><span class="line">s.lower_bound(8); //表示查找 &gt;= 8 的元素中最小的一个(8)，并返回指向该元素的迭代器</span><br><span class="line">s.upper_bound(8); //表示查找 &gt;8 的元素中最小的一个(12)，并返回指向该元素的迭代器</span><br><span class="line"></span><br><span class="line">s.lower_bound(9); //12</span><br><span class="line">s.upper_bound(9); //12</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">begin()         //返回指向第一个元素的迭代器</span><br><span class="line">clear()         //清除所有元素</span><br><span class="line">count()         //返回某个值元素的个数</span><br><span class="line">empty()         //如果集合为空，返回true</span><br><span class="line">end()           //返回指向最后一个元素的迭代器</span><br><span class="line">equal_range()   //返回集合中与给定值相等的上下限的两个迭代器</span><br><span class="line">erase()         //删除集合中的元素</span><br><span class="line">find()          //返回一个指向被查找到元素的迭代器</span><br><span class="line">get_allocator() //返回集合的分配器</span><br><span class="line">insert()        //在集合中插入元素</span><br><span class="line">lower_bound()   //返回指向大于（或等于）某值的第一个元素的迭代器</span><br><span class="line">key_comp()      //返回一个用于元素间值比较的函数</span><br><span class="line">max_size()      //返回集合能容纳的元素的最大限值</span><br><span class="line">rbegin()        //返回指向集合中最后一个元素的反向迭代器</span><br><span class="line">rend()          //返回指向集合中第一个元素的反向迭代器</span><br><span class="line">size()          //集合中元素的数目</span><br><span class="line">swap()          //交换两个集合变量</span><br><span class="line">upper_bound()   //返回大于某个值元素的迭代器</span><br><span class="line">value_comp()    //返回一个用于比较元素间的值的函数</span><br></pre></td></tr></table></figure>
-
-<h2 id="string"><a href="#string" class="headerlink" title="string"></a>string</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;string&gt;</span><br><span class="line">string s;</span><br><span class="line">s.find()//在s当中查找第一个出现</span><br><span class="line">s.rfind()//在s当中查找最后一个出现</span><br><span class="line">int is = stoi(val) //把string val转换成int。stoi()会做范围检查，默认范围是在int的范围内的，如果超出范围的话则会runtime error</span><br><span class="line">int is = atoi(val.c_str()) //atoi()不会做范围检查，如果超出范围的话，超出上界，则输出上界，超出下界，则输出下界</span><br><span class="line"></span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">reverse(s.begin(),s.end()); //反转字符串</span><br><span class="line"></span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">//s1 s2需要c风格字符串char</span><br><span class="line">//如果是string，需要s1.c_str()</span><br><span class="line">strcmp(s1,s2) //相等返回0；s1-s2大于0，则返回1，小于0则返回-1</span><br><span class="line">strncmp(s1,s2,n) //比较前n个</span><br><span class="line">strcpy(s1,s2) //s2复制到s1,注意s2不要比s1长</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://i.loli.net/2020/06/15/gkiTrRs2O5WL9qU.png" alt="string和char的对比"></p>
-<h2 id="大小写转换"><a href="#大小写转换" class="headerlink" title="大小写转换"></a>大小写转换</h2><p><img src="https://i.loli.net/2020/06/19/DtlTnEAUK7qQRFc.jpg" alt="ASCII表"></p>
-<ol>
-<li><strong>对应大小写字母之间相差32</strong></li>
-<li>transform函数：直接处理<code>string</code><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">string s = &quot;aBc&quot;;</span><br><span class="line"></span><br><span class="line">transform(s.begin(), s.end(), s.begin(), ::tolower);//::toupper转大写</span><br></pre></td></tr></table></figure></li>
-<li>toupper, tolower：处理<code>char</code><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;cctype&gt;</span><br><span class="line"></span><br><span class="line">char s = &#x27;a&#x27;;</span><br><span class="line">char sl = tolower(s);</span><br><span class="line">char su = toupper(sl);</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="algorithm"><a href="#algorithm" class="headerlink" title="algorithm"></a>algorithm</h2><h3 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h3><p><code>sort</code>并非只是普通的<strong>快速排序</strong>，除了对普通的快速排序进行优化，它还结合了<strong>插入排序</strong>和<strong>堆排序</strong>。根据不同的数量级别以及不同情况，能自动选用合适的排序方法。当数据量较大时采用快速排序，分段递归。一旦分段后的数据量小于某个阀值，为避免递归调用带来过大的额外负荷，便会改用插入排序。而如果递归层次过深，有出现最坏情况的倾向，还会改用堆排序。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;algorithm&gt;</span><br><span class="line"></span><br><span class="line">//nums必须是线性容器</span><br><span class="line">//降序排序</span><br><span class="line">sort(nums.begin(),nums.end(),greater&lt;int&gt;());</span><br><span class="line">//升序（默认是升序）</span><br><span class="line">sort(nums.begin(),nums.end(),less&lt;int&gt;());</span><br><span class="line">sort(nums.begin(),nums.end());</span><br><span class="line"></span><br><span class="line">//自定义排序函数</span><br><span class="line">vector&lt;vecotr&lt;int&gt; &gt; nums2d;</span><br><span class="line">bool cmp(const vector&lt;int&gt; &amp;a, const vector&lt;int&gt; &amp;b)&#123;</span><br><span class="line">    //注意！这个函数要在类外面定义</span><br><span class="line">    return a[1] &gt; b[1];//按第二维降序</span><br><span class="line">&#125;</span><br><span class="line">sort(nums2d.begin(),nums2d.end(),cmp);</span><br><span class="line"></span><br><span class="line">//稳定排序</span><br><span class="line">stable_sort(nums.begin(),nums.end(),greater&lt;int&gt;());</span><br><span class="line">stable_sort(nums.begin(),nums.end(),less&lt;int&gt;());</span><br></pre></td></tr></table></figure>
-<p>sort算法有个限制，利用sort算法只能对<strong>序列容器</strong>进行排序，就是线性的，如<strong>vector，list，deque</strong>。map也是一个集合容器，但它里面存储的元素是pair，不是线性存储的（前面提过，像红黑树），所以利用sort不能直接和map结合进行排序。</p>
-<p>如果想对map进行排序，可以把map放到vector中。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 将map中的内容转存到vector中</span><br><span class="line">vector&lt;pair&lt;string, int&gt; &gt; vec(map.begin(), map.end());</span><br><span class="line"></span><br><span class="line">bool cmp(const pair&lt;string, int&gt;&amp; a, const pair&lt;string, int&gt;&amp; b) &#123;</span><br><span class="line">        return a.second &lt; b.second;</span><br><span class="line">&#125;</span><br><span class="line">//对线性的vector进行排序</span><br><span class="line">sort(vec.begin(), vec.end(), cmp);</span><br></pre></td></tr></table></figure>
-
-<p>注意：</p>
-<ol>
-<li>支持随机存取迭代器（连续存储空间）的<code>vector</code>，<code>deque</code> （双向存取的vector）可以使用sort；</li>
-<li>支持随机存取迭代器（链式非连续存储空间）的<code>list</code>（双向链表）和<code>slist</code>（单向链表forward_list），不能使用STL的sort，但是类中有自定义的sort()成员函数；</li>
-<li>关系型容器中基于红黑树的<code>set</code>，<code>multiset</code>，<code>map</code>，<code>multimap</code>，本身就有自动排序的功能，不需要sort函数。如果有特殊排序需求的话，可以放入vector中；</li>
-<li><code>stack</code>，<code>queue</code>没有迭代器，入口出口固定，不能进行排序；</li>
-<li>基于哈希表的<code>unordered_map</code>等都是为排序的，也不需要排序。</li>
-</ol>
-<h3 id="count"><a href="#count" class="headerlink" title="count"></a>count</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;algorithm&gt;</span><br><span class="line"></span><br><span class="line">vector&lt;int&gt; nums = &#123;100,100,100,101&#125;;</span><br><span class="line">int num = count(nums.begin(),nums.end(),100);//统计100出现的次数</span><br></pre></td></tr></table></figure>
-
-<h3 id="lower-bound、upper-bound、binary-search"><a href="#lower-bound、upper-bound、binary-search" class="headerlink" title="lower_bound、upper_bound、binary_search"></a>lower_bound、upper_bound、binary_search</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;algorithm&gt;</span><br><span class="line"></span><br><span class="line">lower_bound(起始地址，结束地址，要查找的数值) //返回的是数值 第一个 出现的位置。</span><br><span class="line">upper_bound(起始地址，结束地址，要查找的数值) //返回的是数值 最后一个 出现的位置。</span><br><span class="line">binary_search(起始地址，结束地址，要查找的数值)  //返回的是是否存在这么一个数，是一个bool值。</span><br></pre></td></tr></table></figure>
-
-<h2 id="一些数学运算"><a href="#一些数学运算" class="headerlink" title="一些数学运算"></a>一些数学运算</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;cmath&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2020/06/15/iLAdQTJq3j19CH5.png" alt="cmath"></p>
-<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;iterator&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2020/06/15/lqItjZGhRkmMwPf.png" alt="iter"></p>
-<h2 id="cctype"><a href="#cctype" class="headerlink" title="cctype"></a>cctype</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;cctype&gt;</span><br><span class="line"></span><br><span class="line">isalnum(c)//当c是字母或数字时为真</span><br><span class="line">isalpha(c)//当c是字母时为真</span><br><span class="line">isdigit(c)//当c是数字时为真</span><br><span class="line">islower(c)//当c是小写字母时为真</span><br><span class="line">isupper(c)//当c是大写字母时为真</span><br><span class="line">isspace(c)//当c是空白时为真（即c是空格、横向制表符、纵向制表符、回车符、换行符、进纸符）</span><br><span class="line">iscntrl(c)//当c是控制字符时为真</span><br><span class="line">isgraph(c)//当c不是空格但可打印时为真</span><br><span class="line">isprint(c)//当c是可打印字符时为真（即c是空格或c具有可视形式）</span><br><span class="line">ispunct(c)//当c是标点符号时为真</span><br><span class="line">isxdigit(c)//当c是十六进制数字时为真</span><br><span class="line">tolower(c)//如果c是大写字母，输出对应的小写字母，否则原样输出c</span><br><span class="line">toupper(c)//如果c是小写字母，输出对应的大写字母，否则原样输出c</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Algorithm</category>
-      </categories>
-      <tags>
-        <tag>cpp</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ubuntu找不到ttyUSB*</title>
     <url>/2021/01/17/UbuntuNoUSB/</url>
     <content><![CDATA[<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>在使用dji妙算（arm架构ubuntu14.04）连接激光雷达（ <a href="https://www.cnblogs.com/wanghuixi/p/6476984.html">ubuntu RPLIDAR A2的使用</a>）时，出现不能调用端口的错误，经过搜索后发现，是因为没有ttyUSB*驱动。</p>
@@ -696,43 +614,6 @@
       </tags>
   </entry>
   <entry>
-    <title>笔试输入输出总结</title>
-    <url>/2020/07/11/cin_cout/</url>
-    <content><![CDATA[<h1 id="常见输入"><a href="#常见输入" class="headerlink" title="常见输入"></a>常见输入</h1><p>常见机试输入</p>
-<span id="more"></span>
-<h2 id="输入一个数字再加上空格间隔的数组，并且给了数组元素个数n"><a href="#输入一个数字再加上空格间隔的数组，并且给了数组元素个数n" class="headerlink" title="输入一个数字再加上空格间隔的数组，并且给了数组元素个数n"></a>输入一个数字再加上空格间隔的数组，并且给了数组元素个数n</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int n;</span><br><span class="line">cin &gt;&gt; n;</span><br><span class="line">vector&lt;int&gt; input(n);</span><br><span class="line">for(int i = 0; i &lt; n; i++)</span><br><span class="line">    cin &gt;&gt; input[i];</span><br></pre></td></tr></table></figure>
-<h2 id="输入一个数字再加上空格间隔的数组，但是没有给数组元素个数n"><a href="#输入一个数字再加上空格间隔的数组，但是没有给数组元素个数n" class="headerlink" title="输入一个数字再加上空格间隔的数组，但是没有给数组元素个数n"></a>输入一个数字再加上空格间隔的数组，但是没有给数组元素个数n</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int a;</span><br><span class="line">vector&lt;int&gt; input;</span><br><span class="line">while(cin &gt;&gt; a)&#123;</span><br><span class="line">    input.push_back(a);</span><br><span class="line">    if(cin.get() == &#x27;\n&#x27;)</span><br><span class="line">        break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="给你输入的数据组数t，和很多组数据。这些数据有换行，但是数组元素个数都没有给"><a href="#给你输入的数据组数t，和很多组数据。这些数据有换行，但是数组元素个数都没有给" class="headerlink" title="给你输入的数据组数t，和很多组数据。这些数据有换行，但是数组元素个数都没有给"></a>给你输入的数据组数t，和很多组数据。这些数据有换行，但是数组元素个数都没有给</h2><p>比如：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">3            //有3组数据</span><br><span class="line">1 2 3 4 5    //第一组数据A</span><br><span class="line">2 4 5 3 6    //第一组数据B</span><br><span class="line">3 4 6        //第二组数据A</span><br><span class="line">2 2 5        //第二组数据B</span><br><span class="line">1            //第三组数据A</span><br><span class="line">0            //第三组数据B</span><br></pre></td></tr></table></figure>
-<p>因为没有给每行数据的个数，所以一行数据输入完成时需要识别<strong>换行符</strong>。<br>输入方法：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int t, a;</span><br><span class="line">cin &gt;&gt; t;</span><br><span class="line">vector&lt;int&gt; A, B;</span><br><span class="line">for(int i = 0; i &lt; 2*t; i++)&#123;</span><br><span class="line">    while(cin &gt;&gt; a)&#123;</span><br><span class="line">        A.push_back(a);</span><br><span class="line">        if (cin.get() == &#x27;\n&#x27;) </span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">    while(cin &gt;&gt; a)&#123;</span><br><span class="line">        B.push_back(a);</span><br><span class="line">        if (cin.get() == &#x27;\n&#x27;) </span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="不存在空格的字符数组"><a href="#不存在空格的字符数组" class="headerlink" title="不存在空格的字符数组"></a>不存在空格的字符数组</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">string s;</span><br><span class="line">cin &gt;&gt; s;</span><br></pre></td></tr></table></figure>
-
-<h2 id="输入带有空格的字符数组"><a href="#输入带有空格的字符数组" class="headerlink" title="输入带有空格的字符数组"></a>输入带有空格的字符数组</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">string s;</span><br><span class="line">getline(cin, s);</span><br></pre></td></tr></table></figure>
-
-<h2 id="输入多个整数"><a href="#输入多个整数" class="headerlink" title="输入多个整数"></a>输入多个整数</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int a,b,c,d;</span><br><span class="line">cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;</span><br></pre></td></tr></table></figure>
-
-<h1 id="字符串的输入"><a href="#字符串的输入" class="headerlink" title="字符串的输入"></a>字符串的输入</h1><h2 id="getline"><a href="#getline" class="headerlink" title="getline"></a>getline</h2><ul>
-<li><code>getline(istream&amp; is, string&amp; str);</code> 把is传到str中</li>
-<li><code>getline(istream&amp; is, string&amp; str, char delim);</code> delim是截断字符，可以用来分割字符串<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;sstream&gt;</span><br><span class="line"></span><br><span class="line">string s = &quot;alice,20,800,sz&quot;;</span><br><span class="line"></span><br><span class="line">istringstream is(s);</span><br><span class="line">string str;</span><br><span class="line">std::getline(is, str); //str: alice,20,800,sz</span><br><span class="line">std::getline(is, str, &#x27;,&#x27;); //str: alice</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>输入：<code>[1,1,1,1,2,1,1],[5,2,5,4,5,1,6]</code>。要求提取出数字。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int main()&#123;</span><br><span class="line">    string sw, sh;</span><br><span class="line">    getline(cin, sw, &#x27;]&#x27;);</span><br><span class="line">    getline(cin, sh, &#x27;]&#x27;);</span><br><span class="line"></span><br><span class="line">    istringstream isw(sw.substr(1)), ish(sh.substr(2));</span><br><span class="line">    </span><br><span class="line">    string tmp;</span><br><span class="line">    vector&lt;int&gt; width, height;</span><br><span class="line">    while (getline(isw, tmp, &#x27;,&#x27;))</span><br><span class="line">        width.push_back(stoi(tmp));</span><br><span class="line">    while (getline(ish, tmp, &#x27;,&#x27;))</span><br><span class="line">        height.push_back(stoi(tmp));</span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="输出精度控制"><a href="#输出精度控制" class="headerlink" title="输出精度控制"></a>输出精度控制</h1><p>如：输出保留2位小数</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">double d = 1.666666;</span><br><span class="line">//c++</span><br><span class="line">#include &lt;iomanip&gt;</span><br><span class="line">cout &lt;&lt; setprecision(3) &lt;&lt; d &lt;&lt; endl; //1.67</span><br><span class="line">//c</span><br><span class="line">printf(&quot;%.2f\n&quot;, d); //1.67</span><br></pre></td></tr></table></figure>
-
-<h1 id="OJ练习"><a href="#OJ练习" class="headerlink" title="OJ练习"></a>OJ练习</h1><p><a href="https://ac.nowcoder.com/acm/contest/320#question">牛客</a></p>
-]]></content>
-      <categories>
-        <category>Algorithm</category>
-      </categories>
-      <tags>
-        <tag>cpp</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数据结构</title>
     <url>/2020/06/20/dataStructure/</url>
     <content><![CDATA[<h1 id="链表和数组的区别在哪里？"><a href="#链表和数组的区别在哪里？" class="headerlink" title="链表和数组的区别在哪里？"></a>链表和数组的区别在哪里？</h1><p>链表和数组都可以叫线性表，数组又叫顺序表，主要区别在于：</p>
@@ -1085,6 +966,88 @@
       </categories>
   </entry>
   <entry>
+    <title>STL常用方法</title>
+    <url>/2020/07/12/STL/</url>
+    <content><![CDATA[<h1 id="常用STL库的使用方法"><a href="#常用STL库的使用方法" class="headerlink" title="常用STL库的使用方法"></a>常用STL库的使用方法</h1><p>记录了常用的STL使用方法</p>
+<span id="more"></span>
+<h2 id="vector：数组"><a href="#vector：数组" class="headerlink" title="vector：数组"></a>vector：数组</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;vector&gt;  </span><br><span class="line"></span><br><span class="line">vector&lt;int&gt; a(10);//初始化10个默认为0的数  </span><br><span class="line">vector&lt;int&gt; a(10,1);//初始化10个默认为1的数  </span><br><span class="line">vector&lt;int&gt; a;  </span><br><span class="line"></span><br><span class="line">//初始化二维数组  </span><br><span class="line">vector&lt;vector&lt;int&gt; &gt; 2dVec(m ,vector&lt;int&gt;(n)); //m*n的二维vector，注意两个 &quot;&gt; &quot;之间要有空格</span><br><span class="line">2dVec.push_back(&#123;1, 2, 3&#125;);//可以这样加vector  </span><br><span class="line">vector&lt;vector&lt;int&gt; &gt; 2dVec(m ,vector&lt;int&gt;(n,0)); //m*n的二维vector，所有元素初始化为0  </span><br><span class="line">a.push_back()  </span><br><span class="line">a[0]  </span><br><span class="line">a.front() //首元素  </span><br><span class="line">a.back() //尾元素  </span><br><span class="line">a.size()  </span><br><span class="line">a.pop_back()//删除不输出  </span><br><span class="line">it = a.begin()+1  </span><br><span class="line">a.erase(it)  </span><br><span class="line">it2 = a.begin()+3  </span><br><span class="line">a.erase(it,it2)//删除[it1,it2)  </span><br><span class="line">a.clear()  </span><br><span class="line">a.empty()  </span><br><span class="line">a.insert(it,-1)  </span><br><span class="line"></span><br><span class="line">vector&lt;int&gt;::iterator itDele;</span><br><span class="line">it = find(a.begin(), a.end(), 3);//查找3</span><br><span class="line">if(it!=a.end())//如果找到了</span><br><span class="line"></span><br><span class="line">//pair  make_pair</span><br><span class="line">vector&lt;pair&lt;int ,int&gt; &gt; vp;</span><br><span class="line">vp.push_back(&#123;1, 0&#125;);</span><br><span class="line">vp.push_back(make_pair(0, 1));</span><br><span class="line">vector&lt;pair&lt;int, int&gt; &gt; vp2 = &#123;&#123;1, 0&#125;, &#123;0, 1&#125;, &#123;-1, 0&#125;, &#123;0, -1&#125;&#125;;</span><br><span class="line">vp2.push_back(make_pair&lt;int, int&gt;(5, 6));</span><br></pre></td></tr></table></figure>
+
+<h2 id="list：数组"><a href="#list：数组" class="headerlink" title="list：数组"></a>list：数组</h2><p>Lists将元素按顺序储存在链表中. 与向量(vectors)相比, 它允许快速的插入和删除，但是随机访问却比较慢。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;list&gt;</span><br><span class="line">pop_back() 删除最后一个元素 </span><br><span class="line">pop_front() 删除第一个元素 </span><br><span class="line">push_back() 在list的末尾添加一个元素 </span><br><span class="line">push_front() 在list的头部添加一个元素 </span><br><span class="line">back() 返回最后一个元素 </span><br><span class="line">front() 返回第一个元素 </span><br><span class="line">begin() 返回指向第一个元素的迭代器 </span><br><span class="line">end() 返回末尾的迭代器 </span><br><span class="line">size() 返回list中的元素个数 </span><br><span class="line">clear() 删除所有元素 </span><br><span class="line">empty() 如果list是空的则返回true</span><br><span class="line">a.sort() 给list排序</span><br><span class="line">erase() 删除一个元素 </span><br><span class="line">assign() 给list赋值 </span><br><span class="line">get_allocator() 返回list的配置器 </span><br><span class="line">insert() 插入一个元素到list中 </span><br><span class="line">max_size() 返回list能容纳的最大元素数量 </span><br><span class="line">merge() 合并两个list </span><br><span class="line">rbegin() 返回指向第一个元素的逆向迭代器 </span><br><span class="line">remove() 从list删除元素 </span><br><span class="line">remove_if() 按指定条件删除元素 </span><br><span class="line">rend() 指向list末尾的逆向迭代器 </span><br><span class="line">resize() 改变list的大小 </span><br><span class="line">reverse() 把list的元素倒转 </span><br><span class="line">splice() 合并两个list </span><br><span class="line">swap() 交换两个list </span><br><span class="line">unique() 删除list中重复的元素</span><br></pre></td></tr></table></figure>
+
+<h2 id="stack：栈"><a href="#stack：栈" class="headerlink" title="stack：栈"></a>stack：栈</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;stack&gt;</span><br><span class="line"></span><br><span class="line">stack&lt;int&gt; a;</span><br><span class="line">a.push()</span><br><span class="line">a.top()</span><br><span class="line">a.pop()</span><br><span class="line">a.empty()</span><br><span class="line">a.size()</span><br></pre></td></tr></table></figure>
+
+<h2 id="queue：队列"><a href="#queue：队列" class="headerlink" title="queue：队列"></a>queue：队列</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;queue&gt;</span><br><span class="line"></span><br><span class="line">queue&lt;int&gt; a;</span><br><span class="line">a.push()</span><br><span class="line">a.front()</span><br><span class="line">a.back()</span><br><span class="line">a.pop()</span><br><span class="line">a.empty()</span><br><span class="line">a.size()</span><br></pre></td></tr></table></figure>
+
+<h2 id="priority-queue：堆"><a href="#priority-queue：堆" class="headerlink" title="priority_queue：堆"></a>priority_queue：堆</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;queue&gt;</span><br><span class="line"></span><br><span class="line">//priority_queue&lt;type,container,function&gt;</span><br><span class="line">//小根堆，a&gt;b</span><br><span class="line">priority_queue &lt;int,vector&lt;int&gt;,greater&lt;int&gt; &gt; q; </span><br><span class="line">//大根堆，a&lt;b</span><br><span class="line">priority_queue &lt;int,vector&lt;int&gt;,less&lt;int&gt; &gt; q;</span><br><span class="line">//默认是大根堆</span><br><span class="line">priority_queue &lt;int&gt; q ;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//自定义堆的比较方式</span><br><span class="line">//方法1，用类</span><br><span class="line">class cmp</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    bool operator()(const pair&lt;int, int&gt; &amp;a, const pair&lt;int, int&gt; &amp;b)&#123;</span><br><span class="line">        return a.second &gt; b.second; //a&gt;b = greater&lt;int&gt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">//方法2，用struct</span><br><span class="line">struct cmp</span><br><span class="line">&#123;</span><br><span class="line">    bool operator()(const pair&lt;int, int&gt; &amp;a, const pair&lt;int, int&gt; &amp;b)&#123;</span><br><span class="line">        return a.second &gt; b.second;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">priority_queue&lt;pair&lt;int, int&gt;,vector&lt;pair&lt;int,int&gt; &gt;, cmp&gt; pq;</span><br><span class="line"></span><br><span class="line">//注意！没有front和back</span><br><span class="line">q.push()</span><br><span class="line">q.pop()</span><br><span class="line">q.top()</span><br><span class="line">q.empty()</span><br><span class="line">q.size()</span><br></pre></td></tr></table></figure>
+
+<h2 id="map-x2F-unordered-map"><a href="#map-x2F-unordered-map" class="headerlink" title="map&#x2F;unordered_map"></a>map&#x2F;unordered_map</h2><p>哈希表的实现：STL中，<code>map/set</code> 对应的数据结构是红黑树。红黑树是一种近似于平衡的二叉查找树，里面的数据是有序的。在红黑树上做查找操作的时间复杂度为 O(logN)。而 <code>unordered_map/unordered_set</code> 对应 哈希表，哈希表的特点就是查找效率高，时间复杂度为常数级别 O(1)， 而额外空间复杂度则要高出许多而且无序。所以对于需要高效率查询的情况，使用 <code>unordered_map</code> 容器。而如果对内存大小比较敏感或者数据存储要求有序的话，则可以用 <code>map</code> 容器。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;map&gt;</span><br><span class="line"></span><br><span class="line">std:map&lt;int,int&gt; mapA;</span><br><span class="line">//插入</span><br><span class="line">mapA.insert(std::pair&lt;int,int&gt;(0,1));</span><br><span class="line">mapA.insert(map&lt;int,int&gt;::value_type (0,1));</span><br><span class="line">mapA[0] = 1;</span><br><span class="line">mapA.at(0)</span><br><span class="line">mapA.size()</span><br><span class="line">map&lt;int, int&gt;::iterator iter;//迭代器</span><br><span class="line">mapA.erase(key/iter)</span><br><span class="line">mapA.clear()</span><br><span class="line">mapA.empty()</span><br><span class="line">mapA.count() //由于map不包含重复的key，因此m.count(key)取值为0，或者1，表示是否包含。</span><br><span class="line">mapA.find(key)//返回迭代器，判断是否存在。</span><br><span class="line">mapA.find(key) != mapA.end() //为真说明存在</span><br><span class="line"></span><br><span class="line">#include &lt;unordered_map&gt; //和map差不多</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/06/15/2eMDTN3HXOPt9oK.png" alt="map的用法"></p>
+<h3 id="map的注意事项："><a href="#map的注意事项：" class="headerlink" title="map的注意事项："></a>map的注意事项：</h3><ul>
+<li>在map中，由key查找value时，首先要判断map中是否包含key。</li>
+<li>如果不检查，直接返回map[key]，可能会出现意想不到的行为。如果map包含key，没有问题，如果map不包含key，使用下标有一个危险的副作用，会在map中插入一个key的元素，value取默认值，返回value。也就是说，map[key]不可能返回null。</li>
+</ul>
+<p>比如：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">unordered_map&lt;string, int&gt; mapA;</span><br><span class="line">cout &lt;&lt; mapA.size() &lt;&lt; endl; //这时为0</span><br><span class="line">int a = mapA[&quot;aa&quot;] //本来是空map，但是调用mapA[&quot;aa&quot;]之后，会自动插入mapA[&quot;aa&quot;]=0，返回0</span><br><span class="line">cout &lt;&lt; mapA.size() &lt;&lt; endl; //这使为1</span><br></pre></td></tr></table></figure>
+
+<h2 id="set-x2F-multiset-x2F-unordered-set"><a href="#set-x2F-multiset-x2F-unordered-set" class="headerlink" title="set&#x2F;multiset&#x2F;unordered_set"></a>set&#x2F;multiset&#x2F;unordered_set</h2><p>set和multiset的区别：</p>
+<ul>
+<li>set不可以有重复的元素</li>
+<li>multiset可以有重复的元素</li>
+</ul>
+<p>和map&#x2F;unordered_map一样，也是set&#x2F;multiset使用红黑树实现，unordered_set使用哈希表实现。unordered_set和unordered_map内部实现的公共接口大致相同。</p>
+<ol>
+<li>set是按照一定的次序存储元素的容器，set遍历后有序，默认按照小于排序</li>
+<li>set中只放value，但是底层存放的是&lt;value, value&gt;的键值对。每个value必须是惟一的</li>
+<li>set允许插入和删除，不允许修改</li>
+<li>set按照内部比较对象（类型比较）所指示的特定严格弱排序准则进行排序</li>
+<li>set在底层用二叉搜索树（红黑树）实现</li>
+<li>set中查找、插入、删除元素的复杂度为O(logn)，unordered_set为O(1)</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;set&gt;</span><br><span class="line">#include &lt;unordered_set&gt;</span><br><span class="line"></span><br><span class="line">unordered_set&lt;int&gt; us;</span><br><span class="line">us.insert(2);//插入</span><br><span class="line">unordered_set&lt;int&gt; us1(us);//us1=us</span><br><span class="line">unordered_set&lt;int&gt; us2(us1.begin(),us1.end());</span><br><span class="line"></span><br><span class="line">us.erase(6); //删除键值为6的元素</span><br><span class="line">set&lt;int&gt;::iterator it;  </span><br><span class="line">it = us.find(6); //查找键值为6的元素</span><br><span class="line">int n = us.count(6);//也能判断一个数是否在集合中。n=0不在，n=在</span><br><span class="line"></span><br><span class="line">set&lt;int&gt; s = &#123;3,8,12,15&#125;</span><br><span class="line">s.lower_bound(8); //表示查找 &gt;= 8 的元素中最小的一个(8)，并返回指向该元素的迭代器</span><br><span class="line">s.upper_bound(8); //表示查找 &gt;8 的元素中最小的一个(12)，并返回指向该元素的迭代器</span><br><span class="line"></span><br><span class="line">s.lower_bound(9); //12</span><br><span class="line">s.upper_bound(9); //12</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">begin()         //返回指向第一个元素的迭代器</span><br><span class="line">clear()         //清除所有元素</span><br><span class="line">count()         //返回某个值元素的个数</span><br><span class="line">empty()         //如果集合为空，返回true</span><br><span class="line">end()           //返回指向最后一个元素的迭代器</span><br><span class="line">equal_range()   //返回集合中与给定值相等的上下限的两个迭代器</span><br><span class="line">erase()         //删除集合中的元素</span><br><span class="line">find()          //返回一个指向被查找到元素的迭代器</span><br><span class="line">get_allocator() //返回集合的分配器</span><br><span class="line">insert()        //在集合中插入元素</span><br><span class="line">lower_bound()   //返回指向大于（或等于）某值的第一个元素的迭代器</span><br><span class="line">key_comp()      //返回一个用于元素间值比较的函数</span><br><span class="line">max_size()      //返回集合能容纳的元素的最大限值</span><br><span class="line">rbegin()        //返回指向集合中最后一个元素的反向迭代器</span><br><span class="line">rend()          //返回指向集合中第一个元素的反向迭代器</span><br><span class="line">size()          //集合中元素的数目</span><br><span class="line">swap()          //交换两个集合变量</span><br><span class="line">upper_bound()   //返回大于某个值元素的迭代器</span><br><span class="line">value_comp()    //返回一个用于比较元素间的值的函数</span><br></pre></td></tr></table></figure>
+
+<h2 id="string"><a href="#string" class="headerlink" title="string"></a>string</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;string&gt;</span><br><span class="line">string s;</span><br><span class="line">s.find()//在s当中查找第一个出现</span><br><span class="line">s.rfind()//在s当中查找最后一个出现</span><br><span class="line">int is = stoi(val) //把string val转换成int。stoi()会做范围检查，默认范围是在int的范围内的，如果超出范围的话则会runtime error</span><br><span class="line">int is = atoi(val.c_str()) //atoi()不会做范围检查，如果超出范围的话，超出上界，则输出上界，超出下界，则输出下界</span><br><span class="line"></span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">reverse(s.begin(),s.end()); //反转字符串</span><br><span class="line"></span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">//s1 s2需要c风格字符串char</span><br><span class="line">//如果是string，需要s1.c_str()</span><br><span class="line">strcmp(s1,s2) //相等返回0；s1-s2大于0，则返回1，小于0则返回-1</span><br><span class="line">strncmp(s1,s2,n) //比较前n个</span><br><span class="line">strcpy(s1,s2) //s2复制到s1,注意s2不要比s1长</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2020/06/15/gkiTrRs2O5WL9qU.png" alt="string和char的对比"></p>
+<h2 id="大小写转换"><a href="#大小写转换" class="headerlink" title="大小写转换"></a>大小写转换</h2><p><img src="https://i.loli.net/2020/06/19/DtlTnEAUK7qQRFc.jpg" alt="ASCII表"></p>
+<ol>
+<li><strong>对应大小写字母之间相差32</strong></li>
+<li>transform函数：直接处理<code>string</code><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">string s = &quot;aBc&quot;;</span><br><span class="line"></span><br><span class="line">transform(s.begin(), s.end(), s.begin(), ::tolower);//::toupper转大写</span><br></pre></td></tr></table></figure></li>
+<li>toupper, tolower：处理<code>char</code><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;cctype&gt;</span><br><span class="line"></span><br><span class="line">char s = &#x27;a&#x27;;</span><br><span class="line">char sl = tolower(s);</span><br><span class="line">char su = toupper(sl);</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="algorithm"><a href="#algorithm" class="headerlink" title="algorithm"></a>algorithm</h2><h3 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h3><p><code>sort</code>并非只是普通的<strong>快速排序</strong>，除了对普通的快速排序进行优化，它还结合了<strong>插入排序</strong>和<strong>堆排序</strong>。根据不同的数量级别以及不同情况，能自动选用合适的排序方法。当数据量较大时采用快速排序，分段递归。一旦分段后的数据量小于某个阀值，为避免递归调用带来过大的额外负荷，便会改用插入排序。而如果递归层次过深，有出现最坏情况的倾向，还会改用堆排序。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;algorithm&gt;</span><br><span class="line"></span><br><span class="line">//nums必须是线性容器</span><br><span class="line">//降序排序</span><br><span class="line">sort(nums.begin(),nums.end(),greater&lt;int&gt;());</span><br><span class="line">//升序（默认是升序）</span><br><span class="line">sort(nums.begin(),nums.end(),less&lt;int&gt;());</span><br><span class="line">sort(nums.begin(),nums.end());</span><br><span class="line"></span><br><span class="line">//自定义排序函数</span><br><span class="line">vector&lt;vecotr&lt;int&gt; &gt; nums2d;</span><br><span class="line">bool cmp(const vector&lt;int&gt; &amp;a, const vector&lt;int&gt; &amp;b)&#123;</span><br><span class="line">    //注意！这个函数要在类外面定义</span><br><span class="line">    return a[1] &gt; b[1];//按第二维降序</span><br><span class="line">&#125;</span><br><span class="line">sort(nums2d.begin(),nums2d.end(),cmp);</span><br><span class="line"></span><br><span class="line">//稳定排序</span><br><span class="line">stable_sort(nums.begin(),nums.end(),greater&lt;int&gt;());</span><br><span class="line">stable_sort(nums.begin(),nums.end(),less&lt;int&gt;());</span><br></pre></td></tr></table></figure>
+<p>sort算法有个限制，利用sort算法只能对<strong>序列容器</strong>进行排序，就是线性的，如<strong>vector，list，deque</strong>。map也是一个集合容器，但它里面存储的元素是pair，不是线性存储的（前面提过，像红黑树），所以利用sort不能直接和map结合进行排序。</p>
+<p>如果想对map进行排序，可以把map放到vector中。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 将map中的内容转存到vector中</span><br><span class="line">vector&lt;pair&lt;string, int&gt; &gt; vec(map.begin(), map.end());</span><br><span class="line"></span><br><span class="line">bool cmp(const pair&lt;string, int&gt;&amp; a, const pair&lt;string, int&gt;&amp; b) &#123;</span><br><span class="line">        return a.second &lt; b.second;</span><br><span class="line">&#125;</span><br><span class="line">//对线性的vector进行排序</span><br><span class="line">sort(vec.begin(), vec.end(), cmp);</span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<ol>
+<li>支持随机存取迭代器（连续存储空间）的<code>vector</code>，<code>deque</code> （双向存取的vector）可以使用sort；</li>
+<li>支持随机存取迭代器（链式非连续存储空间）的<code>list</code>（双向链表）和<code>slist</code>（单向链表forward_list），不能使用STL的sort，但是类中有自定义的sort()成员函数；</li>
+<li>关系型容器中基于红黑树的<code>set</code>，<code>multiset</code>，<code>map</code>，<code>multimap</code>，本身就有自动排序的功能，不需要sort函数。如果有特殊排序需求的话，可以放入vector中；</li>
+<li><code>stack</code>，<code>queue</code>没有迭代器，入口出口固定，不能进行排序；</li>
+<li>基于哈希表的<code>unordered_map</code>等都是为排序的，也不需要排序。</li>
+</ol>
+<h3 id="count"><a href="#count" class="headerlink" title="count"></a>count</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;algorithm&gt;</span><br><span class="line"></span><br><span class="line">vector&lt;int&gt; nums = &#123;100,100,100,101&#125;;</span><br><span class="line">int num = count(nums.begin(),nums.end(),100);//统计100出现的次数</span><br></pre></td></tr></table></figure>
+
+<h3 id="lower-bound、upper-bound、binary-search"><a href="#lower-bound、upper-bound、binary-search" class="headerlink" title="lower_bound、upper_bound、binary_search"></a>lower_bound、upper_bound、binary_search</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;algorithm&gt;</span><br><span class="line"></span><br><span class="line">lower_bound(起始地址，结束地址，要查找的数值) //返回的是数值 第一个 出现的位置。</span><br><span class="line">upper_bound(起始地址，结束地址，要查找的数值) //返回的是数值 最后一个 出现的位置。</span><br><span class="line">binary_search(起始地址，结束地址，要查找的数值)  //返回的是是否存在这么一个数，是一个bool值。</span><br></pre></td></tr></table></figure>
+
+<h2 id="一些数学运算"><a href="#一些数学运算" class="headerlink" title="一些数学运算"></a>一些数学运算</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;cmath&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/06/15/iLAdQTJq3j19CH5.png" alt="cmath"></p>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;iterator&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/06/15/lqItjZGhRkmMwPf.png" alt="iter"></p>
+<h2 id="cctype"><a href="#cctype" class="headerlink" title="cctype"></a>cctype</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;cctype&gt;</span><br><span class="line"></span><br><span class="line">isalnum(c)//当c是字母或数字时为真</span><br><span class="line">isalpha(c)//当c是字母时为真</span><br><span class="line">isdigit(c)//当c是数字时为真</span><br><span class="line">islower(c)//当c是小写字母时为真</span><br><span class="line">isupper(c)//当c是大写字母时为真</span><br><span class="line">isspace(c)//当c是空白时为真（即c是空格、横向制表符、纵向制表符、回车符、换行符、进纸符）</span><br><span class="line">iscntrl(c)//当c是控制字符时为真</span><br><span class="line">isgraph(c)//当c不是空格但可打印时为真</span><br><span class="line">isprint(c)//当c是可打印字符时为真（即c是空格或c具有可视形式）</span><br><span class="line">ispunct(c)//当c是标点符号时为真</span><br><span class="line">isxdigit(c)//当c是十六进制数字时为真</span><br><span class="line">tolower(c)//如果c是大写字母，输出对应的小写字母，否则原样输出c</span><br><span class="line">toupper(c)//如果c是小写字母，输出对应的大写字母，否则原样输出c</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>cpp</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>光流鲁棒性评估</title>
     <url>/2022/11/27/optical_flow_evaluation/</url>
     <content><![CDATA[<ol>
@@ -1097,11 +1060,11 @@
 <span id="more"></span>
 <h1 id="光流评估指标"><a href="#光流评估指标" class="headerlink" title="光流评估指标"></a>光流评估指标</h1><h2 id="误差指标"><a href="#误差指标" class="headerlink" title="误差指标"></a>误差指标</h2><ul>
 <li><p>EPE(Endpoint Error)：估计光流和 ground-truth 光流的欧氏距离<br>$$EPE &#x3D; \sqrt{(u_{est} - u_{gt})^2 + (v_{est} - v_{gt})^2}$$<br><img src="https://s2.loli.net/2022/11/27/gm1UaiBwIoZrnPc.png" alt="EPE.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">std::vector&lt;float&gt; EndPointError(const std::vector&lt;cv::Point2f&gt;&amp; prevPoints, const std::vector&lt;cv::Point2f&gt;&amp; nextPoints, std::vector&lt;uchar&gt; status)</span><br><span class="line">&#123;</span><br><span class="line">    std::vector&lt;float&gt; endPointError;</span><br><span class="line">    for (int i = 0; i &lt; prevPoints.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">      const cv::Point2f prevP = prevPoints[i];</span><br><span class="line">      const cv::Point2f nextP = nextPoints[i];</span><br><span class="line">      float distance = 100.0;</span><br><span class="line">      if ((bool)status[i])</span><br><span class="line">      &#123;</span><br><span class="line">        const cv::Point2f diff = nextP - prevP;</span><br><span class="line">        distance = sqrt((float)diff.ddot(diff));</span><br><span class="line">      &#125;</span><br><span class="line">      endPointError.push_back(distance);</span><br><span class="line">    &#125;</span><br><span class="line">    return endPointError;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
 <li><p>AE(Angular Error)：光流向量之间的角度误差。计算角度误差时增加一维，使用的是三维向量 (u, v, 1)<br>$$\mathrm{AE}&#x3D;\arccos \left(\frac{\left(\mathrm{u}<em>{\mathrm{est}}, \mathrm{v}</em>{\text {est }}, 1\right)^{\mathrm{T}} *\left(\mathrm{u}<em>{\mathrm{gt}}, \mathrm{v}</em>{\mathrm{gt}}, 1\right)}{\left.\sqrt{1.0+\mathrm{u}<em>{\mathrm{est}} * \mathrm{u}</em>{\mathrm{est}}+\mathrm{v}<em>{\mathrm{est}} * \mathrm{v}</em>{\mathrm{est}}} \sqrt{1.0+\mathrm{u}<em>{\mathrm{gt}} * \mathrm{u}</em>{\mathrm{gt}}+\mathrm{v}<em>{\mathrm{gt}} * \mathrm{v}</em>{\mathrm{gt}}}\right)}\right)$$<br><img src="https://s2.loli.net/2022/11/27/Pb8hR4dVBoi7cJn.png" alt="AE.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">std::vector&lt;float&gt; AngularError(const std::vector&lt;cv::Point2f&gt;&amp; prevPoints, const std::vector&lt;cv::Point2f&gt;&amp; nextPoints, std::vector&lt;uchar&gt; status)</span><br><span class="line">&#123;</span><br><span class="line">    std::vector&lt;float&gt; angularErrs;</span><br><span class="line">    for (int i = 0; i &lt; prevPoints.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">      const cv::Point2f prevPoint2d = prevPoints[i];</span><br><span class="line">      const cv::Point2f nextPoint2d = nextPoints[i];</span><br><span class="line">      const cv::Point3f prevPoint3d(prevPoint2d.x, prevPoint2d.y, 1);</span><br><span class="line">      const cv::Point3f nextPoint3d(nextPoint2d.x, nextPoint2d.y, 1);</span><br><span class="line">      double angularErr = 100.0;</span><br><span class="line">      if ((bool)status[i])</span><br><span class="line">      &#123;</span><br><span class="line">        double vecDocVec = prevPoint3d.ddot(nextPoint3d);</span><br><span class="line">        double vecNormProvecNorm = norm(prevPoint3d) * norm(nextPoint3d);</span><br><span class="line">        double mid = vecDocVec / vecNormProvecNorm;</span><br><span class="line">        double AE = acos(mid);</span><br><span class="line">        angularErr = acos((double)(prevPoint3d.ddot(nextPoint3d) / norm(prevPoint3d) * norm(nextPoint3d)));</span><br><span class="line">      &#125;</span><br><span class="line">      angularErrs.push_back(angularErr);</span><br><span class="line">    &#125;</span><br><span class="line">    return angularErrs;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="统计指标"><a href="#统计指标" class="headerlink" title="统计指标"></a>统计指标</h2><ul>
 <li>AEE：平均点误差</li>
@@ -1141,7 +1104,10 @@
 <li><a href="https://microsoft.github.io/AirSim/">AirSim</a>：能够生成无人机视角和公路驾驶视角的两类数据</li>
 <li><a href="http://carla.org/">Carla</a>：高仿真的自动驾驶场景</li>
 </ul>
-<h1 id="不依赖数据集评估方案"><a href="#不依赖数据集评估方案" class="headerlink" title="不依赖数据集评估方案"></a>不依赖数据集评估方案</h1><h2 id="forward-backward"><a href="#forward-backward" class="headerlink" title="forward-backward"></a>forward-backward</h2><p>使用基于奇偶数的 forward-backward：如有 5 幅图像。前向时为 0-2-4，后向时为 4-3-1-0，连起来为 0-2-4-3-1-0。<br>最后使用欧氏距离计算出 0 帧与最后的 0 帧图像之间，特征点位置的漂移 e，即 final drift。设定一个阈值 threshold，计算小于 threshold 的特征点的百分比，为鲁棒性；e 的直方图用于表示稳定性。</p>
+<h1 id="不依赖数据集评估方案"><a href="#不依赖数据集评估方案" class="headerlink" title="不依赖数据集评估方案"></a>不依赖数据集评估方案</h1><h2 id="forward-backward"><a href="#forward-backward" class="headerlink" title="forward-backward"></a>forward-backward</h2><p>使用基于奇偶数的 forward-backward：如有 5 幅图像。前向时为 0-2-4，后向时为 4-3-1-0，连起来为 0-2-4-3-1-0。<br>最后使用欧氏距离计算出 0 帧与最后的 0 帧图像之间，特征点位置的漂移 e，即 final drift。设定一个阈值 threshold，计算小于 thresh 的特征点的百分比，为鲁棒性；e 的直方图用于表示稳定性。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">float OpticalFlowRubost(std::vector&lt;float&gt; endpointErr, float thresh)</span><br><span class="line">&#123;</span><br><span class="line">    int goodPoint = 0;</span><br><span class="line">    int totalPoint = endpointErr.size();</span><br><span class="line">    for (size_t i = 0; i &lt; totalPoint; i++)</span><br><span class="line">    &#123;</span><br><span class="line">      if (endpointErr[i] &lt; thresh)</span><br><span class="line">      &#123;</span><br><span class="line">        goodPoint++;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return (float)goodPoint / (float)totalPoint;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 <h1 id="Ref"><a href="#Ref" class="headerlink" title="Ref."></a>Ref.</h1><ul>
 <li><a href="https://blog.csdn.net/catpico/article/details/122890919">optical flow光流估计的评价指标_wrotcat的博客-CSDN博客</a></li>
 <li><a href="https://sourceforge.net/p/emgucv/opencv_contrib/ci/4ec320efe1a04604eee4c024c7b9d9d37ddab80a/tree/modules/optflow/samples/optical_flow_evaluation.cpp#l1">Emgu CV &#x2F; OpenCV Contrib Git clone &#x2F; [4ec320] &#x2F;modules&#x2F;optflow&#x2F;samples&#x2F;optical_flow_evaluation.cpp</a></li>
@@ -1340,7 +1306,7 @@
 <p> <code>cd /etc/nginx/sites-avaible</code></p>
 <p> <code>sudo ln -s ../sites-available/test* /etc/nginx/sites-enabled/</code> </p>
 </li>
-<li><p>Change <a href="mailto:&#x6d;&#101;&#64;&#101;&#120;&#x61;&#109;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#109;">&#x6d;&#101;&#64;&#101;&#120;&#x61;&#109;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#109;</a> to your email<br> <code>sudo certbot --non-interactive --redirect --agree-tos --nginx -d test.com -m me@example.com</code></p>
+<li><p>Change <a href="mailto:&#109;&#101;&#64;&#101;&#x78;&#97;&#109;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#x6d;">&#109;&#101;&#64;&#101;&#x78;&#97;&#109;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#x6d;</a> to your email<br> <code>sudo certbot --non-interactive --redirect --agree-tos --nginx -d test.com -m me@example.com</code></p>
 </li>
 </ol>
 <h1 id="二、搭建项目"><a href="#二、搭建项目" class="headerlink" title="二、搭建项目"></a>二、搭建项目</h1><p><a href="https://github.com/suzhilong/RCAR2021web_frontEnd">示例项目</a></p>
@@ -1410,113 +1376,6 @@
       </categories>
       <tags>
         <tag>vue</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>基于ROS的无人机跟踪：tracking package</title>
-    <url>/2021/01/21/rotorsTracking/</url>
-    <content><![CDATA[<ul>
-<li>无人机仿真：<a href="https://suzhilong.github.io/2021/01/20/rotorsSimulator/">rotors_simulator</a></li>
-<li><a href="https://github.com/suzhilong/uav_tracking">uav_tracking项目代码</a></li>
-</ul>
-<h1 id="下载编译"><a href="#下载编译" class="headerlink" title="下载编译"></a>下载编译</h1><h2 id="克隆-package"><a href="#克隆-package" class="headerlink" title="克隆 package"></a>克隆 package</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd ~/rotors_ws/src/</span><br><span class="line">git clone https://github.com/suzhilong/uav_tracking.git</span><br></pre></td></tr></table></figure>
-
-<h2 id="复制-world文件："><a href="#复制-world文件：" class="headerlink" title="复制.world文件："></a>复制<code>.world</code>文件：</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cp ~/rotors_ws/src/uav_tracking/worlds/tracking_scen.world ~/rotors_ws/src/rotors_simulator/rotors_gazebo/worlds/</span><br></pre></td></tr></table></figure>
-
-<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd ~/rotors_ws</span><br><span class="line">catkin_make</span><br></pre></td></tr></table></figure>
-<p>然后<strong>重启终端</strong></p>
-<span id="more"></span>
-
-<h1 id="tracking-包的使用"><a href="#tracking-包的使用" class="headerlink" title="tracking 包的使用"></a>tracking 包的使用</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd ~/rotors_ws</span><br><span class="line">source ./devel/setup.bash</span><br></pre></td></tr></table></figure>
-
-<h2 id="录制-ros-bag"><a href="#录制-ros-bag" class="headerlink" title="录制 ros bag"></a>录制 ros bag</h2><p>录制需要的话题，就可以避免每次仿真都打开<code>gazebo</code>：</p>
-<h3 id="运行-launch-文件"><a href="#运行-launch-文件" class="headerlink" title="运行 launch 文件"></a>运行 launch 文件</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">roslaunch uav_tracking video_record.launch</span><br></pre></td></tr></table></figure>
-
-<h3 id="录制话题"><a href="#录制话题" class="headerlink" title="录制话题"></a>录制话题</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rosbag record -o [BAGNAME] /topic1/xxx /topic2/xxx</span><br></pre></td></tr></table></figure>
-
-<p>话题可以使用<code>rostopic list</code>查看。例如我要录制相机采集的视频：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rosbag record -o video /firefly/vi_sensor/left/image_raw</span><br></pre></td></tr></table></figure>
-<p>按 <code>ctrl + c</code> 结束录制</p>
-<h3 id="rosbag-回放"><a href="#rosbag-回放" class="headerlink" title="rosbag 回放"></a>rosbag 回放</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rosbag play -l [bagNAME]</span><br></pre></td></tr></table></figure>
-
-<h2 id="rosbag-转-MP4"><a href="#rosbag-转-MP4" class="headerlink" title="rosbag 转 MP4"></a>rosbag 转 MP4</h2><h3 id="1-bag2img-launch"><a href="#1-bag2img-launch" class="headerlink" title="1. bag2img.launch"></a>1. <a href="https://github.com/suzhilong/uav_tracking/blob/main/launch/bag2img.launch">bag2img.launch</a></h3><p>在<code>uav_tracking/launch</code>目录下新建<a href="https://github.com/suzhilong/uav_tracking/blob/main/launch/bag2img.launch">bag2img.launch</a>，写入下面内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;launch&gt;</span><br><span class="line">  &lt;node pkg=&quot;rosbag&quot; type=&quot;play&quot; name=&quot;rosbag&quot; args=&quot;-d 2 [BAGPATH]/xx.bag&quot;/&gt;</span><br><span class="line">  &lt;node name=&quot;extract&quot; pkg=&quot;image_view&quot; type=&quot;extract_images&quot; respawn=&quot;false&quot; output=&quot;screen&quot; cwd=&quot;ROS_HOME&quot;&gt;</span><br><span class="line">&lt;remap from=&quot;image&quot; to=&quot;/[your_topic]&quot;/&gt;</span><br><span class="line">  &lt;/node&gt;</span><br><span class="line">&lt;/launch&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>注意：</strong></p>
-<ul>
-<li>[BAGPATH]&#x2F;xx.bag需要替换成自己的bag路径</li>
-<li><code>remap</code>中的<code>/[your_topic]</code>需要替换为自己图片的话题</li>
-</ul>
-<h3 id="2-运行launch文件"><a href="#2-运行launch文件" class="headerlink" title="2. 运行launch文件"></a>2. 运行launch文件</h3><p><code>source</code> 后运行这个launch文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">source ~/rotors_ws/devel/setup.bash</span><br><span class="line">roslaunch bag2img.launch</span><br></pre></td></tr></table></figure>
-<p>成功后会在<code>~/.ros</code>文件夹中生成命名格式为<code>framexxxx.jpg</code>（如<code>frame0000.jpg</code>）的图片</p>
-<h3 id="3-移动图片"><a href="#3-移动图片" class="headerlink" title="3. 移动图片"></a>3. 移动图片</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir ~/rotors_ws/imgs</span><br><span class="line">mv ~/.ros/frame*.jpg ~/rotors_ws/imgs/</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-图片序列转MP4"><a href="#4-图片序列转MP4" class="headerlink" title="4. 图片序列转MP4"></a>4. 图片序列转MP4</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ffmpeg -r 10  -s 752*480 -i frame%04d.jpg uav_record.mp4</span><br></pre></td></tr></table></figure>
-<p><em>ps: -r 后是帧率，-s后是分辨率，-i后是图片名，最后是输出视频名</em></p>
-<h2 id="tracking"><a href="#tracking" class="headerlink" title="tracking"></a>tracking</h2><h3 id="OpenCV-contrib-安装"><a href="#OpenCV-contrib-安装" class="headerlink" title="OpenCV_contrib 安装"></a>OpenCV_contrib 安装</h3><ol>
-<li>安装<a href="https://opencv.org/">OpenCV</a> （已经安装好的使用命令<code>pkg-config opencv --modversion</code>查看安装的OpenCV版本）</li>
-<li>下载对应的 <a href="https://github.com/opencv/opencv_contrib">OpenCV_contrib</a>（点击<code>tag</code>找到所需版本）</li>
-<li>将解压后的<code>OpenCV_contrib</code>文件夹移到<code>opencv</code>根目录下</li>
-<li>安装依赖 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt-get install build-essential</span><br><span class="line">sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev</span><br><span class="line">sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev</span><br></pre></td></tr></table></figure></li>
-<li>进入 <code>opencv/build</code> （如果没有<code>build</code>，就新建一个<code>build</code>文件夹） <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cmake -D CMAKE_INSTALL_PREFIX=/usr/local -D CMAKE_BUILD_TYPE=Release -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib-3.4.0/modules ..</span><br></pre></td></tr></table></figure>
- <strong>注意：参数 OPENCV_EXTRA_MODULES_PATH 中的opencv_contrib-3.4.0 就是 opencv_contrib 解压后移动到 opencv 目录下名字</strong></li>
-<li>编译安装 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">make -j8</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="img-tracking-cpp"><a href="#img-tracking-cpp" class="headerlink" title="img_tracking.cpp"></a><a href="https://github.com/suzhilong/uav_tracking/blob/main/src/img_tracking.cpp">img_tracking.cpp</a></h3><h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><ol>
-<li><p>先<code>roslaunch</code> uav 的仿真 或 <code>rosbag play</code>录制好的bag文件</p>
-</li>
-<li><ul>
-<li>可以进入<code>~/rotors_ws/devel/lib/usv_tracking/</code>后使用<code>./img_tracking</code>运行视频目标跟踪程序</li>
-<li>也可以<code>source ~/rotors_ws/devel/setup.bash</code>后直接使用<code>rosrun uav_tracking img_tracking</code>执行视频目标跟踪程序</li>
-</ul>
-</li>
-</ol>
-<h4 id="跟踪目标边框初始化"><a href="#跟踪目标边框初始化" class="headerlink" title="跟踪目标边框初始化"></a>跟踪目标边框初始化</h4><p>在<code>img_tracking.cpp</code>中，有两种方法初始化目标在第一帧的位置和大小：</p>
-<ol>
-<li><p>初始化检测框的坐标和大小</p>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">boundingBox.x = 350;</span><br><span class="line">boundingBox.y = 200;</span><br><span class="line">boundingBox.width = 100;</span><br><span class="line">boundingBox.height = 80;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>手动框选：<code>1.</code> 中的代码注释掉，使用下面代码：</p>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">boundingBox = selectROI(curFrame, false);</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="test-tracking-cpp"><a href="#test-tracking-cpp" class="headerlink" title="test_tracking.cpp"></a><a href="https://github.com/suzhilong/uav_tracking/blob/main/src/test_tracking.cpp">test_tracking.cpp</a></h3><p>这个文件是用来测试仿真uav录制视频的跟踪的。</p>
-<h4 id="修改跟踪目标文件"><a href="#修改跟踪目标文件" class="headerlink" title="修改跟踪目标文件"></a>修改跟踪目标文件</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">VideoCapture video(&quot;[video_path]/[video_name].mp4&quot;);</span><br></pre></td></tr></table></figure>
-<h4 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">roscore</span><br></pre></td></tr></table></figure>
-<p>新开一个终端，并且source一下，然后</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rosrun uav_tracking test_tracking</span><br></pre></td></tr></table></figure>
-<p>接着就会出现视频的第一帧，用鼠标框选出跟踪的目标，按回车就可以看到开始跟踪了。</p>
-<p><img src="https://i.loli.net/2021/01/30/Ulr3SC7Rjd8Pq4u.gif" alt="tracking480.gif"></p>
-<h3 id="uav-tracking-cpp"><a href="#uav-tracking-cpp" class="headerlink" title="uav_tracking.cpp"></a><a href="https://github.com/suzhilong/uav_tracking/blob/main/src/uav_tracking.cpp">uav_tracking.cpp</a></h3><h4 id="打开-gazebo"><a href="#打开-gazebo" class="headerlink" title="打开 gazebo"></a>打开 gazebo</h4><p>随便打开一个有 <code>rotors</code> 的 <code>gazebo</code> 世界，如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">roslaunch uav_tracking video_record.launch</span><br></pre></td></tr></table></figure>
-<h4 id="加载-turtlebot-到-gazebo"><a href="#加载-turtlebot-到-gazebo" class="headerlink" title="加载 turtlebot 到 gazebo"></a>加载 turtlebot 到 gazebo</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">roslaunch uav_tracking add_turtlebot.launch</span><br></pre></td></tr></table></figure>
-<h4 id="使用跟踪"><a href="#使用跟踪" class="headerlink" title="使用跟踪"></a>使用跟踪</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rosrun uav_tracking uav_tracking</span><br></pre></td></tr></table></figure>
-
-<p>然后选中turtlebot</p>
-<h4 id="键盘控制turtlebot移动"><a href="#键盘控制turtlebot移动" class="headerlink" title="键盘控制turtlebot移动"></a>键盘控制turtlebot移动</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">roslaunch turtlebot_teleop keyboard_teleop.launch</span><br></pre></td></tr></table></figure>
-
-<p>就可以看到无人机跟随turtlebot运动了。</p>
-<h1 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h1><ul>
-<li><a href="https://www.guyuehome.com/4748">为了实现高效的人体跟踪，我测试了这些开源CV算法</a></li>
-<li><a href="https://www.guyuehome.com/17372">(Python)从零开始,简单快速学机器仿人视觉Opencv—运用五：物体运动跟踪</a></li>
-<li><a href="https://www.guyuehome.com/18855">ROS实现无人机目标跟踪&#x2F;物体跟随&#x2F;循迹</a></li>
-<li><a href="https://www.guyuehome.com/18055">基于ROS搭建简易软件框架实现ROV水下目标跟踪（十四完结）–目标跟踪模块</a></li>
-<li><a href="https://github.com/aws-robotics/aws-robomaker-racetrack-world#aws-robomaker-racetrack-world-ros-package">赛道环境ROS包</a></li>
-<li><a href="https://github.com/leggedrobotics/darknet_ros">YOLO_ROS包</a></li>
-<li><a href="https://blog.csdn.net/LuohenYJ/article/details/89029816">使用OpenCV实现单目标跟踪</a></li>
-<li><a href="https://blog.csdn.net/qq_35781447/article/details/103277509">linux下安装Opencv 和opencv-contrib</a></li>
-<li><a href="https://learnopencv.com/object-tracking-using-opencv-cpp-python/">Object Tracking using OpenCV</a></li>
-<li><a href="https://blog.csdn.net/qq_42589654/article/details/104246083">ROS基础知识学习笔记（1）—数据类型</a></li>
-<li><a href="http://www.voidcn.com/article/p-nexaivrm-uc.html">std_msgs::UInt8MultiArray发布数组</a></li>
-<li><a href="http://blog.leanote.com/post/610167078@qq.com/ROS-%E5%9B%BE%E5%83%8F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%91%BD%E4%BB%A4%E4%B8%8E%E5%BA%94%E7%94%A8">ROS 图像相关的命令与应用</a></li>
-<li><a href="https://www.jianshu.com/p/9a5a0433f5e4">ROS的相机节点</a></li>
-<li><a href="https://blog.csdn.net/weixin_40830684/article/details/94054564?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control">rosbag转mp4文件</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>robot</category>
-      </categories>
-      <tags>
-        <tag>Drone</tag>
       </tags>
   </entry>
   <entry>
@@ -1692,6 +1551,150 @@
       </categories>
       <tags>
         <tag>后端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>笔试输入输出总结</title>
+    <url>/2020/07/11/cin_cout/</url>
+    <content><![CDATA[<h1 id="常见输入"><a href="#常见输入" class="headerlink" title="常见输入"></a>常见输入</h1><p>常见机试输入</p>
+<span id="more"></span>
+<h2 id="输入一个数字再加上空格间隔的数组，并且给了数组元素个数n"><a href="#输入一个数字再加上空格间隔的数组，并且给了数组元素个数n" class="headerlink" title="输入一个数字再加上空格间隔的数组，并且给了数组元素个数n"></a>输入一个数字再加上空格间隔的数组，并且给了数组元素个数n</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int n;</span><br><span class="line">cin &gt;&gt; n;</span><br><span class="line">vector&lt;int&gt; input(n);</span><br><span class="line">for(int i = 0; i &lt; n; i++)</span><br><span class="line">    cin &gt;&gt; input[i];</span><br></pre></td></tr></table></figure>
+<h2 id="输入一个数字再加上空格间隔的数组，但是没有给数组元素个数n"><a href="#输入一个数字再加上空格间隔的数组，但是没有给数组元素个数n" class="headerlink" title="输入一个数字再加上空格间隔的数组，但是没有给数组元素个数n"></a>输入一个数字再加上空格间隔的数组，但是没有给数组元素个数n</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int a;</span><br><span class="line">vector&lt;int&gt; input;</span><br><span class="line">while(cin &gt;&gt; a)&#123;</span><br><span class="line">    input.push_back(a);</span><br><span class="line">    if(cin.get() == &#x27;\n&#x27;)</span><br><span class="line">        break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="给你输入的数据组数t，和很多组数据。这些数据有换行，但是数组元素个数都没有给"><a href="#给你输入的数据组数t，和很多组数据。这些数据有换行，但是数组元素个数都没有给" class="headerlink" title="给你输入的数据组数t，和很多组数据。这些数据有换行，但是数组元素个数都没有给"></a>给你输入的数据组数t，和很多组数据。这些数据有换行，但是数组元素个数都没有给</h2><p>比如：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">3            //有3组数据</span><br><span class="line">1 2 3 4 5    //第一组数据A</span><br><span class="line">2 4 5 3 6    //第一组数据B</span><br><span class="line">3 4 6        //第二组数据A</span><br><span class="line">2 2 5        //第二组数据B</span><br><span class="line">1            //第三组数据A</span><br><span class="line">0            //第三组数据B</span><br></pre></td></tr></table></figure>
+<p>因为没有给每行数据的个数，所以一行数据输入完成时需要识别<strong>换行符</strong>。<br>输入方法：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int t, a;</span><br><span class="line">cin &gt;&gt; t;</span><br><span class="line">vector&lt;int&gt; A, B;</span><br><span class="line">for(int i = 0; i &lt; 2*t; i++)&#123;</span><br><span class="line">    while(cin &gt;&gt; a)&#123;</span><br><span class="line">        A.push_back(a);</span><br><span class="line">        if (cin.get() == &#x27;\n&#x27;) </span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">    while(cin &gt;&gt; a)&#123;</span><br><span class="line">        B.push_back(a);</span><br><span class="line">        if (cin.get() == &#x27;\n&#x27;) </span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="不存在空格的字符数组"><a href="#不存在空格的字符数组" class="headerlink" title="不存在空格的字符数组"></a>不存在空格的字符数组</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">string s;</span><br><span class="line">cin &gt;&gt; s;</span><br></pre></td></tr></table></figure>
+
+<h2 id="输入带有空格的字符数组"><a href="#输入带有空格的字符数组" class="headerlink" title="输入带有空格的字符数组"></a>输入带有空格的字符数组</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">string s;</span><br><span class="line">getline(cin, s);</span><br></pre></td></tr></table></figure>
+
+<h2 id="输入多个整数"><a href="#输入多个整数" class="headerlink" title="输入多个整数"></a>输入多个整数</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int a,b,c,d;</span><br><span class="line">cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;</span><br></pre></td></tr></table></figure>
+
+<h1 id="字符串的输入"><a href="#字符串的输入" class="headerlink" title="字符串的输入"></a>字符串的输入</h1><h2 id="getline"><a href="#getline" class="headerlink" title="getline"></a>getline</h2><ul>
+<li><code>getline(istream&amp; is, string&amp; str);</code> 把is传到str中</li>
+<li><code>getline(istream&amp; is, string&amp; str, char delim);</code> delim是截断字符，可以用来分割字符串<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;sstream&gt;</span><br><span class="line"></span><br><span class="line">string s = &quot;alice,20,800,sz&quot;;</span><br><span class="line"></span><br><span class="line">istringstream is(s);</span><br><span class="line">string str;</span><br><span class="line">std::getline(is, str); //str: alice,20,800,sz</span><br><span class="line">std::getline(is, str, &#x27;,&#x27;); //str: alice</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>输入：<code>[1,1,1,1,2,1,1],[5,2,5,4,5,1,6]</code>。要求提取出数字。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int main()&#123;</span><br><span class="line">    string sw, sh;</span><br><span class="line">    getline(cin, sw, &#x27;]&#x27;);</span><br><span class="line">    getline(cin, sh, &#x27;]&#x27;);</span><br><span class="line"></span><br><span class="line">    istringstream isw(sw.substr(1)), ish(sh.substr(2));</span><br><span class="line">    </span><br><span class="line">    string tmp;</span><br><span class="line">    vector&lt;int&gt; width, height;</span><br><span class="line">    while (getline(isw, tmp, &#x27;,&#x27;))</span><br><span class="line">        width.push_back(stoi(tmp));</span><br><span class="line">    while (getline(ish, tmp, &#x27;,&#x27;))</span><br><span class="line">        height.push_back(stoi(tmp));</span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="输出精度控制"><a href="#输出精度控制" class="headerlink" title="输出精度控制"></a>输出精度控制</h1><p>如：输出保留2位小数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">double d = 1.666666;</span><br><span class="line">//c++</span><br><span class="line">#include &lt;iomanip&gt;</span><br><span class="line">cout &lt;&lt; setprecision(3) &lt;&lt; d &lt;&lt; endl; //1.67</span><br><span class="line">//c</span><br><span class="line">printf(&quot;%.2f\n&quot;, d); //1.67</span><br></pre></td></tr></table></figure>
+
+<h1 id="OJ练习"><a href="#OJ练习" class="headerlink" title="OJ练习"></a>OJ练习</h1><p><a href="https://ac.nowcoder.com/acm/contest/320#question">牛客</a></p>
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>cpp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>基于ROS的无人机跟踪：tracking package</title>
+    <url>/2021/01/21/rotorsTracking/</url>
+    <content><![CDATA[<ul>
+<li>无人机仿真：<a href="https://suzhilong.github.io/2021/01/20/rotorsSimulator/">rotors_simulator</a></li>
+<li><a href="https://github.com/suzhilong/uav_tracking">uav_tracking项目代码</a></li>
+</ul>
+<h1 id="下载编译"><a href="#下载编译" class="headerlink" title="下载编译"></a>下载编译</h1><h2 id="克隆-package"><a href="#克隆-package" class="headerlink" title="克隆 package"></a>克隆 package</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd ~/rotors_ws/src/</span><br><span class="line">git clone https://github.com/suzhilong/uav_tracking.git</span><br></pre></td></tr></table></figure>
+
+<h2 id="复制-world文件："><a href="#复制-world文件：" class="headerlink" title="复制.world文件："></a>复制<code>.world</code>文件：</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cp ~/rotors_ws/src/uav_tracking/worlds/tracking_scen.world ~/rotors_ws/src/rotors_simulator/rotors_gazebo/worlds/</span><br></pre></td></tr></table></figure>
+
+<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd ~/rotors_ws</span><br><span class="line">catkin_make</span><br></pre></td></tr></table></figure>
+<p>然后<strong>重启终端</strong></p>
+<span id="more"></span>
+
+<h1 id="tracking-包的使用"><a href="#tracking-包的使用" class="headerlink" title="tracking 包的使用"></a>tracking 包的使用</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd ~/rotors_ws</span><br><span class="line">source ./devel/setup.bash</span><br></pre></td></tr></table></figure>
+
+<h2 id="录制-ros-bag"><a href="#录制-ros-bag" class="headerlink" title="录制 ros bag"></a>录制 ros bag</h2><p>录制需要的话题，就可以避免每次仿真都打开<code>gazebo</code>：</p>
+<h3 id="运行-launch-文件"><a href="#运行-launch-文件" class="headerlink" title="运行 launch 文件"></a>运行 launch 文件</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">roslaunch uav_tracking video_record.launch</span><br></pre></td></tr></table></figure>
+
+<h3 id="录制话题"><a href="#录制话题" class="headerlink" title="录制话题"></a>录制话题</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rosbag record -o [BAGNAME] /topic1/xxx /topic2/xxx</span><br></pre></td></tr></table></figure>
+
+<p>话题可以使用<code>rostopic list</code>查看。例如我要录制相机采集的视频：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rosbag record -o video /firefly/vi_sensor/left/image_raw</span><br></pre></td></tr></table></figure>
+<p>按 <code>ctrl + c</code> 结束录制</p>
+<h3 id="rosbag-回放"><a href="#rosbag-回放" class="headerlink" title="rosbag 回放"></a>rosbag 回放</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rosbag play -l [bagNAME]</span><br></pre></td></tr></table></figure>
+
+<h2 id="rosbag-转-MP4"><a href="#rosbag-转-MP4" class="headerlink" title="rosbag 转 MP4"></a>rosbag 转 MP4</h2><h3 id="1-bag2img-launch"><a href="#1-bag2img-launch" class="headerlink" title="1. bag2img.launch"></a>1. <a href="https://github.com/suzhilong/uav_tracking/blob/main/launch/bag2img.launch">bag2img.launch</a></h3><p>在<code>uav_tracking/launch</code>目录下新建<a href="https://github.com/suzhilong/uav_tracking/blob/main/launch/bag2img.launch">bag2img.launch</a>，写入下面内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;launch&gt;</span><br><span class="line">  &lt;node pkg=&quot;rosbag&quot; type=&quot;play&quot; name=&quot;rosbag&quot; args=&quot;-d 2 [BAGPATH]/xx.bag&quot;/&gt;</span><br><span class="line">  &lt;node name=&quot;extract&quot; pkg=&quot;image_view&quot; type=&quot;extract_images&quot; respawn=&quot;false&quot; output=&quot;screen&quot; cwd=&quot;ROS_HOME&quot;&gt;</span><br><span class="line">&lt;remap from=&quot;image&quot; to=&quot;/[your_topic]&quot;/&gt;</span><br><span class="line">  &lt;/node&gt;</span><br><span class="line">&lt;/launch&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong></p>
+<ul>
+<li>[BAGPATH]&#x2F;xx.bag需要替换成自己的bag路径</li>
+<li><code>remap</code>中的<code>/[your_topic]</code>需要替换为自己图片的话题</li>
+</ul>
+<h3 id="2-运行launch文件"><a href="#2-运行launch文件" class="headerlink" title="2. 运行launch文件"></a>2. 运行launch文件</h3><p><code>source</code> 后运行这个launch文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">source ~/rotors_ws/devel/setup.bash</span><br><span class="line">roslaunch bag2img.launch</span><br></pre></td></tr></table></figure>
+<p>成功后会在<code>~/.ros</code>文件夹中生成命名格式为<code>framexxxx.jpg</code>（如<code>frame0000.jpg</code>）的图片</p>
+<h3 id="3-移动图片"><a href="#3-移动图片" class="headerlink" title="3. 移动图片"></a>3. 移动图片</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir ~/rotors_ws/imgs</span><br><span class="line">mv ~/.ros/frame*.jpg ~/rotors_ws/imgs/</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-图片序列转MP4"><a href="#4-图片序列转MP4" class="headerlink" title="4. 图片序列转MP4"></a>4. 图片序列转MP4</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ffmpeg -r 10  -s 752*480 -i frame%04d.jpg uav_record.mp4</span><br></pre></td></tr></table></figure>
+<p><em>ps: -r 后是帧率，-s后是分辨率，-i后是图片名，最后是输出视频名</em></p>
+<h2 id="tracking"><a href="#tracking" class="headerlink" title="tracking"></a>tracking</h2><h3 id="OpenCV-contrib-安装"><a href="#OpenCV-contrib-安装" class="headerlink" title="OpenCV_contrib 安装"></a>OpenCV_contrib 安装</h3><ol>
+<li>安装<a href="https://opencv.org/">OpenCV</a> （已经安装好的使用命令<code>pkg-config opencv --modversion</code>查看安装的OpenCV版本）</li>
+<li>下载对应的 <a href="https://github.com/opencv/opencv_contrib">OpenCV_contrib</a>（点击<code>tag</code>找到所需版本）</li>
+<li>将解压后的<code>OpenCV_contrib</code>文件夹移到<code>opencv</code>根目录下</li>
+<li>安装依赖 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt-get install build-essential</span><br><span class="line">sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev</span><br><span class="line">sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev</span><br></pre></td></tr></table></figure></li>
+<li>进入 <code>opencv/build</code> （如果没有<code>build</code>，就新建一个<code>build</code>文件夹） <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cmake -D CMAKE_INSTALL_PREFIX=/usr/local -D CMAKE_BUILD_TYPE=Release -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib-3.4.0/modules ..</span><br></pre></td></tr></table></figure>
+ <strong>注意：参数 OPENCV_EXTRA_MODULES_PATH 中的opencv_contrib-3.4.0 就是 opencv_contrib 解压后移动到 opencv 目录下名字</strong></li>
+<li>编译安装 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">make -j8</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="img-tracking-cpp"><a href="#img-tracking-cpp" class="headerlink" title="img_tracking.cpp"></a><a href="https://github.com/suzhilong/uav_tracking/blob/main/src/img_tracking.cpp">img_tracking.cpp</a></h3><h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><ol>
+<li><p>先<code>roslaunch</code> uav 的仿真 或 <code>rosbag play</code>录制好的bag文件</p>
+</li>
+<li><ul>
+<li>可以进入<code>~/rotors_ws/devel/lib/usv_tracking/</code>后使用<code>./img_tracking</code>运行视频目标跟踪程序</li>
+<li>也可以<code>source ~/rotors_ws/devel/setup.bash</code>后直接使用<code>rosrun uav_tracking img_tracking</code>执行视频目标跟踪程序</li>
+</ul>
+</li>
+</ol>
+<h4 id="跟踪目标边框初始化"><a href="#跟踪目标边框初始化" class="headerlink" title="跟踪目标边框初始化"></a>跟踪目标边框初始化</h4><p>在<code>img_tracking.cpp</code>中，有两种方法初始化目标在第一帧的位置和大小：</p>
+<ol>
+<li><p>初始化检测框的坐标和大小</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">boundingBox.x = 350;</span><br><span class="line">boundingBox.y = 200;</span><br><span class="line">boundingBox.width = 100;</span><br><span class="line">boundingBox.height = 80;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>手动框选：<code>1.</code> 中的代码注释掉，使用下面代码：</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">boundingBox = selectROI(curFrame, false);</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="test-tracking-cpp"><a href="#test-tracking-cpp" class="headerlink" title="test_tracking.cpp"></a><a href="https://github.com/suzhilong/uav_tracking/blob/main/src/test_tracking.cpp">test_tracking.cpp</a></h3><p>这个文件是用来测试仿真uav录制视频的跟踪的。</p>
+<h4 id="修改跟踪目标文件"><a href="#修改跟踪目标文件" class="headerlink" title="修改跟踪目标文件"></a>修改跟踪目标文件</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">VideoCapture video(&quot;[video_path]/[video_name].mp4&quot;);</span><br></pre></td></tr></table></figure>
+<h4 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">roscore</span><br></pre></td></tr></table></figure>
+<p>新开一个终端，并且source一下，然后</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rosrun uav_tracking test_tracking</span><br></pre></td></tr></table></figure>
+<p>接着就会出现视频的第一帧，用鼠标框选出跟踪的目标，按回车就可以看到开始跟踪了。</p>
+<p><img src="https://i.loli.net/2021/01/30/Ulr3SC7Rjd8Pq4u.gif" alt="tracking480.gif"></p>
+<h3 id="uav-tracking-cpp"><a href="#uav-tracking-cpp" class="headerlink" title="uav_tracking.cpp"></a><a href="https://github.com/suzhilong/uav_tracking/blob/main/src/uav_tracking.cpp">uav_tracking.cpp</a></h3><h4 id="打开-gazebo"><a href="#打开-gazebo" class="headerlink" title="打开 gazebo"></a>打开 gazebo</h4><p>随便打开一个有 <code>rotors</code> 的 <code>gazebo</code> 世界，如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">roslaunch uav_tracking video_record.launch</span><br></pre></td></tr></table></figure>
+<h4 id="加载-turtlebot-到-gazebo"><a href="#加载-turtlebot-到-gazebo" class="headerlink" title="加载 turtlebot 到 gazebo"></a>加载 turtlebot 到 gazebo</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">roslaunch uav_tracking add_turtlebot.launch</span><br></pre></td></tr></table></figure>
+<h4 id="使用跟踪"><a href="#使用跟踪" class="headerlink" title="使用跟踪"></a>使用跟踪</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rosrun uav_tracking uav_tracking</span><br></pre></td></tr></table></figure>
+
+<p>然后选中turtlebot</p>
+<h4 id="键盘控制turtlebot移动"><a href="#键盘控制turtlebot移动" class="headerlink" title="键盘控制turtlebot移动"></a>键盘控制turtlebot移动</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">roslaunch turtlebot_teleop keyboard_teleop.launch</span><br></pre></td></tr></table></figure>
+
+<p>就可以看到无人机跟随turtlebot运动了。</p>
+<h1 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h1><ul>
+<li><a href="https://www.guyuehome.com/4748">为了实现高效的人体跟踪，我测试了这些开源CV算法</a></li>
+<li><a href="https://www.guyuehome.com/17372">(Python)从零开始,简单快速学机器仿人视觉Opencv—运用五：物体运动跟踪</a></li>
+<li><a href="https://www.guyuehome.com/18855">ROS实现无人机目标跟踪&#x2F;物体跟随&#x2F;循迹</a></li>
+<li><a href="https://www.guyuehome.com/18055">基于ROS搭建简易软件框架实现ROV水下目标跟踪（十四完结）–目标跟踪模块</a></li>
+<li><a href="https://github.com/aws-robotics/aws-robomaker-racetrack-world#aws-robomaker-racetrack-world-ros-package">赛道环境ROS包</a></li>
+<li><a href="https://github.com/leggedrobotics/darknet_ros">YOLO_ROS包</a></li>
+<li><a href="https://blog.csdn.net/LuohenYJ/article/details/89029816">使用OpenCV实现单目标跟踪</a></li>
+<li><a href="https://blog.csdn.net/qq_35781447/article/details/103277509">linux下安装Opencv 和opencv-contrib</a></li>
+<li><a href="https://learnopencv.com/object-tracking-using-opencv-cpp-python/">Object Tracking using OpenCV</a></li>
+<li><a href="https://blog.csdn.net/qq_42589654/article/details/104246083">ROS基础知识学习笔记（1）—数据类型</a></li>
+<li><a href="http://www.voidcn.com/article/p-nexaivrm-uc.html">std_msgs::UInt8MultiArray发布数组</a></li>
+<li><a href="http://blog.leanote.com/post/610167078@qq.com/ROS-%E5%9B%BE%E5%83%8F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%91%BD%E4%BB%A4%E4%B8%8E%E5%BA%94%E7%94%A8">ROS 图像相关的命令与应用</a></li>
+<li><a href="https://www.jianshu.com/p/9a5a0433f5e4">ROS的相机节点</a></li>
+<li><a href="https://blog.csdn.net/weixin_40830684/article/details/94054564?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control">rosbag转mp4文件</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>robot</category>
+      </categories>
+      <tags>
+        <tag>Drone</tag>
       </tags>
   </entry>
   <entry>

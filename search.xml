@@ -6301,4 +6301,105 @@
         <tag>Algorithm</tag>
       </tags>
   </entry>
+  <entry>
+    <title>SIMD 指令集</title>
+    <url>/2023/02/01/SIMD_Intro/</url>
+    <content><![CDATA[<p>SIMD(Single Instruction, Multiple Data)：单指令多数据流，实质是通过数据并行来提高执行效率。</p>
+<span id="more"></span>
+<h1 id="1-ARM-架构"><a href="#1-ARM-架构" class="headerlink" title="1. ARM 架构"></a>1. ARM 架构</h1><h2 id="1-1-ARMv1-ARMv9"><a href="#1-1-ARMv1-ARMv9" class="headerlink" title="1.1 ARMv1 - ARMv9"></a>1.1 ARMv1 - ARMv9</h2><p><img src="https://s2.loli.net/2023/02/01/ABIs81ykLozZvl7.png" alt="arm_architech.png"></p>
+<ul>
+<li>基于 ARMv7 版本的 ARM Cortex 系列产品由 A、R、M 三个系列组成，具体分类延续了一直以来 ARM 面向具体应用设计 CPU 的思路。<br><img src="https://s2.loli.net/2023/02/01/DWpuQhBdPXjFwUc.png" alt="arm_cortex.png"></li>
+</ul>
+<h2 id="1-2-AArch64-x2F-AArch32"><a href="#1-2-AArch64-x2F-AArch32" class="headerlink" title="1.2 AArch64&#x2F;AArch32"></a>1.2 AArch64&#x2F;AArch32</h2><ul>
+<li>ARMv8 的两种执行状态： AArch64&#x2F;AArch32<ul>
+<li>AArch64：Armv8-A 架构中引入的 64 位执行状态，执行 A64 指令，使用64bit的通用寄存器</li>
+<li>AArch32：兼容 Armv7-A 和先前的 32 位 Arm 架构的 32 位执行状态，执行A32&#x2F;T32指令，使用32bit的通用寄存器</li>
+</ul>
+</li>
+<li>ARMv8 支持浮点类型的除法向量操作，这是 ARMv7 没有的。另外 AArch64 还支持 double 类型的操作。</li>
+<li>Arm Compiler<br><img src="https://s2.loli.net/2023/02/01/AdjlCsGHeTfD6Ok.png" alt="arm_complier.png"><ul>
+<li><code>–target=aarch64-arm-none-eabi</code> 生成 AArch64 的可执行程序。默认使用 ARMv8-A target（处理器），也可使用 -mcpu 指定特定的 ARMv8 处理器。 </li>
+<li><code>–target=arm-arm-none-eabi</code> 生成 AArch32的可执行程序。对 AArch32 而言，没有默认target（处理器），所以需要使用 -march 或者 -mcpu 来指定处理器，如：<code>–target=arm-arm-none-eabi -mcpu=cortex-a53</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="2-SIMD"><a href="#2-SIMD" class="headerlink" title="2. SIMD"></a>2. SIMD</h1><p>SIMD(Single Instruction, Multiple Data)：单指令多数据流，实质是通过数据并行来提高执行效率。</p>
+<h2 id="2-1-x86-指令集"><a href="#2-1-x86-指令集" class="headerlink" title="2.1 x86 指令集"></a>2.1 x86 指令集</h2><p><img src="https://s2.loli.net/2023/02/01/2Z8dWriX6GQ9nPV.png" alt="x86_SIMD.png"></p>
+<h2 id="2-2-arm-指令集-NEON"><a href="#2-2-arm-指令集-NEON" class="headerlink" title="2.2 arm 指令集 - NEON"></a>2.2 arm 指令集 - NEON</h2><h3 id="2-2-1-寄存器"><a href="#2-2-1-寄存器" class="headerlink" title="2.2.1 寄存器"></a>2.2.1 寄存器</h3><ul>
+<li><p>向量寄存器用来存放向量数据，每个向量元素的类型必须相同。</p>
+</li>
+<li><p>向量寄存器根据处理元素的大小可以划分为 2&#x2F;4&#x2F;8&#x2F;16 个通道。</p>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/02/01/ScsjDzH3hiP17Ka.png" alt="arm_register.png"></p>
+<ul>
+<li><p>AArch64 有 32 个 128bit 的向量寄存器，这些寄存器又可以划分为：</p>
+<ul>
+<li>32 个 128bit 的 V 寄存器，V0~V31。</li>
+<li>32 个 64bit 的 D 寄存器，D0~D31。</li>
+<li>32 个 32bit 的 S 寄存器，S0~S31。</li>
+</ul>
+</li>
+<li><p>AArch32&#x2F;ARMv7 有 16 个 128bit 的向量寄存器，这些寄存器又可以划分为：</p>
+<ul>
+<li>16 个128bit 的 Q 寄存器，Q0~Q15。</li>
+<li>32 个 64bit 的 D 寄存器，D0~D31。</li>
+<li>32 个 32bit 的 S 寄存器，S0~S31。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-2-2-汇编指令格式"><a href="#2-2-2-汇编指令格式" class="headerlink" title="2.2.2 汇编指令格式"></a>2.2.2 汇编指令格式</h3><p><code>&#123;&lt;prefix&gt;&#125;&lt;op&gt;&#123;&lt;suffix&gt;&#125; Vd.&lt;T&gt;, Vn.&lt;T&gt;, Vm.&lt;T&gt;</code></p>
+<p>如：</p>
+<ul>
+<li><prefix> ：前缀名字，包括以下几类：<ul>
+<li>S&#x2F;U&#x2F;F&#x2F;P：数据类型，分别为 有符号整型&#x2F;无符号整型&#x2F;浮点型&#x2F;布尔型。</li>
+<li>Q：饱和（Saturating）计算。</li>
+<li>R：舍入（Rounding）计算, Rounding 操作等价于加上 0.5 之后再截断。</li>
+<li>H：折半（Halving）计算。</li>
+<li>D：翻倍（Doubling）算。</li>
+</ul>
+</li>
+<li><op> ：具体的操作，例如 ADD，SUB 等等</li>
+<li><suffix> ：后缀名字，包括以下几类：<ul>
+<li>V：Reduction 计算。</li>
+<li>P：Pairwise 计算。</li>
+<li>H：结果只取每个通道的高半部分（High）。</li>
+<li>L&#x2F;N&#x2F;W&#x2F;L2&#x2F;N2&#x2F;W2：数据长度的变化<ul>
+<li>L&#x2F;L2 ：输出向量是输入向量长度的 2 倍，其中 L 表示输入寄存器的低 64bit 数据有效，L2 表示输入寄存器的高 64bit 数据有效。</li>
+<li>N&#x2F;N2：输出向量是输入向量的 1&#x2F;2 倍，N 表示输出向量只有低 64bit 有效，N2 则表示输出向量只有高 64bit 有效。</li>
+<li>W&#x2F;W2：输出向量和第一个输入向量长度相等，且这两个向量是第二个向量长度的 2 倍，其中 W 表示第二个输入向量的低 64bit 有效，W2 表示第二输入向量的高 64bit 有效。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><T> ：单个通道的数据类型，8B&#x2F;16B&#x2F;4H&#x2F;8H&#x2F;2S&#x2F;4S&#x2F;2D，B 表示 8bit，H 表示 16bit，S 表示 32bit，D 表示 64bit</li>
+</ul>
+<h3 id="2-2-3-intrinsics-指令格式"><a href="#2-2-3-intrinsics-指令格式" class="headerlink" title="2.2.3 intrinsics 指令格式"></a>2.2.3 intrinsics 指令格式</h3><h4 id="2-2-3-1-向量类型格式"><a href="#2-2-3-1-向量类型格式" class="headerlink" title="2.2.3.1 向量类型格式"></a>2.2.3.1 向量类型格式</h4><p><img src="https://s2.loli.net/2023/02/01/bmFp7whPClGNQas.png" alt="vector_type.png"><br>非数组向量：<code>&lt;type&gt;&lt;size&gt;x&lt;number_of_lanes&gt;_t</code></p>
+<p>数组向量：<code>&lt;type&gt;&lt;size&gt;x&lt;number_of_lanes&gt;x&lt;length_of_array&gt;_t</code></p>
+<ul>
+<li>&lt;type&gt; 数据类型，如 int &#x2F; uint &#x2F; float。</li>
+<li>&lt;size&gt; 元素大小，如8&#x2F;16&#x2F;32&#x2F;64。</li>
+<li><number_of_lanes> 通道数。</li>
+<li><length_of_array> 数组中元素个数。</li>
+</ul>
+<h4 id="2-2-3-2-NEON-内联函数格式"><a href="#2-2-3-2-NEON-内联函数格式" class="headerlink" title="2.2.3.2 NEON 内联函数格式"></a>2.2.3.2 NEON 内联函数格式</h4><p><img src="https://s2.loli.net/2023/02/01/L8uYEPOkgAiXMm6.png" alt="function_type.png"></p>
+<p><code>v&lt;mod&gt;&lt;opname&gt;&lt;shape&gt;&lt;flags&gt;_&lt;type&gt;</code></p>
+<p><img src="https://s2.loli.net/2023/02/01/iBp81PwhaIunjAy.png" alt="instrinsics.png"></p>
+<ul>
+<li>举例<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// a 加 b 的结果做饱和计算</span><br><span class="line">int8x8_t vqadd_s8(int8x8_t a, int8x8_t b); </span><br><span class="line">// a 减 b 的结果右移一位</span><br><span class="line">int8x8_t vhsub_s8(int8x8_t a, int8x8_t b); </span><br><span class="line">// a 乘 b 的结果扩大一倍, 最后做饱和操作</span><br><span class="line">int32x4_t vqdmull_s16(int16x4_t a, int16x4_t b); </span><br><span class="line">// 将 a 与 b 的和减半,同时做 rounding 操作, 每个通道可以表达为: (ai + bi + 1) &gt;&gt; 1</span><br><span class="line">int8x8_t vrhadd_s8(int8x8_t a, int8x8_t b); </span><br><span class="line">// 将 a、b 向量的相邻数据进行两两和操作</span><br><span class="line">int8x8_t vpadd_s8(int8x8_t a, int8x8_t b);</span><br><span class="line">// l：long，输出向量的元素长度是输入长度的 2 倍</span><br><span class="line">uint16x8_t vaddl_u8(uint8x8_t a, uint8x8_t b)</span><br><span class="line">// n：narrow，输出向量的元素长度是输入长度的 1/2</span><br><span class="line">uint32x2_t vmovn_u64(uint64x2_t a)</span><br><span class="line">// wide，第一个输入向量和输出向量类型一样，且是第二个输入向量元素长度的 2 倍</span><br><span class="line">uint16x8_t vsubw_u8(uint16x8_t a, uint8x8_t b)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="Ref"><a href="#Ref" class="headerlink" title="Ref."></a>Ref.</h1><ul>
+<li><a href="https://zhuanlan.zhihu.com/p/441686632">CPU 优化技术-NEON 指令介绍</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/358603760">ARM Neon Intrinsics 学习指北：从入门、进阶到学个通透</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/431971424">ARM NEON技术之NEON基础介绍</a></li>
+<li><a href="https://community.arm.com/arm-community-blogs/b/operating-systems-blog/posts/arm-neon-programming-quick-reference">Arm NEON programming quick reference guide</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>CS</category>
+      </categories>
+      <tags>
+        <tag>Computer vision</tag>
+      </tags>
+  </entry>
 </search>
